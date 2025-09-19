@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <IconTextureAtlases>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" Baseline="6" IconSize="22"  IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_22.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="32"	 IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_32.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="38"	 IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_38.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="50"	 IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_50.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="64"	 IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_64.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="128" IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_128.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD" IconSize="256" IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_256.dds"/>
+    <Row Name="ICON_ATLAS_KHALIFA_HD_FOW" IconSize="256" IconsPerRow="1" IconsPerColumn="1" Filename="HD_Khalifa_Product_FOW_256.dds"/>
+  </IconTextureAtlases>
+  <IconDefinitions>
+
+    <Row Name="RESOURCE_KHALIFA"                                  Atlas="ICON_ATLAS_KHALIFA_HD" Index="0"/>
+    <Row Name="ICON_RESOURCE_KHALIFA"                             Atlas="ICON_ATLAS_KHALIFA_HD" Index="0"/>
+    <Row Name="ICON_RESOURCE_KHALIFA_FOW"                         Atlas="ICON_ATLAS_KHALIFA_HD_FOW" Index="0"/>
+    <Row Name="ICON_PROJECT_CREATE_PRODUCT_KHALIFA"               Atlas="ICON_ATLAS_KHALIFA_HD" Index="0"/>
+    <Row Name="ICON_MONOPOLIES_AND_CORPS_RESOURCE_KHALIFA"        Atlas="ICON_ATLAS_KHALIFA_HD" Index="0"/>
+    <Row Name="ICON_MONOPOLIES_AND_CORPS_RESOURCE_KHALIFA_FOW"    Atlas="ICON_ATLAS_KHALIFA_HD_FOW" Index="0"/>
+
+  </IconDefinitions>
+</GameData>
