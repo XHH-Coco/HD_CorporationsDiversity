@@ -38,7 +38,7 @@ values
     ("LOC_LEU_GREATPERSON_PRODUCT_GOLD_SUMMARY",                      "[ICON_GreatWork_Product] Products in this City provide +{Amount} [ICON_Gold] Gold."),
     ("LOC_LEU_GREATPERSON_PRODUCT_TOURISM_SUMMARY",                   "[ICON_GreatWork_Product] Products in all your Cities provide +{ScalingFactor}% [ICON_Tourism] Tourism."),
 
-    ("LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",			      "Unlocks the Builder ability to construct a Château, unique to France.[NEWLINE][NEWLINE]+2 [ICON_FOOD] Food, +1 [ICON_Culture] Culture and +1 [ICON_HOUSING] Housing. +1 [ICON_FOOD] Food from every adjacent Bonus resource. +2 [ICON_CULTURE] Culture from every adjacent Luxury resource and Wonder. Provide an extra copy for each adjacent improved Plantation, Farm or Lumber Mill Luxury resource. For each type of adjacent improved Plantation, Farm or Lumber Mill Luxury resource, Château recieves its Industry bonus. +1 Appeal to adjacent tiles. Can only be built one per city. Must be placed adjacent to a Bonus or Luxury resource. "),
+    ("LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",			      "+2 [ICON_FOOD] Food, +1 [ICON_Culture] Culture and +1 [ICON_HOUSING] Housing. +1 [ICON_FOOD] Food from every adjacent Bonus resource. +2 [ICON_CULTURE] Culture from every adjacent Luxury resource and Wonder. Provide an extra copy for each adjacent improved Plantation, Farm or Lumber Mill Luxury resource. For each type of adjacent improved Plantation, Farm or Lumber Mill Luxury resource, Château recieves its Industry bonus. +1 Appeal to adjacent tiles. Can only be built one per city. Must be placed adjacent to a Bonus or Luxury resource. "),
 
     ("LOC_UNIT_LEU_TYCOON_JNR_DESCRIPTION",                           "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires a Market, or a Mint, or a Emporium, or a Trade Port to be purchased.[NEWLINE][NEWLINE]Tycoons can create Industries on Luxury Resource tiles, and after the discovery of Steam Power they can create Railroads and Stations to improve yields, commerce and [ICON_PRODUCTION] Production in your territory."),
     ("LOC_UNIT_LEU_INVESTOR_JNR_DESCRIPTION",                         "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires a Bank, or a Guildhall, or a Merchant Quarter, or a Entrepot, or a Shipyard to be purchased.[NEWLINE][NEWLINE]Investors can found Corporations that allow your civilization to create [ICON_GREATWORK_PRODUCT] Products for additional [ICON_GOLD] Gold and [ICON_TOURISM] Tourism, or create Warehouses and Container Ports in other civilizations to further strengthen commerce and your Corporations.");
@@ -79,7 +79,7 @@ values
     ("zh_Hans_CN",  "LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "每回合提供6点 [ICON_RESOURCE_COAL] 煤。该城市+15% [ICON_Production] 生产力。与该城市建立国内 [ICON_TRADEROUTE] 贸易路线的城市共享该城市的每种行业效果。[NEWLINE][NEWLINE]必须相邻行业改良建造，且本城拥有工业区二级建筑。"),
     ("zh_Hans_CN",  "LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "获得1个大亨单位。{LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
 
-    ("zh_Hans_CN",  "LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",                "解锁建造者建造法国特色改良城堡庄园的能力。[NEWLINE][NEWLINE]+2 [ICON_FOOD] 食物、+1 [ICON_Culture] 文化值、+1 [ICON_HOUSING] 住房。每相邻1个加成资源+1 [ICON_FOOD] 食物，每相邻1个奢侈资源或奇观+2 [ICON_Culture] 文化值。额外提供一份相邻的且已改良的种植园、农场或伐木场奢侈资源。获得每种与城堡庄园相邻且已改良的种植园、农场或伐木场奢侈资源的对应行业效果。为相邻单元格+1魅力。每个城市仅限建造一座，且必须建在加成或奢侈品资源旁。"),
+    ("zh_Hans_CN",  "LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",                "+2 [ICON_FOOD] 食物、+1 [ICON_Culture] 文化值、+1 [ICON_HOUSING] 住房。每相邻1个加成资源+1 [ICON_FOOD] 食物，每相邻1个奢侈资源或奇观+2 [ICON_Culture] 文化值。额外提供一份相邻的且已改良的种植园、农场或伐木场奢侈资源。获得每种与城堡庄园相邻且已改良的种植园、农场或伐木场奢侈资源的对应行业效果。为相邻单元格+1魅力。每个城市仅限建造一座，且必须建在加成或奢侈品资源旁。"),
     
     ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_JNR_DESCRIPTION",                           "需要商业中心中的一级建筑或港口中的“贸易码头”方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创建行业，在研究“蒸汽动力”后，他们也可创建铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),
     ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_JNR_DESCRIPTION",                         "需要商业中心中的二级建筑或港口中的“商港”或“造船厂”方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创建公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的 [ICON_GOLD] 金币和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中创建仓库和集装箱港口，进一步强化贸易和你的公司。");
@@ -641,8 +641,8 @@ insert or replace into EnglishText
 values
     ("LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",          "Mine improvements receive +1 [ICON_PRODUCTION] Production. Unlocks ability to create Industries."),
     ("LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",            "An industry dedicated to a specific Luxury Resource, provides a unique benefit to its city."),
-    ("LOC_IMPROVEMENT_LEU_WAREHOUSE_DESCRIPTION",       "Unlocks the Tycoon ability to construct a Warehouse. [NEWLINE][NEWLINE]+1 [ICON_PRODUCTION] Production to all Industries and Corporations. +1 [ICON_PRODUCTION] Production to all [ICON_TRADEROUTE] Trade Routes. [ICON_GREATWORK_PRODUCT] Products provide +50% [ICON_TOURISM] Tourism in this city. [NEWLINE][NEWLINE]Must be built on a land tile adjacent to a Bonus or Luxury resource. Cannot be built Marsh, Swamp or Geothermal Fissure tiles. Only one may be built in each city, and may not be built adjacent to another Warehouse."),
-    ("LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",  "Unlocks the Tycoon ability to construct a Container Port. [NEWLINE][NEWLINE]+3 [ICON_GOLD] Gold to all Industries and Corporations. +3 [ICON_GOLD] Gold to all [ICON_TRADEROUTE] Trade Routes. [ICON_GREATWORK_PRODUCT] Products provide +50% [ICON_TOURISM] Tourism in this city. [NEWLINE][NEWLINE]Must be built on a Lake/Coast tile adjacent to land and adjacent to a Bonus or Luxury resource. Only one may be built in each city, and may not be built adjacent to another Container Port."),
+    ("LOC_IMPROVEMENT_LEU_WAREHOUSE_DESCRIPTION",       "+1 [ICON_PRODUCTION] Production to all Industries and Corporations. +1 [ICON_PRODUCTION] Production to all [ICON_TRADEROUTE] Trade Routes. [ICON_GREATWORK_PRODUCT] Products provide +50% [ICON_TOURISM] Tourism in this city. [NEWLINE][NEWLINE]Must be built on a land tile adjacent to a Bonus or Luxury resource. Cannot be built Marsh, Swamp or Geothermal Fissure tiles. Only one may be built in each city, and may not be built adjacent to another Warehouse."),
+    ("LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",  "+3 [ICON_GOLD] Gold to all Industries and Corporations. +3 [ICON_GOLD] Gold to all [ICON_TRADEROUTE] Trade Routes. [ICON_GREATWORK_PRODUCT] Products provide +50% [ICON_TOURISM] Tourism in this city. [NEWLINE][NEWLINE]Must be built on a Lake/Coast tile adjacent to land and adjacent to a Bonus or Luxury resource. Only one may be built in each city, and may not be built adjacent to another Container Port."),
     ("LOC_UNIT_LEU_TYCOON_DESCRIPTION",                 "Pricey Civilian Unit that may only be purchased with [ICON_GOLD] Gold. Requires a Market to be purchased.[NEWLINE][NEWLINE]Tycoons can create Industries in Luxury Resource tiles, and after the discovery of Steam Power they can create Railroads and Stations to improve yields, commerce and [ICON_PRODUCTION] Production in your territory."),
     ("LOC_UNIT_LEU_INVESTOR_DESCRIPTION",               "Pricey Civilian Unit that may only be purchased with [ICON_GOLD] Gold. Requires a Bank to be purchased.[NEWLINE][NEWLINE]Investors can create Corporations that allow your civilization to create [ICON_GREATWORK_PRODUCT] Products for additional [ICON_GOLD] Gold and [ICON_TOURISM] Tourism. Additionally they can be used to create Warehouses and Container Ports in other civilizations to further strengthen commerce and your Corporations."),
     ("LOC_IMPROVEMENT_CORPORATION_EXPANSION2_DESCRIPTION", "A company dedicated to a certain type of luxury resource. Allows the City to create [ICON_GreatWork_Product] Product, a new type of Great Work which provides bonus to the City it is stored. Can only be pillaged (never destroyed) by natural disasters. [NEWLINE][NEWLINE]Provides [ICON_TOURISM] Tourism equal to its [ICON_Gold] Gold yield. +3 [ICON_GOLD] Gold from each building of Commercial Hub or Harbor district in this city."),
@@ -659,11 +659,11 @@ values
     ("zh_Hans_CN",  "LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",          "矿山+1 [ICON_Production] 生产力。解锁建立行业的能力。"),
     ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",            "致力于一种特定奢侈品资源的行业，能为其所在城市带来独特加成。"),
     ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_WAREHOUSE_NAME",              "仓库"),
-    ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_WAREHOUSE_DESCRIPTION",       "解锁大亨建造仓库的能力。[NEWLINE][NEWLINE]所有行业和公司+1 [ICON_PRODUCTION] 生产力。所有 [ICON_TRADEROUTE] 贸易路线+1 [ICON_PRODUCTION] 生产力。本城来自 [ICON_GREATWORK_PRODUCT] 产品的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]必须建在与加成或奢侈资源相邻的单元格上。无法建在沼泽或地热裂缝上。无法建在另一座仓库旁。每个城市仅限建造一座。"),
+    ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_WAREHOUSE_DESCRIPTION",       "所有行业和公司+1 [ICON_PRODUCTION] 生产力。所有 [ICON_TRADEROUTE] 贸易路线+1 [ICON_PRODUCTION] 生产力。本城来自 [ICON_GREATWORK_PRODUCT] 产品的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]必须建在与加成或奢侈资源相邻的单元格上。无法建在沼泽或地热裂缝上。无法建在另一座仓库旁。每个城市仅限建造一座。"),
     ("zh_Hans_CN",  "LOC_WAREHOUSE_ADJ_GOLD",                          "+{1_num} [ICON_GOLD] 金币来自相邻的仓库"),
     ("zh_Hans_CN",  "LOC_WAREHOUSE_ADJ_PRODUCTION",                    "+{1_num} [ICON_Production] 生产力来自相邻的仓库"),
     ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_CONTAINER_PORT_NAME",         "集装箱码头"),
-    ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",  "解锁大亨建造集装箱码头的能力。[NEWLINE][NEWLINE]所有行业和公司+3 [ICON_GOLD] 金币。所有 [ICON_TRADEROUTE] 贸易路线+3 [ICON_GOLD] 金币。本城来自 [ICON_GREATWORK_PRODUCT] 产品的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]必须建在与加成或奢侈资源相邻，且与陆地相邻的海洋或湖泊单元格上。无法建在另一座集装箱码头旁。每个城市仅限建造一座。"),
+    ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",  "所有行业和公司+3 [ICON_GOLD] 金币。所有 [ICON_TRADEROUTE] 贸易路线+3 [ICON_GOLD] 金币。本城来自 [ICON_GREATWORK_PRODUCT] 产品的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]必须建在与加成或奢侈资源相邻，且与陆地相邻的海洋或湖泊单元格上。无法建在另一座集装箱码头旁。每个城市仅限建造一座。"),
     ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_GOLD",                     "+{1_num} [ICON_GOLD] 金币来自相邻的集装箱码头"),
     ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_PRODUCTION",               "+{1_num} [ICON_Production] 生产力来自相邻的集装箱码头"),
     ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_NAME",                        "大亨"),
@@ -759,16 +759,16 @@ values
 --jnr新内容
     ("zh_Hans_CN", 
     "LOC_IMPROVEMENT_BEACH_RESORT_DESCRIPTION",                    
-    "解锁大亨建造海滨度假村的能力。[NEWLINE][NEWLINE]提供等同于单元格魅力的[ICON_Tourism]旅游业绩。只能建造在必须建造在与海岸相邻的沙漠、平原或草原上。只能建造在惊艳魅力的单元格上。"),
+    "提供等同于单元格魅力的[ICON_Tourism]旅游业绩。只能建造在必须建造在与海岸相邻的沙漠、平原或草原上。只能建造在惊艳魅力的单元格上。"),
     ("zh_Hans_CN", 
     "LOC_IMPROVEMENT_SKI_RESORT_DESCRIPTION",                    
-    "解锁大亨建造滑雪场的能力。[NEWLINE][NEWLINE]提供+4 [ICON_Tourism]旅游业绩和+1 [ICON_AMENITIES] 宜居度。只能建造在山地上。不能建造在与其他滑雪场相邻的单元格上。无法被掠夺或移除。"),
+    "提供+4 [ICON_Tourism]旅游业绩和+1 [ICON_AMENITIES] 宜居度。只能建造在山地上。不能建造在与其他滑雪场相邻的单元格上。无法被掠夺或移除。"),
     ("zh_Hans_CN", 
     "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME",                    
     "跨国公司"),
     ("zh_Hans_CN", 
     "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",                    
-    "由投资人建造的改良设施。只能建造在有奢侈品资源或战略资源的无主单元格上。建成后，将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。"),
+    "只能建造在有奢侈品资源或战略资源的无主单元格上。建成后，将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。"),
     ("zh_Hans_CN", 
     "LOC_PEDIA_IMPROVEMENTS_PAGE_IMPROVEMENT_LEU_TRANSNATIONAL_CHAPTER_HISTORY_PARA_1",                    
     "跨国公司或跨国企业是跨越国际边界的企业，通常涉及国际生产商品或服务、外国投资或收入和资产管理，利用竞争优势降低成本，例如外包到土地和劳动力更便宜的发展中国家。[NEWLINE][NEWLINE]跨国公司与跨国公司共享许多特点，微妙的区别在于跨国公司由集中的管理结构组成，而跨国公司通常是分散的，在公司运营的各个国家设有许多基地。传统的跨国公司是拥有外国子公司的国家公司，而跨国公司将其业务分散在许多国家，以维持高水平的本地响应能力。[NEWLINE][NEWLINE]跨国性还指企业跨越国界从事创造价值的活动的程度。面对加速的全球化，经理们经常做出扩大企业跨国性的决策，以使企业能够在全球范围内有效地与竞争对手竞争，这些竞争对手聘用来自许多国家的高级执行官，并试图从全球的角度而不是从一个集中的总部做出决策。[NEWLINE][NEWLINE]跨国公司的最早历史起源可以追溯到西欧主要殖民和帝国主义企业，尤其是英国和荷兰，这些企业始于16世纪，持续了几百年。在这段时期，像英国东印度公司这样的公司被组建起来，以促进其本国在远东、非洲和美洲的贸易活动或领土收购。然而，正如今天所知的那样，跨国公司直到19世纪才真正出现，这是由于工业资本主义及其后果的出现。二战后的20年间，美国的跨国公司在外国投资活动中占据了主导地位，欧洲和日本公司开始扮演越来越重要的角色。[NEWLINE][NEWLINE]粗略的估计表明，全球最大的300家跨国公司拥有或控制着至少四分之一的全球生产资产，价值约5万亿美元。跨国公司的总年销售额相当于或大于大多数国家的年度国内生产总值。部分原因是由于它们的规模，跨国公司往往在产出和市场垄断或集中在相对较少的公司手中的行业中占主导地位。前五大汽车制造商负责全球近60%的汽车销售。"),
@@ -777,7 +777,7 @@ values
     "离岸油轮"),
     ("zh_Hans_CN", 
     "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",                    
-    "由投资人建造的改良设施。只能建造在有奢侈品资源或战略资源的无主水域单元格上。将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。"),
+    "只能建造在有奢侈品资源或战略资源的无主水域单元格上。将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。"),
     ("zh_Hans_CN", 
     "LOC_PEDIA_IMPROVEMENTS_PAGE_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_CHAPTER_HISTORY_PARA_1",                    
     "油轮是一种设计用于在其货舱内批量运输液态货物的船舶，不使用桶或其他容器。大多数油轮运输原油从油田到炼油厂，或从炼油厂运输汽油、柴油、燃料油或石化原料到分销中心。一些具有特殊食品级货舱、泵和其他处理设备的油轮可以批量运输糖浆、食用油，甚至是葡萄酒。用于运输液化天然气和果汁的专业船舶通常被称为油轮，尽管在这些船上，货物实际上是装在适合货舱的大型冷藏集装箱中运输的。");
