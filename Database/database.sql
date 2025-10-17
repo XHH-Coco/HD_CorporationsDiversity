@@ -634,12 +634,6 @@ and exists (select BuildingType from Buildings where BuildingType = 'BUILDING_JN
 
 insert or replace into Unit_BuildingPrereqs
 		(Unit,				PrereqBuilding)
-select  UnitType,			'BUILDING_JNR_WAYSTATION'
-from Units where UnitType = 'UNIT_LEU_TYCOON' 
-and exists (select BuildingType from Buildings where BuildingType = 'BUILDING_JNR_WAYSTATION');
-
-insert or replace into Unit_BuildingPrereqs
-		(Unit,				PrereqBuilding)
 select  UnitType,			'BUILDING_SUKIENNICE'
 from Units where UnitType = 'UNIT_LEU_TYCOON' 
 and exists (select BuildingType from Buildings where BuildingType = 'BUILDING_SUKIENNICE');
