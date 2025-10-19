@@ -12,7 +12,7 @@ values
     ("RESOURCE_BAMBOO"),("RESOURCE_ALABASTER"),("RESOURCE_QUARTZ"),("RESOURCE_LAPIS"),("RESOURCE_RUBY"),("RESOURCE_PLATINUM"),('RESOURCE_SORGHUM'),
     ("RESOURCE_SEA_URCHIN"),("RESOURCE_COD"),("RESOURCE_WOLF"),("RESOURCE_TIGER"),("RESOURCE_SAKURA"),("RESOURCE_POPPIES"),("RESOURCE_ORCA"),
     ("RESOURCE_LION"),("RESOURCE_TRAVERTINE"),("RESOURCE_TOXINS"),("RESOURCE_SAFFRON"),("RESOURCE_ALOE"),("RESOURCE_MEDIHERBS"),("RESOURCE_SEASHELLS"),
-    ("RESOURCE_HAM");
+    ("RESOURCE_HAM"),('RESOURCE_MAPLE'),('RESOURCE_CORAL'),('RESOURCE_CAVIAR'),('RESOURCE_MACKEREL'),('RESOURCE_ALGAE'),('RESOURCE_GOLD2'),('RESOURCE_POTATO'),('RESOURCE_MUSHROOMS');
 
 --------------------------------------------------------------------------------
 -- Language: en_US
@@ -225,7 +225,55 @@ values
     ("LOC_GREATWORK_PRODUCT_HAM_2_NAME",    "Xuanwei Ham"),
     ("LOC_GREATWORK_PRODUCT_HAM_3_NAME",    "Prosciutto di Parma"),
     ("LOC_GREATWORK_PRODUCT_HAM_4_NAME",    "Jamón Ibérico"),
-    ("LOC_GREATWORK_PRODUCT_HAM_5_NAME",    "Rugao Ham");
+    ("LOC_GREATWORK_PRODUCT_HAM_5_NAME",    "Rugao Ham"),
+
+    ("LOC_GREATWORK_PRODUCT_MAPLE_1_NAME",    "Potted Zelkova"),
+    ("LOC_GREATWORK_PRODUCT_MAPLE_2_NAME",    "Zelkova Nursery Garden"),
+    ("LOC_GREATWORK_PRODUCT_MAPLE_3_NAME",    "Zelkova Protection Forest"),
+    ("LOC_GREATWORK_PRODUCT_MAPLE_4_NAME",    "Zelkova Furnitures"),
+    ("LOC_GREATWORK_PRODUCT_MAPLE_5_NAME",    "Zelkova Bark Heat-Relieving Drink"),
+
+    ("LOC_GREATWORK_PRODUCT_GOLD2_1_NAME",    "Sytontil Ointment"),
+    ("LOC_GREATWORK_PRODUCT_GOLD2_2_NAME",    "Vulcanized Rubber"),
+    ("LOC_GREATWORK_PRODUCT_GOLD2_3_NAME",    "Vitriol"),
+    ("LOC_GREATWORK_PRODUCT_GOLD2_4_NAME",    "Indigo Pigment"),
+    ("LOC_GREATWORK_PRODUCT_GOLD2_5_NAME",    "Fireworks"),
+
+    ("LOC_GREATWORK_PRODUCT_CAVIAR_1_NAME",    "Rainbow Trout Raw"),
+    ("LOC_GREATWORK_PRODUCT_CAVIAR_2_NAME",    "Lemon-baked Rainbow Trout"),
+    ("LOC_GREATWORK_PRODUCT_CAVIAR_3_NAME",    "Rainbow Trout Eggs"),
+    ("LOC_GREATWORK_PRODUCT_CAVIAR_4_NAME",    "Pan-fried Rainbow Trout"),
+    ("LOC_GREATWORK_PRODUCT_CAVIAR_5_NAME",    "Trout Soup"),
+
+    ("LOC_GREATWORK_PRODUCT_MACKEREL_1_NAME",    "Canned Mackerels"),
+    ("LOC_GREATWORK_PRODUCT_MACKEREL_2_NAME",    "Mackerel chips"),
+    ("LOC_GREATWORK_PRODUCT_MACKEREL_3_NAME",    "Marinated Mackerel"),
+    ("LOC_GREATWORK_PRODUCT_MACKEREL_4_NAME",    "Mackerel Extract Powder"),
+    ("LOC_GREATWORK_PRODUCT_MACKEREL_5_NAME",    "Japanese-style Salt-baked Mackerel"),
+
+    ("LOC_GREATWORK_PRODUCT_ALGAE_1_NAME",    "Quick-cooked Sea Mustard"),
+    ("LOC_GREATWORK_PRODUCT_ALGAE_2_NAME",    "Marinated Sea Cucumber Salad"),
+    ("LOC_GREATWORK_PRODUCT_ALGAE_3_NAME",    "Spicy And Sour Sea Cucumber Strips"),
+    ("LOC_GREATWORK_PRODUCT_ALGAE_4_NAME",    "Seaweed Egg Drop Soup"),
+    ("LOC_GREATWORK_PRODUCT_ALGAE_5_NAME",    "Sea Sedge"),
+
+    ("LOC_GREATWORK_PRODUCT_CORAL_1_NAME",    "Red Horn-like Coral"),
+    ("LOC_GREATWORK_PRODUCT_CORAL_2_NAME",    "Aka Coral Pendant"),
+    ("LOC_GREATWORK_PRODUCT_CORAL_3_NAME",    "Baby Face"),
+    ("LOC_GREATWORK_PRODUCT_CORAL_4_NAME",    "Angel Skin"),
+    ("LOC_GREATWORK_PRODUCT_CORAL_5_NAME",    "Rose Coral"),
+
+    ("LOC_GREATWORK_PRODUCT_POTATO_1_NAME",    "Roasted Sweet Potato"),
+    ("LOC_GREATWORK_PRODUCT_POTATO_2_NAME",    "Candied Sweet Potato"),
+    ("LOC_GREATWORK_PRODUCT_POTATO_3_NAME",    "Sweet Potato Balls"),
+    ("LOC_GREATWORK_PRODUCT_POTATO_4_NAME",    "Baked Sweet Potato With Cheese"),
+    ("LOC_GREATWORK_PRODUCT_POTATO_5_NAME",    "Sweet Potato Crisps"),
+
+    ("LOC_GREATWORK_PRODUCT_MUSHROOMS_1_NAME",    "Grilled Mushroom Sticks"),
+    ("LOC_GREATWORK_PRODUCT_MUSHROOMS_2_NAME",    "White Mushroom Soup"),
+    ("LOC_GREATWORK_PRODUCT_MUSHROOMS_3_NAME",    "Dried Mushroom"),
+    ("LOC_GREATWORK_PRODUCT_MUSHROOMS_4_NAME",    "Crispy Fried Mushrooms With Salt And Pepper"),
+    ("LOC_GREATWORK_PRODUCT_MUSHROOMS_5_NAME",    "Garlic-flavored Stir-fried Button Mushrooms");
 
 --------------------------------------------------------------------------------
 -- Language: zh_Hans_CN
@@ -371,4 +419,52 @@ values
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HAM_2_NAME",         "宣威火腿"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HAM_3_NAME",         "帕尔玛火腿"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HAM_4_NAME",         "伊比利亚火腿"),
-    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HAM_5_NAME",         "如皋火腿");
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HAM_5_NAME",         "如皋火腿"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MAPLE_1_NAME",    "榉树盆栽"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MAPLE_2_NAME",    "榉树苗圃"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MAPLE_3_NAME",    "榉树防护林"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MAPLE_4_NAME",    "榉木家具"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MAPLE_5_NAME",    "榉树皮祛暑饮"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_GOLD2_1_NAME",    "硫桐脂软膏"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_GOLD2_2_NAME",    "硫化橡胶"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_GOLD2_3_NAME",    "硫酸"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_GOLD2_4_NAME",    "群青"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_GOLD2_5_NAME",    "烟火"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CAVIAR_1_NAME",    "虹鳟鱼生"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CAVIAR_2_NAME",    "柠檬烤虹鳟鱼"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CAVIAR_3_NAME",    "虹鳟鱼卵"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CAVIAR_4_NAME",    "香煎虹鳟鱼"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CAVIAR_5_NAME",    "鳟鱼汤"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MACKEREL_1_NAME",    "鲭鱼罐头"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MACKEREL_2_NAME",    "鲭属淮山鱼签"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MACKEREL_3_NAME",    "酱烧鲭鱼"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MACKEREL_4_NAME",    "鲭鱼肉浸膏"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MACKEREL_5_NAME",    "日式盐烤鲭鱼"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_ALGAE_1_NAME",    "速食裙带菜"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_ALGAE_2_NAME",    "凉拌海带头"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_ALGAE_3_NAME",    "酸辣海带丝"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_ALGAE_4_NAME",    "紫菜蛋花汤"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_ALGAE_5_NAME",    "海苔"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CORAL_1_NAME",    "红鹿角珊瑚"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CORAL_2_NAME",    "阿卡珊瑚吊坠"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CORAL_3_NAME",    "孩儿面"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CORAL_4_NAME",    "天使之肌"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CORAL_5_NAME",    "玫瑰珊瑚"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_POTATO_1_NAME",    "烤番薯"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_POTATO_2_NAME",    "拔丝地瓜"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_POTATO_3_NAME",    "红薯丸子"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_POTATO_4_NAME",    "芝士焗红薯"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_POTATO_5_NAME",    "红薯酥条"),
+
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MUSHROOMS_1_NAME",    "烤口蘑串"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MUSHROOMS_2_NAME",    "白蘑菇汤"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MUSHROOMS_3_NAME",    "蘑菇干"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MUSHROOMS_4_NAME",    "椒盐香煎蘑菇"),
+    ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_MUSHROOMS_5_NAME",    "蒜香炒口蘑");

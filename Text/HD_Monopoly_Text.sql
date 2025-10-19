@@ -350,14 +350,15 @@ values
     ('RESOURCE_ALABASTER'),('RESOURCE_QUARTZ'),('RESOURCE_LAPIS'),('RESOURCE_RUBY'),('RESOURCE_PLATINUM'),('RESOURCE_PEARLS'),('RESOURCE_SEA_URCHIN'),('RESOURCE_SORGHUM'),
     ('RESOURCE_COD'),('RESOURCE_WOLF'),('RESOURCE_TIGER'),('RESOURCE_SAKURA'),('RESOURCE_POPPIES'),('RESOURCE_ORCA'),('RESOURCE_LION'),('RESOURCE_P0K_PENGUINS'),
     ('RESOURCE_TRAVERTINE'),('RESOURCE_TOXINS'),('RESOURCE_SAFFRON'),('RESOURCE_ALOE'),('RESOURCE_MEDIHERBS'),('RESOURCE_LEU_P0K_COCA'),('RESOURCE_SEASHELLS'),
-    ('RESOURCE_C_HEAVENLY_HORSE'),('RESOURCE_HAM'),('RESOURCE_WHALES');
+    ('RESOURCE_C_HEAVENLY_HORSE'),('RESOURCE_HAM'),('RESOURCE_WHALES'),('RESOURCE_MAPLE'),('RESOURCE_CORAL'),('RESOURCE_CAVIAR'),('RESOURCE_MACKEREL'),
+    ('RESOURCE_ALGAE'),('RESOURCE_GOLD2'),('RESOURCE_POTATO'),('RESOURCE_MUSHROOMS');
     -- 食品生产类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
 select
     ResourceType,          'GROWTH'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
-(ResourceType = 'RESOURCE_SORGHUM' or ResourceType = 'RESOURCE_HAM' );
+(ResourceType = 'RESOURCE_SORGHUM' or ResourceType = 'RESOURCE_HAM' or ResourceType = 'RESOURCE_POTATO');
     -- 日常用品类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
@@ -385,28 +386,28 @@ insert or replace into HDResourceCategory
 select
     ResourceType,          'FOOD'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
-(ResourceType = 'RESOURCE_STRAWBERRY');
+(ResourceType = 'RESOURCE_STRAWBERRY' or ResourceType = 'RESOURCE_ALGAE' or ResourceType = 'RESOURCE_MUSHROOMS');
     -- 建筑材料类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
 select
     ResourceType,          'WONDER'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
-(ResourceType = 'RESOURCE_BAMBOO' or ResourceType = 'RESOURCE_ALABASTER' or ResourceType = 'RESOURCE_QUARTZ');
+(ResourceType = 'RESOURCE_BAMBOO' or ResourceType = 'RESOURCE_ALABASTER' or ResourceType = 'RESOURCE_QUARTZ' or ResourceType = 'RESOURCE_MAPLE');
     -- 首饰类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
 select
     ResourceType,          'TOURISM'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
-(ResourceType = 'RESOURCE_LAPIS' or ResourceType = 'RESOURCE_RUBY' or ResourceType = 'RESOURCE_PLATINUM' or ResourceType = 'RESOURCE_PEARLS');
+(ResourceType = 'RESOURCE_LAPIS' or ResourceType = 'RESOURCE_RUBY' or ResourceType = 'RESOURCE_PLATINUM' or ResourceType = 'RESOURCE_PEARLS' or ResourceType = 'RESOURCE_CORAL');
     -- 海产类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
 select
     ResourceType,          'FISHERY'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
-(ResourceType = 'RESOURCE_SEA_URCHIN' or ResourceType = 'RESOURCE_COD' or ResourceType = 'RESOURCE_SALMON');
+(ResourceType = 'RESOURCE_SEA_URCHIN' or ResourceType = 'RESOURCE_COD' or ResourceType = 'RESOURCE_SALMON' or ResourceType = 'RESOURCE_CAVIAR' or ResourceType = 'RESOURCE_MACKEREL');
     -- 娱乐观赏类
 insert or replace into HDResourceCategory
     (ResourceType,         Category)
@@ -429,7 +430,7 @@ select
     ResourceType,          'MEDICINE'
 from HDResourceful2_Text where exists (select Tag from LocalizedText where Tag = 'LOC_RESOURCE_GRANITE_NAME') and
 (ResourceType = 'RESOURCE_TRAVERTINE' or ResourceType = 'RESOURCE_TOXINS'  or ResourceType = 'RESOURCE_SAFFRON' 
-    or ResourceType = 'RESOURCE_ALOE' or ResourceType = 'RESOURCE_MEDIHERBS' or ResourceType = 'RESOURCE_WHALES');
+    or ResourceType = 'RESOURCE_ALOE' or ResourceType = 'RESOURCE_MEDIHERBS' or ResourceType = 'RESOURCE_WHALES' or ResourceType = 'RESOURCE_GOLD2');
 
 insert or replace into HDResourceCategory
     (ResourceType,         Category)

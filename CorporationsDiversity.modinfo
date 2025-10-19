@@ -139,32 +139,6 @@
       <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
     </ImportFiles>
-    <ImportFiles id="Resouceful2_Adapt_Icons_Import" criteria="Resouceful2_Adapt_Expansion2">
-      <Properties><LoadOrder>1</LoadOrder></Properties>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_32.dds</File>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_38.dds</File>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_50.dds</File>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_64.dds</File>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_256.dds</File>
-      <File>Assets/Resourceful2/Resourceful2_Monopoly_FOW_256.dds</File>
-    <!-- <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_32.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_38.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_50.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_64.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_128.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_256.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_256_FOW_.dds</File> -->
-    </ImportFiles>
-    <ImportFiles id="Suk_Adapt_Icons_Import" criteria="Suk_Adapt_Expansion2">
-      <Properties><LoadOrder>1</LoadOrder></Properties>
-      <File>Assets/Suk/Suk_32.dds</File>
-      <File>Assets/Suk/Suk_38.dds</File>
-      <File>Assets/Suk/Suk_50.dds</File>
-      <File>Assets/Suk/Suk_64.dds</File>
-      <File>Assets/Suk/Suk_128.dds</File>
-      <File>Assets/Suk/Suk_256.dds</File>
-      <File>Assets/Suk/Suk_FOW_256.dds</File>
-    </ImportFiles>
     <ImportFiles id="Khalifa_Adapt_Icons_Import" criteria="KHALIFA_Adapt_Expansion2">
       <Properties><LoadOrder>1</LoadOrder></Properties>
       <File>Assets/Khalifa/HD_Khalifa_Product_22.dds</File>
@@ -280,11 +254,6 @@
       <Properties><LoadOrder>20003</LoadOrder></Properties>
       <File>Resourceful2/HD_Resourceful2_Adapt_Icons.xml</File>
     </UpdateIcons>
-      <!-- Suk -->
-    <UpdateIcons id="Suk_Adapt_Icons" criteria="Suk_Adapt_Expansion2">
-      <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>Suk/HD_Suk_Adapt_Icons.xml</File>
-    </UpdateIcons>
       <!-- 哈利法塔 -->
     <UpdateDatabase id="KHALIFA_Adapt_Support" criteria="KHALIFA_Adapt_Expansion2">
       <Properties><LoadOrder>20004</LoadOrder></Properties>
@@ -351,7 +320,6 @@
     <File>Wonders/HD_NAT_Pack1_Adapt.sql</File>
     <File>Wonders/HD_NAT_Pack1_Adapt_Text.sql</File>
     <File>Wonders/HD_NAT_Pack1_Adapt_Icons.xml</File>
-    <File>Suk/HD_Suk_Adapt_Icons.xml</File>
     <!-- Main -->
     <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
@@ -379,19 +347,6 @@
     <File>Assets/Monopoly/exhibition_80.dds</File>
     <File>Assets/Monopoly/exhibition_128.dds</File>
     <File>Assets/Monopoly/exhibition_256.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_32.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_38.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_50.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_64.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_256.dds</File>
-    <File>Assets/Resourceful2/Resourceful2_Monopoly_FOW_256.dds</File>
-    <!-- <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_32.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_38.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_50.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_64.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_128.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_256.dds</File>
-    <File>Assets/Resourceful2/ICON_MONOPOLIES_AND_CORPS_RESOURCE_HAM_256_FOW_.dds</File> -->
     <File>Assets/Khalifa/HD_Khalifa_Product_22.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_32.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_38.dds</File>
@@ -424,12 +379,5 @@
     <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
-    <File>Assets/Suk/Suk_32.dds</File>
-    <File>Assets/Suk/Suk_38.dds</File>
-    <File>Assets/Suk/Suk_50.dds</File>
-    <File>Assets/Suk/Suk_64.dds</File>
-    <File>Assets/Suk/Suk_128.dds</File>
-    <File>Assets/Suk/Suk_256.dds</File>
-    <File>Assets/Suk/Suk_FOW_256.dds</File>
   </Files>
 </Mod>

@@ -89,7 +89,9 @@ update HDMonopolyResourceEffects set Category = 'FISHERY',
 update HDMonopolyResourceEffects set Category = 'GROWTH',
 	IndustryEffect = 'INDUSTRY_HD_GROWTH_BONUS',
 	CorporationEffect = 'CORPORATION_HD_GROWTH_BONUS'
-	where (ResourceType = 'RESOURCE_SORGHUM' or ResourceType = 'RESOURCE_HAM');
+	where (ResourceType = 'RESOURCE_SORGHUM'
+		or ResourceType = 'RESOURCE_HAM'
+		or ResourceType = 'RESOURCE_POTATO');
 	-- 祭祀用品类
 update HDMonopolyResourceEffects set Category = 'FAITH', 
 	IndustryEffect = 'INDUSTRY_HD_FAITH_BONUS',
@@ -107,29 +109,35 @@ update HDMonopolyResourceEffects set Category = 'FOOD',
 	IndustryEffect = 'INDUSTRY_HD_FOOD_BONUS',
 	CorporationEffect = 'CORPORATION_HD_FOOD_BONUS'
 	where (ResourceType = 'RESOURCE_STRAWBERRY'
-		or ResourceType = 'RESOURCE_SUK_ABALONE');
+		or ResourceType = 'RESOURCE_SUK_ABALONE'
+		or ResourceType = 'RESOURCE_ALGAE'
+		or ResourceType = 'RESOURCE_MUSHROOMS');
 	-- 建筑材料类
 update HDMonopolyResourceEffects set Category = 'WONDER',
 	IndustryEffect = 'INDUSTRY_HD_WONDER_BONUS',
 	CorporationEffect = 'CORPORATION_HD_WONDER_BONUS'
 	where (ResourceType = 'RESOURCE_BAMBOO'
 		or ResourceType = 'RESOURCE_ALABASTER'
-		or ResourceType = 'RESOURCE_QUARTZ');
+		or ResourceType = 'RESOURCE_QUARTZ'
+		or ResourceType = 'RESOURCE_MAPLE');
 	-- 首饰类
 update HDMonopolyResourceEffects set Category = 'TOURISM',
 	IndustryEffect = 'INDUSTRY_HD_TOURISM_BONUS',
 	CorporationEffect = 'CORPORATION_HD_TOURISM_BONUS'
 	where (ResourceType = 'RESOURCE_LAPIS'
 		or ResourceType = 'RESOURCE_RUBY'
-		or ResourceType = 'RESOURCE_PLATINUM' 
-		or ResourceType = 'RESOURCE_PEARLS');
+		or ResourceType = 'RESOURCE_PLATINUM'
+		or ResourceType = 'RESOURCE_PEARLS'
+		or ResourceType = 'RESOURCE_CORAL');
 	-- 海产类
 update HDMonopolyResourceEffects set Category = 'FISHERY',
 	IndustryEffect = 'INDUSTRY_HD_FISHERY_BONUS',
 	CorporationEffect = 'CORPORATION_HD_FISHERY_BONUS'
 	where (ResourceType = 'RESOURCE_SEA_URCHIN'
 		or ResourceType = 'RESOURCE_COD'
-		or ResourceType = 'RESOURCE_SALMON');
+		or ResourceType = 'RESOURCE_SALMON'
+		or ResourceType = 'RESOURCE_CAVIAR'
+		or ResourceType = 'RESOURCE_MACKEREL');
 	-- 娱乐观赏类
 update HDMonopolyResourceEffects set Category = 'ENTERTAINMENT',
 	IndustryEffect = 'INDUSTRY_HD_ENTERTAINMENT_BONUS',
@@ -154,7 +162,8 @@ update HDMonopolyResourceEffects set Category = 'MEDICINE',
 		or ResourceType = 'RESOURCE_ALOE' 
 		or ResourceType = 'RESOURCE_MEDIHERBS'
 		or ResourceType = 'RESOURCE_WHALES'
-		or ResourceType = 'RESOURCE_LEU_P0K_COCA')
+		or ResourceType = 'RESOURCE_LEU_P0K_COCA'
+		or ResourceType = 'RESOURCE_GOLD2')
 	and exists (select ResourceType from Resources where ResourceType = 'RESOURCE_GRANITE');
 ------------------- Resourceful2 -------------------
 
