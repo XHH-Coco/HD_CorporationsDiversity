@@ -1103,14 +1103,14 @@ where BuildingType in ('BUILDING_BURJ_KHALIFA','WON_CL_EMPIRE_STATES','NAT_WON_C
 -- update Building_GreatWorks set NonUniquePersonYield = 2, NonUniquePersonTourism = 2
 --	where GreatWorkSlotType = 'GREATWORKSLOT_PRODUCT' and NumSlots >= 2;
 
-update Building_GreatWorks set ThemingUniquePerson = 1, ThemingYieldMultiplier = 100, ThemingTourismMultiplier = 100, ThemingBonusDescription = 'LOC_PRODUCT_UNIQUE_THEMING'
+update Building_GreatWorks set ThemingUniquePerson = 1, ThemingYieldMultiplier = 100, ThemingTourismMultiplier = 100, ThemingBonusDescription = 'LOC_BUILDING_THEMINGBONUS_PRODUCT_UNIQUE'
 	where GreatWorkSlotType = 'GREATWORKSLOT_PRODUCT' and NumSlots >= 3 and BuildingType not in ('BUILDING_XHH_WINE_STALL', 'BUILDING_XHH_FOOD_STALL', 'BUILDING_XHH_CLOTHING_STALL');
 
-update Building_GreatWorks set ThemingYieldMultiplier = 200, ThemingTourismMultiplier = 200
-	where GreatWorkSlotType = 'GREATWORKSLOT_PRODUCT' and BuildingType = 'BUILDING_BURJ_KHALIFA';
-
-update Building_GreatWorks set ThemingUniquePerson = 0, ThemingSameObjectType = 1, ThemingBonusDescription = 'LOC_PRODUCT_ALL_THEMING'
+update Building_GreatWorks set ThemingUniquePerson = 0, ThemingSameObjectType = 1, ThemingBonusDescription = 'LOC_BUILDING_THEMINGBONUS_PRODUCT_ALL'
 	where BuildingType = 'WON_CL_EMPIRE_STATES' or BuildingType = 'BUILDING_BURJ_KHALIFA';
+
+update Building_GreatWorks set ThemingYieldMultiplier = 200, ThemingTourismMultiplier = 200, ThemingBonusDescription = 'LOC_BUILDING_THEMINGBONUS_PRODUCT_ALL_BIG'
+	where GreatWorkSlotType = 'GREATWORKSLOT_PRODUCT' and BuildingType = 'BUILDING_BURJ_KHALIFA';
 
 update ModifierArguments set Value = 'GREATWORKSLOT_PRODUCT' where ModifierId = 'GREATPERSON_BANK_GREAT_WORK_SLOTS' and Name = 'GreatWorkSlotType';
 

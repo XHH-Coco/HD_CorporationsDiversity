@@ -8,8 +8,6 @@ values
     ("LOC_BUILDING_EXHIBITION_NAME",                                  "Exhibition Center"),
     ("LOC_BUILDING_EXHIBITION_DESCRIPTION",                           "+3 [ICON_Gold] Gold on improved tiles in this City."),
     ("LOC_GREATPERSON_GIOVANNI_DE_MEDICI_ACTIVE",                     "Instantly builds a Fair, a Market and a Bank in this city. The Bank gets 2 slots for [ICON_GreatWork_Product] Products."),
-    ("LOC_PRODUCT_UNIQUE_THEMING",                                    "Theming bonus doubling output when displaying products of different classes."),
-    ("LOC_PRODUCT_ALL_THEMING",                                       "Theming bonus doubling output when all slots are filled."),
     ("LOC_BUILDING_CANAL_NAME",                                       "Canal"),
     ("LOC_BUILDING_CANAL_DESCRIPTION",                                "Cities with Canals automatically receive this building."),
     ("LOC_DISTRICT_CANAL_HD_DESCRIPTION",                             "A district for connecting waterways and promoting water transportation in the city.[NEWLINE]+1 [ICON_GreatWork_Product] Product Slot. +6 [ICON_Gold] Gold for adjacent Improvements. Multiplier of [ICON_Gold] Gold yield from districts at their destination [ICON_TradeRoute] Trade Routes passing through Canal is set to +100% (max. +100%). [NEWLINE]Must be built on flat land. Canals may either go straight through the hex or bend by 60 degrees, connecting two bodies of water or a body of water to a City Center.. However three-way Canal junctures are not allowed and Canals must have a full land tile on each side of the waterway they create. [NEWLINE]Military Engineers can spend a charge to complete 30% of a Canal's production."),
@@ -48,8 +46,6 @@ values
     ("zh_Hans_CN",  "LOC_BUILDING_EXHIBITION_NAME",                                  "会展中心"),
     ("zh_Hans_CN",  "LOC_BUILDING_EXHIBITION_DESCRIPTION",                           "本城已改良的单元格+3 [ICON_Gold] 金币。"),
     ("zh_Hans_CN",  "LOC_GREATPERSON_GIOVANNI_DE_MEDICI_ACTIVE",                     "立即在该区域建造集市、银行和市场。银行获得两个可以存放 [ICON_GreatWork_Product] 产品的巨作槽位。"),
-    ("zh_Hans_CN",  "LOC_PRODUCT_UNIQUE_THEMING",                                    "当展示来自不同类别的 [ICON_GreatWork_Product] 产品时，+100%主题化加成。"),
-    ("zh_Hans_CN",  "LOC_PRODUCT_ALL_THEMING",                                       "当所有槽位填满时，+100%主题化加成。"),
     ("zh_Hans_CN",  "LOC_BUILDING_CANAL_NAME",                                       "运河"),
     ("zh_Hans_CN",  "LOC_BUILDING_CANAL_DESCRIPTION",                                "有运河的城市自动获得该建筑。"),
     ("zh_Hans_CN",  "LOC_DISTRICT_CANAL_HD_DESCRIPTION",                             "城市中专注于沟通水域与促进水运的区域。[NEWLINE]+1 [ICON_GreatWork_Product] 产品槽位。为相邻的单改良设施+6 [ICON_Gold] 金币。如 [ICON_TradeRoute] 贸易路线途径此处，其将从目的地的区域处获得成倍 [ICON_Gold] 金币。[NEWLINE]只能建造在平原上。运河可笔直穿过单元格，也可在其中进行60度转向，连接两块水域单元格或将一块水域单元格与市中心连接。无法建造三向连接运河，且运河在其所建水路的两侧皆必须含有一个完整的陆地单元格。[NEWLINE]军事工程师可消耗1次使用次数来完成运河30%的修建进度。"),
@@ -778,10 +774,10 @@ values
 insert or replace into EnglishText
     (Tag,                                                             Text)
 values
-    ("LOC_WON_CL_EMPIRE_STATES_DESCRIPTION",                          "Wonders in this City provide +6 [ICON_GOLD] Gold and +200% [ICON_Tourism] Tourism. Automatically themed when all slots are filled. Cities with an established [ICON_Governor] Governor receive the following buff: for each Promotion the Governor has earned (including the first), [ICON_Greatwork_Product] Products provide +25% [ICON_Tourism] Tourism, and the City yield +5% [ICON_Gold] Gold.[NEWLINE]Must be built on flat land adjacent to the City Center.");
+    ("LOC_WON_CL_EMPIRE_STATES_DESCRIPTION",                          "Wonders in this City provide +6 [ICON_GOLD] Gold and +200% [ICON_Tourism] Tourism. Cities with an established [ICON_Governor] Governor receive the following buff: for each Promotion the Governor has earned (including the first), [ICON_Greatwork_Product] Products provide +25% [ICON_Tourism] Tourism, and the City yield +5% [ICON_Gold] Gold.[NEWLINE]Must be built on flat land adjacent to the City Center.");
 
 -- Language: zh_Hans_CN
 insert or replace into LocalizedText
     (Language,      Tag,                                                             Text)
 values
-    ("zh_Hans_CN",  "LOC_WON_CL_EMPIRE_STATES_DESCRIPTION",                          "该城市的每座奇观+6 [ICON_GOLD] 金币和且奇观的 [ICON_Tourism] 旅游业绩+200%。当所有槽位填满时自动获得主题化加成。 [ICON_Governor] 总督在城市中就职后，每次升级（包括首次升级）都将提供 +5% [ICON_Gold] 金币，并使来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+25%。[NEWLINE]必须建在靠近市中心的平原上。");
+    ("zh_Hans_CN",  "LOC_WON_CL_EMPIRE_STATES_DESCRIPTION",                          "该城市的每座奇观+6 [ICON_GOLD] 金币和且奇观的 [ICON_Tourism] 旅游业绩+200%。[ICON_Governor] 总督在城市中就职后，每次升级（包括首次升级）都将提供 +5% [ICON_Gold] 金币，并使来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+25%。[NEWLINE]必须建在靠近市中心的平原上。");
