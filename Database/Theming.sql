@@ -12,7 +12,7 @@ insert or ignore into Types
     (Type,                                       Kind)
 select
     'GREAT_PERSON_INDIVIDUAL_' || Category,      'KIND_GREAT_PERSON_INDIVIDUAL'
-from HDMonopolyResourceClasses;
+from HD_Monopoly_Categories;
 
 insert or replace into PseudoYields
     (PseudoYieldType,                   DefaultValue)
@@ -33,7 +33,7 @@ insert or replace into GreatPersonIndividuals
     (GreatPersonIndividualType,               Name,                                                                     GreatPersonClassType,           EraType,            ActionCharges,      ActionRequiresOwnedTile,        Gender)
 select
     'GREAT_PERSON_INDIVIDUAL_' || Category,   '{LOC_HD_PEDIA_CATEGORY_' || Category || '_NAME}{LOC_HD_CORPORATION}',    'GREAT_PERSON_CLASS_PRODUCT',   'ERA_ANCIENT',      0,                  1,                              'M'
-from HDMonopolyResourceClasses;
+from HD_Monopoly_Categories;
 
 update GreatWorks set GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_GROWTH' where GreatWorkType in
 	(

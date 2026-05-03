@@ -1,3 +1,7 @@
+-- 美帝奇
+update ModifierArguments set Value = 'GREATWORKSLOT_PRODUCT'
+    where ModifierId = 'GREATPERSON_BANK_GREAT_WORK_SLOTS' and Name = 'GreatWorkSlotType';
+
 -- 大商开公司 by xiaoxiao
 drop table if exists XXCAT_GreatPersonUniqueResources;
 create table XXCAT_GreatPersonUniqueResources (
@@ -26,7 +30,7 @@ update GreatPersonIndividuals set ActionEffectTextOverride = 'LOC_' || GreatPers
 
 update Resources set Happiness = 0 where ResourceType in ('RESOURCE_TOYS','RESOURCE_COSMETICS','RESOURCE_JEANS','RESOURCE_PERFUME');
 
-insert or replace into HDMonopolyResourceClasses (Category) values
+insert or replace into HD_Monopoly_Categories (Category) values
     ('TOYS'),('COSMETICS'),('JEANS'),('PERFUME');
 
 insert or replace into HDMonopolyResourceEffects

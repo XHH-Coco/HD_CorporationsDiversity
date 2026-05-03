@@ -1,16 +1,31 @@
--- ====================
--- Products
--- ====================
+-- =====================================================================================================================================
+-- 产品产出
+-- =====================================================================================================================================
+
+
+delete from GreatWork_YieldChanges where GreatWorkType like 'GREATWORK_PRODUCT_%' and GreatWorkType not like 'GREATWORK_PRODUCT_BAVARIA_%';
+
+-- =====================================================================================================================================
+-- 删除产品特效
+-- =====================================================================================================================================
+delete from GreatWorkModifiers where GreatWorkType like 'GREATWORK_PRODUCT_%' and GreatWorkType not like 'GREATWORK_PRODUCT_BAVARIA_%';-- and ModifierID like 'PRODUCT_%'
+
+
+
+delete from Projects_XP2 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
+
 update Projects set Cost = 160 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
 
 -- Tourism
 update GreatWorks set Tourism = 18 where GreatWorkType like 'GREATWORK_PRODUCT_%' and GreatWorkType not like 'GREATWORK_PRODUCT_BAVARIA_%';
+
 update GreatWorks set Tourism = 24 where GreatWorkType in
-    (select 'GREATWORK_PRODUCT_'||substr(a.ResourceType, 10)||'_'||b.Count
-        from HDMonopolyResourceEffects a, HDCounter b where Category = 'TOURISM' and Count < 6);
+  (select 'GREATWORK_PRODUCT_'||substr(a.ResourceType, 10)||'_'||b.Count
+from HDMonopolyResourceEffects a, HDCounter b where Category = 'TOURISM' and Count < 6);
+
 update GreatWorks set Tourism = 24 where GreatWorkType in
-    (select 'GREATWORK_PRODUCT_'||substr(a.ResourceType, 10)||'_'||b.Count
-        from HDMonopolyResourceEffects a, HDCounter b where Category = 'ENTERTAINMENT' and Count < 6);
+  (select 'GREATWORK_PRODUCT_'||substr(a.ResourceType, 10)||'_'||b.Count
+from HDMonopolyResourceEffects a, HDCounter b where Category = 'ENTERTAINMENT' and Count < 6);
 
 -- Product Yields
 insert or replace into GreatWork_YieldChanges

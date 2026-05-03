@@ -23,7 +23,6 @@ values
 
     ("LOC_NAT_WON_CL_FINANCE_CORP_DESCRIPTION",                       "Can only be built once in your empire. To unlock: Maintain 8 [ICON_TradeRoute] Trade Routes. Must be built on land tile adjacent to a Corporation. [NEWLINE][NEWLINE]+20% [ICON_Gold] Gold to city with a Corporation. Corporations provide +200% [ICON_TOURISM] Tourism in Cities with a Exhibition Center. [ICON_GreatWork_Product] Products provide double yields in Cities with a Exhibition Center. [ICON_GreatWork_Product] Products provide [ICON_GreatPerson] +50% [ICON_TOURISM] Tourism in Cities with a Exhibition Center and without a Canal district. Great People patronage cost -50% [ICON_Gold] Gold."),
     ("LOC_NAT_WON_CL_FINANCE_CORP_DESCRIPTION_INTERNAL",              "Can only be built once in your empire. [COLOR:Red]To unlock: Maintain 8 [ICON_TradeRoute] Trade Routes.[ENDCOLOR] Must be built on land tile adjacent to a Corporation. [NEWLINE][NEWLINE]+20% [ICON_Gold] Gold to city with a Corporation. Corporations provide +200% [ICON_TOURISM] Tourism in Cities with a Exhibition Center. [ICON_GreatWork_Product] Products provide double yields in Cities with a Exhibition Center. [ICON_GreatWork_Product] Products provide [ICON_GreatPerson] +50% [ICON_TOURISM] Tourism in Cities with a Exhibition Center and without a Canal district. Great People patronage cost -50% [ICON_Gold] Gold."),
-    ("LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "Provides 6 [ICON_RESOURCE_COAL] Coal per turn. +15% [ICON_Production] Production in this city. Cities with Domestic [ICON_TRADEROUTE] Trade Route ending here receive the bonus of each industry in this city. [NEWLINE][NEWLINE]Must be built ajacent to Industry improvement. City must hav Tier 2 building of Industrial Zone district."),
     ("LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "Grants a Tycoon unit. {LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
 
     ("LOC_GREAT_PERSON_INDIVIDUAL_LEU_JOHN_KEYNES_ACTION",            "+1 [Icon_Charges] Charge for Investors.[NEWLINE]Receives a free Investor in this City."),
@@ -60,18 +59,12 @@ values
     ("zh_Hans_CN",  "LOC_HD_CORPORATION",                                            "公司"),
     ("zh_Hans_CN",  "LOC_NAT_WON_CL_FINANCE_CORP_DESCRIPTION",                       "国家境内只能建造一座。解锁条件：经营8条贸易路线。必须建在与公司相邻的陆地上。[NEWLINE][NEWLINE][ICON_GreatPerson] 伟人赞助消耗的 [ICON_Gold] 金币减少50%。拥有公司的城市+20% [ICON_Gold] 金币。建有会展中心的城市的“公司”改良设施产出的 [ICON_Tourism] 旅游业绩+200%，[ICON_GreatWork_Product] 产品的产出翻倍。建有会展中心且没有运河区域的城市 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+50%。"),
     ("zh_Hans_CN",  "LOC_NAT_WON_CL_FINANCE_CORP_DESCRIPTION_INTERNAL",              "国家境内只能建造一座。[COLOR:Red]解锁条件：经营8条贸易路线。[ENDCOLOR]必须建在与公司相邻的陆地上。[NEWLINE][NEWLINE][ICON_GreatPerson] 伟人赞助消耗的 [ICON_Gold] 金币减少50%。拥有公司的城市+20% [ICON_Gold] 金币。建有会展中心的城市的“公司”改良设施产出的 [ICON_Tourism] 旅游业绩+200%，[ICON_GreatWork_Product] 产品的产出翻倍。建有会展中心且没有运河区域的城市 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+50%。"),
-    ("zh_Hans_CN",  "LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "每回合提供6点 [ICON_RESOURCE_COAL] 煤。该城市+15% [ICON_Production] 生产力。与该城市建立国内 [ICON_TRADEROUTE] 贸易路线的城市共享该城市的每种行业效果。[NEWLINE][NEWLINE]必须相邻行业改良建造，且本城拥有工业区二级建筑。"),
     ("zh_Hans_CN",  "LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "获得1个大亨单位。{LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
 
     ("zh_Hans_CN",  "LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",                "+2 [ICON_FOOD] 食物、+1 [ICON_Culture] 文化值、+1 [ICON_HOUSING] 住房。每相邻1个加成资源+1 [ICON_FOOD] 食物，每相邻1个奢侈资源或奇观+2 [ICON_Culture] 文化值。额外提供一份相邻的且已改良的种植园、农场或伐木场奢侈资源。获得每种与城堡庄园相邻且已改良的种植园、农场或伐木场奢侈资源的对应行业效果。为相邻单元格+1魅力。每个城市仅限建造一座，且必须建在加成或奢侈品资源旁。"),
     
     ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_JNR_DESCRIPTION",                           "需要商业中心中的一级建筑或港口中的“贸易码头”方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创建行业，在研究“蒸汽动力”后，他们也可创建铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),
     ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_JNR_DESCRIPTION",                         "需要商业中心中的二级建筑或港口中的“商港”或“造船厂”方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创建公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的 [ICON_GOLD] 金币和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中创建仓库和集装箱港口，进一步强化贸易和你的公司。");
-
-UPDATE LocalizedText SET Text=REPLACE(Text, 'Tier 2','Tier 3') WHERE Tag = 'LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION'
-    and exists (select Tag from LocalizedText where Tag = 'LOC_BUILDING_JNR_MILL_RACE_NAME');
-UPDATE LocalizedText SET Text=REPLACE(Text, '二级建筑','三级建筑') WHERE Tag = 'LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION'
-    and exists (select Tag from LocalizedText where Tag = 'LOC_BUILDING_JNR_MILL_RACE_NAME');
 
 -- Industrial & Corp
 --------------------------------------------------------------------------------

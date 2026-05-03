@@ -118,7 +118,7 @@
     </UpdateDatabase>
     <UpdateText id="CorporationsDiversity_Frontend_Text">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>Text/frontend_texts.sql</File>
+      <File>Text/Text_Frontend.sql</File>
     </UpdateText>
   </FrontEndActions>
   <InGameActions>
@@ -192,23 +192,27 @@
     </UpdateIcons>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>Database/database.sql</File>
+      <File>Database/Improvements.sql</File>
+      <File>Database/Units.sql</File>
+      <File>Database/Policies.sql</File>
+      <File>Database/Buildings.sql</File>
+      <File>Database/Districts.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_early_setup" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>19000</LoadOrder></Properties>
-      <File>Database/early_setup.sql</File>
+      <File>Database/EarlySetup.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_definition" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>12001</LoadOrder></Properties>
-      <File>Database/definition.sql</File>
+      <File>Database/Definitions.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20010</LoadOrder></Properties>
-      <File>Database/database_Theming.sql</File>
+      <File>Database/Theming.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20002</LoadOrder></Properties>
-      <File>Database/products.sql</File>
+      <File>Database/Product.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_GreatPerson" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20001</LoadOrder></Properties>
@@ -234,12 +238,12 @@
     </AddGameplayScripts>
     <UpdateText id="CorporationsDiversity_Text" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>Text/HD_Monopoly_Text.sql</File>
+      <File>Text/Text_Monopoly.sql</File>
     </UpdateText>
     <!-- 和而不同本体适配 -->
     <UpdateDatabase id="HD_Adapt_Database" criteria="HD_Adapt_Expansion2">
       <Properties><LoadOrder>21000</LoadOrder></Properties>
-      <File>Database/HD_Adapt.sql</File>
+      <File>Database/Wonders.sql</File>
     </UpdateDatabase>
     <!-- 丰富资源2 -->
     <UpdateDatabase id="Resouceful2_Adapt_Support" criteria="Resouceful2_Adapt_Expansion2">
@@ -323,23 +327,27 @@
     <!-- Main -->
     <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
-    <File>Database/database.sql</File>
-    <File>Database/early_setup.sql</File>
-    <File>Database/database_Theming.sql</File>
-    <File>Database/products.sql</File>
+    <File>Database/Improvements.sql</File>
+    <File>Database/Units.sql</File>
+    <File>Database/Policies.sql</File>
+    <File>Database/Buildings.sql</File>
+    <File>Database/Districts.sql</File>
+    <File>Database/EarlySetup.sql</File>
+    <File>Database/Theming.sql</File>
+    <File>Database/Product.sql</File>
     <File>GreatPerson/GreatPerson.sql</File>
     <File>GreatPerson/GreatPerson_Icons.xml</File>
     <File>GreatPerson/GreatPerson_Text.sql</File>
     <File>GreatPerson/Products.sql</File>
     <File>GreatPerson/Corporation.sql</File>
     <File>GreatPerson/GreatPerson.lua</File>
-    <File>Text/HD_Monopoly_Text.sql</File>
+    <File>Text/Text_Monopoly.sql</File>
+    <File>Text/Text_Frontend.sql</File>
     <File>HD_Monopoly_Icons.xml</File>
     <File>Configs/Settings.sql</File>
-    <File>Text/frontend_texts.sql</File>
     <File>Gameplay/Common.lua</File>
-    <File>Database/HD_Adapt.sql</File>
-    <File>Database/definition.sql</File>
+    <File>Database/Wonders.sql</File>
+    <File>Database/Definitions.sql</File>
     <!-- Monopoly -->
     <File>Assets/Monopoly/exhibition_32.dds</File>
     <File>Assets/Monopoly/exhibition_38.dds</File>

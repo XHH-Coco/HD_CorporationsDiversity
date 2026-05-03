@@ -99,6 +99,6 @@ from HD_PORCELAIN_Products;
 -------------
 -- Theming --
 -------------
-insert or replace into HDMonopolyResourceClasses (Category) values ('PORCELAIN');
+insert or replace into HD_Monopoly_Categories (Category) values ('PORCELAIN');
 insert or replace into HDMonopolyResourceEffects (ResourceType,Category,IndustryEffect,CorporationEffect)
 	values ('RESOURCE_PORCELAIN','PORCELAIN','INDUSTRY_HD_PORCELAIN_BONUS','CORPORATION_HD_PORCELAIN_BONUS');

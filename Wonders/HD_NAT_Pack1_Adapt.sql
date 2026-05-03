@@ -327,7 +327,7 @@ values
 -------------
 -- Theming --
 -------------
-insert or replace into HDMonopolyResourceClasses (Category) values ('AIRPORT_FOOD'),('AIRPORT_DRINK'),('AIRPORT_USING');
+insert or replace into HD_Monopoly_Categories (Category) values ('AIRPORT_FOOD'),('AIRPORT_DRINK'),('AIRPORT_USING');
 insert or replace into HDMonopolyResourceEffects (ResourceType,Category,IndustryEffect,CorporationEffect)
 	values 
 ('RESOURCE_AIRPORT_FOOD','AIRPORT_FOOD','INDUSTRY_HD_AIRPORT_FOOD_BONUS','CORPORATION_HD_AIRPORT_FOOD_BONUS'),

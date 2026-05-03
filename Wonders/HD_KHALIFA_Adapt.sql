@@ -211,6 +211,6 @@ values
 -------------
 -- Theming --
 -------------
-insert or replace into HDMonopolyResourceClasses (Category) values ('KHALIFA');
+insert or replace into HD_Monopoly_Categories (Category) values ('KHALIFA');
 insert or replace into HDMonopolyResourceEffects (ResourceType,Category,IndustryEffect,CorporationEffect)
 	values ('RESOURCE_KHALIFA','KHALIFA','INDUSTRY_HD_KHALIFA_BONUS','CORPORATION_HD_KHALIFA_BONUS');
