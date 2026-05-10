@@ -36,16 +36,6 @@
       <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
       <ModInUse>b248a322-3e2a-4a6a-830a-6b0d1f3435fc</ModInUse>
     </Criteria>
-    <!-- 和而不同本体 Start -->
-    <Criteria id="HD_Adapt_Expansion2">
-      <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
-      <ModInUse>521b8777-0977-4859-a5ee-3e411a732e5c</ModInUse>
-      <ConfigurationValueMatches>
-        <Group>Game</Group>
-        <ConfigurationId>GAMEMODE_MONOPOLIES</ConfigurationId>
-        <Value>1</Value>
-      </ConfigurationValueMatches>
-    </Criteria>
     <!-- 丰富资源2 Start -->
     <Criteria id="Resouceful2_Adapt_Expansion2">
       <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
@@ -110,6 +100,11 @@
         <Value>1</Value>
       </ConfigurationValueMatches>
     </Criteria>
+    <!-- 更好的报告界面 -->
+    <Criteria id="BetterReportScreen_Override_Expansion2">
+      <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
+      <ModInUse>6f2888d4-79dc-415f-a8ff-f9d81d7afb53</ModInUse>
+    </Criteria>
   </ActionCriteria>
   <FrontEndActions>
     <UpdateDatabase id="CorporationsDiversity_Frontend_Setting">
@@ -172,24 +167,40 @@
         <File>Assets/Airport/HD_AIRPORT_Product_256.dds</File>
         <File>Assets/Airport/HD_AIRPORT_Product_FOW_256.dds</File>
     </ImportFiles>
-    <!-- Monopoly++ -->
-    <UpdateDatabase id="MonopolyPlus_mod_support" criteria="MonopolyPlus_Expansion2">
-      <Properties><LoadOrder>19990</LoadOrder></Properties>
-      <File>MonopolyPlus/DL_Adaptation.sql</File>
-    </UpdateDatabase>
-    <UpdateText id="MonopolyPlus_mod_support_text" criteria="MonopolyPlus_Expansion2">
-      <Properties><LoadOrder>19990</LoadOrder></Properties>
-      <File>MonopolyPlus/HD_Texts.sql</File>
-    </UpdateText>
+
+    <!-- UI -->
     <ImportFiles id="Monopolies_UI" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>  <!-- will be overwrite by Better Deal Window -->
+      <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
       <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
+      <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
     </ImportFiles>
+    <ImportFiles id="HD_Corporation_BetterReportScreen_Override_Import" criteria="BetterReportScreen_Override_Expansion2">
+      <Properties><LoadOrder>160000</LoadOrder></Properties>
+      <File>UI/BRSPage_Resources.lua</File>
+    </ImportFiles>
+
+    <!-- Icon -->
     <UpdateIcons id="Monopolies_Icon" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>HD_Monopoly_Icons.xml</File>
+      <File>Icon/Icon_Buildings.xml</File>
+      <File>Icon/Icon_Policies.xml</File>
+      <File>Icon/Icon_Products.xml</File>
     </UpdateIcons>
+
+    <!-- Main -->
+    <UpdateDatabase id="CorporationsDiversity_definition" criteria="Monopolies_Mode_Expansion2">
+      <Properties><LoadOrder>12001</LoadOrder></Properties>
+      <File>Database/Definitions.sql</File>
+    </UpdateDatabase>
+    <UpdateDatabase id="CorporationsDiversity_Categories" criteria="Monopolies_Mode_Expansion2">
+      <Properties><LoadOrder>19000</LoadOrder></Properties>
+      <File>Database/Categories.sql</File>
+    </UpdateDatabase>
+    <UpdateDatabase id="CorporationsDiversity_Requirements" criteria="Monopolies_Mode_Expansion2">
+      <Properties><LoadOrder>19010</LoadOrder></Properties>
+      <File>Database/Requirements.sql</File>
+    </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
       <File>Database/Improvements.sql</File>
@@ -197,68 +208,44 @@
       <File>Database/Policies.sql</File>
       <File>Database/Buildings.sql</File>
       <File>Database/Districts.sql</File>
+      <File>Database/Wonders.sql</File>
+      <File>Database/GreatPerson.sql</File>
     </UpdateDatabase>
-    <UpdateDatabase id="CorporationsDiversity_early_setup" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>19000</LoadOrder></Properties>
-      <File>Database/EarlySetup.sql</File>
-    </UpdateDatabase>
-    <UpdateDatabase id="CorporationsDiversity_definition" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>12001</LoadOrder></Properties>
-      <File>Database/Definitions.sql</File>
+    <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
+      <Properties><LoadOrder>20002</LoadOrder></Properties>
+      <File>Database/Products.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20010</LoadOrder></Properties>
       <File>Database/Theming.sql</File>
     </UpdateDatabase>
-    <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
+    
+    <!-- Gameplay -->
+    <AddGameplayScripts id="CorporationsDiversity_Scripts" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20002</LoadOrder></Properties>
-      <File>Database/Product.sql</File>
-    </UpdateDatabase>
-    <UpdateDatabase id="CorporationsDiversity_GreatPerson" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>20001</LoadOrder></Properties>
-      <File>GreatPerson/GreatPerson.sql</File>
-      <File>GreatPerson/Products.sql</File>
-      <File>GreatPerson/Corporation.sql</File>
-    </UpdateDatabase>
-    <UpdateDatabase id="CorporationsDiversity_GreatPerson" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>GreatPerson/Products.sql</File>
-    </UpdateDatabase>
-    <UpdateIcons id="CorporationsDiversity_GreatPerson_Icon" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>GreatPerson/GreatPerson_Icons.xml</File>
-    </UpdateIcons>
-    <UpdateText id="CorporationsDiversity_GreatPerson_Text" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>GreatPerson/GreatPerson_Text.sql</File>
-    </UpdateText>
-    <AddGameplayScripts id="CorporationsDiversity_GreatPerson_Scripts" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>20002</LoadOrder></Properties>
-      <File>GreatPerson/GreatPerson.lua</File>
+      <File>Gameplay/Common.lua</File>
+      <File>Gameplay/GreatPerson.lua</File>
     </AddGameplayScripts>
+
+    <!-- Text -->
     <UpdateText id="CorporationsDiversity_Text" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
       <File>Text/Text_Monopoly.sql</File>
+      <File>Text/Text_GreatPerson.sql</File>
+      <File>Text/Text_Industry_Corporation_Effects.sql</File>
     </UpdateText>
-    <!-- 和而不同本体适配 -->
-    <UpdateDatabase id="HD_Adapt_Database" criteria="HD_Adapt_Expansion2">
-      <Properties><LoadOrder>21000</LoadOrder></Properties>
-      <File>Database/Wonders.sql</File>
-    </UpdateDatabase>
+
     <!-- 丰富资源2 -->
-    <UpdateDatabase id="Resouceful2_Adapt_Support" criteria="Resouceful2_Adapt_Expansion2">
-      <Properties><LoadOrder>20001</LoadOrder></Properties>
-      <File>Resourceful2/HD_Resourceful2_Adapt.sql</File>
-    </UpdateDatabase>
     <UpdateText id="Resouceful2_Adapt_Text" criteria="Resouceful2_Adapt_Expansion2">
       <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>Resourceful2/HD_Resourceful2_Adapt_Text.sql</File>
+      <File>Text/Text_Resourceful2.sql</File>
     </UpdateText>
     <UpdateIcons id="Resouceful2_Adapt_Icons" criteria="Resouceful2_Adapt_Expansion2">
       <Properties><LoadOrder>20003</LoadOrder></Properties>
-      <File>Resourceful2/HD_Resourceful2_Adapt_Icons.xml</File>
+      <File>Icon/Icon_Resourceful2.xml</File>
     </UpdateIcons>
-      <!-- 哈利法塔 -->
+
+    <!-- 哈利法塔 -->
     <UpdateDatabase id="KHALIFA_Adapt_Support" criteria="KHALIFA_Adapt_Expansion2">
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_KHALIFA_Adapt.sql</File>
@@ -271,7 +258,8 @@
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_KHALIFA_Adapt_Text.sql</File>
     </UpdateText>
-      <!-- 大报恩寺 -->
+
+    <!-- 大报恩寺 -->
     <UpdateDatabase id="KHALIFA_Adapt_Support" criteria="PORCELAIN_Adapt_Expansion2">
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_PORCELAIN_Adapt.sql</File>
@@ -284,12 +272,14 @@
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_PORCELAIN_Adapt_Text.sql</File>
     </UpdateText>
-      <!-- 帝国大厦 -->
+
+    <!-- 帝国大厦 -->
     <UpdateDatabase id="EMPIRE_Adapt_Support" criteria="EMPIRE_Adapt_Expansion2">
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_EMPIRE_Adapt.sql</File>
     </UpdateDatabase>
-      <!-- 国家奇观 Pack1 -->
+
+    <!-- 国家奇观 Pack1 -->
     <UpdateDatabase id="NAT_Pack1_Adapt_Support" criteria="NAT_Pack1_Adapt_Expansion2">
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_NAT_Pack1_Adapt.sql</File>
@@ -302,18 +292,9 @@
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_NAT_Pack1_Adapt_Icons.xml</File>
     </UpdateIcons>
-    <AddGameplayScripts id="Lua">
-      <Criteria>Monopolies_Mode_Expansion2</Criteria>
-      <File>Gameplay/Common.lua</File>
-    </AddGameplayScripts>
   </InGameActions>
   <Files>
     <!-- Mod Support -->
-    <File>MonopolyPlus/DL_Adaptation.sql</File>
-    <File>MonopolyPlus/HD_Texts.sql</File>
-    <File>Resourceful2/HD_Resourceful2_Adapt.sql</File>
-    <File>Resourceful2/HD_Resourceful2_Adapt_Text.sql</File>
-    <File>Resourceful2/HD_Resourceful2_Adapt_Icons.xml</File>
     <File>Wonders/HD_KHALIFA_Adapt.sql</File>
     <File>Wonders/HD_KHALIFA_Adapt_Text.sql</File>
     <File>Wonders/HD_KHALIFA_Adapt_Icons.xml</File>
@@ -324,30 +305,40 @@
     <File>Wonders/HD_NAT_Pack1_Adapt.sql</File>
     <File>Wonders/HD_NAT_Pack1_Adapt_Text.sql</File>
     <File>Wonders/HD_NAT_Pack1_Adapt_Icons.xml</File>
-    <!-- Main -->
+    <!-- UI -->
     <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
+    <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
+    <File>UI/BRSPage_Resources.lua</File>
+    <!-- Database -->
     <File>Database/Improvements.sql</File>
     <File>Database/Units.sql</File>
     <File>Database/Policies.sql</File>
     <File>Database/Buildings.sql</File>
     <File>Database/Districts.sql</File>
-    <File>Database/EarlySetup.sql</File>
+    <File>Database/Categories.sql</File>
+    <File>Database/Requirements.sql</File>
     <File>Database/Theming.sql</File>
-    <File>Database/Product.sql</File>
-    <File>GreatPerson/GreatPerson.sql</File>
-    <File>GreatPerson/GreatPerson_Icons.xml</File>
-    <File>GreatPerson/GreatPerson_Text.sql</File>
-    <File>GreatPerson/Products.sql</File>
-    <File>GreatPerson/Corporation.sql</File>
-    <File>GreatPerson/GreatPerson.lua</File>
-    <File>Text/Text_Monopoly.sql</File>
-    <File>Text/Text_Frontend.sql</File>
-    <File>HD_Monopoly_Icons.xml</File>
-    <File>Configs/Settings.sql</File>
-    <File>Gameplay/Common.lua</File>
+    <File>Database/Products.sql</File>
+    <File>Database/GreatPerson.sql</File>
     <File>Database/Wonders.sql</File>
     <File>Database/Definitions.sql</File>
+    <!-- Text -->
+    <File>Text/Text_GreatPerson.sql</File>
+    <File>Text/Text_Monopoly.sql</File>
+    <File>Text/Text_Industry_Corporation_Effects.sql</File>
+    <File>Text/Text_Frontend.sql</File>
+    <File>Text/Text_Resourceful2.sql</File>
+    <!-- Icon -->
+    <File>Icon/Icon_Buildings.xml</File>
+    <File>Icon/Icon_Policies.xml</File>
+    <File>Icon/Icon_Products.xml</File>
+    <File>Icon/Icon_Resourceful2.xml</File>
+    <!-- Config -->
+    <File>Configs/Settings.sql</File>
+    <!-- Gameplay -->
+    <File>Gameplay/Common.lua</File>
+    <File>Gameplay/GreatPerson.lua</File>
     <!-- Monopoly -->
     <File>Assets/Monopoly/exhibition_32.dds</File>
     <File>Assets/Monopoly/exhibition_38.dds</File>

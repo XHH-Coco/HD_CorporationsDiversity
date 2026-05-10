@@ -10,11 +10,10 @@ values
     ("LOC_BUILDING_INTERNATIONAL_AIRPORT_DUMMY_NAME",                   "Airport Import Licence"),
     ("LOC_BUILDING_INTERNATIONAL_AIRPORT_DUMMY_DESCRIPTION",            "Allows this city to import [ICON_RESOURCE_AIRPORT_FOOD] Food Products, [ICON_RESOURCE_AIRPORT_DRINK] Drinking Products and [ICON_RESOURCE_AIRPORT_USING] Commodity Products from countries around the world."),
     
-    ("LOC_RESOURCE_AIRPORT_DRINK_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_DRINK_NAME}"),
+    ("LOC_RESOURCE_AIRPORT_DRINK_NAME",                                     "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_DRINK] Imported Drinking Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_NAME",                       "[ICON_DISTRICT_WONDER] International Terminal: Import new [ICON_RESOURCE_AIRPORT_DRINK] Drinking Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] Import new [ICON_RESOURCE_AIRPORT_DRINK] Drinking Product from International Terminal"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_DESCRIPTION",                "Allows import of [ICON_RESOURCE_AIRPORT_DRINK] Drinking Products (max. 15) when [ICON_DISTRICT_WONDER] International Terminal is built."),
-    ("LOC_HD_PEDIA_CATEGORY_AIRPORT_DRINK_NAME",                            "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_DRINK] Imported Drinking Product"),
     
     ("LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_1_NAME",                          "Maple Syrup"),
     ("LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_2_NAME",                          "Keemun Black Tea"),
@@ -32,11 +31,10 @@ values
     ("LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_E_NAME",                          "Lingonsylt"),
     ("LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_F_NAME",                          "Russian Vodka"),
 
-    ("LOC_RESOURCE_AIRPORT_FOOD_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_FOOD_NAME}"),
+    ("LOC_RESOURCE_AIRPORT_FOOD_NAME",                                     "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_FOOD] Imported Food Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_NAME",                       "[ICON_DISTRICT_WONDER] International Terminal: Import new [ICON_RESOURCE_AIRPORT_FOOD] Food Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] Import new [ICON_RESOURCE_AIRPORT_FOOD] Food Product from International Terminal"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_DESCRIPTION",                "Allows import of [ICON_RESOURCE_AIRPORT_FOOD] Food Products (max. 19) when [ICON_DISTRICT_WONDER] International Terminal is built."),
-    ("LOC_HD_PEDIA_CATEGORY_AIRPORT_FOOD_NAME",                            "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_FOOD] Imported Food Product"),
     
     ("LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_1_NAME",                          "Yukpo"),
     ("LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_2_NAME",                          "Buffalo Robes"),
@@ -58,11 +56,10 @@ values
     ("LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_I_NAME",                          "A-ping"),
     ("LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_J_NAME",                          "Oncom Spore Cakes"),
 
-    ("LOC_RESOURCE_AIRPORT_USING_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_USING_NAME}"),
+    ("LOC_RESOURCE_AIRPORT_USING_NAME",                                     "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_USING] Imported Commodity Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_NAME",                       "[ICON_DISTRICT_WONDER] International Terminal: Import new [ICON_RESOURCE_AIRPORT_USING] Commodity Product"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] Import new [ICON_RESOURCE_AIRPORT_USING] Commodity Product from International Terminal"),
     ("LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_DESCRIPTION",                "Allows import of [ICON_RESOURCE_AIRPORT_USING] Commodity Products (max. 16) when [ICON_DISTRICT_WONDER] International Terminal is built."),
-    ("LOC_HD_PEDIA_CATEGORY_AIRPORT_USING_NAME",                            "[ICON_DISTRICT_WONDER] International Terminal [ICON_RESOURCE_AIRPORT_USING] Imported Commodity Product"),
     
     ("LOC_GREATWORK_PRODUCT_AIRPORT_USING_1_NAME",                          "Recurve Bow"),
     ("LOC_GREATWORK_PRODUCT_AIRPORT_USING_2_NAME",                          "Samba Dress"),
@@ -90,11 +87,10 @@ values
     ("zh_Hans_CN",  "LOC_BUILDING_INTERNATIONAL_AIRPORT_DUMMY_NAME",                   "机场进口许可证"),
     ("zh_Hans_CN",  "LOC_BUILDING_INTERNATIONAL_AIRPORT_DUMMY_DESCRIPTION",            "建成奇观“国际机场”后，允许拥有机场（包括国际机场）城市从世界各国进口具有文明特色的 [ICON_RESOURCE_AIRPORT_FOOD] 食品、 [ICON_RESOURCE_AIRPORT_DRINK] 饮料和 [ICON_RESOURCE_AIRPORT_USING] 工艺品。"),
     
-    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_DRINK_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_DRINK_NAME}"),
+    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_DRINK_NAME",                                     "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_DRINK] 进口饮料"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_NAME",                       "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_DRINK] 饮料"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_DRINK] 饮料"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_DRINK_DESCRIPTION",                "完成 [ICON_DISTRICT_WONDER] 奇观“国际机场”后允许此城从世界各国进口 [ICON_RESOURCE_AIRPORT_DRINK] 饮料。最多可以进口15种 [ICON_RESOURCE_AIRPORT_DRINK] 饮料。"),
-    ("zh_Hans_CN",  "LOC_HD_PEDIA_CATEGORY_AIRPORT_DRINK_NAME",                            "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_DRINK] 进口饮料"),
 
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_1_NAME",                          "枫糖浆"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_2_NAME",                          "祁门红茶"),
@@ -112,11 +108,10 @@ values
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_E_NAME",                          "越橘酱"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_DRINK_F_NAME",                          "俄罗斯伏特加"),
 
-    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_FOOD_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_FOOD_NAME}"),
+    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_FOOD_NAME",                                     "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_FOOD] 进口食品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_NAME",                       "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_FOOD] 食品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_FOOD] 食品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_FOOD_DESCRIPTION",                "完成 [ICON_DISTRICT_WONDER] 奇观“国际机场”后允许此城从世界各国进口 [ICON_RESOURCE_AIRPORT_FOOD] 食品。最多可以进口19种 [ICON_RESOURCE_AIRPORT_FOOD] 食品。"),
-    ("zh_Hans_CN",  "LOC_HD_PEDIA_CATEGORY_AIRPORT_FOOD_NAME",                            "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_FOOD] 进口食品"),
 
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_1_NAME",                          "酱牛肉"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_2_NAME",                          "印第安式干肉饼"),
@@ -138,11 +133,10 @@ values
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_I_NAME",                          "油炸毒蜘蛛"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_FOOD_J_NAME",                          "豆渣糕"),
 
-    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_USING_NAME",                                     "{LOC_HD_PEDIA_CATEGORY_AIRPORT_USING_NAME}"),
+    ("zh_Hans_CN",  "LOC_RESOURCE_AIRPORT_USING_NAME",                                     "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_USING] 进口工艺品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_NAME",                       "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_USING] 工艺品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_SHORT_NAME",                 "[ICON_DISTRICT_WONDER] 国际机场：进口新的 [ICON_RESOURCE_AIRPORT_USING] 工艺品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_AIRPORT_USING_DESCRIPTION",                "完成 [ICON_DISTRICT_WONDER] 奇观“国际机场”后允许此城从世界各国进口 [ICON_RESOURCE_AIRPORT_USING] 工艺品。最多可以进口16种 [ICON_RESOURCE_AIRPORT_USING] 工艺品。"),
-    ("zh_Hans_CN",  "LOC_HD_PEDIA_CATEGORY_AIRPORT_USING_NAME",                            "[ICON_DISTRICT_WONDER] 国际机场 [ICON_RESOURCE_AIRPORT_USING] 进口工艺品"),
 
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_USING_1_NAME",                          "反曲弓"),
     ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_AIRPORT_USING_2_NAME",                          "桑巴舞裙"),

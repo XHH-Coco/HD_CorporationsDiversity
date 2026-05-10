@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <IconDefinitions>  
+    <Row Name="ICON_POLICY_WAREHOUSE_MANAGEMENT"						Atlas="ICON_ATLAS_POLICIES" Index="0"/>
+    <Row Name="ICON_POLICY_WAREHOUSE_MANAGEMENT_FOW"					Atlas="ICON_ATLAS_POLICIES_FOW" Index="0"/>
+    <Row Name="ICON_POLICY_AUTO_STEREO_WAREHOUSE"						Atlas="ICON_ATLAS_POLICIES" Index="0"/>
+    <Row Name="ICON_POLICY_AUTO_STEREO_WAREHOUSE_FOW"					Atlas="ICON_ATLAS_POLICIES_FOW" Index="0"/>
+  </IconDefinitions>
+</GameData>

@@ -2,9 +2,9 @@
 -- Table Definitions
 -- =====================================================================================================================================
 create table HD_Monopoly_Categories(
-	Category TEXT NOT NULL,
-	IndustryEffect 		TEXT NOT NULL,
-	CorporationEffect TEXT NOT NULL,
+	Category 					TEXT NOT NULL,
+	IndustryEffect 		TEXT,
+	CorporationEffect TEXT,
 	PRIMARY KEY (Category)
 );
 
@@ -29,10 +29,22 @@ create table HD_CorporationModifiers(
 );
 
 create table HD_ProductYields(
-	Category 		TEXT NOT NULL,
-	YieldType 	TEXT NOT NULL,
-	YieldChange INT NOT NULL,
+	Category			TEXT NOT NULL,
+  YieldType			TEXT NOT NULL,
+	YieldChange		INT Default	0,
 	PRIMARY KEY (Category, YieldType)
+);
+
+create table HD_ProductTourism(
+	ResourceType	TEXT NOT NULL,
+  Amount				INT Default	0,
+	PRIMARY KEY (ResourceType)
+);
+
+create table HD_GreatPerson_CreateResources(
+  GreatPersonIndividualType TEXT NOT NULL,
+  ResourceType 							TEXT NOT NULL,
+	PRIMARY KEY (GreatPersonIndividualType)
 );
 
 -- =====================================================================================================================================

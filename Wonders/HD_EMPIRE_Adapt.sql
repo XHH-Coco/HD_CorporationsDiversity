@@ -6,9 +6,7 @@ delete from BuildingModifiers where BuildingType = 'WON_CL_EMPIRE_STATES' and Mo
 
 update ModifierArguments set Value = 300 where ModifierId = 'EMPIRE_CITY_WONDER_TOURISM' and Name = 'ScalingFactor';
 
-insert or replace into BuildingModifiers
-	(BuildingType,				ModifierId)
-values
+insert or replace into BuildingModifiers (BuildingType, ModifierId) values
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_GOLD'),
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_1'),
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_2'),
@@ -17,71 +15,27 @@ values
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_5'),
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_6');
 
-insert or replace into Modifiers
-    (ModifierId,                ModifierType,                                                            SubjectRequirementSetId)
-values
-    ('EMPIRE_STATES_GOLD',      'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER_PER_GOVERNOR_TITLE',  NULL),
-    ('EMPIRE_STATES_TOURISM_1', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_1_TITLE_GOVERNOR_REQUIREMENTS'),
-    ('EMPIRE_STATES_TOURISM_2', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_2_TITLE_GOVERNOR_REQUIREMENTS'),
-    ('EMPIRE_STATES_TOURISM_3', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_3_TITLE_GOVERNOR_REQUIREMENTS'),
-    ('EMPIRE_STATES_TOURISM_4', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_4_TITLE_GOVERNOR_REQUIREMENTS'),
-    ('EMPIRE_STATES_TOURISM_5', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_5_TITLE_GOVERNOR_REQUIREMENTS'),
-    ('EMPIRE_STATES_TOURISM_6', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS');
-insert or replace into ModifierArguments
-    (ModifierId,                Name,                       Value)
-values
-    ('EMPIRE_STATES_GOLD',      'YieldType',                'YIELD_GOLD'),
-    ('EMPIRE_STATES_GOLD',      'Amount',                   5),
-    ('EMPIRE_STATES_TOURISM_1', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_1', 'ScalingFactor',            125),
-    ('EMPIRE_STATES_TOURISM_2', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_2', 'ScalingFactor',            125),
-    ('EMPIRE_STATES_TOURISM_3', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_3', 'ScalingFactor',            125),
-    ('EMPIRE_STATES_TOURISM_4', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_4', 'ScalingFactor',            125),
-    ('EMPIRE_STATES_TOURISM_5', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_5', 'ScalingFactor',            125),
-    ('EMPIRE_STATES_TOURISM_6', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-    ('EMPIRE_STATES_TOURISM_6', 'ScalingFactor',            125);
+insert or replace into Modifiers (ModifierId, ModifierType, SubjectRequirementSetId) values
+	('EMPIRE_STATES_GOLD',      'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER_PER_GOVERNOR_TITLE',  NULL),
+	('EMPIRE_STATES_TOURISM_1', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_1_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_2', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_2_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_3', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_3_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_4', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_4_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_5', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_5_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_6', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS');
 
-insert or ignore into Requirements
-    (RequirementId,                             RequirementType)
-values
-	('REQUIRES_CITY_HAS_1_TITLE_GOVERNOR',      'REQUIREMENT_CITY_HAS_GOVERNOR_WITH_X_TITLES'),
-    ('REQUIRES_CITY_HAS_3_TITLE_GOVERNOR',      'REQUIREMENT_CITY_HAS_GOVERNOR_WITH_X_TITLES'),
-    ('REQUIRES_CITY_HAS_4_TITLE_GOVERNOR',      'REQUIREMENT_CITY_HAS_GOVERNOR_WITH_X_TITLES'),
-    ('REQUIRES_CITY_HAS_5_TITLE_GOVERNOR',      'REQUIREMENT_CITY_HAS_GOVERNOR_WITH_X_TITLES'),
-    ('REQUIRES_CITY_HAS_6_TITLE_GOVERNOR',      'REQUIREMENT_CITY_HAS_GOVERNOR_WITH_X_TITLES');
-
-insert or ignore into RequirementArguments
-    (RequirementId,                             Name,                Value)
-values
-	('REQUIRES_CITY_HAS_1_TITLE_GOVERNOR',      'Established',       1),
-    ('REQUIRES_CITY_HAS_1_TITLE_GOVERNOR',      'Amount',            1),
-    ('REQUIRES_CITY_HAS_3_TITLE_GOVERNOR',      'Established',       1),
-    ('REQUIRES_CITY_HAS_3_TITLE_GOVERNOR',      'Amount',            3),
-    ('REQUIRES_CITY_HAS_4_TITLE_GOVERNOR',      'Established',       1),
-    ('REQUIRES_CITY_HAS_4_TITLE_GOVERNOR',      'Amount',            4),
-    ('REQUIRES_CITY_HAS_5_TITLE_GOVERNOR',      'Established',       1),
-    ('REQUIRES_CITY_HAS_5_TITLE_GOVERNOR',      'Amount',            5),
-    ('REQUIRES_CITY_HAS_6_TITLE_GOVERNOR',      'Established',       1),
-    ('REQUIRES_CITY_HAS_6_TITLE_GOVERNOR',      'Amount',            6);
-
-insert or ignore into RequirementSets
-    (RequirementSetId,                          RequirementSetType)
-values
-	('CITY_HAS_1_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIREMENTSET_TEST_ALL'),
-    ('CITY_HAS_3_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIREMENTSET_TEST_ALL'),
-    ('CITY_HAS_4_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIREMENTSET_TEST_ALL'),
-    ('CITY_HAS_5_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIREMENTSET_TEST_ALL'),
-    ('CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIREMENTSET_TEST_ALL');
-
-insert or ignore into RequirementSetRequirements
-    (RequirementSetId,                          RequirementId)
-values
-	('CITY_HAS_1_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIRES_CITY_HAS_1_TITLE_GOVERNOR'),
-    ('CITY_HAS_3_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIRES_CITY_HAS_3_TITLE_GOVERNOR'),
-    ('CITY_HAS_4_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIRES_CITY_HAS_4_TITLE_GOVERNOR'),
-    ('CITY_HAS_5_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIRES_CITY_HAS_5_TITLE_GOVERNOR'),
-    ('CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS',  'REQUIRES_CITY_HAS_6_TITLE_GOVERNOR');
+insert or replace into ModifierArguments (ModifierId, Name, Value) values
+	('EMPIRE_STATES_GOLD',      'YieldType',            'YIELD_GOLD'),
+	('EMPIRE_STATES_GOLD',      'Amount',               5),
+	('EMPIRE_STATES_TOURISM_1', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_1', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_2', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_2', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_3', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_3', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_4', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_4', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_5', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_5', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_6', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_6', 'ScalingFactor',        125);

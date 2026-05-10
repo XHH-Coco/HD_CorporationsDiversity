@@ -56,6 +56,12 @@ function GetGreatWorkTooltip(pCityBldgs:table, greatWorkIndex:number, greatWorkT
 	local greatWorkTypeName:string;
 	local greatWorkInfo:table = GameInfo.GreatWorks[greatWorkType];
 
+	local effectStr = '';
+	local GreatWorkText = GameInfo.HD_GreatWork_Text[greatWorkInfo.GreatWorkType];
+	if GreatWorkText then
+		effectStr = effectStr .. "[NEWLINE]" .. Locale.Lookup(GreatWorkText.Description);
+	end
+
 	if greatWorkInfo.GreatWorkObjectType == "GREATWORKOBJECT_PRODUCT" then
 		local greatWorkType:string = greatWorkInfo.GreatWorkType;
 		greatWorkType = greatWorkType:gsub("GREATWORK_PRODUCT_", "");
@@ -104,20 +110,9 @@ function GetGreatWorkTooltip(pCityBldgs:table, greatWorkIndex:number, greatWorkT
 		local strTooltipLocKey	:string = "LOC_GREAT_WORKS" .. strLocKeyArtifact .. "_TOOLTIP" .. strLocKeyThemable;
 		local strFinalTooltip   :string = Locale.Lookup(strTooltipLocKey, strName, strTypeName, corpName, strDateCreated, strYields);
 
-		local corpEffectStr:string = nil;
-		-- for row in GameInfo.ResourceIndustries() do
-		for row in GameInfo.HDResourceProducts() do
-			if row.PrimaryKey == resName then
-				if row.ResourceEffectTExt then
-					strFinalTooltip = strFinalTooltip..Locale.Lookup(row.ResourceEffectTExt);
-				end
-				break;
-			end
-		end
-
-		return strFinalTooltip;
+		return strFinalTooltip .. effectStr;
 	else
-		return BASE_GetGreatWorkTooltip(pCityBldgs, greatWorkIndex, greatWorkType, pBuildingInfo);
+		return BASE_GetGreatWorkTooltip(pCityBldgs, greatWorkIndex, greatWorkType, pBuildingInfo) .. effectStr;
 	end
 end
 

@@ -15,8 +15,8 @@ insert or ignore into Modifiers (ModifierId, ModifierType, SubjectRequirementSet
 update Modifiers set RunOnce = 1, Permanent = 1 where ModifierId = 'PANAMA_CANAL_GRANTS_MERCHANT';
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) values
-	('PANAMA_PRODUCT_TOURISM',  													'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-	('PANAMA_PRODUCT_TOURISM',  													'ScalingFactor',			150),
+	('PANAMA_PRODUCT_TOURISM',  													'GreatWorkObjectType',		'GREATWORKOBJECT_PRODUCT'),
+	('PANAMA_PRODUCT_TOURISM',  													'ScalingFactor',					150),
 	('PANAMA_CANAL_GRANTS_MERCHANT',											'Amount',   							1),
 	('PANAMA_CANAL_GRANTS_MERCHANT',											'GreatPersonClassType', 	'GREAT_PERSON_CLASS_MERCHANT'),
 	('PANAMA_CANAL_EXTRA_MERCHANT_POINTS',								'ModifierId', 						'PANAMA_CANAL_EXTRA_MERCHANT_POINTS_MODIFIER'),

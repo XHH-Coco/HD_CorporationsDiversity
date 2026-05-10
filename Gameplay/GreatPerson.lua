@@ -1,5 +1,5 @@
 local greatPersonResourcesIndices = {};
-for row in GameInfo.XXCAT_GreatPersonUniqueResources() do
+for row in GameInfo.HD_GreatPerson_CreateResources() do
     local greatPersonIndex = GameInfo.GreatPersonIndividuals[row.GreatPersonIndividualType].Index;
     local resourceIndex = GameInfo.Resources[row.ResourceType].Index;
     greatPersonResourcesIndices[greatPersonIndex] = resourceIndex;

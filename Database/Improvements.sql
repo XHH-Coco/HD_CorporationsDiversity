@@ -7,6 +7,20 @@ insert or replace into GlobalParameters (Name, Value) values
 	('MONOPOLY_REQUIRED_RESOURCE_CONTROL_PERCENTAGE_MAX',	201);
 
 -- =====================================================================================================================================
+-- 行业公司有效资源 补充源于Mod的资源
+-- =====================================================================================================================================
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_INDUSTRY', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_CORPORATION', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+
+update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_INDUSTRY';
+update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_CORPORATION';
+
+-- =====================================================================================================================================
 -- 行业公司产出
 -- =====================================================================================================================================
 update Improvement_YieldChanges set YieldChange = 5
@@ -117,16 +131,33 @@ delete from ResourceIndustries;
 delete from ResourceCorporations;
 
 insert or ignore into ResourceIndustries (ResourceType, ResourceEffect, ResourceEffectTExt) select
-	ResourceType,
-	IndustryEffect,
-	'LOC_' || IndustryEffect || '_DESCRIPTION'
-from HD_Monopoly_Resource_Categories a inner join HD_Monopoly_Categories b on a.Category = b.Category;
+	a.ResourceType,
+	b.IndustryEffect,
+	'LOC_' || b.IndustryEffect || '_DESCRIPTION'
+from HD_Monopoly_Resource_Categories a inner join HD_Monopoly_Categories b on a.Category = b.Category where b.IndustryEffect is not NULL;
 
-insert or ignore into ResourceCorporations (ResourceType,  ResourceEffect, ResourceEffectTExt) select
-	ResourceType,
-	CorporationEffect,
-	'LOC_' || CorporationEffect || '_DESCRIPTION'
-from HD_Monopoly_Resource_Categories a inner join HD_Monopoly_Categories b on a.Category = b.Category;
+insert or ignore into ResourceCorporations (ResourceType, ResourceEffect, ResourceEffectTExt) select
+	a.ResourceType,
+	b.CorporationEffect,
+	'LOC_' || b.CorporationEffect || '_DESCRIPTION'
+from HD_Monopoly_Resource_Categories a inner join HD_Monopoly_Categories b on a.Category = b.Category where b.CorporationEffect is not NULL;
+
+-- =====================================================================================================================================
+-- 火车站
+-- =====================================================================================================================================
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) values
+	('IMPROVEMENT_LEU_STATION', 'LEU_STATION_PRODUCT_TOURISM_COMMERCIAL_HUB'),
+	('IMPROVEMENT_LEU_STATION', 'LEU_STATION_PRODUCT_TOURISM_HARBOR');
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) values
+	('LEU_STATION_PRODUCT_TOURISM_COMMERCIAL_HUB',	'MODIFIER_SINGLE_CITY_ADJUST_TOURISM',	'PLOT_ADJACENT_TO_DISTRICT_COMMERCIAL_HUB_REQUIREMENTS'),
+	('LEU_STATION_PRODUCT_TOURISM_HARBOR',					'MODIFIER_SINGLE_CITY_ADJUST_TOURISM',	'PLOT_ADJACENT_TO_DISTRICT_HARBOR_REQUIREMENTS');
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) values
+	('LEU_STATION_PRODUCT_TOURISM_COMMERCIAL_HUB',	'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('LEU_STATION_PRODUCT_TOURISM_COMMERCIAL_HUB',	'ScalingFactor',				150),
+	('LEU_STATION_PRODUCT_TOURISM_HARBOR',					'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('LEU_STATION_PRODUCT_TOURISM_HARBOR',					'ScalingFactor',				150);
 
 -- =====================================================================================================================================
 -- 仓库和集装箱码头
@@ -254,6 +285,19 @@ insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('HD_WAREHOUSE_PLOT_YIELD_BONUS',				'Amount',								1),
 	('HD_CONTAINER_PORT_PLOT_YIELD_BONUS',	'YieldType',						'YIELD_GOLD'),
 	('HD_CONTAINER_PORT_PLOT_YIELD_BONUS',	'Amount',								3);
+
+-- =====================================================================================================================================
+-- 跨国公司
+-- =====================================================================================================================================
+update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_CAPITALISM' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL';
+update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_CAPITALISM' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA';
+delete from Improvement_BonusYieldChanges where Id = 553;
+delete from Improvement_BonusYieldChanges where Id = 554;
+
+update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_HD' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL'
+	and exists (select CivicType from Civics where CivicType = 'CIVIC_NEOCOLONIALISM_HD');
+update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_HD' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA'
+	and exists (select CivicType from Civics where CivicType = 'CIVIC_NEOCOLONIALISM_HD');
 
 -- =====================================================================================================================================
 -- 尤里卡
