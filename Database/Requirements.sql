@@ -5,7 +5,7 @@
 insert or ignore into Requirements (RequirementId, RequirementType) select
 	'REQUIRES_HD_' || Category || '_INDUSTRY_BONUS', 'REQUIREMENT_PLOT_PROPERTY_MATCHES' from HD_Monopoly_Categories;
 insert or ignore into RequirementArguments (RequirementId, Name, Value) select
-	'REQUIRES_HD_' || Category || '_INDUSTRY_BONUS', 'PropertyName', 'HD_' || Category || '_INDUSTRY_BONUS' from HD_Monopoly_Categories;
+	'REQUIRES_HD_' || Category || '_INDUSTRY_BONUS', 'PropertyName', 'HD_INDUSTRY_BONUS_' || Category from HD_Monopoly_Categories;
 insert or ignore into RequirementArguments (RequirementId, Name, Value) select
 	'REQUIRES_HD_' || Category || '_INDUSTRY_BONUS', 'PropertyMinimum', 1 from HD_Monopoly_Categories;
 
@@ -18,7 +18,7 @@ insert or ignore into RequirementSetRequirements (RequirementSetId, RequirementI
 insert or ignore into Requirements (RequirementId, RequirementType) select
 	'REQUIRES_HD_' || Category || '_CORPORATION_BONUS', 'REQUIREMENT_PLOT_PROPERTY_MATCHES' from HD_Monopoly_Categories;
 insert or ignore into RequirementArguments (RequirementId, Name, Value) select
-	'REQUIRES_HD_' || Category || '_CORPORATION_BONUS', 'PropertyName', 'HD_' || Category || '_CORPORATION_BONUS' from HD_Monopoly_Categories;
+	'REQUIRES_HD_' || Category || '_CORPORATION_BONUS', 'PropertyName', 'HD_CORPORATION_BONUS_' || Category from HD_Monopoly_Categories;
 insert or ignore into RequirementArguments (RequirementId, Name, Value) select
 	'REQUIRES_HD_' || Category || '_CORPORATION_BONUS', 'PropertyMinimum', 1 from HD_Monopoly_Categories;
 

@@ -171,6 +171,7 @@
     <!-- UI -->
     <ImportFiles id="Monopolies_UI" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
+      <File>UI/CityBannerInstances.xml</File>
       <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
       <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
       <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
@@ -219,20 +220,30 @@
       <Properties><LoadOrder>20010</LoadOrder></Properties>
       <File>Database/Theming.sql</File>
     </UpdateDatabase>
+    <UpdateDatabase id="CorporationsDiversity_Last" criteria="Monopolies_Mode_Expansion2">
+      <Properties><LoadOrder>30000</LoadOrder></Properties>
+      <File>Database/Improvements_Late.sql</File>
+      <File>Database/CustomEvent.sql</File>
+    </UpdateDatabase>
     
     <!-- Gameplay -->
     <AddGameplayScripts id="CorporationsDiversity_Scripts" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20002</LoadOrder></Properties>
       <File>Gameplay/Common.lua</File>
       <File>Gameplay/GreatPerson.lua</File>
+      <File>Gameplay/IndustryCorporationEffects.lua</File>
     </AddGameplayScripts>
 
     <!-- Text -->
     <UpdateText id="CorporationsDiversity_Text" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
-      <File>Text/Text_Monopoly.sql</File>
+      <File>Text/Texts.sql</File>
       <File>Text/Text_GreatPerson.sql</File>
       <File>Text/Text_Industry_Corporation_Effects.sql</File>
+      <File>Text/Text_Products.sql</File>
+      <File>Text/Text_Improvements.sql</File>
+      <File>Text/Text_Civilopedia.sql</File>
+      <File>Text/Text_Wonders.sql</File>
     </UpdateText>
 
     <!-- 丰富资源2 -->
@@ -306,12 +317,14 @@
     <File>Wonders/HD_NAT_Pack1_Adapt_Text.sql</File>
     <File>Wonders/HD_NAT_Pack1_Adapt_Icons.xml</File>
     <!-- UI -->
+    <File>UI/CityBannerInstances.xml</File>
     <File>UI/DiplomacyDealView_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
     <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/BRSPage_Resources.lua</File>
     <!-- Database -->
     <File>Database/Improvements.sql</File>
+    <File>Database/Improvements_Late.sql</File>
     <File>Database/Units.sql</File>
     <File>Database/Policies.sql</File>
     <File>Database/Buildings.sql</File>
@@ -323,10 +336,15 @@
     <File>Database/GreatPerson.sql</File>
     <File>Database/Wonders.sql</File>
     <File>Database/Definitions.sql</File>
+    <File>Database/CustomEvent.sql</File>
     <!-- Text -->
     <File>Text/Text_GreatPerson.sql</File>
-    <File>Text/Text_Monopoly.sql</File>
+    <File>Text/Texts.sql</File>
     <File>Text/Text_Industry_Corporation_Effects.sql</File>
+    <File>Text/Text_Products.sql</File>
+    <File>Text/Text_Improvements.sql</File>
+    <File>Text/Text_Civilopedia.sql</File>
+    <File>Text/Text_Wonders.sql</File>
     <File>Text/Text_Frontend.sql</File>
     <File>Text/Text_Resourceful2.sql</File>
     <!-- Icon -->
@@ -339,6 +357,7 @@
     <!-- Gameplay -->
     <File>Gameplay/Common.lua</File>
     <File>Gameplay/GreatPerson.lua</File>
+    <File>Gameplay/IndustryCorporationEffects.lua</File>
     <!-- Monopoly -->
     <File>Assets/Monopoly/exhibition_32.dds</File>
     <File>Assets/Monopoly/exhibition_38.dds</File>

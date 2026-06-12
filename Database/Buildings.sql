@@ -46,3 +46,34 @@ update Building_GreatWorks set ThemingYieldMultiplier = 200, ThemingTourismMulti
 
 -- 其他
 delete from Building_TourismBombs_XP2 where BuildingType = 'BUILDING_LEU_PAVILLION';
+
+-- 解锁第二行业/公司特效的建筑
+insert or ignore into HD_Building_Unlock_Second_Industry (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_COMMERCIAL_HUB' and Tier = 3;
+
+insert or ignore into HD_Building_Unlock_Second_Industry (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_HARBOR' and Tier = 2;
+
+insert or ignore into HD_Building_Unlock_Second_Corporation (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_COMMERCIAL_HUB' and Tier = 4;
+
+insert or ignore into HD_Building_Unlock_Second_Corporation (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_HARBOR' and Tier = 3;
+
+insert or replace into BuildingModifiers (BuildingType, ModifierId) select
+	BuildingType, 'HD_CITY_UNLOCK_SECOND_INDUSTRY'
+from HD_Building_Unlock_Second_Industry;
+
+insert or replace into BuildingModifiers (BuildingType, ModifierId) select
+	BuildingType, 'HD_CITY_UNLOCK_SECOND_CORPORATION'
+from HD_Building_Unlock_Second_Corporation;
+
+insert or replace into Modifiers (ModifierId, ModifierType) values
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY'),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY');
+
+insert or replace into ModifierArguments (ModifierId, Name, Value) values
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'Key',		'HD_CITY_UNLOCK_SECOND_INDUSTRY'),
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'Amount',	1),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'Key',		'HD_CITY_UNLOCK_SECOND_CORPORATION'),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'Amount',	1);

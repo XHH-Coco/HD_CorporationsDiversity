@@ -47,6 +47,16 @@ create table HD_GreatPerson_CreateResources(
 	PRIMARY KEY (GreatPersonIndividualType)
 );
 
+create table HD_Building_Unlock_Second_Industry(
+  BuildingType TEXT NOT NULL,
+	PRIMARY KEY (BuildingType)
+);
+
+create table HD_Building_Unlock_Second_Corporation(
+  BuildingType TEXT NOT NULL,
+	PRIMARY KEY (BuildingType)
+);
+
 -- =====================================================================================================================================
 -- Building Definitions
 -- =====================================================================================================================================
