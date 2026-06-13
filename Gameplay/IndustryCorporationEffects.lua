@@ -70,8 +70,8 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
           -- 如果是玩家，则唤起UI面板
           local param = {
             PlayerId = playerId,
-            EventId = 'HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY',
-            EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION', city:GetName(), resourceInfo.Name),
+            CityName = city:GetName(),
+            ResourceType = resourceInfo.ResourceType,
             SelectionList = {}
           };
           for _, category in ipairs(categoryList) do
@@ -80,7 +80,7 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
               ScriptParam = {Category = category, X = x, Y = y}
             });
           end
-          ReportingEvents.SendLuaEvent('HD_TriggerCustomEventPanel_Light', param);
+          ReportingEvents.SendLuaEvent('HD_CallIndustrySelectEvent', param);
         end
       end
     end
@@ -152,8 +152,8 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
           -- 如果是玩家，则唤起UI面板
           local param = {
             PlayerId = playerId,
-            EventId = 'HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY',
-            EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION', city:GetName(), resourceInfo.Name),
+            CityName = city:GetName(),
+            ResourceType = resourceInfo.ResourceType,
             SelectionList = {}
           };
           for _, category in ipairs(categoryList) do
@@ -162,7 +162,7 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
               ScriptParam = {Category = category, X = x, Y = y}
             });
           end
-          ReportingEvents.SendLuaEvent('HD_TriggerCustomEventPanel_Light', param);
+          ReportingEvents.SendLuaEvent('HD_CallCorporationSelectEvent', param);
         end
       end
     end
@@ -266,6 +266,23 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
   end
 end
 GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect)
+
+-- print("==================================================================================")
+-- for row in GameInfo.GreatWorks() do
+--   if row.Name == Locale.Lookup(row.Name) then
+--     print(row.Name)
+--   end
+-- end
+
+-- for row in GameInfo.Resources() do
+--   if row.ResourceClassType == 'RESOURCECLASS_STRATEGIC' then
+--     print(Locale.Lookup(row.Name));
+--     for i=1, 6 do
+--       print('LOC_GREATWORK_PRODUCT_' .. row.ResourceType:gsub("RESOURCE_", "") .. '_' .. i .. '_NAME');
+--     end
+--   end
+-- end
+-- print("==================================================================================")
 
 --------------------------------------------------------------
 -- Initialize

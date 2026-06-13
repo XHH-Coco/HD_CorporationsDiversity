@@ -501,8 +501,8 @@ function OnClickInstanceIcon(x, y)
 					print("点击图标唤起行业类别选择界面")
 					local param = {
             PlayerId = playerId,
-            EventId = 'HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY',
-            EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION', city:GetName(), resourceInfo.Name),
+            CityName = city:GetName(),
+            ResourceType = resourceInfo.ResourceType,
             SelectionList = {}
           };
           for _, category in ipairs(disabledList) do
@@ -511,7 +511,7 @@ function OnClickInstanceIcon(x, y)
               ScriptParam = {Category = category, X = x, Y = y}
             });
           end
-          LuaEvents.HD_TriggerCustomEventPanel_Light.Call(param);
+          CallIndustrySelectEvent(param);
 				end
 			elseif improvementId == CORPORATION_INDEX then
 				-- 公司
@@ -548,8 +548,8 @@ function OnClickInstanceIcon(x, y)
 					print("点击图标唤起公司类别选择界面")
 					local param = {
             PlayerId = playerId,
-            EventId = 'HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY',
-            EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION', city:GetName(), resourceInfo.Name),
+            CityName = city:GetName(),
+            ResourceType = resourceInfo.ResourceType,
             SelectionList = {}
           };
           for _, category in ipairs(disabledList) do
@@ -558,7 +558,7 @@ function OnClickInstanceIcon(x, y)
               ScriptParam = {Category = category, X = x, Y = y}
             });
           end
-          LuaEvents.HD_TriggerCustomEventPanel_Light.Call(param);
+          CallCorporationSelectEvent(param);
 				end
 			end
 
@@ -579,6 +579,47 @@ function OnClickInstanceIcon(x, y)
 end
 
 -- ===========================================================================
+function CallIndustrySelectEvent(param)
+	local playerId = param.PlayerId;
+	local cityName = param.CityName;
+	local resourceType = param.ResourceType;
+	local resourceInfo = GameInfo.Resources[resourceType];
+	local selectionList = param.SelectionList;
+
+	if not resourceInfo then return; end
+
+	local sendParam = {
+		PlayerId = playerId,
+		EventId = 'HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY',
+		EventName = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME', cityName, '[ICON_' .. resourceType .. '] ' .. Locale.Lookup(resourceInfo.Name)),
+		EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION'),
+		SelectionList = selectionList
+	};
+
+	LuaEvents.HD_TriggerCustomEventPanel_Light.Call(sendParam);
+end
+
+function CallCorporationSelectEvent(param)
+	local playerId = param.PlayerId;
+	local cityName = param.CityName;
+	local resourceType = param.ResourceType;
+	local resourceInfo = GameInfo.Resources[resourceType];
+	local selectionList = param.SelectionList;
+
+	if not resourceInfo then return; end
+
+	local sendParam = {
+		PlayerId = playerId,
+		EventId = 'HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY',
+		EventName = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME', cityName, '[ICON_' .. resourceType .. '] ' .. Locale.Lookup(resourceInfo.Name)),
+		EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION'),
+		SelectionList = selectionList
+	};
+
+	LuaEvents.HD_TriggerCustomEventPanel_Light.Call(sendParam);
+end
+
+-- ===========================================================================
 function LateInitialize()
 	BASE_LateInitialize();
 
@@ -594,7 +635,9 @@ end
 function Initialize()
 	BASE_Initialize();
 
-	Events.CorporationNameChanged.Add( OnCorporationNameChanged );
+	Events.CorporationNameChanged.Add(OnCorporationNameChanged);
 
+	LuaEvents.HD_CallIndustrySelectEvent.Add(CallIndustrySelectEvent);
+	LuaEvents.HD_CallCorporationSelectEvent.Add(CallCorporationSelectEvent);
 	LuaEvents.HD_RefreshIndustryCorporationBanner.Add(RefreshIndustryCorporationBanner);
 end

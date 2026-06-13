@@ -3,7 +3,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",                        "Mine improvements receive +1 [ICON_PRODUCTION] Production. Unlocks ability to create Industries."),
   ("LOC_BOOST_TRIGGER_CAPITALISM_HD",                               "Create a Corporation."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",                      "The savvy capitalist will do anything for 100% profit, which is providing a model for the study of how the economy works."),
-  ("LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",                      "Build 2 Warehouses or Container Ports."),
+  ("LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",                      "Build 2 Warehouses or Piers."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",             "Factories and warehouses stand in close rows, and industry is developing at a rapid pace. However, workers are beginning to seek more rights. It's time for workers all over the world to unite."),
   -- 建筑
   ("LOC_BUILDING_EXHIBITION_NAME",                                  "Exhibition Center"),
@@ -15,9 +15,9 @@ insert or replace into EnglishText (Tag, Text) values
   -- 政策
   ("LOC_POLICY_ECOMMERCE_EXPANSION1_DESCRIPTION",                   "[ICON_TradeRoute] Trade Routes provide +4 [ICON_Production] Production and +15 [ICON_Gold] Gold. [ICON_Greatwork_Product] Products provide +200% [ICON_Tourism] Tourism, doubled when City is fully [ICON_POWER] powered."),
   ("LOC_POLICY_WAREHOUSE_MANAGEMENT_NAME",                          "Warehouse Management"),
-  ("LOC_POLICY_WAREHOUSE_MANAGEMENT_DESCRIPTION",                   "+50% adjacency bonuses to Commercial Hub, Harbor and Industrial Zone districts adjacent to Warehouse or Container Port Improvement."),
+  ("LOC_POLICY_WAREHOUSE_MANAGEMENT_DESCRIPTION",                   "+50% adjacency bonuses to Commercial Hub, Harbor and Industrial Zone districts adjacent to Warehouse or Pier Improvement."),
   ("LOC_POLICY_AUTO_STEREO_WAREHOUSE_NAME",                         "Automated Stereoscopic Warehouse"),
-  ("LOC_POLICY_AUTO_STEREO_WAREHOUSE_DESCRIPTION",                  "+100% adjacency bonuses to Commercial Hub, Harbor and Industrial Zone districts adjacent to Warehouse or Container Port Improvement."),
+  ("LOC_POLICY_AUTO_STEREO_WAREHOUSE_DESCRIPTION",                  "+100% adjacency bonuses to Commercial Hub, Harbor and Industrial Zone districts adjacent to Warehouse or Pier Improvement."),
   -- 单位
   ("LOC_UNIT_LEU_TYCOON_DESCRIPTION",                               "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires Tier 2 building of Commercial Hub or Tier 1 building of Harbor to be purchased.[NEWLINE][NEWLINE]Tycoons can create Industries on Luxury Resource tiles, and after the discovery of Steam Power they can create Railroads and Stations to improve yields, commerce and [ICON_PRODUCTION] Production in your territory."),
   ("LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                             "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires Tier 3 building of Commercial Hub or Tier 2 building of Harbor to be purchased.[NEWLINE][NEWLINE]Investors can found Corporations that allow your civilization to create [ICON_GREATWORK_PRODUCT] Products for additional yields and [ICON_TOURISM] Tourism, or create Warehouses and Container Ports in other civilizations to further strengthen commerce and your Corporations."),
@@ -29,7 +29,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",               "矿山+1 [ICON_Production] 生产力。解锁建立行业的能力。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CAPITALISM_HD",                      "建造1座公司。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",             "精明的资本家为了100%的利润可以做任何事，这正在为发掘经济运行规律的研究提供典型。"),
-  ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或集装箱码头。"),
+  ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或埠头。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",    "工厂和仓库鳞次栉比，工业飞速发展。然而工人们开始寻求更多的权益。是时候让全世界的工人团结起来了。"),
   -- 建筑
   ("zh_Hans_CN",  "LOC_BUILDING_EXHIBITION_NAME",                         "会展中心"),
@@ -41,14 +41,14 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 相邻加成
   ("zh_Hans_CN",  "LOC_WAREHOUSE_ADJ_GOLD",                               "+{1_num} [ICON_GOLD] 金币来自相邻的仓库"),
   ("zh_Hans_CN",  "LOC_WAREHOUSE_ADJ_PRODUCTION",                         "+{1_num} [ICON_Production] 生产力来自相邻的仓库"),
-  ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_GOLD",                          "+{1_num} [ICON_GOLD] 金币来自相邻的集装箱码头"),
-  ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_PRODUCTION",                    "+{1_num} [ICON_Production] 生产力来自相邻的集装箱码头"),
+  ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_GOLD",                          "+{1_num} [ICON_GOLD] 金币来自相邻的埠头"),
+  ("zh_Hans_CN",  "LOC_CONTAINER_PORT_ADJ_PRODUCTION",                    "+{1_num} [ICON_Production] 生产力来自相邻的埠头"),
   -- 政策
   ("zh_Hans_CN",  "LOC_POLICY_ECOMMERCE_EXPANSION1_DESCRIPTION",          "所有 [ICON_TradeRoute] 贸易路线+4 [ICON_Production] 生产力、+15 [ICON_Gold] 金币。所有城市来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+200%；城市 [ICON_POWER] 供电充足时，该效果翻倍。"),
   ("zh_Hans_CN",  "LOC_POLICY_WAREHOUSE_MANAGEMENT_NAME",                 "仓库管理"),
-  ("zh_Hans_CN",  "LOC_POLICY_WAREHOUSE_MANAGEMENT_DESCRIPTION",          "相邻仓库或集装箱码头的工业区、商业中心和港口+50%相邻加成。"),
+  ("zh_Hans_CN",  "LOC_POLICY_WAREHOUSE_MANAGEMENT_DESCRIPTION",          "相邻仓库或埠头的工业区、商业中心和港口+50%相邻加成。"),
   ("zh_Hans_CN",  "LOC_POLICY_AUTO_STEREO_WAREHOUSE_NAME",                "自动化立体仓库"),
-  ("zh_Hans_CN",  "LOC_POLICY_AUTO_STEREO_WAREHOUSE_DESCRIPTION",         "相邻仓库或集装箱码头的工业区、商业中心和港口+100%相邻加成。"),
+  ("zh_Hans_CN",  "LOC_POLICY_AUTO_STEREO_WAREHOUSE_DESCRIPTION",         "相邻仓库或埠头的工业区、商业中心和港口+100%相邻加成。"),
   -- 单位
   ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_NAME",                             "大亨"),
   ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_DESCRIPTION",                      "需要商业中心二级建筑或港口一级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创建行业，在研究“蒸汽动力”后，他们也可创建铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),

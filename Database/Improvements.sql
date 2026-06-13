@@ -953,7 +953,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('LEU_STATION_PRODUCT_TOURISM_HARBOR',					'ScalingFactor',				150);
 
 -- =====================================================================================================================================
--- 仓库和集装箱码头
+-- 仓库和埠头
 -- =====================================================================================================================================
 update Improvements set
 	PrereqTech = 'TECH_INDUSTRIALIZATION',

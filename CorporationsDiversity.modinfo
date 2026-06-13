@@ -244,6 +244,7 @@
       <File>Text/Text_Improvements.sql</File>
       <File>Text/Text_Civilopedia.sql</File>
       <File>Text/Text_Wonders.sql</File>
+      <File>Text/Text_CustomEvent.sql</File>
     </UpdateText>
 
     <!-- 丰富资源2 -->
@@ -345,6 +346,7 @@
     <File>Text/Text_Improvements.sql</File>
     <File>Text/Text_Civilopedia.sql</File>
     <File>Text/Text_Wonders.sql</File>
+    <File>Text/Text_CustomEvent.sql</File>
     <File>Text/Text_Frontend.sql</File>
     <File>Text/Text_Resourceful2.sql</File>
     <!-- Icon -->

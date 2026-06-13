@@ -1,16 +1,4 @@
 insert or replace into EnglishText (Tag, Text) values
-  ("LOC_HD_INDUSTRY_EFFECT_TEXT",                                  "Industry Effects: [NEWLINE]{1_Effect}"),
-  ("LOC_HD_CORPORATION_EFFECT_TEXT",                               "Corporation Effects: [NEWLINE]{1_Effect}"),
-  ("LOC_SELECT_INDUSTRY_CATEGORY_TEXT",                            "[COLOR:Civ6Red]Click this icon to select category of Industry.[ENDCOLOR]"),
-  ("LOC_SELECT_CORPORATION_CATEGORY_TEXT",                         "[COLOR:Civ6Red]Click this icon to select category of Corporation.[ENDCOLOR]"),
-  ("LOC_NEED_ACTIVATE_SECOND_INDUSTRY_EFFECT_TEXT",                "[COLOR:Civ6Red]Need Tier 3 building of Commercial Hub or Tier 2 building of Harbor to unlock the effect of {1_Category} Industry: [ENDCOLOR][NEWLINE]{2_Effect}"),
-  ("LOC_NEED_ACTIVATE_SECOND_CORPORATION_EFFECT_TEXT",             "[COLOR:Civ6Red]Need Tier 4 building of Commercial Hub or Tier 3 building of Harbor to unlock the effect of {1_Category} Corporation: [ENDCOLOR][NEWLINE]{2_Effect}"),
-
-  ("LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME",             "Select Category of Industry"),
-  ("LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION",      "You build a {2_Resource} Industry in {1_City}. Please Select a category for this Industry."),
-  ("LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME",          "Select Category of Corporation"),
-  ("LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION",   "You build a {2_Resource} Corporation in {1_City}. Please Select a category for this Corporation."),
-
   -- 庄稼
   ("LOC_INDUSTRY_HD_CROPS_BONUS_DESCRIPTION",                      "+2 [ICON_FOOD] Food and [ICON_Production] Production to Agrarian Improvements in this city."),
   ("LOC_CORPORATION_HD_CROPS_BONUS_DESCRIPTION",                   "+10% [ICON_FOOD] Food in all cities."),
@@ -104,18 +92,6 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_CORPORATION_HD_PERFUME_BONUS_DESCRIPTION",                 "+10% all yields to all cities. +500% [ICON_Tourism] Tourism from Improvements and [ICON_GreatWork_Product] Products.");
 
 insert or replace into LocalizedText (Language, Tag, Text) values
-  ("zh_Hans_CN",  "LOC_HD_INDUSTRY_EFFECT_TEXT",                                  "行业效果：[NEWLINE]{1_Effect}"),
-  ("zh_Hans_CN",  "LOC_HD_CORPORATION_EFFECT_TEXT",                               "公司效果：[NEWLINE]{1_Effect}"),
-  ("zh_Hans_CN",  "LOC_SELECT_INDUSTRY_CATEGORY_TEXT",                            "[COLOR:Civ6Red]点击图标选择行业类别。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_SELECT_CORPORATION_CATEGORY_TEXT",                         "[COLOR:Civ6Red]点击图标选择公司类别。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_NEED_ACTIVATE_SECOND_INDUSTRY_EFFECT_TEXT",                "[COLOR:Civ6Red]需要建造商业中心三级建筑或港口二级建筑以解锁{1_Category}行业的特效：[ENDCOLOR][NEWLINE]{2_Effect}"),
-  ("zh_Hans_CN",  "LOC_NEED_ACTIVATE_SECOND_CORPORATION_EFFECT_TEXT",             "[COLOR:Civ6Red]需要建造商业中心四级建筑或港口三级建筑以解锁{1_Category}公司的特效：[ENDCOLOR][NEWLINE]{2_Effect}"),
-  
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME",             "选择行业类别"),
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION",      "你在{1_City}中建造了{2_Resource}行业，请选择一种行业类别。"),
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME",          "选择公司类别"),
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION",   "你在{1_City}中建造了{2_Resource}公司，请选择一种公司类别。"),
-  
   -- 庄稼
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CROPS_BONUS_DESCRIPTION",                      "本城的农业生产改良+2 [ICON_FOOD] 食物和 [ICON_Production] 生产力。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_CROPS_BONUS_DESCRIPTION",                   "所有城市+10% [ICON_FOOD] 食物。"),
