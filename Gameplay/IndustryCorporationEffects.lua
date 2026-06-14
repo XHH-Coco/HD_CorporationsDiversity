@@ -274,11 +274,27 @@ GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect)
 --   end
 -- end
 
+-- local resourceMap = {};
+-- for row in GameInfo.HD_Resource_Classification() do
+--   if GameInfo.HD_ResourceClassificationTypes[row.ResourceClassificationType].ParentClassificationType == 'USAGE' then
+--     local categoryList = resourceMap[row.ResourceType] or {};
+--     local category = row.ResourceClassificationType:gsub('RESOURCE_CLASSIFICATION_HD_', '');
+--     table.insert(categoryList, category);
+--     resourceMap[row.ResourceType] = categoryList;
+--   end
+-- end
+
 -- for row in GameInfo.Resources() do
---   if row.ResourceClassType == 'RESOURCECLASS_STRATEGIC' then
+--   local categoryList = resourceMap[row.ResourceType] or {};
+
+--   if #categoryList == 2 then
 --     print(Locale.Lookup(row.Name));
---     for i=1, 6 do
---       print('LOC_GREATWORK_PRODUCT_' .. row.ResourceType:gsub("RESOURCE_", "") .. '_' .. i .. '_NAME');
+--     print('LOC_HD_BUILD_' .. row.ResourceType .. '_INDUSTRY_TEXT');
+--     print('LOC_HD_BUILD_' .. row.ResourceType .. '_CORPORATION_TEXT');
+
+--     for _, category in ipairs(categoryList) do
+--       print('LOC_HD_' .. row.ResourceType .. '_' .. category .. '_INDUSTRY_DESCRIPTION');
+--       print('LOC_HD_' .. row.ResourceType .. '_' .. category .. '_CORPORATION_DESCRIPTION');
 --     end
 --   end
 -- end
