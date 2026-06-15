@@ -588,11 +588,16 @@ function CallIndustrySelectEvent(param)
 
 	if not resourceInfo then return; end
 
+	for _, selection in ipairs(selectionList) do
+		selection.Description = Locale.Lookup('LOC_HD_' .. resourceType .. '_' .. selection.ScriptParam.Category .. '_INDUSTRY_DESCRIPTION', cityName).. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_INDUSTRY_HD_' .. selection.ScriptParam.Category .. '_BONUS_DESCRIPTION');
+	end
+
 	local sendParam = {
 		PlayerId = playerId,
 		EventId = 'HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY',
 		EventName = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME', cityName, '[ICON_' .. resourceType .. '] ' .. Locale.Lookup(resourceInfo.Name)),
-		EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION'),
+		EventDescription = Locale.Lookup('LOC_HD_BUILD_' .. resourceType .. '_INDUSTRY_TEXT', cityName) .. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION'),
+		EventDescriptionHeight = 90,
 		SelectionList = selectionList
 	};
 
@@ -608,11 +613,16 @@ function CallCorporationSelectEvent(param)
 
 	if not resourceInfo then return; end
 
+	for _, selection in ipairs(selectionList) do
+		selection.Description = Locale.Lookup('LOC_HD_' .. resourceType .. '_' .. selection.ScriptParam.Category .. '_CORPORATION_DESCRIPTION', cityName).. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_CORPORATION_HD_' .. selection.ScriptParam.Category .. '_BONUS_DESCRIPTION');
+	end
+
 	local sendParam = {
 		PlayerId = playerId,
 		EventId = 'HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY',
 		EventName = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME', cityName, '[ICON_' .. resourceType .. '] ' .. Locale.Lookup(resourceInfo.Name)),
-		EventDescription = Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION'),
+		EventDescription = Locale.Lookup('LOC_HD_BUILD_' .. resourceType .. '_CORPORATION_TEXT', cityName) .. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION'),
+		EventDescriptionHeight = 90,
 		SelectionList = selectionList
 	};
 
