@@ -25,16 +25,15 @@ update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementTyp
 -- =====================================================================================================================================
 update Improvement_YieldChanges set YieldChange = 5
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_FOOD';
-update Improvement_YieldChanges set YieldChange = 6
+update Improvement_YieldChanges set YieldChange = 5
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_PRODUCTION';
-update Improvement_YieldChanges set YieldChange = 6
-	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_GOLD';
+delete from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_GOLD';
 
 update Improvement_YieldChanges set YieldChange = 6
 	where ImprovementType = 'IMPROVEMENT_CORPORATION' and YieldType = 'YIELD_FOOD';
-update Improvement_YieldChanges set YieldChange = 8
+update Improvement_YieldChanges set YieldChange = 6
 	where ImprovementType = 'IMPROVEMENT_CORPORATION' and YieldType = 'YIELD_PRODUCTION';
-update Improvement_YieldChanges set YieldChange = 8
+update Improvement_YieldChanges set YieldChange = 9
 	where ImprovementType = 'IMPROVEMENT_CORPORATION' and YieldType = 'YIELD_GOLD';
 update Improvements set Removable = 0 where ImprovementType = 'IMPROVEMENT_CORPORATION';
 
@@ -956,7 +955,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 -- 仓库和埠头
 -- =====================================================================================================================================
 update Improvements set
-	PrereqTech = 'TECH_INDUSTRIALIZATION',
+	PrereqTech = 'TECH_APPRENTICESHIP',
 	RequiresAdjacentBonusOrLuxury = 1,
 	RequiresAdjacentLuxury = 0,
 	Removable = 1,

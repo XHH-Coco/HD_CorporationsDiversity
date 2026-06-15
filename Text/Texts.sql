@@ -1,6 +1,5 @@
 insert or replace into EnglishText (Tag, Text) values
   -- 科技 市政
-  ("LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",                        "Mine improvements receive +1 [ICON_PRODUCTION] Production. Unlocks ability to create Industries."),
   ("LOC_BOOST_TRIGGER_CAPITALISM_HD",                               "Create a Corporation."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",                      "The savvy capitalist will do anything for 100% profit, which is providing a model for the study of how the economy works."),
   ("LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",                      "Build 2 Warehouses or Piers."),
@@ -26,7 +25,6 @@ insert or replace into EnglishText (Tag, Text) values
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   -- 科技 市政
-  ("zh_Hans_CN",  "LOC_TECH_APPRENTICESHIP_HD_DESCRIPTION",               "矿山+1 [ICON_Production] 生产力。解锁建立行业的能力。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CAPITALISM_HD",                      "建造1座公司。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",             "精明的资本家为了100%的利润可以做任何事，这正在为发掘经济运行规律的研究提供典型。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或埠头。"),
