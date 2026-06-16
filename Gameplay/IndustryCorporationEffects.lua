@@ -285,17 +285,24 @@ GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect)
 -- end
 
 -- for row in GameInfo.Resources() do
---   local categoryList = resourceMap[row.ResourceType] or {};
+--   if row.ResourceClassType == 'RESOURCECLASS_BONUS' then
+--     local icon = '[ICON_'.. row.ResourceType .. ']';
+--     local name = Locale.Lookup(row.Name);
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_NAME",             "' .. icon .. ' ' .. name .. ' Corporation: Create New Product"),');
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_SHORT_NAME",       "' .. icon .. ' Create New ' .. name .. ' Product"),');
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_DESCRIPTION",      "Create a new product for the world based on the ' .. icon .. ' ' .. name .. ' resource."),');
+--     print('')
+--   end
+-- end
 
---   if #categoryList == 2 then
---     print(Locale.Lookup(row.Name));
---     print('LOC_HD_BUILD_' .. row.ResourceType .. '_INDUSTRY_TEXT');
---     print('LOC_HD_BUILD_' .. row.ResourceType .. '_CORPORATION_TEXT');
-
---     for _, category in ipairs(categoryList) do
---       print('LOC_HD_' .. row.ResourceType .. '_' .. category .. '_INDUSTRY_DESCRIPTION');
---       print('LOC_HD_' .. row.ResourceType .. '_' .. category .. '_CORPORATION_DESCRIPTION');
---     end
+-- for row in GameInfo.Resources() do
+--   if row.ResourceClassType == 'RESOURCECLASS_STRATEGIC' then
+--     local icon = '[ICON_'.. row.ResourceType .. ']';
+--     local name = Locale.Lookup(row.Name);
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_NAME",             "' .. icon .. ' ' .. name .. ' Corporation: Create New Product"),');
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_SHORT_NAME",       "' .. icon .. ' Create New ' .. name .. ' Product"),');
+--     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_DESCRIPTION",      "Create a new product for the world based on the ' .. icon .. ' ' .. name .. ' resource."),');
+--     print('')
 --   end
 -- end
 -- print("==================================================================================")

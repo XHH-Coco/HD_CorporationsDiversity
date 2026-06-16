@@ -125,6 +125,13 @@
       <File>Assets/Monopoly/exhibition_80.dds</File>
       <File>Assets/Monopoly/exhibition_128.dds</File>
       <File>Assets/Monopoly/exhibition_256.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_22.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_32.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_38.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_50.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_64.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_256.dds</File>
+      <File>Assets/Monopoly/HD_Resources_Monopoly_2_FOW_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_22.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_32.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_38.dds</File>
@@ -367,6 +374,13 @@
     <File>Assets/Monopoly/exhibition_80.dds</File>
     <File>Assets/Monopoly/exhibition_128.dds</File>
     <File>Assets/Monopoly/exhibition_256.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_22.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_32.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_38.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_50.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_64.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_256.dds</File>
+    <File>Assets/Monopoly/HD_Resources_Monopoly_2_FOW_256.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_22.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_32.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_38.dds</File>

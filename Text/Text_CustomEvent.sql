@@ -396,7 +396,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_HD_RESOURCE_JNR_PEAT_FUEL_INDUSTRY_DESCRIPTION",                     "In every household in {1_CityName}, peat burns in fireplaces, emitting a unique earthy aroma and warmth."),
   ("LOC_HD_RESOURCE_JNR_PEAT_FUEL_CORPORATION_DESCRIPTION",                  "A thermal power plant in {1_CityName} uses peat as fuel, providing important power during our civilization`s early industrialization."),
 
-  ("LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_INDUSTRY_TEXT",                       "The icy shores of {1_CityName} are a breeding ground for penguins; they are adorable and numerous."),
+  ("LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_INDUSTRY_TEXT",                       "The shores of {1_CityName} are a breeding ground for penguins; they are adorable and numerous."),
   ("LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_CORPORATION_TEXT",                    "Travel agencies carefully develop polar science and sightseeing projects at the penguin habitats of {1_CityName}."),
   ("LOC_HD_RESOURCE_P0K_PENGUINS_BEAST_INDUSTRY_DESCRIPTION",                "The sight of penguin colonies waddling across the road in {1_CityName} melts everyone`s heart."),
   ("LOC_HD_RESOURCE_P0K_PENGUINS_BEAST_CORPORATION_DESCRIPTION",             "Live penguin streams and documentaries from {1_CityName} bring polar enlightenment to children in our civilization."),
@@ -1270,9 +1270,9 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_JNR_PEAT_FUEL_INDUSTRY_DESCRIPTION",                     "{1_CityName}家家户户的壁炉中燃烧着泥炭，散发出独特的泥土芳香与暖意。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_JNR_PEAT_FUEL_CORPORATION_DESCRIPTION",                  "{1_CityName}热电厂以泥炭为燃料，为我国的工业化初期提供了重要动力。"),
 
-  ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_INDUSTRY_TEXT",                       "{1_CityName}的冰冻海岸是企鹅的繁殖地，它们憨态可掬，数量庞大。"),
+  ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_INDUSTRY_TEXT",                       "{1_CityName}的海岸是企鹅的繁殖地，它们憨态可掬，数量庞大。"),
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_P0K_PENGUINS_CORPORATION_TEXT",                    "旅行社小心翼翼地开发{1_CityName}企鹅栖息地的极地科考与观览项目。"),
-  ("zh_Hans_CN",  "LOC_HD_RESOURCE_P0K_PENGUINS_BEAST_INDUSTRY_DESCRIPTION",                "{1_CityName}的企鹅群摇摇摆摆过马路的景象，融化了所有人的心。"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_P0K_PENGUINS_BEAST_INDUSTRY_DESCRIPTION",                "{1_CityName}的企鹅群摇摇摆摆过道路的景象，融化了所有人的心。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_P0K_PENGUINS_BEAST_CORPORATION_DESCRIPTION",             "{1_CityName}企鹅直播和纪录片，为我国的孩子们带来了极地启蒙。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_P0K_PENGUINS_SEA_BEAST_INDUSTRY_DESCRIPTION",            "早期探险者猎取{1_CityName}企鹅以获取皮下厚厚的油脂，用作燃料。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_P0K_PENGUINS_SEA_BEAST_CORPORATION_DESCRIPTION",         "{1_CityName}废弃的熬油锅遗迹，成为我国纪念极地开发史的警示地标。"),

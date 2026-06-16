@@ -5,8 +5,8 @@
 -- ===========================================================================
 --	CONSTANTS
 -- ===========================================================================
-BANNERTYPE_INDUSTRY			= UIManager:GetHash("BANNERTYPE_INDUSTRY");
-BANNERTYPE_CORPORATION		= UIManager:GetHash("BANNERTYPE_CORPORATION");
+BANNERTYPE_INDUSTRY = UIManager:GetHash("BANNERTYPE_INDUSTRY");
+BANNERTYPE_CORPORATION = UIManager:GetHash("BANNERTYPE_CORPORATION");
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
@@ -26,6 +26,66 @@ local BASE_OnImprovementAddedToMap = OnImprovementAddedToMap;
 local BASE_Initialize = Initialize;
 local BASE_LateInitialize = LateInitialize;
 
+-- ===========================================================================
+-- 建造改良事件
+-- ===========================================================================
+function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:number, eOwner:number)
+
+	if eImprovementType == -1 then
+		UI.DataError("Received -1 eImprovementType for ("..tostring(locX)..","..tostring(locY)..") and owner "..tostring(eOwner));
+		return;
+	end
+
+	local improvementData:table = GameInfo.Improvements[eImprovementType];
+
+	if improvementData == nil then
+		UI.DataError("No database entry for eImprovementType #"..tostring(eImprovementType).." for ("..tostring(locX)..","..tostring(locY)..") and owner "..tostring(eOwner));
+		return;
+	end
+
+	-- Check if the improvement is an Industry or Corporation
+	local bIsIndustry:boolean = false;
+	local bIsCorporation:boolean = false;
+	local improvementDataMODE:table = GameInfo.Improvements_MODE[improvementData.Hash];
+	if (improvementDataMODE ~= nil) then
+		if (improvementDataMODE.Industry) then
+			bIsIndustry = true;
+		elseif (improvementDataMODE.Corporation) then
+			bIsCorporation = true;
+		end
+	end
+
+	-- we're only here for industries and corporations
+	if ( not bIsIndustry and not bIsCorporation ) then
+		BASE_OnImprovementAddedToMap(locX, locY, eImprovementType, eOwner);
+		return;
+	end
+
+	local pPlayer:table = Players[eOwner];
+	local localPlayerID:number = Game.GetLocalPlayer();
+	if (pPlayer ~= nil) then
+		local plotID = Map.GetPlotIndex(locX, locY);
+		if (plotID ~= nil) then
+			local miniBanner = GetMiniBanner( eOwner, plotID );
+			if (miniBanner == nil) then
+				if ( bIsIndustry ) then
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					-- we're passing the plotID as the districtID argument because we need the location of the improvement
+					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_INDUSTRY );
+				elseif ( bIsCorporation ) then
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					-- we're passing the plotID as the districtID argument because we need the location of the improvement
+					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_CORPORATION );
+				end
+			end
+		end
+	end
+end
+
+-- ===========================================================================
+-- 行业&公司
 -- ===========================================================================
 function CityBanner:CreateIndustryBanner()
 	-- Set the appropriate instance factory (mini banner one) for this flag...
@@ -161,62 +221,6 @@ function CityBanner:UpdateOtherImprovementBannerTypes()
 		self:UpdateCorporationBanner();
 	else
 		BASE_UpdateOtherImprovementBannerTypes();
-	end
-end
-
--- ===========================================================================
-function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:number, eOwner:number)
-
-	if eImprovementType == -1 then
-		UI.DataError("Received -1 eImprovementType for ("..tostring(locX)..","..tostring(locY)..") and owner "..tostring(eOwner));
-		return;
-	end
-
-	local improvementData:table = GameInfo.Improvements[eImprovementType];
-
-	if improvementData == nil then
-		UI.DataError("No database entry for eImprovementType #"..tostring(eImprovementType).." for ("..tostring(locX)..","..tostring(locY)..") and owner "..tostring(eOwner));
-		return;
-	end
-
-	-- Check if the improvement is an Industry or Corporation
-	local bIsIndustry:boolean = false;
-	local bIsCorporation:boolean = false;
-	local improvementDataMODE:table = GameInfo.Improvements_MODE[improvementData.Hash];
-	if (improvementDataMODE ~= nil) then
-		if (improvementDataMODE.Industry) then
-			bIsIndustry = true;
-		elseif (improvementDataMODE.Corporation) then
-			bIsCorporation = true;
-		end
-	end
-
-	-- we're only here for industries and corporations
-	if ( not bIsIndustry and not bIsCorporation ) then
-		BASE_OnImprovementAddedToMap(locX, locY, eImprovementType, eOwner);
-		return;
-	end
-
-	local pPlayer:table = Players[eOwner];
-	local localPlayerID:number = Game.GetLocalPlayer();
-	if (pPlayer ~= nil) then
-		local plotID = Map.GetPlotIndex(locX, locY);
-		if (plotID ~= nil) then
-			local miniBanner = GetMiniBanner( eOwner, plotID );
-			if (miniBanner == nil) then
-				if ( bIsIndustry ) then
-					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
-					local cityID = ownerCity:GetID();
-					-- we're passing the plotID as the districtID argument because we need the location of the improvement
-					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_INDUSTRY );
-				elseif ( bIsCorporation ) then
-					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
-					local cityID = ownerCity:GetID();
-					-- we're passing the plotID as the districtID argument because we need the location of the improvement
-					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_CORPORATION );
-				end
-			end
-		end
 	end
 end
 
