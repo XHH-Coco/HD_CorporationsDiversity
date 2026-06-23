@@ -1,11 +1,19 @@
+ExposedMembers.DLHD = ExposedMembers.DLHD or {};
+ExposedMembers.DLHD.Utils = ExposedMembers.DLHD.Utils or {};
+Utils = ExposedMembers.DLHD.Utils;
+
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
+local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 local CITY_UNLOCK_SECOND_INDUSTRY_TAG = 'HD_CITY_UNLOCK_SECOND_INDUSTRY';
 local CITY_UNLOCK_SECOND_CORPORATION_TAG = 'HD_CITY_UNLOCK_SECOND_CORPORATION';
 
+-- ======================================================================================================================================================
+-- 行业/公司
+-- ======================================================================================================================================================
 -- 建造行业/公司
 function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
   local player = Players[playerId];
@@ -267,49 +275,244 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
 end
 GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect)
 
--- print("==================================================================================")
--- for row in GameInfo.GreatWorks() do
---   if row.Name == Locale.Lookup(row.Name) then
---     print(row.Name)
---   end
--- end
+-- ======================================================================================================================================================
+-- 城堡庄园
+-- ======================================================================================================================================================
+-- 建造法国城堡庄园
+local CHATEAU_PRODUCTION_RESOURCE_TAG = 'HD_CHATEAU_PRODUCTION_RESOURCE';
+local CHATEAU_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_ENTERTAINMENT_RESOURCE';
+local CHATEAU_GRANT_RESOURCE_TAG = 'HD_CHATEAU_GRANT_';
+local CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE';
+function BuildChateau(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
+  local player = Players[playerId];
+  if not player then return; end
+  
+  local plot = Map.GetPlot(x, y);
+  if not plot then return; end
 
--- local resourceMap = {};
--- for row in GameInfo.HD_Resource_Classification() do
---   if GameInfo.HD_ResourceClassificationTypes[row.ResourceClassificationType].ParentClassificationType == 'USAGE' then
---     local categoryList = resourceMap[row.ResourceType] or {};
---     local category = row.ResourceClassificationType:gsub('RESOURCE_CLASSIFICATION_HD_', '');
---     table.insert(categoryList, category);
---     resourceMap[row.ResourceType] = categoryList;
---   end
--- end
+  local city = Cities.GetPlotPurchaseCity(plot);
+  if not city then return; end
 
--- for row in GameInfo.Resources() do
---   if row.ResourceClassType == 'RESOURCECLASS_BONUS' then
---     local icon = '[ICON_'.. row.ResourceType .. ']';
---     local name = Locale.Lookup(row.Name);
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_NAME",             "' .. icon .. ' ' .. name .. ' Corporation: Create New Product"),');
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_SHORT_NAME",       "' .. icon .. ' Create New ' .. name .. ' Product"),');
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_DESCRIPTION",      "Create a new product for the world based on the ' .. icon .. ' ' .. name .. ' resource."),');
---     print('')
---   end
--- end
+  if improvementId == CHATEAU_INDEX then
+    print("建造城堡庄园")
+    
+    -- 清空城堡庄园相关的property
+    local productionResourceIndex = plot:GetProperty(CHATEAU_PRODUCTION_RESOURCE_TAG) or -1;
+    local entertainmentResourceIndex = plot:GetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG) or -1;
+    if productionResourceIndex ~= -1 then
+      plot:SetProperty(CHATEAU_PRODUCTION_RESOURCE_TAG, -1);
+    end
+    if entertainmentResourceIndex ~= -1 then
+      plot:SetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG, -1);
+    end
+    -- 清空其他行业类别的property
+    for row in GameInfo.HD_Monopoly_Categories() do
+      if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) == 1 then
+        plot:SetProperty(INDUSTRY_BONUS_TAG .. row.Category, 0);
+      end
+    end
 
--- for row in GameInfo.Resources() do
---   if row.ResourceClassType == 'RESOURCECLASS_STRATEGIC' then
---     local icon = '[ICON_'.. row.ResourceType .. ']';
---     local name = Locale.Lookup(row.Name);
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_NAME",             "' .. icon .. ' ' .. name .. ' Corporation: Create New Product"),');
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_SHORT_NAME",       "' .. icon .. ' Create New ' .. name .. ' Product"),');
---     print('("LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' .. row.ResourceType:gsub('RESOURCE_', '') .. '_DESCRIPTION",      "Create a new product for the world based on the ' .. icon .. ' ' .. name .. ' resource."),');
---     print('')
---   end
--- end
--- print("==================================================================================")
+    -- 查询本城的合法资源 作为生产资源待选列表
+    local resourceMap = Utils.GetCityPlotsResources(playerId, city:GetID(), {
+      ClassificationList = {'RESOURCE_CLASSIFICATION_HD_CROPS', 'RESOURCE_CLASSIFICATION_HD_FRUIT', 'RESOURCE_CLASSIFICATION_HD_BREWING', 'RESOURCE_CLASSIFICATION_HD_BEVERAGE'},
+      NeedImproved = true
+    });
+    local resourceList = {};
+    for resourceType, has in pairs(resourceMap) do
+      if has == true then
+        table.insert(resourceList, {
+          ResourceType = resourceType,
+          DetailParam = {
+            IndustryEffect = true
+          }
+        })
+      end
+    end
+
+    if player:IsHuman() then
+      -- 如果是玩家 唤起界面
+      local param = {
+        PlayerId = playerId,
+        CityName = city:GetName(),
+        Type = 'PRODUCTION_RESOURCE',
+        X = x,
+        Y = y,
+        ResourceList = resourceList
+      };
+      ReportingEvents.SendLuaEvent('HD_CallChateauSelectResourceEvent', param);
+    elseif #resourceList > 0 then
+      -- 如果是AI 随机选择一个
+      local randomIndex = Game.GetRandNum(#resourceList, "Random Chateau Resource for Player " .. playerId) + 1;
+      local resourceInfo = GameInfo.Resources[resourceList[randomIndex].ResourceType];
+
+      if resourceInfo then
+        ChateauOnChooseResource(playerId, {
+          ResourceId = resourceInfo.Index,
+          X = x,
+          Y = y,
+          ScriptParam = {Type = 'PRODUCTION_RESOURCE'}
+        });
+        print("AI城堡庄园随机选择资源：" .. Locale.Lookup(resourceInfo.Name));
+      end
+
+      -- 娱乐资源
+      local canChooseEntertainmentResource = city:GetProperty(CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG) or 0;
+      if canChooseEntertainmentResource > 0 then
+        resourceMap = Utils.GetCityPlotsResources(playerId, cityId, {
+          ClassificationList = {'RESOURCE_CLASSIFICATION_HD_CLOTH', 'RESOURCE_CLASSIFICATION_HD_ART', 'RESOURCE_CLASSIFICATION_HD_DECORATION', 'RESOURCE_CLASSIFICATION_HD_ORNAMENTAL'},
+          NeedImproved = true
+        });
+
+        resourceList = {};
+        for resourceType, has in pairs(resourceMap) do
+          if has == true then
+            table.insert(resourceList, {
+              ResourceType = resourceType,
+              DetailParam = {
+                IndustryEffect = true
+              }
+            })
+          end
+        end
+
+        if #resourceList > 0 then
+          randomIndex = Game.GetRandNum(#resourceList, "Random Chateau Resource for Player " .. playerId) + 1;
+          resourceInfo = GameInfo.Resources[resourceList[randomIndex].ResourceType];
+
+          if resourceInfo then
+            ChateauOnChooseResource(playerId, {
+              ResourceId = resourceInfo.Index,
+              X = x,
+              Y = y,
+              ScriptParam = {Type = 'ENTERTAINMENT_RESOURCE'}
+            });
+            print("AI城堡庄园随机选择资源：" .. Locale.Lookup(resourceInfo.Name));
+          end
+        end
+      end
+    end
+    
+  end
+end
+
+-- 选择资源
+function ChateauOnChooseResource(playerId, param)
+  local player = Players[playerId];
+  if not player then return; end
+  
+  local plot = Map.GetPlot(param.X, param.Y);
+  if not plot then return; end
+
+  local resourceInfo = GameInfo.Resources[param.ResourceId];
+  if not resourceInfo then return; end
+
+  local improvementId = plot:GetImprovementType();
+  if improvementId == CHATEAU_INDEX then
+    print("城堡庄园选择资源：" .. Locale.Lookup(resourceInfo.Name));
+
+    -- 设置行业类别property 用于实现行业特效
+    for row in GameInfo.HD_Monopoly_Resource_Categories() do
+      if row.ResourceType == resourceInfo.ResourceType then
+        local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
+        if categoryInfo and categoryInfo.IndustryEffect then
+          if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) ~= 1 then
+            plot:SetProperty(INDUSTRY_BONUS_TAG .. row.Category, 1);
+            print("城堡庄园提供行业特效：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME'));
+          end
+        end
+      end
+    end
+
+    -- 设置资源property 用于送一份奢侈资源
+    if resourceInfo.ResourceClassType == 'RESOURCECLASS_LUXURY' then
+      plot:SetProperty(CHATEAU_GRANT_RESOURCE_TAG .. resourceInfo.ResourceType, 1);
+      print("城堡庄园赠送奢侈资源：" .. Locale.Lookup(resourceInfo.Name));
+    end
+    
+    -- 设置Type property 用于记录城堡庄园的资源
+    local scriptParam = param.ScriptParam or {};
+    if scriptParam.Type == 'PRODUCTION_RESOURCE' then
+      plot:SetProperty(CHATEAU_PRODUCTION_RESOURCE_TAG, param.ResourceId);
+      print('记录城堡庄园的生产资源：' .. param.ResourceId);
+    elseif scriptParam.Type == 'ENTERTAINMENT_RESOURCE' then
+      plot:SetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG, param.ResourceId);
+      print('记录城堡庄园的娱乐资源：' .. param.ResourceId);
+    end
+
+    -- 刷新描述
+    ReportingEvents.SendLuaEvent('HD_RefreshChateauBanner', {PlayerId = playerId, X = param.X, Y = param.Y});
+  end
+end
+GameEvents.HD_ResourceSelection_OnChooseResource.Add(ChateauOnChooseResource);
+
+-- 城市建造中世纪以及以后的奇观
+function ChateauWonderCompleted(x, y, buildingId, playerId, cityId, percentComplete, unknown)
+  local player = Players[playerId];
+  if not player then return; end
+
+  if not Utils.CivilizationHasTrait(playerId, 'TRAIT_CIVILIZATION_IMPROVEMENT_CHATEAU') then return; end
+
+  local era = Utils.GetBuildingEra(buildingId);
+  if era >= 2 then
+    local city = CityManager.GetCity(playerId, cityId);
+    if not city then return; end
+
+    if city:GetProperty(CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG) ~= 1 then
+      city:SetProperty(CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG, 1);
+    end
+    print(Locale.Lookup(city:GetName()) .. '建造了中世纪或以后的奇观：' .. buildingId);
+
+    local cityPlots = city:GetOwnedPlots();
+    for _, plot in pairs(cityPlots) do
+      if plot and plot:GetImprovementType() == CHATEAU_INDEX then
+        -- 如果是AI 随机选择一个
+        if not player:IsHuman() then
+          local resourceMap = Utils.GetCityPlotsResources(playerId, cityId, {
+            ClassificationList = {'RESOURCE_CLASSIFICATION_HD_CLOTH', 'RESOURCE_CLASSIFICATION_HD_ART', 'RESOURCE_CLASSIFICATION_HD_DECORATION', 'RESOURCE_CLASSIFICATION_HD_ORNAMENTAL'},
+            NeedImproved = true
+          });
+  
+          local resourceList = {};
+          for resourceType, has in pairs(resourceMap) do
+            if has == true then
+              table.insert(resourceList, {
+                ResourceType = resourceType,
+                DetailParam = {
+                  IndustryEffect = true
+                }
+              })
+            end
+          end
+
+          if #resourceList > 0 then
+            local randomIndex = Game.GetRandNum(#resourceList, "Random Chateau Resource for Player " .. playerId) + 1;
+            local resourceInfo = GameInfo.Resources[resourceList[randomIndex].ResourceType];
+
+            if resourceInfo then
+              ChateauOnChooseResource(playerId, {
+                ResourceId = resourceInfo.Index,
+                X = plot:GetX(),
+                Y = plot:GetY(),
+                ScriptParam = {Type = 'ENTERTAINMENT_RESOURCE'}
+              });
+              print("AI城堡庄园随机选择资源：" .. Locale.Lookup(resourceInfo.Name));
+            end
+          end
+        end
+
+        -- 刷新描述
+        ReportingEvents.SendLuaEvent('HD_RefreshChateauBanner', {PlayerId = playerId, X = plot:GetX(), Y = plot:GetY()});
+      end
+    end
+    
+  end
+end
+Events.WonderCompleted.Add(ChateauWonderCompleted);
 
 --------------------------------------------------------------
 -- Initialize
 function Initialize()
 	Events.ImprovementAddedToMap.Add(BuildIndustryCorporation);
+	Events.ImprovementAddedToMap.Add(BuildChateau);
 end
 Events.LoadGameViewStateDone.Add(Initialize);

@@ -57,7 +57,7 @@ insert or ignore into HD_IndustryModifiers (Category, ModifierId) values
 	('BREWING',					'HD_BREWING_INDUSTRY_DISTRICT_GOLD'),
 	('BEVERAGE',				'HD_BEVERAGE_INDUSTRY_POP_SCIENCE'),
 	('BEVERAGE',				'HD_BEVERAGE_INDUSTRY_POP_CULTURE'),
-	('OIL',							'HD_OIL_INDUSTRY_CITY_PRODUCTION'),
+	('OIL',							'HD_OIL_INDUSTRY_POP_PRODUCTION'),
 	('LEATHER',					'HD_LEATHER_INDUSTRY_CITY_PROPERTY'),
 	('CLOTH',						'HD_CLOTH_INDUSTRY_TIER1_CULTURE_ATTACH'),
 	('CLOTH',						'HD_CLOTH_INDUSTRY_TIER1_GOLD_ATTACH'),
@@ -76,10 +76,9 @@ insert or ignore into HD_IndustryModifiers (Category, ModifierId) values
 	('METALLURGY',			'HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD'),
 	('MINTING',					'HD_MINTING_INDUSTRY_TRADE_ROUTE_CAPACITY'),
 	('MINTING',					'HD_MINTING_INDUSTRY_COMMERCIAL_HUB'),
-	('TRANSIT',					'HD_TRANSIT_INDUSTRY_TRADE_FOOD'),
-	('TRANSIT',					'HD_TRANSIT_INDUSTRY_TRADE_PRODUCTION'),
-	('SEASONING',				'HD_SEASONING_INDUSTRY_TRADE_CULTURE'),
-	('SEASONING',				'HD_SEASONING_INDUSTRY_TRADE_GOLD'),
+	('TRANSIT',					'HD_TRANSIT_INDUSTRY_PASTURE_YIELD'),
+	('TRANSIT',					'HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD'),
+	('SEASONING',				'HD_SEASONING_INDUSTRY_GOLD'),
 	('SEAFOOD',					'HD_SEAFOOD_INDUSTRY_HARBOR_FOOD'),
 	('MARINE_PRODUCTS',	'HD_MARINE_PRODUCTS_INDUSTRY_HARBOR_PRODUCTION'),
 	('SEA_BEAST',				'HD_SEA_BEAST_INDUSTRY_IMPROVEMENT_YIELD'),
@@ -95,6 +94,7 @@ insert or ignore into HD_IndustryModifiers (Category, ModifierId) values
 	('DECORATION',			'HD_DECORATION_INDUSTRY_DISTRICT_GOLD'),
 	('ORNAMENTAL',			'HD_ORNAMENTAL_INDUSTRY_APPEAL'),
 	('ORNAMENTAL',			'HD_ORNAMENTAL_INDUSTRY_PLOT_YIELD'),
+	('BEAST',						'HD_BEAST_INDUSTRY_CITY_PROPERTY'),
 	('HOUSEHOLD',				'HD_HOUSEHOLD_INDUSTRY_IMPROVEMENT_YIELD');
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) values
@@ -107,7 +107,7 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_BREWING_INDUSTRY_DISTRICT_GOLD',								'MODIFIER_CITY_DISTRICTS_ADJUST_YIELD_CHANGE',													'HD_BREWING_INDUSTRY_BONUS_REQUIREMENTS',						'HD_DISTRICT_ADJACENT_TO_WATER_CONSERVANCY_FACILITIES_REQUIREMENTS'),
 	('HD_BEVERAGE_INDUSTRY_POP_SCIENCE',								'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_PER_POPULATION',								'HD_BEVERAGE_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
 	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',								'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_PER_POPULATION',								'HD_BEVERAGE_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
-	('HD_OIL_INDUSTRY_CITY_PRODUCTION',									'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_MODIFIER',											'HD_OIL_INDUSTRY_BONUS_REQUIREMENTS',								NULL),
+	('HD_OIL_INDUSTRY_POP_PRODUCTION',									'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_PER_POPULATION',								'HD_OIL_INDUSTRY_BONUS_REQUIREMENTS',								NULL),
 	('HD_LEATHER_INDUSTRY_CITY_PROPERTY',								'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY',																	'HD_LEATHER_INDUSTRY_BONUS_REQUIREMENTS',						NULL),
 	('HD_CLOTH_INDUSTRY_TIER1_CULTURE_ATTACH',					'MODIFIER_CITY_DISTRICTS_ATTACH_MODIFIER',															'HD_CLOTH_INDUSTRY_BONUS_REQUIREMENTS',							'HD_PLOT_HAS_DISTRICT_COMMERCIAL_HUB_TIER_1_BUILDING_REQUIREMENTS'),
 	('HD_CLOTH_INDUSTRY_TIER1_GOLD_ATTACH',							'MODIFIER_CITY_DISTRICTS_ATTACH_MODIFIER',															'HD_CLOTH_INDUSTRY_BONUS_REQUIREMENTS',							'HD_PLOT_HAS_DISTRICT_COMMERCIAL_HUB_TIER_1_BUILDING_REQUIREMENTS'),
@@ -129,10 +129,9 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD',				'MODIFIER_CITY_PLOT_YIELDS_ADJUST_PLOT_YIELD',													'HD_METALLURGY_INDUSTRY_BONUS_REQUIREMENTS',				'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_INDUSTRIAL_PRODUCTION_REQUIREMENTS'),
 	('HD_MINTING_INDUSTRY_TRADE_ROUTE_CAPACITY',				'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_CAPACITY',													'HD_MINTING_INDUSTRY_BONUS_REQUIREMENTS',						NULL),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'MODIFIER_CITY_DISTRICTS_ADJUST_YIELD_MODIFIER',												'HD_MINTING_INDUSTRY_BONUS_REQUIREMENTS',						'DISTRICT_IS_COMMERCIAL_HUB'),
-	('HD_TRANSIT_INDUSTRY_TRADE_FOOD',									'MODIFIER_SINGLE_CITY_ADJUST_TRADE_ROUTE_YIELD_TO_OTHERS',							'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						NULL),
-	('HD_TRANSIT_INDUSTRY_TRADE_PRODUCTION',						'MODIFIER_SINGLE_CITY_ADJUST_TRADE_ROUTE_YIELD_TO_OTHERS',							'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						NULL),
-	('HD_SEASONING_INDUSTRY_TRADE_CULTURE',							'MODIFIER_SINGLE_CITY_ADJUST_TRADE_ROUTE_YIELD_FOR_INTERNATIONAL',			'HD_SEASONING_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
-	('HD_SEASONING_INDUSTRY_TRADE_GOLD',								'MODIFIER_SINGLE_CITY_ADJUST_TRADE_ROUTE_YIELD_FOR_INTERNATIONAL',			'HD_SEASONING_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
+	('HD_TRANSIT_INDUSTRY_PASTURE_YIELD',								'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_PASTURE_WITH_6_TILES_REQUIRMENTS'),
+	('HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD',						'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_COMMERCIAL_FACILITIES_WITH_6_TILES_REQUIRMENTS'),
+	('HD_SEASONING_INDUSTRY_GOLD',											'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_MODIFIER',											'HD_SEASONING_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
 	('HD_SEAFOOD_INDUSTRY_HARBOR_FOOD',									'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_YIELD_BASED_ON_ADJACENCY_BONUS',	'HD_SEAFOOD_INDUSTRY_BONUS_REQUIREMENTS',						'DISTRICT_IS_HARBOR'),
 	('HD_MARINE_PRODUCTS_INDUSTRY_HARBOR_PRODUCTION',		'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_YIELD_BASED_ON_ADJACENCY_BONUS',	'HD_MARINE_PRODUCTS_INDUSTRY_BONUS_REQUIREMENTS',		'DISTRICT_IS_HARBOR'),
 	('HD_SEA_BEAST_INDUSTRY_IMPROVEMENT_YIELD',					'MODIFIER_CITY_PLOT_YIELDS_ADJUST_PLOT_YIELD',													'HD_SEA_BEAST_INDUSTRY_BONUS_REQUIREMENTS',					'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_WATER_PRODUCTION_REQUIREMENTS'),
@@ -148,6 +147,7 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_DECORATION_INDUSTRY_DISTRICT_GOLD',						'MODIFIER_CITY_DISTRICTS_ADJUST_YIELD_CHANGE',													'HD_DECORATION_INDUSTRY_BONUS_REQUIREMENTS',				'PLOT_DOES_NOT_HAVE_INCOMPLETE_WONDER'),
 	('HD_ORNAMENTAL_INDUSTRY_APPEAL',										'MODIFIER_SINGLE_CITY_ADJUST_CITY_APPEAL',															'HD_ORNAMENTAL_INDUSTRY_BONUS_REQUIREMENTS',				NULL),
 	('HD_ORNAMENTAL_INDUSTRY_PLOT_YIELD',								'MODIFIER_CITY_PLOT_YIELDS_ADJUST_PLOT_YIELD',													'HD_ORNAMENTAL_INDUSTRY_BONUS_REQUIREMENTS',				'PLOT_BREATHTAKING_APPEAL'),
+	('HD_BEAST_INDUSTRY_CITY_PROPERTY',									'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY',																	'HD_BEAST_INDUSTRY_BONUS_REQUIREMENTS',							NULL),
 	('HD_HOUSEHOLD_INDUSTRY_IMPROVEMENT_YIELD',					'MODIFIER_CITY_PLOT_YIELDS_ADJUST_PLOT_YIELD',													'HD_HOUSEHOLD_INDUSTRY_BONUS_REQUIREMENTS',				  'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_RESIDENTIAL_FACILITIES_REQUIREMENTS');
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) values
@@ -169,8 +169,8 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_BEVERAGE_INDUSTRY_POP_SCIENCE',  							'Amount',								0.5),
 	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',								'YieldType',						'YIELD_CULTURE'),
 	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',  							'Amount',								0.5),
-	('HD_OIL_INDUSTRY_CITY_PRODUCTION',									'YieldType',						'YIELD_PRODUCTION'),
-	('HD_OIL_INDUSTRY_CITY_PRODUCTION',  								'Amount',								10),
+	('HD_OIL_INDUSTRY_POP_PRODUCTION',									'YieldType',						'YIELD_PRODUCTION'),
+	('HD_OIL_INDUSTRY_POP_PRODUCTION',  								'Amount',								1),
 	('HD_LEATHER_INDUSTRY_CITY_PROPERTY',								'Key',									'HD_CITY_NEED_COUNT_POSITIVE_AMENITY'),
 	('HD_LEATHER_INDUSTRY_CITY_PROPERTY', 							'Amount',								1),
 	('HD_CLOTH_INDUSTRY_TIER1_CULTURE_ATTACH', 					'ModifierId',						'HD_CLOTH_INDUSTRY_DISTRICT_CULTURE'),
@@ -200,16 +200,12 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_MINTING_INDUSTRY_TRADE_ROUTE_CAPACITY',				'Amount',								1),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'YieldType',						'YIELD_GOLD'),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'Amount',								100),
-	('HD_TRANSIT_INDUSTRY_TRADE_FOOD',									'YieldType',						'YIELD_FOOD'),
-	('HD_TRANSIT_INDUSTRY_TRADE_FOOD',									'Amount',								2),
-	('HD_TRANSIT_INDUSTRY_TRADE_FOOD',									'Domestic',							1),
-	('HD_TRANSIT_INDUSTRY_TRADE_PRODUCTION',						'YieldType',						'YIELD_PRODUCTION'),
-	('HD_TRANSIT_INDUSTRY_TRADE_PRODUCTION',						'Amount',								2),
-	('HD_TRANSIT_INDUSTRY_TRADE_PRODUCTION',						'Domestic',							1),
-	('HD_SEASONING_INDUSTRY_TRADE_CULTURE',							'YieldType',						'YIELD_CULTURE'),
-	('HD_SEASONING_INDUSTRY_TRADE_CULTURE',							'Amount',								2),
-	('HD_SEASONING_INDUSTRY_TRADE_GOLD',								'YieldType',						'YIELD_GOLD'),
-	('HD_SEASONING_INDUSTRY_TRADE_GOLD',								'Amount',								6),
+	('HD_TRANSIT_INDUSTRY_PASTURE_YIELD',								'YieldType',						'YIELD_PRODUCTION,YIELD_GOLD'),
+	('HD_TRANSIT_INDUSTRY_PASTURE_YIELD',								'Amount',								'1,3'),
+	('HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD',						'YieldType',						'YIELD_PRODUCTION,YIELD_GOLD'),
+	('HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD',						'Amount',								'1,3'),
+	('HD_SEASONING_INDUSTRY_GOLD',											'YieldType',						'YIELD_GOLD'),
+	('HD_SEASONING_INDUSTRY_GOLD',											'Amount',								15),
 	('HD_SEAFOOD_INDUSTRY_HARBOR_FOOD',									'YieldTypeToMirror',		'YIELD_GOLD'),
 	('HD_SEAFOOD_INDUSTRY_HARBOR_FOOD',									'YieldTypeToGrant',			'YIELD_FOOD'),
 	('HD_MARINE_PRODUCTS_INDUSTRY_HARBOR_PRODUCTION',		'YieldTypeToMirror',		'YIELD_GOLD'),
@@ -239,6 +235,8 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_ORNAMENTAL_INDUSTRY_APPEAL',										'Amount',								1),
 	('HD_ORNAMENTAL_INDUSTRY_PLOT_YIELD',								'YieldType',						'YIELD_SCIENCE,YIELD_CULTURE'),
 	('HD_ORNAMENTAL_INDUSTRY_PLOT_YIELD',								'Amount',								'1,1'),
+	('HD_BEAST_INDUSTRY_CITY_PROPERTY',									'Key',									'HD_CITY_NEED_COUNT_POSITIVE_AMENITY'),
+	('HD_BEAST_INDUSTRY_CITY_PROPERTY', 								'Amount',								1),
 	('HD_HOUSEHOLD_INDUSTRY_IMPROVEMENT_YIELD',					'YieldType',						'YIELD_PRODUCTION'),
 	('HD_HOUSEHOLD_INDUSTRY_IMPROVEMENT_YIELD',					'Amount',								2);
 
@@ -318,27 +316,27 @@ from HD_Binary_Compress where Exp < 7;
 
 -- 皮革行业
 insert or ignore into HD_IndustryModifiers (Category, ModifierId) select
-	'LEATHER', 'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH'
+	'LEATHER', 'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp || '_ATTACH'
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH', 'MODIFIER_CITY_OWNER_ATTACH_MODIFIER', 'HD_LEATHER_INDUSTRY_BONUS_REQUIREMENTS', 'HD_PLOT_BINARY_COMPRESS_CITY_POSITIVE_AMENITY_' || Exp || '_REQUIREMENTS'
+	'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp || '_ATTACH', 'MODIFIER_CITY_OWNER_ATTACH_MODIFIER', 'HD_LEATHER_INDUSTRY_BONUS_REQUIREMENTS', 'HD_PLOT_BINARY_COMPRESS_CITY_POSITIVE_AMENITY_' || Exp || '_REQUIREMENTS'
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH', 'ModifierId', 'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp
+	'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp || '_ATTACH', 'ModifierId', 'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp, 'MODIFIER_SINGLE_CITY_ADJUST_YIELD_CHANGE', NULL, NULL
+	'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp, 'MODIFIER_SINGLE_CITY_ADJUST_YIELD_CHANGE', NULL, NULL
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp, 'YieldType', 'YIELD_SCIENCE'
+	'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp, 'YieldType', 'YIELD_PRODUCTION'
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_LEATHER_INDUSTRY_CITY_SCIENCE_' || Exp, 'Amount', Amount
+	'HD_LEATHER_INDUSTRY_CITY_PRODUCTION_' || Exp, 'Amount', Amount
 from HD_Binary_Compress where Exp < 7;
 
 -- 燃料行业（适配JNR工业区拓展）
@@ -356,20 +354,28 @@ where exists (select BuildingType from Buildings where BuildingType = 'BUILDING_
 
 -- 珍兽行业
 insert or ignore into HD_IndustryModifiers (Category, ModifierId) select
-	'BEAST', 'HD_BEAST_INDUSTRY_' || DistrictType || '_' || GreatPersonClassType
-from DistrictCorrespondingGPP_HD;
+	'BEAST', 'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH'
+from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_BEAST_INDUSTRY_' || DistrictType || '_' || GreatPersonClassType, 'MODIFIER_SINGLE_CITY_DISTRICTS_ADJUST_GREAT_PERSON_POINTS', 'HD_BEAST_INDUSTRY_BONUS_REQUIREMENTS', 'HD_DISTRICT_IS_' || DistrictType || '_BREATHTAKING_APPEAL_REQUIREMENTS'
-from DistrictCorrespondingGPP_HD;
+	'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH', 'MODIFIER_CITY_OWNER_ATTACH_MODIFIER', 'HD_BEAST_INDUSTRY_BONUS_REQUIREMENTS', 'HD_PLOT_BINARY_COMPRESS_CITY_POSITIVE_AMENITY_' || Exp || '_REQUIREMENTS'
+from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_BEAST_INDUSTRY_' || DistrictType || '_' || GreatPersonClassType, 'GreatPersonClassType', GreatPersonClassType
-from DistrictCorrespondingGPP_HD;
+	'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp || '_ATTACH', 'ModifierId', 'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp
+from HD_Binary_Compress where Exp < 7;
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
+	'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp, 'MODIFIER_SINGLE_CITY_ADJUST_YIELD_CHANGE', NULL, NULL
+from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_BEAST_INDUSTRY_' || DistrictType || '_' || GreatPersonClassType, 'Amount', 4
-from DistrictCorrespondingGPP_HD;
+	'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp, 'YieldType', 'YIELD_SCIENCE'
+from HD_Binary_Compress where Exp < 7;
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+	'HD_BEAST_INDUSTRY_CITY_SCIENCE_' || Exp, 'Amount', Amount
+from HD_Binary_Compress where Exp < 7;
 
 -- 家居行业
 insert or ignore into HD_IndustryModifiers (Category, ModifierId) select
@@ -581,8 +587,8 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_MINTING_CORPORATION_TRADE_GOLD', 											'Amount',										12),
 	('HD_MINTING_CORPORATION_GPP',  														'GreatPersonClassType',			'GREAT_PERSON_CLASS_MERCHANT'),
 	('HD_MINTING_CORPORATION_GPP',  														'Amount',										50),
-	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'YieldType',								'YIELD_GOLD'),
-	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'Amount',										20),
+	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'YieldType',								'YIELD_PRODUCTION, YIELD_FOOD, YIELD_SCIENCE, YIELD_CULTURE, YIELD_GOLD, YIELD_FAITH'),
+	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'Amount',										'20, 20, 20, 20, 20, 20'),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_FOOD',										'YieldType',								'YIELD_FOOD'),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_FOOD',										'Amount',										1),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_GOLD',										'YieldType',								'YIELD_GOLD'),
@@ -1110,8 +1116,21 @@ where CivicType = 'CIVIC_CAPITALISM';
 -- =====================================================================================================================================
 -- 城堡庄园
 -- =====================================================================================================================================
-update Improvements set PrereqCivic = 'CIVIC_FEUDALISM',
-	Housing = 1,
-	SameAdjacentValid = 1,
+update Improvements set
+	PrereqCivic = 'CIVIC_FEUDALISM',
+	RequiresAdjacentBonusOrLuxury = 0,
 	Description = 'LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES'
 where ImprovementType = 'IMPROVEMENT_CHATEAU';
+
+insert or replace into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) values
+	('IMPROVEMENT_CHATEAU', 'YIELD_PRODUCTION', 0);
+
+delete from Improvement_Adjacencies where ImprovementType = 'IMPROVEMENT_CHATEAU' and YieldChangeId in ('Chateau_Bonus_Food', 'Chateau_Luxury_Culture');
+
+insert or replace into Improvement_Adjacencies (ImprovementType, YieldChangeId) values
+	('IMPROVEMENT_CHATEAU', 'HD_Chateau_Monopoly_District_Food'),
+	('IMPROVEMENT_CHATEAU', 'HD_Chateau_Monopoly_District_Production');
+
+insert or replace into Adjacency_YieldChanges (ID, Description, YieldType, YieldChange, OtherDistrictAdjacent, AdjacentWonder) values
+	('HD_Chateau_Monopoly_District_Food',				'Placeholder', 'YIELD_FOOD',				1, 1, 0),
+	('HD_Chateau_Monopoly_District_Production',	'Placeholder', 'YIELD_PRODUCTION',	1, 1, 0);

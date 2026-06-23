@@ -1,22 +1,33 @@
 -- ===========================================================================
 --	City Banner Manager overrides for Monopolies & Corporations
 -- ===========================================================================
+ExposedMembers.DLHD = ExposedMembers.DLHD or {};
+ExposedMembers.DLHD.Utils = ExposedMembers.DLHD.Utils or {};
+Utils = ExposedMembers.DLHD.Utils;
 
--- ===========================================================================
+-- ======================================================================================================================================================
 --	CONSTANTS
--- ===========================================================================
+-- ======================================================================================================================================================
 BANNERTYPE_INDUSTRY = UIManager:GetHash("BANNERTYPE_INDUSTRY");
 BANNERTYPE_CORPORATION = UIManager:GetHash("BANNERTYPE_CORPORATION");
+BANNERTYPE_CHATEAU = UIManager:GetHash("BANNERTYPE_CHATEAU");
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
+local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 
--- ===========================================================================
+local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
+local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
+local CHATEAU_PRODUCTION_RESOURCE_TAG = 'HD_CHATEAU_PRODUCTION_RESOURCE';
+local CHATEAU_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_ENTERTAINMENT_RESOURCE';
+local CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE';
+-- ======================================================================================================================================================
 --	MEMBERS
--- ===========================================================================
-local m_IndustryBannerIM	:table	= InstanceManager:new( "IndustryBanner",	"Anchor", Controls.CityBanners );
-local m_CorporationBannerIM	:table	= InstanceManager:new( "CorporationBanner",	"Anchor", Controls.CityBanners );
-local m_ResourceTypeMap    	:table  = {};
+-- ======================================================================================================================================================
+local m_IndustryBannerIM = InstanceManager:new("IndustryBanner", "Anchor", Controls.CityBanners);
+local m_CorporationBannerIM = InstanceManager:new("CorporationBanner", "Anchor", Controls.CityBanners);
+local m_ChateauBannerIM = InstanceManager:new("ChateauBanner", "Anchor", Controls.CityBanners);
+local m_ResourceTypeMap = {};
 
 -- base function overrides
 local BASE_CityBannerInitializeOtherBannerTypes = CityBanner.InitializeOtherBannerTypes;
@@ -26,9 +37,9 @@ local BASE_OnImprovementAddedToMap = OnImprovementAddedToMap;
 local BASE_Initialize = Initialize;
 local BASE_LateInitialize = LateInitialize;
 
--- ===========================================================================
+-- ======================================================================================================================================================
 -- 建造改良事件
--- ===========================================================================
+-- ======================================================================================================================================================
 function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:number, eOwner:number)
 
 	if eImprovementType == -1 then
@@ -37,56 +48,68 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 	end
 
 	local improvementData:table = GameInfo.Improvements[eImprovementType];
-
 	if improvementData == nil then
 		UI.DataError("No database entry for eImprovementType #"..tostring(eImprovementType).." for ("..tostring(locX)..","..tostring(locY)..") and owner "..tostring(eOwner));
 		return;
 	end
 
-	-- Check if the improvement is an Industry or Corporation
+	-- 判断是否是行业/公司
 	local bIsIndustry:boolean = false;
 	local bIsCorporation:boolean = false;
 	local improvementDataMODE:table = GameInfo.Improvements_MODE[improvementData.Hash];
-	if (improvementDataMODE ~= nil) then
-		if (improvementDataMODE.Industry) then
+	if improvementDataMODE ~= nil then
+		if improvementDataMODE.Industry then
 			bIsIndustry = true;
-		elseif (improvementDataMODE.Corporation) then
+		elseif improvementDataMODE.Corporation then
 			bIsCorporation = true;
 		end
 	end
 
+	-- 判断是否是法国城堡庄园
+	local isChateau = false
+	if eImprovementType == CHATEAU_INDEX then
+		isChateau = true;
+	end
+
 	-- we're only here for industries and corporations
-	if ( not bIsIndustry and not bIsCorporation ) then
+	if not bIsIndustry
+		and not bIsCorporation
+		and not isChateau
+	then
 		BASE_OnImprovementAddedToMap(locX, locY, eImprovementType, eOwner);
 		return;
 	end
 
-	local pPlayer:table = Players[eOwner];
-	local localPlayerID:number = Game.GetLocalPlayer();
-	if (pPlayer ~= nil) then
+	local player = Players[eOwner];
+	if player ~= nil then
 		local plotID = Map.GetPlotIndex(locX, locY);
-		if (plotID ~= nil) then
-			local miniBanner = GetMiniBanner( eOwner, plotID );
-			if (miniBanner == nil) then
-				if ( bIsIndustry ) then
+		if plotID ~= nil then
+			local miniBanner = GetMiniBanner(eOwner, plotID);
+			if miniBanner == nil then
+				if bIsIndustry then
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					-- we're passing the plotID as the districtID argument because we need the location of the improvement
-					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_INDUSTRY );
-				elseif ( bIsCorporation ) then
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_INDUSTRY);
+				elseif bIsCorporation then
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					-- we're passing the plotID as the districtID argument because we need the location of the improvement
-					AddMiniBannerToMap( eOwner, cityID, plotID, BANNERTYPE_CORPORATION );
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_CORPORATION);
+				elseif isChateau then
+					-- 城堡庄园
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_CHATEAU);
 				end
 			end
 		end
 	end
 end
 
--- ===========================================================================
+-- ======================================================================================================================================================
 -- 行业&公司
--- ===========================================================================
+-- ======================================================================================================================================================
 function CityBanner:CreateIndustryBanner()
 	-- Set the appropriate instance factory (mini banner one) for this flag...
 	self.m_InstanceManager = m_IndustryBannerIM;
@@ -104,7 +127,7 @@ function CityBanner:CreateIndustryBanner()
 		local toolTipStr:string = Locale.Lookup("LOC_IMPROVEMENT_INDUSTRY_TYPE_NAME", Locale.Lookup("LOC_" .. resName .. "_NAME")) .. GetIndustryEffect(self.m_PlotX, self.m_PlotY);
 
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
-		self.m_Instance.IndustryButton:RegisterCallback(Mouse.eLClick, function() OnClickInstanceIcon(self.m_PlotX, self.m_PlotY); end);
+		self.m_Instance.IndustryButton:RegisterCallback(Mouse.eLClick, function() OnClickIndustryCorporationInstanceIcon(self.m_PlotX, self.m_PlotY); end);
 	end
 end
 
@@ -156,7 +179,7 @@ function CityBanner:CreateCorporationBanner()
 		toolTipStr = toolTipStr .. GetCorporationEffect(self.m_PlotX, self.m_PlotY);
 
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
-		self.m_Instance.CorporationButton:RegisterCallback(Mouse.eLClick, function() OnClickInstanceIcon(self.m_PlotX, self.m_PlotY); end);
+		self.m_Instance.CorporationButton:RegisterCallback(Mouse.eLClick, function() OnClickIndustryCorporationInstanceIcon(self.m_PlotX, self.m_PlotY); end);
 	end
 end
 
@@ -180,48 +203,6 @@ function CityBanner:UpdateCorporationBanner()
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
 	self.m_Instance.CorporationRing:SetHide(bHidden);
-end
-
--- ===========================================================================
--- if this is one of our banners, create it now
-function CityBanner:InitializeOtherBannerTypes(bannerType : number)
-	if (bannerType == BANNERTYPE_INDUSTRY) then
-		self:CreateIndustryBanner();
-		self:UpdateIndustryBanner();
-	elseif (bannerType == BANNERTYPE_CORPORATION) then
-		self:CreateCorporationBanner();
-		self:UpdateCorporationBanner();
-	else	-- not ours, continue the chain
-		BASE_CityBannerInitializeOtherBannerTypes(bannerType);
-	end
-end
-
--- ===========================================================================
--- Handle color updates for our banner types
-function CityBanner:UpdateColorOtherBannerTypes(backColor : number)
-	if (self.m_Type == BANNERTYPE_INDUSTRY) then
-		if self.m_Instance.Banner_Base ~= nil then
-			self.m_Instance.Banner_Base:SetColor( backColor );
-		end
-	elseif (self.m_Type == BANNERTYPE_CORPORATION) then
-		if self.m_Instance.Banner_Base ~= nil then
-			self.m_Instance.Banner_Base:SetColor( backColor );
-		end
-	else
-		BASE_UpdateColorOtherBannerTypes();
-	end
-end
-
--- ===========================================================================
--- Handle updates for our banner types
-function CityBanner:UpdateOtherImprovementBannerTypes()
-	if (self.m_Type == BANNERTYPE_INDUSTRY) then
-		self:UpdateIndustryBanner();
-	elseif (self.m_Type == BANNERTYPE_CORPORATION) then
-		self:UpdateCorporationBanner();
-	else
-		BASE_UpdateOtherImprovementBannerTypes();
-	end
 end
 
 -- ===========================================================================
@@ -255,7 +236,6 @@ end
 
 -- ===========================================================================
 -- 获取行业/公司效果文本
-local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 function GetIndustryEffect(x, y)
 	local plot = Map.GetPlot(x, y);
 	if plot then
@@ -316,7 +296,6 @@ function GetIndustryEffect(x, y)
 	return "";
 end
 
-local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 function GetCorporationEffect(x, y)
 	local plot = Map.GetPlot(x, y);
 	if plot then
@@ -473,7 +452,7 @@ end
 
 -- ===========================================================================
 -- 按钮点击事件 唤出自选类别界面
-function OnClickInstanceIcon(x, y)
+function OnClickIndustryCorporationInstanceIcon(x, y)
 	local plot = Map.GetPlot(x, y);
 	if plot then
 		local playerId = plot:GetOwner();
@@ -583,6 +562,7 @@ function OnClickInstanceIcon(x, y)
 end
 
 -- ===========================================================================
+-- 行业公司类别选择函数
 function CallIndustrySelectEvent(param)
 	local playerId = param.PlayerId;
 	local cityName = param.CityName;
@@ -633,6 +613,279 @@ function CallCorporationSelectEvent(param)
 	LuaEvents.HD_TriggerCustomEventPanel_Light.Call(sendParam);
 end
 
+-- ======================================================================================================================================================
+-- 城堡庄园
+-- ======================================================================================================================================================
+function CityBanner:CreateChateauBanner()
+	self.m_InstanceManager = m_ChateauBannerIM;
+	self.m_Instance = self.m_InstanceManager:GetInstance();
+
+	self.m_PlotX, self.m_PlotY = Map.GetPlotLocation(self.m_DistrictID);
+
+	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+
+	self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_CHATEAU");
+	self.m_IsImprovementBanner = true;
+	
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_CHATEAU_NAME") .. '[NEWLINE][NEWLINE]' .. GetChateauEffect(self.m_PlotX, self.m_PlotY);
+	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	self.m_Instance.ChateauButton:RegisterCallback(Mouse.eLClick, function() OnClickChateauInstanceIcon(self.m_PlotX, self.m_PlotY); end);
+end
+
+-- ===========================================================================
+function CityBanner:UpdateChateauBanner()
+	local pLocalPlayerVis:table = PlayersVisibility[Game.GetLocalPlayer()];
+	local bHidden:boolean = true;
+	if (pLocalPlayerVis ~= nil) then
+		if pLocalPlayerVis:IsVisible(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_VISIBLE;
+			bHidden = false;
+		elseif pLocalPlayerVis:IsRevealed(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_REVEALED;
+		else
+			self.m_FogState = PLOT_HIDDEN;
+		end
+	end
+
+	self:SetFogState( self.m_FogState );
+	self.m_Instance.Banner_Base:SetHide(bHidden);
+	self.m_Instance.Icon:SetHide(bHidden);
+end
+
+-- ===========================================================================
+-- 按钮点击事件 唤出城堡庄园选择资源界面
+function OnClickChateauInstanceIcon(x, y)
+	local plot = Map.GetPlot(x, y);
+	if plot then
+		local playerId = plot:GetOwner();
+		if playerId ~= Game.GetLocalPlayer() then return; end
+
+		local city = Cities.GetPlotPurchaseCity(plot);
+  	if not city then return; end
+
+		-- 选择生产资源
+		local productionResourceIndex = plot:GetProperty(CHATEAU_PRODUCTION_RESOURCE_TAG) or -1;
+		if productionResourceIndex == -1 then
+			local resourceMap = Utils.GetCityPlotsResources(playerId, city:GetID(), {
+				ClassificationList = {'RESOURCE_CLASSIFICATION_HD_CROPS', 'RESOURCE_CLASSIFICATION_HD_FRUIT', 'RESOURCE_CLASSIFICATION_HD_BREWING', 'RESOURCE_CLASSIFICATION_HD_BEVERAGE'},
+				NeedImproved = true
+			});
+			local resourceList = {};
+			for resourceType, has in pairs(resourceMap) do
+				if has == true then
+					table.insert(resourceList, {
+						ResourceType = resourceType,
+						DetailParam = {
+							IndustryEffect = true
+						}
+					})
+				end
+			end
+
+			local param = {
+        PlayerId = playerId,
+        CityName = city:GetName(),
+        Type = 'PRODUCTION_RESOURCE',
+        X = x,
+        Y = y,
+        ResourceList = resourceList
+      };
+			CallChateauSelectResourceEvent(param);
+		else
+			-- 选择娱乐资源
+			local entertainmentResourceIndex = plot:GetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG) or -1;
+			local canChooseEntertainmentResource = city:GetProperty(CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG) or 0;
+			if entertainmentResourceIndex == -1 and canChooseEntertainmentResource > 0 then
+				local resourceMap = Utils.GetCityPlotsResources(playerId, city:GetID(), {
+					ClassificationList = {'RESOURCE_CLASSIFICATION_HD_CLOTH', 'RESOURCE_CLASSIFICATION_HD_ART', 'RESOURCE_CLASSIFICATION_HD_DECORATION', 'RESOURCE_CLASSIFICATION_HD_ORNAMENTAL'},
+					NeedImproved = true
+				});
+
+				local resourceList = {};
+				for resourceType, has in pairs(resourceMap) do
+					if has == true then
+						table.insert(resourceList, {
+							ResourceType = resourceType,
+							DetailParam = {
+								IndustryEffect = true
+							}
+						})
+					end
+				end
+
+				local param = {
+					PlayerId = playerId,
+					CityName = city:GetName(),
+					Type = 'ENTERTAINMENT_RESOURCE',
+					X = x,
+					Y = y,
+					ResourceList = resourceList
+				};
+				CallChateauSelectResourceEvent(param);
+			end
+		end
+	end
+end
+
+function CallChateauSelectResourceEvent(param)
+	local playerId = param.PlayerId;
+	local cityName = param.CityName;
+	local resourceList = param.ResourceList;
+	local x = param.X;
+	local y = param.Y;
+
+	local sendParam = {
+		PlayerId = playerId,
+		ResourceList = resourceList,
+		X = x,
+		Y = y,
+		ScriptParam = {
+			Type = param.Type
+		}
+	}
+
+	if param.Type == 'PRODUCTION_RESOURCE' then
+		sendParam.HeaderTitle = Locale.Lookup('LOC_CHATEAU_SELECT_RESOURCE_TITLE', cityName);
+		sendParam.SubheaderIcon = 'ICON_IMPROVEMENT_CHATEAU';
+		sendParam.SubheaderLabel = Locale.Lookup('LOC_CHATEAU_SELECT_PRODUCTION_RESOURCE_TEXT', cityName);
+	elseif param.Type == 'ENTERTAINMENT_RESOURCE' then
+		sendParam.HeaderTitle = Locale.Lookup('LOC_CHATEAU_SELECT_RESOURCE_TITLE', cityName);
+		sendParam.SubheaderIcon = 'ICON_IMPROVEMENT_CHATEAU';
+		sendParam.SubheaderLabel = Locale.Lookup('LOC_CHATEAU_SELECT_ENTERTAINMENT_RESOURCE_TEXT', cityName);
+	end
+	
+	LuaEvents.HD_TriggerResourceSelectionPanel.Call(sendParam);
+end
+
+function RefreshChateauBanner(param)
+	local playerId = param.PlayerId;
+	local plotId = Map.GetPlotIndex(param.X, param.Y);
+	if playerId == Game.GetLocalPlayer() and plotId > 0 then
+		local banner = GetMiniBanner(playerId, plotId);
+		if banner ~= nil then
+			banner:UpdateChateauText();
+		end
+	end
+end
+
+function CityBanner:UpdateChateauText()
+	if self.m_Type == BANNERTYPE_CHATEAU then
+		print('UpdateChateauText');
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_CHATEAU_NAME") .. '[NEWLINE][NEWLINE]' .. GetChateauEffect(self.m_PlotX, self.m_PlotY);
+		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	end
+end
+
+function GetChateauEffect(x, y)
+	local plot = Map.GetPlot(x, y);
+	if plot then
+		local city = Cities.GetPlotPurchaseCity(plot);
+  	if not city then return; end
+		local canChooseEntertainmentResource = city:GetProperty(CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG) or 0;
+
+		local strList = {};
+		-- 生产资源
+		local productionResourceIndex = plot:GetProperty(CHATEAU_PRODUCTION_RESOURCE_TAG) or -1;
+		local productionResourceInfo = GameInfo.Resources[productionResourceIndex];
+		if productionResourceInfo then
+			table.insert(strList, Locale.Lookup('LOC_CHATEAU_PRODUCTION_RESOURCE_TEXT', '[ICON_' .. productionResourceInfo.ResourceType .. ']', productionResourceInfo.Name));
+		else
+			table.insert(strList, Locale.Lookup('LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT'));
+		end
+		-- 娱乐资源
+    local entertainmentResourceIndex = plot:GetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG) or -1;
+		local entertainmentResourceInfo = GameInfo.Resources[entertainmentResourceIndex];
+		if entertainmentResourceInfo then
+			table.insert(strList, Locale.Lookup('LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT', '[ICON_' .. entertainmentResourceInfo.ResourceType .. ']', entertainmentResourceInfo.Name));
+		elseif productionResourceInfo and canChooseEntertainmentResource > 0 then
+			table.insert(strList, Locale.Lookup('LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT'));
+		end
+		-- 行业特效
+		local effectList = {};
+		for row in GameInfo.HD_Monopoly_Categories() do
+      if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) == 1 then
+        table.insert(effectList, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. row.IndustryEffect .. "_DESCRIPTION"))
+      end
+    end
+		if #effectList > 0 then
+			local effectStr = '';
+			for i, str in ipairs(effectList) do
+				if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
+				effectStr = effectStr .. str;
+			end
+			table.insert(strList, Locale.Lookup('LOC_CHATEAU_INDUSTRY_TEXT', effectStr));
+		end
+		
+		local result = '';
+		if #strList > 0 then
+			for i, str in ipairs(strList) do
+				if i > 1 then result = result .. "[NEWLINE]"; end
+				result = result .. str;
+			end
+		end
+
+		return result;
+	end
+
+	return "";
+end
+
+-- ======================================================================================================================================================
+-- 通用函数
+-- ======================================================================================================================================================
+-- if this is one of our banners, create it now
+function CityBanner:InitializeOtherBannerTypes(bannerType : number)
+	if bannerType == BANNERTYPE_INDUSTRY then
+		self:CreateIndustryBanner();
+		self:UpdateIndustryBanner();
+	elseif bannerType == BANNERTYPE_CORPORATION then
+		self:CreateCorporationBanner();
+		self:UpdateCorporationBanner();
+	elseif bannerType == BANNERTYPE_CHATEAU then
+		-- 城堡庄园
+		self:CreateChateauBanner();
+		self:UpdateChateauBanner();
+	else
+		BASE_CityBannerInitializeOtherBannerTypes(bannerType);
+	end
+end
+
+-- ===========================================================================
+-- Handle color updates for our banner types
+function CityBanner:UpdateColorOtherBannerTypes(backColor : number)
+	if self.m_Type == BANNERTYPE_INDUSTRY then
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
+	elseif self.m_Type == BANNERTYPE_CORPORATION then
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
+	elseif self.m_Type == BANNERTYPE_CHATEAU then
+		-- 城堡庄园
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
+	else
+		BASE_UpdateColorOtherBannerTypes();
+	end
+end
+
+-- ===========================================================================
+-- Handle updates for our banner types
+function CityBanner:UpdateOtherImprovementBannerTypes()
+	if self.m_Type == BANNERTYPE_INDUSTRY then
+		self:UpdateIndustryBanner();
+	elseif self.m_Type == BANNERTYPE_CORPORATION then
+		self:UpdateCorporationBanner();
+	elseif self.m_Type == BANNERTYPE_CHATEAU then
+		-- 城堡庄园
+		self:UpdateChateauBanner();
+	else
+		BASE_UpdateOtherImprovementBannerTypes();
+	end
+end
+
 -- ===========================================================================
 function LateInitialize()
 	BASE_LateInitialize();
@@ -654,4 +907,7 @@ function Initialize()
 	LuaEvents.HD_CallIndustrySelectEvent.Add(CallIndustrySelectEvent);
 	LuaEvents.HD_CallCorporationSelectEvent.Add(CallCorporationSelectEvent);
 	LuaEvents.HD_RefreshIndustryCorporationBanner.Add(RefreshIndustryCorporationBanner);
+	
+	LuaEvents.HD_CallChateauSelectResourceEvent.Add(CallChateauSelectResourceEvent);
+	LuaEvents.HD_RefreshChateauBanner.Add(RefreshChateauBanner);
 end

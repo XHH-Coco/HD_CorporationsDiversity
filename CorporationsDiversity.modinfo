@@ -187,6 +187,11 @@
       <Properties><LoadOrder>160000</LoadOrder></Properties>
       <File>UI/BRSPage_Resources.lua</File>
     </ImportFiles>
+    <!-- 自定义界面 -->
+    <AddUserInterfaces id="Monopolies_Custom_Interface" criteria="Monopolies_Mode_Expansion2">
+      <Properties><Context>InGame</Context></Properties>
+      <File>UI/ResourceSelection.xml</File>
+    </AddUserInterfaces>
 
     <!-- Icon -->
     <UpdateIcons id="Monopolies_Icon" criteria="Monopolies_Mode_Expansion2">
@@ -228,7 +233,7 @@
       <File>Database/Theming.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Last" criteria="Monopolies_Mode_Expansion2">
-      <Properties><LoadOrder>30000</LoadOrder></Properties>
+      <Properties><LoadOrder>30001</LoadOrder></Properties>
       <File>Database/Improvements_Late.sql</File>
       <File>Database/CustomEvent.sql</File>
     </UpdateDatabase>
@@ -330,6 +335,8 @@
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
     <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/BRSPage_Resources.lua</File>
+    <File>UI/ResourceSelection.xml</File>
+    <File>UI/ResourceSelection.lua</File>
     <!-- Database -->
     <File>Database/Improvements.sql</File>
     <File>Database/Improvements_Late.sql</File>

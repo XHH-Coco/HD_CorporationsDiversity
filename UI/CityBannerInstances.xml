@@ -245,6 +245,19 @@
 	  </ZoomAnchor>
 	</Instance>
 
+	<!-- 城堡庄园 -->
+	<Instance	Name="ChateauBanner">
+	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
+      <Container ID="ChateauBannerContainer" Anchor="C,C" Size="88,34">
+        <!-- Banner Background -->
+        <Image ID="Banner_Base" Anchor="C,C" Size="50,50" Texture="BannerMonopolies_Combo_Base_Combo"/>
+        <Image ID="Icon" Anchor="C,C" Size="34,34" Texture="AdvisorRec22" />
+        <Image ID="ChateauRing" Anchor="C,C" Size="48,48" Texture="Monopolies_GoldBorder" Hidden="1"/>
+        <Button ID="ChateauButton" Anchor="C,C" Size="34,34"/>
+      </Container>
+	  </ZoomAnchor>
+	</Instance>
+
 	<!-- Encampment Minibanner -->
 	<Instance	Name="EncampmentBanner">
 		<ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">

@@ -1,6 +1,14 @@
 insert or replace into EnglishText (Tag, Text) values
   -- 城堡庄园
-  ("LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",			"+2 [ICON_FOOD] Food, +1 [ICON_Culture] Culture and +1 [ICON_HOUSING] Housing. +1 [ICON_FOOD] Food from every adjacent Bonus resource. +2 [ICON_CULTURE] Culture from every adjacent Luxury resource and Wonder. Provide an extra copy for each adjacent improved Plantation, Farm or Lumber Mill Luxury resource. For each type of adjacent improved Plantation, Farm or Lumber Mill Luxury resource, Château receives its Industry bonus. +1 Appeal to adjacent tiles. Can only be built one per city. Must be placed adjacent to a Bonus or Luxury resource. "),
+  ("LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",			"+2 [ICON_FOOD] Food, +1 [ICON_Culture] Culture and +1 [ICON_HOUSING] Housing. +1 [ICON_FOOD] Food and [ICON_PRODUCTION] Production from every adjacent district. +2 [ICON_CULTURE] Culture from every adjacent Wonder. +1 [ICON_CULTURE] Culture from every Château in your empire. +1 Appeal to adjacent tiles. [NEWLINE]Upon construction, you may choose an improved Resource in this city of Crops, Fruit, Brewing or Beverage Usage as the ""[COLOR:Green]Production Resource[ENDCOLOR]"" for this Château. When the city has built a Medieval or later Wonder, you may choose an improved Resource in this city of Cloth, Art, Decoration or Ornamental Usage as the ""[COLOR:219,112,147,255]Entertainment Resource[ENDCOLOR]"" for this Château. The city receives the industrial bonuses of the selected resource; if a luxury resource is chosen, an additional copy of that resource is provided. [NEWLINE]Can only be built one per city."),
+  ("LOC_CHATEAU_SELECT_RESOURCE_TITLE",                   "{1_City}: Château"),
+  ("LOC_CHATEAU_SELECT_PRODUCTION_RESOURCE_TEXT",         "Manorial economy is a self-sustaining agricultural system: serfs cultivate crops and fruits in the fields, artisans process these harvests into bread, jam, or beverages, while the lord, as the highest ruler of the estate, enjoys a comfortable life... [NEWLINE]Today, a local landowner in {1_CityName} has just established a Château on his hereditary estate and is preparing to send people to collect usable seeds from nearby homes for the first year's cultivation."),
+  ("LOC_CHATEAU_SELECT_ENTERTAINMENT_RESOURCE_TEXT",      "In a luxurious Château, elegant nobles dressed in opulent attire and adorned with exquisite jewelry either admired renowned paintings and sculptures collected from around the world in magnificent exhibition halls, or savored tea and coffee in the courtyard filled with rare and exotic flowers. [NEWLINE]Over generations of lordship, this Château in {1_CityName} has accumulated abundant resources and immense wealth. The lord even enslaved serfs to build him a grand medieval church. Now he begins to wonder: what luxuries should he acquire to truly display his wealth and status?"),
+  ("LOC_CHATEAU_PRODUCTION_RESOURCE_TEXT",                "[COLOR:Green]Production Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
+  ("LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",             "[COLOR:Civ6Red]Click this icon to select Production Resource.[ENDCOLOR]"),
+  ("LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",             "[COLOR:219,112,147,255]Entertainment Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
+  ("LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",          "[COLOR:Civ6Red]Click this icon to select Entertainment Resource.[ENDCOLOR]"),
+  ("LOC_CHATEAU_INDUSTRY_TEXT",                           "[NEWLINE]Industry Bonuses: [NEWLINE]{1_Effect}"),
   -- 行业
   ("LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",                "An Industry dedicated to a specific resource grants unique bonuses to its city based on the resource's usages. [NEWLINE][NEWLINE]Upon construction, you may choose one of two possible usages for the resource and activate the corresponding bonus. Once the city builds either a Tier 3 Commercial Hub building or a Tier 2 Harbor building, you will then activate the corresponding bonus of the other usage."),
   -- 公司
@@ -16,7 +24,15 @@ insert or replace into EnglishText (Tag, Text) values
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   -- 城堡庄园
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",     "+2 [ICON_FOOD] 食物、+1 [ICON_Culture] 文化值、+1 [ICON_HOUSING] 住房。每相邻1个加成资源+1 [ICON_FOOD] 食物，每相邻1个奢侈资源或奇观+2 [ICON_Culture] 文化值。额外提供一份相邻的且已改良的种植园、农场或伐木场奢侈资源。获得每种与城堡庄园相邻且已改良的种植园、农场或伐木场奢侈资源的对应行业效果。为相邻单元格+1魅力。每个城市仅限建造一座，且必须建在加成或奢侈品资源旁。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CHATEAU_DESCRIPTION_MONOPOLIES",     "+2 [ICON_FOOD] 食物、+1 [ICON_HOUSING] 住房。每相邻1个区域+1 [ICON_FOOD] 食物和 [ICON_PRODUCTION] 生产力，每相邻1个奇观+2 [ICON_Culture] 文化值。境内每有一座城堡庄园+1 [ICON_CULTURE] 文化值。为相邻单元格+1魅力。[NEWLINE]建成后，可以从本城改良的庄稼、水果、酿造或饮料资源中选择一个作为该城堡庄园的“[COLOR:Green]生产资源[ENDCOLOR]”；当城市拥有一座中世纪或以后的奇观后，可以从本城改良的服装、艺术、饰品或花木资源中选择一个作为该城堡庄园的“[COLOR:219,112,147,255]娱乐资源[ENDCOLOR]”。该城市获得被选中的资源的行业效果；若选中的为奢侈资源，则额外提供一份该资源。[NEWLINE]每个城市仅限建造一座。"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_SELECT_RESOURCE_TITLE",                  "{1_City}建立了城堡庄园"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_SELECT_PRODUCTION_RESOURCE_TEXT",        "庄园经济是一种以农业为主的自给自足的经济模式：农奴们在田野间种植庄稼和水果，工匠们负责将这些农作物加工成面包、果酱或饮品，而领主作为庄园的最高统治者则过着优渥的生活……[NEWLINE]现今，{1_CityName}当地的地主在他的世袭领地中刚刚建立起一座城堡庄园，他正准备派人从周围的民居征收一些可用的种子，作为庄园里第一年的耕种作物。"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_SELECT_ENTERTAINMENT_RESOURCE_TEXT",     "在豪华的城堡庄园里，优雅的贵族们穿着奢华的礼服，戴着精致的珠宝，或是在金碧辉煌的展厅里品鉴着从各地收集来的名画和雕塑，或是在种满奇花异草的庭院中品味茶和咖啡。[NEWLINE]经过几代领主的经营，{1_CityName}的城堡庄园已经积累了丰饶的物资和无数的财富。领主甚至役使农奴们为他建造起了一座宏伟的中世纪教堂。他开始思考，应该用哪些奢侈品来彰显他的财富与地位呢？"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_PRODUCTION_RESOURCE_TEXT",               "[COLOR:Green]生产资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",            "[COLOR:Civ6Red]点击图标选择生产资源。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",            "[COLOR:219,112,147,255]娱乐资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",         "[COLOR:Civ6Red]点击图标选择娱乐资源。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_INDUSTRY_TEXT",                          "[NEWLINE]行业效果：[NEWLINE]{1_Effect}"),
   -- 行业
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",               "致力于一种特定资源的行业，根据资源的用途为其所在城市带来独特加成效果。[NEWLINE][NEWLINE]建成时，可从资源的两种用途中择一，激活该用途所对应的加成效果。当所在城市建成商业中心三级建筑或港口二级建筑后，激活另一种用途所对应的加成效果。"),
   -- 公司
@@ -35,5 +51,3 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 离岸油轮
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME",         "离岸油轮"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",  "只能建造在有奢侈品资源或战略资源的无主水域单元格上。将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。");
-  
- 

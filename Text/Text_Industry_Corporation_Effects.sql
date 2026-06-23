@@ -18,10 +18,10 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_BEVERAGE_BONUS_DESCRIPTION",                   "+0.5 [ICON_SCIENCE] Science and [ICON_CULTURE] Culture from each [ICON_CITIZEN] Citizen in this city."),
   ("LOC_CORPORATION_HD_BEVERAGE_BONUS_DESCRIPTION",                "+25% [ICON_GREATPERSON] Great Person points in all cities."),
   -- 油料
-  ("LOC_INDUSTRY_HD_OIL_BONUS_DESCRIPTION",                        "+10% [ICON_Production] Production in this city."),
+  ("LOC_INDUSTRY_HD_OIL_BONUS_DESCRIPTION",                        "+1 [ICON_Production] Production from each [ICON_CITIZEN] Citizen in this city."),
   ("LOC_CORPORATION_HD_OIL_BONUS_DESCRIPTION",                     "Domestic [ICON_TRADEROUTE] Trade Routes provide +4 [ICON_FOOD] Food and +6 [ICON_GOLD] Gold."),
   -- 皮革
-  ("LOC_INDUSTRY_HD_LEATHER_BONUS_DESCRIPTION",                    "This city gains [ICON_Science] Science equal to its positive [ICON_AMENITIES] Amenities."),
+  ("LOC_INDUSTRY_HD_LEATHER_BONUS_DESCRIPTION",                    "This city gains [ICON_Production] Production equal to its positive [ICON_AMENITIES] Amenities."),
   ("LOC_CORPORATION_HD_LEATHER_BONUS_DESCRIPTION",                 "Domestic [ICON_TRADEROUTE] Trade Routes provide +4 [ICON_PRODUCTION] Production and +6 [ICON_GOLD] Gold."),
   -- 服装
   ("LOC_INDUSTRY_HD_CLOTH_BONUS_DESCRIPTION",                      "Each Tier of buildings in Commercial Hub district in this city provides +1 [ICON_CULTURE] Culture and +3 [ICON_GOLD] Gold to cities and Neighborhood districts within 6 tiles."),
@@ -43,16 +43,16 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_MINTING_BONUS_DESCRIPTION",                    "+1 [ICON_TRADEROUTE] Trade Route capacity. +100% adjacency bonus for the Commercial Hub in this city."),
   ("LOC_CORPORATION_HD_MINTING_BONUS_DESCRIPTION",                 "All [ICON_TRADEROUTE] Trade Routes provide +12 [ICON_Gold] Gold. +50% accumulation rate for [ICON_GREATMERCHANT] Great Merchant points."),
   -- 运载
-  ("LOC_INDUSTRY_HD_TRANSIT_BONUS_DESCRIPTION",                    "Domestic [ICON_TRADEROUTE] Trade Routes ending in this city provide +2 [ICON_FOOD] Food and [ICON_Production] Production."),
+  ("LOC_INDUSTRY_HD_TRANSIT_BONUS_DESCRIPTION",                    "+1 [ICON_Production] Production and +3 [ICON_Gold] Gold to Pastures and Commercial Improvements within 6 tiles."),
   ("LOC_CORPORATION_HD_TRANSIT_BONUS_DESCRIPTION",                 "Domestic Transportation Improvements provide a standard adjacency bonus to adjacent districts."),
   -- 调料
-  ("LOC_INDUSTRY_HD_SEASONING_BONUS_DESCRIPTION",                  "International [ICON_TRADEROUTE] Trade Routes originating from this city provide +2 [ICON_CULTURE] Culture and +6 [ICON_Gold] Gold."),
-  ("LOC_CORPORATION_HD_SEASONING_BONUS_DESCRIPTION",               "+20% [ICON_Gold] Gold yield from international [ICON_TRADEROUTE] Trade Routes."),
+  ("LOC_INDUSTRY_HD_SEASONING_BONUS_DESCRIPTION",                  "+15% [ICON_Gold] Gold to this city."),
+  ("LOC_CORPORATION_HD_SEASONING_BONUS_DESCRIPTION",               "+20% yields from international [ICON_TRADEROUTE] Trade Routes."),
   -- 海鲜
   ("LOC_INDUSTRY_HD_SEAFOOD_BONUS_DESCRIPTION",                    "Harbor district in this city provides [ICON_FOOD] Food equal to its adjacency bonus."),
   ("LOC_CORPORATION_HD_SEAFOOD_BONUS_DESCRIPTION",                 "+1 [ICON_FOOD] Food and +3 [ICON_Gold] Gold to all districts and Wonders adjacent to water or on water area."),
   -- 海货
-  ("LOC_INDUSTRY_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",            "Harbor district in this city provides [ICON_Production] equal to its adjacency bonus."),
+  ("LOC_INDUSTRY_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",            "Harbor district in this city provides [ICON_Production] Production equal to its adjacency bonus."),
   ("LOC_CORPORATION_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",         "+5% [ICON_Science] Science to cities built adjacent to water area."),
   -- 海兽
   ("LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "Maritime Improvements in this city provide +1 [ICON_SCIENCE] Science and +1 [ICON_CULTURE] Culture."),
@@ -76,7 +76,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_ORNAMENTAL_BONUS_DESCRIPTION",                 "+1 Appeal to tiles in this city. Breathtaking tiles in this city provide +1 [ICON_Science] Science and [ICON_CULTURE] Culture."),
   ("LOC_CORPORATION_HD_ORNAMENTAL_BONUS_DESCRIPTION",              "Districts adjacent to Landscape Improvements receive +50% adjacency bonus. +200% [ICON_Tourism] Tourism from Improvements and National Parks in all cities."),
   -- 珍兽
-  ("LOC_INDUSTRY_HD_BEAST_BONUS_DESCRIPTION",                      "Districts in this city on Breathtaking tiles provide +4 corresponding [ICON_GREATPERSON] Great Person points."),
+  ("LOC_INDUSTRY_HD_BEAST_BONUS_DESCRIPTION",                      "This city gains [ICON_Science] Science equal to its positive [ICON_AMENITIES] Amenities."),
   ("LOC_CORPORATION_HD_BEAST_BONUS_DESCRIPTION",                   "+50% regional yields from Entertainment Complex buildings and Wonders in all cities. Cities with Entertainment Complex district receive +100% [ICON_Tourism] Tourism from improvements, Wonders, and National Parks in its city."),
   -- 家居
   ("LOC_INDUSTRY_HD_HOUSEHOLD_BONUS_DESCRIPTION",                  "City Center buildings, Neighborhood buildings and Residential Improvements in this city provide +2 [ICON_Production] Production."),
@@ -111,10 +111,10 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BEVERAGE_BONUS_DESCRIPTION",                   "本城的每位 [ICON_CITIZEN] 公民+0.5 [ICON_SCIENCE] 科技值和 [ICON_CULTURE] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_BEVERAGE_BONUS_DESCRIPTION",                "所有城市+25% [ICON_GREATPERSON] 伟人点数。"),
   -- 油料
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_OIL_BONUS_DESCRIPTION",                        "本城+10% [ICON_Production] 生产力。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_OIL_BONUS_DESCRIPTION",                        "本城的每位 [ICON_CITIZEN] 公民+1 [ICON_Production] 生产力。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_OIL_BONUS_DESCRIPTION",                     "国内 [ICON_TRADEROUTE] 贸易路线+4 [ICON_FOOD] 食物和+6 [ICON_GOLD] 金币。"),
   -- 皮革
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_LEATHER_BONUS_DESCRIPTION",                    "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_Science] 科技值。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_LEATHER_BONUS_DESCRIPTION",                    "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_Production] 生产力。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_LEATHER_BONUS_DESCRIPTION",                 "国内 [ICON_TRADEROUTE] 贸易路线+4 [ICON_PRODUCTION] 生产力和+6 [ICON_GOLD] 金币。"),
   -- 服装
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CLOTH_BONUS_DESCRIPTION",                      "本城的每级商业中心建筑为6个单元格内的城市和社区+1 [ICON_CULTURE] 文化值和+3 [ICON_GOLD] 金币。"),
@@ -136,11 +136,11 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_MINTING_BONUS_DESCRIPTION",                    "+1 [ICON_TRADEROUTE] 贸易路线容量。本城的商业中心+100%相邻加成。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_MINTING_BONUS_DESCRIPTION",                 "所有 [ICON_TRADEROUTE] 贸易路线+12 [ICON_Gold] 金币。玩家的 [ICON_GREATMERCHANT] 大商人点数积累速度+50%。"),
   -- 运载
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_TRANSIT_BONUS_DESCRIPTION",                    "以本城为目的地的国内 [ICON_TRADEROUTE] 贸易路线+2 [ICON_FOOD] 食物和 [ICON_Production] 生产力。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_TRANSIT_BONUS_DESCRIPTION",                    "6个单元格内的牧场和贸易往来改良+1 [ICON_Production] 生产力和+3 [ICON_Gold] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_TRANSIT_BONUS_DESCRIPTION",                 "境内的交通设施为相邻的区域提供标准相邻加成。"),
   -- 调料
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEASONING_BONUS_DESCRIPTION",                  "本城出发的国际 [ICON_TRADEROUTE] 贸易路线+2 [ICON_CULTURE] 文化值和+6 [ICON_Gold] 金币。"),
-  ("zh_Hans_CN",  "LOC_CORPORATION_HD_SEASONING_BONUS_DESCRIPTION",               "国际 [ICON_TRADEROUTE] 贸易路线的 [ICON_Gold] 金币产出+20%。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEASONING_BONUS_DESCRIPTION",                  "本城+15% [ICON_Gold] 金币。"),
+  ("zh_Hans_CN",  "LOC_CORPORATION_HD_SEASONING_BONUS_DESCRIPTION",               "国际 [ICON_TRADEROUTE] 贸易路线产出+20%。"),
   -- 海鲜
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEAFOOD_BONUS_DESCRIPTION",                    "本城的港口提供等同于其相邻加成的 [ICON_FOOD] 食物。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_SEAFOOD_BONUS_DESCRIPTION",                 "境内相邻或位于水域的区域和奇观+1 [ICON_FOOD] 食物和+3 [ICON_Gold] 金币。"),
@@ -151,7 +151,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "本城的水上设施改良+1 [ICON_SCIENCE] 科技值、+1 [ICON_CULTURE] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_SEA_BEAST_BONUS_DESCRIPTION",               "水上乐园和其中的每级建筑为2个单元格内的区域提供标准相邻加成。有水上乐园的城市+100%来自改良、奇观和国家公园的 [ICON_Tourism] 旅游业绩。"),
   -- 庆典
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CELEBRATION_BONUS_DESCRIPTION",                "本城相邻圣地或宗教场所改良的单元格+1 [ICON_CULTURE] 文化值和+1 [ICON_FAITH] 信仰值。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CELEBRATION_BONUS_DESCRIPTION",                "本城相邻圣地或宗教场所改良的单元格+1 [ICON_CULTURE] 文化值和 [ICON_FAITH] 信仰值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_CELEBRATION_BONUS_DESCRIPTION",             "境内的圣地+100%相邻加成。所有 [ICON_TRADEROUTE] 贸易路线+3 [ICON_FAITH] 信仰值。"),
   -- 医药
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_MEDICINE_BONUS_DESCRIPTION",                   "本城的区域和奇观+1 [ICON_Science] 科技值和 [ICON_Faith] 信仰值。"),
@@ -169,7 +169,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_ORNAMENTAL_BONUS_DESCRIPTION",                 "本城单元格+1魅力。本城的惊艳单元格+1 [ICON_Science] 科技值和 [ICON_CULTURE] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_ORNAMENTAL_BONUS_DESCRIPTION",              "境内相邻旅游景观改良的区域+50%相邻加成。境内来自改良和国家公园的 [ICON_Tourism] 旅游业绩+200%。"),
   -- 珍兽
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BEAST_BONUS_DESCRIPTION",                      "本城位于惊艳单元格的区域提供+4对应 [ICON_GREATPERSON] 伟人点数。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BEAST_BONUS_DESCRIPTION",                      "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_Science] 科技值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_BEAST_BONUS_DESCRIPTION",                   "所有城市娱乐中心建筑和奇观提供的辐射产出+50%。有娱乐中心的城市+100%来自改良、奇观和国家公园的 [ICON_Tourism] 旅游业绩。"),
   -- 家居
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_HOUSEHOLD_BONUS_DESCRIPTION",                  "本城的市中心建筑、社区建筑和民居宅邸改良+2 [ICON_Production] 生产力。"),

@@ -171,7 +171,7 @@ function GetCityResourceData( pCity:table )
 		local plotY			: number = plot:GetY()
 		local eResourceType : number = plot:GetResourceType();
 
-		-- TODO: Account for trade/diplomacy resources.
+		-- Account for trade/diplomacy resources.
 		if eResourceType ~= -1 and Players[pCity:GetOwner()]:GetResources():IsResourceExtractableAt(plot) then
 			if kResources[eResourceType] == nil then
 				kResources[eResourceType] = 1;

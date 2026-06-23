@@ -1,6 +1,11 @@
 insert or replace into EnglishText (Tag, Text) values
-  ("LOC_HD_INDUSTRY_EFFECT_TEXT",                                            "Industry Effects: [NEWLINE]{1_Effect}"),
-  ("LOC_HD_CORPORATION_EFFECT_TEXT",                                         "Corporation Effects: [NEWLINE]{1_Effect}"),
+  ("LOC_HD_RESOURCE_SELECTION_MAIN_TITLE",                                   ""),
+  ("LOC_HD_RESOURCE_SELECTION_LIST_SUBTITLE",                                "[ICON_BULLETGLOW]Optional Resources[ICON_BULLETGLOW]"),
+  ("LOC_HD_RESOURCE_SELECTION_DETAIL_SUBTITLE",                              "[ICON_BULLETGLOW]Resource Details[ICON_BULLETGLOW]"),
+  ("LOC_HD_RESOURCE_SELECTION_NO_AVAILABLE_RESOURCE",                        "No Available Resources"),
+
+  ("LOC_HD_INDUSTRY_EFFECT_TEXT",                                            "Industry Bonuses: [NEWLINE]{1_Effect}"),
+  ("LOC_HD_CORPORATION_EFFECT_TEXT",                                         "Corporation Bonuses: [NEWLINE]{1_Effect}"),
   ("LOC_SELECT_INDUSTRY_CATEGORY_TEXT",                                      "[COLOR:Civ6Red]Click this icon to select category of Industry.[ENDCOLOR]"),
   ("LOC_SELECT_CORPORATION_CATEGORY_TEXT",                                   "[COLOR:Civ6Red]Click this icon to select category of Corporation.[ENDCOLOR]"),
   ("LOC_NEED_ACTIVATE_SECOND_INDUSTRY_EFFECT_TEXT",                          "[COLOR:Civ6Red]Need Tier 3 building of Commercial Hub or Tier 2 building of Harbor to activate the bonus of {1_Category} Industry: [ENDCOLOR][NEWLINE]{2_Effect}"),
@@ -873,6 +878,11 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_HD_RESOURCE_STRAWBERRY_FRUIT_CORPORATION_DESCRIPTION",               "The {1_CityName} strawberry picking festival and strawberry dessert pop-up shops are romantic springtime landmarks in our civilization.");
 
 insert or replace into LocalizedText (Language, Tag, Text) values
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_MAIN_TITLE",                                   ""),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_LIST_SUBTITLE",                                "[ICON_BULLETGLOW]可选资源[ICON_BULLETGLOW]"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_DETAIL_SUBTITLE",                              "[ICON_BULLETGLOW]资源详情[ICON_BULLETGLOW]"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_NO_AVAILABLE_RESOURCE",                        "无 可 选 资 源"),
+
   ("zh_Hans_CN",  "LOC_HD_INDUSTRY_EFFECT_TEXT",                                            "行业效果：[NEWLINE]{1_Effect}"),
   ("zh_Hans_CN",  "LOC_HD_CORPORATION_EFFECT_TEXT",                                         "公司效果：[NEWLINE]{1_Effect}"),
   ("zh_Hans_CN",  "LOC_SELECT_INDUSTRY_CATEGORY_TEXT",                                      "[COLOR:Civ6Red]点击图标选择行业类别。[ENDCOLOR]"),
