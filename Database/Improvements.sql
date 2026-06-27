@@ -23,9 +23,9 @@ update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementTyp
 -- =====================================================================================================================================
 -- 行业公司产出
 -- =====================================================================================================================================
-update Improvement_YieldChanges set YieldChange = 5
+update Improvement_YieldChanges set YieldChange = 4
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_FOOD';
-update Improvement_YieldChanges set YieldChange = 5
+update Improvement_YieldChanges set YieldChange = 4
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_PRODUCTION';
 delete from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_GOLD';
 

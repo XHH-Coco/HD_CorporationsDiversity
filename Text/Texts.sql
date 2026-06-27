@@ -1,4 +1,6 @@
 insert or replace into EnglishText (Tag, Text) values
+  -- 文明领袖
+  ("LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES",          "All districts (except city centers) will not remove Rainforest. Rainforest tiles provide a standard adjacency bonus for specialty districts, and grant +1 Appeal to adjacent tiles. When you build Industry or Corporation on Rainforest tiles, immediately activate the corresponding bonus of all its usages."),
   -- 科技 市政
   ("LOC_BOOST_TRIGGER_CAPITALISM_HD",                               "Create a Corporation."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",                      "The savvy capitalist will do anything for 100% profit, which is providing a model for the study of how the economy works."),
@@ -24,6 +26,8 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_HD_CORPORATION",                                            "Corporation");
 
 insert or replace into LocalizedText (Language, Tag, Text) values
+  -- 文明领袖
+  ("zh_Hans_CN",  "LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES", "除市中心外的区域不移除雨林。雨林单元格为专业化区域提供标准相邻加成，并为相邻的单元格提供+1魅力。建造在雨林上的行业或公司直接激活所有用途所对应的加成效果。"),
   -- 科技 市政
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CAPITALISM_HD",                      "建造1座公司。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",             "精明的资本家为了100%的利润可以做任何事，这正在为发掘经济运行规律的研究提供典型。"),

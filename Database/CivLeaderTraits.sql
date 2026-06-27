@@ -1,0 +1,2 @@
+-- 巴西
+update Traits set Description = 'LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES' where TraitType = 'TRAIT_CIVILIZATION_AMAZON';

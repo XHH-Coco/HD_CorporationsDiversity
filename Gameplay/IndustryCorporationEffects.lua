@@ -11,6 +11,10 @@ local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 local CITY_UNLOCK_SECOND_INDUSTRY_TAG = 'HD_CITY_UNLOCK_SECOND_INDUSTRY';
 local CITY_UNLOCK_SECOND_CORPORATION_TAG = 'HD_CITY_UNLOCK_SECOND_CORPORATION';
 
+-- 巴西UA
+local JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG = 'HD_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY';
+
+local FEATURE_JUNGLE_INDEX = GameInfo.Features['FEATURE_JUNGLE'].Index;
 -- ======================================================================================================================================================
 -- 行业/公司
 -- ======================================================================================================================================================
@@ -59,6 +63,13 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
     elseif #categoryList > 1 then
       -- 判断城市是否解锁第二行业
       local unlockSecondIndustry = city:GetProperty(CITY_UNLOCK_SECOND_INDUSTRY_TAG) or 0;
+
+      -- 巴西UA 雨林行业直接解锁所有特效
+      local HAS_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY = player:GetProperty(JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG) or 0;
+      if HAS_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY > 0 and plot:GetFeatureType() == FEATURE_JUNGLE_INDEX then
+        unlockSecondIndustry = 1;
+      end
+
       if unlockSecondIndustry > 0 then
         -- 城市已解锁第二行业
         for _, category in ipairs(categoryList) do
@@ -141,6 +152,13 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
     elseif #categoryList > 1 then
       -- 判断城市是否解锁第二公司
       local unlockSecondCorporation = city:GetProperty(CITY_UNLOCK_SECOND_CORPORATION_TAG) or 0;
+
+      -- 巴西UA 雨林公司直接解锁所有特效
+      local HAS_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY = player:GetProperty(JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG) or 0;
+      if HAS_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY > 0 and plot:GetFeatureType() == FEATURE_JUNGLE_INDEX then
+        unlockSecondCorporation = 1;
+      end
+
       if unlockSecondCorporation > 0 then
         -- 城市已解锁第二公司
         for _, category in ipairs(categoryList) do

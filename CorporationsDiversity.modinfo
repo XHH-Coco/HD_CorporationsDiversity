@@ -32,10 +32,6 @@
         <Value>1</Value>
       </ConfigurationValueMatches>
     </Criteria>
-    <Criteria id="MonopolyPlus_Expansion2">
-      <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
-      <ModInUse>b248a322-3e2a-4a6a-830a-6b0d1f3435fc</ModInUse>
-    </Criteria>
     <!-- 丰富资源2 Start -->
     <Criteria id="Resouceful2_Adapt_Expansion2">
       <RuleSetInUse>RULESET_EXPANSION_2</RuleSetInUse>
@@ -216,6 +212,7 @@
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
+      <File>Database/CivLeaderTraits.sql</File>
       <File>Database/Improvements.sql</File>
       <File>Database/Units.sql</File>
       <File>Database/Policies.sql</File>
@@ -338,6 +335,7 @@
     <File>UI/ResourceSelection.xml</File>
     <File>UI/ResourceSelection.lua</File>
     <!-- Database -->
+    <File>Database/CivLeaderTraits.sql</File>
     <File>Database/Improvements.sql</File>
     <File>Database/Improvements_Late.sql</File>
     <File>Database/Units.sql</File>
