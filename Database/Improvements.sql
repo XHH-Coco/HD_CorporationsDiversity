@@ -311,7 +311,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from HD_Binary_Compress where Exp < 7;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_FRUIT_INDUSTRY_CITY_GPP_' || Exp, 'Amount', Amount * 3
+	'HD_FRUIT_INDUSTRY_CITY_GPP_' || Exp, 'Amount', Amount
 from HD_Binary_Compress where Exp < 7;
 
 -- 皮革行业

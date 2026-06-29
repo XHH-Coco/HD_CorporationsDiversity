@@ -9,7 +9,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_CUISINE_BONUS_DESCRIPTION",                    "This city gains [ICON_Culture] Culture equal to its positive [ICON_AMENITIES] Amenities."),
   ("LOC_CORPORATION_HD_CUISINE_BONUS_DESCRIPTION",                 "+2 [ICON_FOOD] Food and [ICON_Culture] Culture to all Non-specialized districts."),
   -- 水果
-  ("LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "This city gains [ICON_GOLD] Gold and [ICON_GREATMERCHANT] Great Merchant points equal to 3 times its positive [ICON_AMENITIES] Amenities."),
+  ("LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "This city gains [ICON_GREATMERCHANT] Great Merchant points and 3 times of [ICON_GOLD] Gold equal to its positive [ICON_AMENITIES] Amenities."),
   ("LOC_CORPORATION_HD_FRUIT_BONUS_DESCRIPTION",                   "+3 [ICON_GOLD] Gold for each [ICON_ENVOY] Envoy sent to city-state. +1 [ICON_MOVEMENT] Movement for all naval units and embarked units."),
   -- 酿造
   ("LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "Districts and improvements in this city adjacent to Water Conservancy Facilities District receive +1 [ICON_Culture] Culture and +6 [ICON_GOLD] Gold."),
@@ -102,7 +102,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CUISINE_BONUS_DESCRIPTION",                    "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_Culture] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_CUISINE_BONUS_DESCRIPTION",                 "境内的非专业化区域+2 [ICON_FOOD] 食物和 [ICON_Culture] 文化值。"),
   -- 水果
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "本城获得等同于正 [ICON_AMENITIES] 宜居度3倍的 [ICON_GOLD] 金币和 [ICON_GREATMERCHANT] 大商人点数。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_GREATMERCHANT] 大商人点数和3倍的 [ICON_GOLD] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_FRUIT_BONUS_DESCRIPTION",                   "派遣的每位城邦 [ICON_ENVOY] 使者提供+3 [ICON_GOLD] 金币。所有海军和水运单位+1 [ICON_MOVEMENT] 移动力。"),
   -- 酿造
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "本城相邻水利设施区域的区域和改良+1 [ICON_Culture] 文化值和+6 [ICON_GOLD] 金币。"),
