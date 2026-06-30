@@ -19,6 +19,7 @@ local FEATURE_JUNGLE_INDEX = GameInfo.Features['FEATURE_JUNGLE'].Index;
 -- 行业/公司
 -- ======================================================================================================================================================
 -- 建造行业/公司
+local Brazil_Industry_Bandeirante_Tag = 'HD_Brazil_Industry_Bandeirante_';
 function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
   local player = Players[playerId];
   if not player then return; end
@@ -36,6 +37,17 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
 
   if improvementId == INDUSTRY_INDEX then
     print("建造行业")
+
+    -- 巴西UA 获得旗手和采集次数
+    if Utils.CivilizationHasTrait(playerId, 'TRAIT_CIVILIZATION_AMAZON')
+      and player:GetProperty(Brazil_Industry_Bandeirante_Tag .. resourceId) ~= 1
+    then
+      player:SetProperty(Brazil_Industry_Bandeirante_Tag .. resourceId, 1);
+      print("巴西首次建立" .. Locale.Lookup(resourceInfo.Name) .. "行业 获得旗手和采集次数");
+      player:AttachModifierByID('HD_BANDEIRANTES_ADD_TIMES');
+      city:AttachModifierByID('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES');
+    end
+
 
     -- 查询可用行业类别
     print("============================================")
