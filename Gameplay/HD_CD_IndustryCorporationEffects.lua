@@ -3,7 +3,11 @@ ExposedMembers.DLHD.Utils = ExposedMembers.DLHD.Utils or {};
 Utils = ExposedMembers.DLHD.Utils;
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
+local INDUSTRY_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_BONUS'].Index;
+local INDUSTRY_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_STRATEGIC'].Index;
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
+local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
+local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
 local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
@@ -35,7 +39,10 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
 
   local categoryList = {};
 
-  if improvementId == INDUSTRY_INDEX then
+  if improvementId == INDUSTRY_INDEX
+    or improvementId == INDUSTRY_BONUS_INDEX
+    or improvementId == INDUSTRY_STRATEGIC_INDEX
+  then
     print("建造行业")
 
     -- 巴西UA 获得旗手和采集次数
@@ -115,7 +122,10 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
         end
       end
     end
-  elseif improvementId == CORPORATION_INDEX then
+  elseif improvementId == CORPORATION_INDEX
+    or improvementId == CORPORATION_BONUS_INDEX
+    or improvementId == CORPORATION_STRATEGIC_INDEX
+  then
     print("建造公司")
 
     -- 查询可用公司类别
@@ -264,7 +274,13 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
       -- 解锁第二行业
       local cityPlots = city:GetOwnedPlots();
       for _, plot in pairs(cityPlots) do
-        if plot and (plot:GetImprovementType() == INDUSTRY_INDEX or plot:GetImprovementType() == CORPORATION_INDEX) then
+        if plot and (plot:GetImprovementType() == INDUSTRY_INDEX
+          or plot:GetImprovementType() == INDUSTRY_BONUS_INDEX
+          or plot:GetImprovementType() == INDUSTRY_STRATEGIC_INDEX
+          or plot:GetImprovementType() == CORPORATION_INDEX
+          or plot:GetImprovementType() == CORPORATION_BONUS_INDEX
+          or plot:GetImprovementType() == CORPORATION_STRATEGIC_INDEX)
+        then
           local resourceInfo = GameInfo.Resources[plot:GetResourceType()];
           if not resourceInfo then return; end
 
@@ -284,7 +300,10 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
       -- 解锁第二公司
       local cityPlots = city:GetOwnedPlots();
       for _, plot in pairs(cityPlots) do
-        if plot and plot:GetImprovementType() == CORPORATION_INDEX then
+        if plot and (plot:GetImprovementType() == CORPORATION_INDEX
+          or plot:GetImprovementType() == CORPORATION_BONUS_INDEX
+          or plot:GetImprovementType() == CORPORATION_STRATEGIC_INDEX)
+        then
           local resourceInfo = GameInfo.Resources[plot:GetResourceType()];
           if not resourceInfo then return; end
 
@@ -334,6 +353,11 @@ function BuildChateau(x, y, improvementId, playerId, resourceId, isPillaged, isW
     end
     if entertainmentResourceIndex ~= -1 then
       plot:SetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG, -1);
+    end
+    for row in GameInfo.HD_Chateau_Resources() do
+      if plot:GetProperty(CHATEAU_GRANT_RESOURCE_TAG .. row.ResourceType) == 1 then
+        plot:SetProperty(CHATEAU_GRANT_RESOURCE_TAG .. row.ResourceType, 0);
+      end
     end
     -- 清空其他行业类别的property
     for row in GameInfo.HD_Monopoly_Categories() do

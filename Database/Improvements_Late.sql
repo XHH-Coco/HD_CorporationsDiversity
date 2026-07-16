@@ -1,12 +1,83 @@
 -- =========================
 -- 批量插入行业公司特效
 -- =========================
-insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_INDUSTRY', ModifierId from HD_IndustryModifiers;
-insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_CORPORATION', ModifierId from HD_IndustryModifiers;
-insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_CORPORATION', ModifierId from HD_CorporationModifiers;
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select ImprovementType, ModifierId from HD_IndustryModifiers, Improvements
+  where ImprovementType in ('IMPROVEMENT_INDUSTRY', 'IMPROVEMENT_INDUSTRY_BONUS', 'IMPROVEMENT_INDUSTRY_STRATEGIC');
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select ImprovementType, ModifierId from HD_IndustryModifiers, Improvements
+  where ImprovementType in ('IMPROVEMENT_CORPORATION', 'IMPROVEMENT_CORPORATION_BONUS', 'IMPROVEMENT_CORPORATION_STRATEGIC');
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select ImprovementType, ModifierId from HD_CorporationModifiers, Improvements
+  where ImprovementType in ('IMPROVEMENT_CORPORATION', 'IMPROVEMENT_CORPORATION_BONUS', 'IMPROVEMENT_CORPORATION_STRATEGIC');
+
+-- 补齐加成战略行业公司为有工业区的城市+5%奇观加速，且三种行业之间不会叠加
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) values
+  ('IMPROVEMENT_INDUSTRY_BONUS',        'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_INDUSTRY'),
+  ('IMPROVEMENT_INDUSTRY_STRATEGIC',    'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_INDUSTRY'),
+  ('IMPROVEMENT_CORPORATION_BONUS',     'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_CORPORATION'),
+  ('IMPROVEMENT_CORPORATION_STRATEGIC', 'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_CORPORATION');
+
+-- 记录加成/战略行业/公司的Property
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_INDUSTRY_BONUS', 'HD_PLAYER_HAS_INDUSTRY_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_BONUS');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_INDUSTRY_STRATEGIC', 'HD_PLAYER_HAS_INDUSTRY_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_STRATEGIC');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_CORPORATION_BONUS', 'HD_PLAYER_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_BONUS');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_CORPORATION_STRATEGIC', 'HD_PLAYER_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_STRATEGIC');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_CORPORATION_BONUS', 'HD_GAME_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_BONUS');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_CORPORATION_STRATEGIC', 'HD_GAME_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_STRATEGIC');
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) select
+  'HD_PLAYER_HAS_INDUSTRY_' || ResourceType, 'MODIFIER_PLAYER_ADJUST_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_PLAYER_HAS_INDUSTRY_' || ResourceType, 'Key', 'HD_PLAYER_HAS_INDUSTRY_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_PLAYER_HAS_INDUSTRY_' || ResourceType, 'Amount', 1
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) select
+  'HD_PLAYER_HAS_CORPORATION_' || ResourceType, 'MODIFIER_ADJUST_GAME_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_PLAYER_HAS_CORPORATION_' || ResourceType, 'Key', 'HD_PLAYER_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_PLAYER_HAS_CORPORATION_' || ResourceType, 'Amount', 1
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) select
+  'HD_GAME_HAS_CORPORATION_' || ResourceType, 'MODIFIER_ADJUST_GAME_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_GAME_HAS_CORPORATION_' || ResourceType, 'Key', 'HD_GAME_HAS_CORPORATION_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_GAME_HAS_CORPORATION_' || ResourceType, 'Amount', 1
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 -- =====================================================================================================================================
--- 城堡庄园 TODO
+-- 城堡庄园
 -- =====================================================================================================================================
 delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_CHATEAU' and ModifierId like 'HD_CHATEAU_GRANT_RESOURCE_%_ATTACH';
 

@@ -2,7 +2,7 @@ insert or replace into EnglishText (Tag, Text) values
   -- 庄稼
   ("LOC_INDUSTRY_HD_CROPS_BONUS_DESCRIPTION",                      "+2 [ICON_FOOD] Food and [ICON_Production] Production to Agrarian Improvements in this city."),
   ("LOC_CORPORATION_HD_CROPS_BONUS_DESCRIPTION",                   "+10% [ICON_FOOD] Food in all cities."),
-  -- 农具
+  -- 农用
   ("LOC_INDUSTRY_HD_AGRICULTURE_BONUS_DESCRIPTION",                "+1 [ICON_FOOD] Food from each [ICON_CITIZEN] Citizen in this city."),
   ("LOC_CORPORATION_HD_AGRICULTURE_BONUS_DESCRIPTION",             "+2 [ICON_FOOD] Food and +6 [ICON_GOLD] Gold to all Agrarian Improvements."),
   -- 美食
@@ -95,7 +95,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 庄稼
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CROPS_BONUS_DESCRIPTION",                      "本城的农业生产改良+2 [ICON_FOOD] 食物和 [ICON_Production] 生产力。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_CROPS_BONUS_DESCRIPTION",                   "所有城市+10% [ICON_FOOD] 食物。"),
-  -- 农具
+  -- 农用
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_AGRICULTURE_BONUS_DESCRIPTION",                "本城的每位 [ICON_CITIZEN] 公民+1 [ICON_FOOD] 食物。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_AGRICULTURE_BONUS_DESCRIPTION",             "境内的农业生产改良+2 [ICON_FOOD] 食物和+6 [ICON_GOLD] 金币。"),
   -- 美食

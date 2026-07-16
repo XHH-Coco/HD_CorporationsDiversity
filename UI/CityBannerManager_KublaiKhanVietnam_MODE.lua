@@ -13,7 +13,11 @@ BANNERTYPE_CORPORATION = UIManager:GetHash("BANNERTYPE_CORPORATION");
 BANNERTYPE_CHATEAU = UIManager:GetHash("BANNERTYPE_CHATEAU");
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
+local INDUSTRY_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_BONUS'].Index;
+local INDUSTRY_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_STRATEGIC'].Index;
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
+local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
+local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
 local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
@@ -61,6 +65,13 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 		if improvementDataMODE.Industry then
 			bIsIndustry = true;
 		elseif improvementDataMODE.Corporation then
+			bIsCorporation = true;
+		end
+	else
+		-- 判断是否是加成战略行业公司
+		if eImprovementType == INDUSTRY_BONUS_INDEX or eImprovementType == INDUSTRY_STRATEGIC_INDEX then
+			bIsIndustry = true;
+		elseif eImprovementType == CORPORATION_BONUS_INDEX or eImprovementType == CORPORATION_STRATEGIC_INDEX then
 			bIsCorporation = true;
 		end
 	end
@@ -466,7 +477,10 @@ function OnClickIndustryCorporationInstanceIcon(x, y)
 		if resourceInfo then
 			local disabledList = {};
 			local improvementId = plot:GetImprovementType();
-			if improvementId == INDUSTRY_INDEX then
+			if improvementId == INDUSTRY_INDEX
+				or improvementId == INDUSTRY_BONUS_INDEX
+				or improvementId == INDUSTRY_STRATEGIC_INDEX
+			then
 				-- 行业
 				-- 获取可用行业类别
 				for row in GameInfo.HD_Monopoly_Resource_Categories() do
@@ -496,7 +510,10 @@ function OnClickIndustryCorporationInstanceIcon(x, y)
           end
           CallIndustrySelectEvent(param);
 				end
-			elseif improvementId == CORPORATION_INDEX then
+			elseif improvementId == CORPORATION_INDEX
+				or improvementId == CORPORATION_BONUS_INDEX
+				or improvementId == CORPORATION_STRATEGIC_INDEX
+			then
 				-- 公司
 				-- 获取可用公司类别
 				local hasAnyEffectTag = false;
@@ -546,7 +563,13 @@ function OnClickIndustryCorporationInstanceIcon(x, y)
 			end
 
 			-- 用于Debug
-			if improvementId == INDUSTRY_INDEX or improvementId == CORPORATION_INDEX then
+			if improvementId == INDUSTRY_INDEX
+				or improvementId == INDUSTRY_BONUS_INDEX
+				or improvementId == INDUSTRY_STRATEGIC_INDEX
+				or improvementId == CORPORATION_INDEX
+				or improvementId == CORPORATION_BONUS_INDEX
+				or improvementId == CORPORATION_STRATEGIC_INDEX
+			then
 				for row in GameInfo.HD_Monopoly_Categories() do
 					if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) == 1 then
 						print("行业：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME'))

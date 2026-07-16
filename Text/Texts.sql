@@ -3,8 +3,6 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES",          "Grant a Bandeirante after establishing [ICON_CAPITAL] Capital city. All districts (except city centers) will not remove Rainforest. Rainforest tiles provide a standard adjacency bonus for specialty districts, and grant +1 Appeal to adjacent tiles. When establishing an industry for the first time of each resource, grant a Bandeirante and all Bandeirantes receive +1 collection times. When you build Industry or Corporation on Rainforest tiles, immediately activate the corresponding bonus of all its usages."),
   ("LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",               "Brazilian unique Recon unit, but cannot be trained, purchased or upgraded to a more advanced unit. Its [ICON_STRENGTH] Combat Strength increases according to your era. It automatically creates roads when passing through Woods, Rainforest, Marsh{LOC_OR_SWAMP_NAME}. It can collect resources on unowned rainforest tiles for 4 times. For every two of the same resource collected, the improved Resources on rainforest tiles in your cities gain the yields of that resource."),
   -- 科技 市政
-  ("LOC_BOOST_TRIGGER_CAPITALISM_HD",                               "Create a Corporation."),
-  ("LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",                      "The savvy capitalist will do anything for 100% profit, which is providing a model for the study of how the economy works."),
   ("LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",                      "Build 2 Warehouses or Piers."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",             "Factories and warehouses stand in close rows, and industry is developing at a rapid pace. However, workers are beginning to seek more rights. It's time for workers all over the world to unite."),
   -- 建筑
@@ -31,8 +29,6 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES", "建立 [ICON_CAPITAL] 首都后获得一位旗手。除市中心外的区域不移除雨林。雨林单元格为专业化区域提供标准相邻加成，并为相邻的单元格提供+1魅力。首次建立某种资源的行业时，获得一名旗手，且所有旗手+1收集次数。建造在雨林上的行业或公司直接激活所有用途所对应的加成效果。"),
   ("zh_Hans_CN",  "LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",      "巴西特色侦察单位，无法升级成高级单位，无法在城市中建造或购买该单位。[ICON_STRENGTH] 战斗力随你所处的时代提升。经过森林、雨林或沼泽时自动创建道路。可以收集4次无主雨林单元格上的资源，每收集两个同种资源，境内改良的雨林资源获得该资源的产出。"),
   -- 科技 市政
-  ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CAPITALISM_HD",                      "建造1座公司。"),
-  ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD",             "精明的资本家为了100%的利润可以做任何事，这正在为发掘经济运行规律的研究提供典型。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或埠头。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",    "工厂和仓库鳞次栉比，工业飞速发展。然而工人们开始寻求更多的权益。是时候让全世界的工人团结起来了。"),
   -- 建筑

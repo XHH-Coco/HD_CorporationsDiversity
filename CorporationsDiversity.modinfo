@@ -220,6 +220,7 @@
       <File>Database/Districts.sql</File>
       <File>Database/Wonders.sql</File>
       <File>Database/GreatPerson.sql</File>
+      <File>Database/Governors.sql</File>
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20002</LoadOrder></Properties>
@@ -238,9 +239,10 @@
     <!-- Gameplay -->
     <AddGameplayScripts id="CorporationsDiversity_Scripts" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20002</LoadOrder></Properties>
-      <File>Gameplay/Common.lua</File>
-      <File>Gameplay/GreatPerson.lua</File>
-      <File>Gameplay/IndustryCorporationEffects.lua</File>
+      <File>Gameplay/HD_CD_Common.lua</File>
+      <File>Gameplay/HD_CD_Governors.lua</File>
+      <File>Gameplay/HD_CD_GreatPersons.lua</File>
+      <File>Gameplay/HD_CD_IndustryCorporationEffects.lua</File>
     </AddGameplayScripts>
 
     <!-- Text -->
@@ -254,6 +256,7 @@
       <File>Text/Text_Civilopedia.sql</File>
       <File>Text/Text_Wonders.sql</File>
       <File>Text/Text_CustomEvent.sql</File>
+      <File>Text/Text_Governors.sql</File>
     </UpdateText>
 
     <!-- 丰富资源2 -->
@@ -350,6 +353,7 @@
     <File>Database/Wonders.sql</File>
     <File>Database/Definitions.sql</File>
     <File>Database/CustomEvent.sql</File>
+    <File>Database/Governors.sql</File>
     <!-- Text -->
     <File>Text/Text_GreatPerson.sql</File>
     <File>Text/Texts.sql</File>
@@ -361,6 +365,7 @@
     <File>Text/Text_CustomEvent.sql</File>
     <File>Text/Text_Frontend.sql</File>
     <File>Text/Text_Resourceful2.sql</File>
+    <File>Text/Text_Governors.sql</File>
     <!-- Icon -->
     <File>Icon/Icon_Buildings.xml</File>
     <File>Icon/Icon_Policies.xml</File>
@@ -369,9 +374,10 @@
     <!-- Config -->
     <File>Configs/Settings.sql</File>
     <!-- Gameplay -->
-    <File>Gameplay/Common.lua</File>
-    <File>Gameplay/GreatPerson.lua</File>
-    <File>Gameplay/IndustryCorporationEffects.lua</File>
+    <File>Gameplay/HD_CD_Common.lua</File>
+    <File>Gameplay/HD_CD_Governors.lua</File>
+    <File>Gameplay/HD_CD_GreatPersons.lua</File>
+    <File>Gameplay/HD_CD_IndustryCorporationEffects.lua</File>
     <!-- Monopoly -->
     <File>Assets/Monopoly/exhibition_32.dds</File>
     <File>Assets/Monopoly/exhibition_38.dds</File>

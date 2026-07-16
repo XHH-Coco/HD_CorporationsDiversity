@@ -9,6 +9,7 @@ insert or replace into GlobalParameters (Name, Value) values
 -- =====================================================================================================================================
 -- 行业公司有效资源 补充源于Mod的资源
 -- =====================================================================================================================================
+-- 奢侈资源
 insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
 	'IMPROVEMENT_INDUSTRY', ResourceType
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
@@ -20,12 +21,30 @@ from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType 
 update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_INDUSTRY';
 update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_CORPORATION';
 
+-- 加成资源
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_INDUSTRY_BONUS', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_BONUS');
+
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_CORPORATION_BONUS', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_BONUS');
+
+-- 战略资源
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_INDUSTRY_STRATEGIC', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_STRATEGIC');
+
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
+	'IMPROVEMENT_CORPORATION_STRATEGIC', ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_STRATEGIC');
+
 -- =====================================================================================================================================
 -- 行业公司产出
 -- =====================================================================================================================================
-update Improvement_YieldChanges set YieldChange = 4
+update Improvement_YieldChanges set YieldChange = 2
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_FOOD';
-update Improvement_YieldChanges set YieldChange = 4
+update Improvement_YieldChanges set YieldChange = 2
 	where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_PRODUCTION';
 delete from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_INDUSTRY' and YieldType = 'YIELD_GOLD';
 
@@ -37,12 +56,36 @@ update Improvement_YieldChanges set YieldChange = 9
 	where ImprovementType = 'IMPROVEMENT_CORPORATION' and YieldType = 'YIELD_GOLD';
 update Improvements set Removable = 0 where ImprovementType = 'IMPROVEMENT_CORPORATION';
 
+insert or ignore into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) select
+	'IMPROVEMENT_INDUSTRY_BONUS', YieldType, YieldChange
+from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_INDUSTRY';
+
+insert or ignore into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) select
+	'IMPROVEMENT_INDUSTRY_STRATEGIC', YieldType, YieldChange
+from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_INDUSTRY';
+
+insert or ignore into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) select
+	'IMPROVEMENT_CORPORATION_BONUS', YieldType, YieldChange
+from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_CORPORATION';
+
+insert or ignore into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) select
+	'IMPROVEMENT_CORPORATION_STRATEGIC', YieldType, YieldChange
+from Improvement_YieldChanges where ImprovementType = 'IMPROVEMENT_CORPORATION';
+
+insert or ignore into Improvement_BonusYieldChanges (Id, ImprovementType, YieldType, BonusYieldChange, PrereqCivic, PrereqTech) values
+	(1000, 'IMPROVEMENT_INDUSTRY', 						'YIELD_FOOD', 				2, NULL, 'TECH_CURRENCY'),
+	(1001, 'IMPROVEMENT_INDUSTRY', 						'YIELD_PRODUCTION', 	2, NULL, 'TECH_CURRENCY'),
+	(1002, 'IMPROVEMENT_INDUSTRY_BONUS', 			'YIELD_FOOD', 				2, NULL, 'TECH_CURRENCY'),
+	(1003, 'IMPROVEMENT_INDUSTRY_BONUS', 			'YIELD_PRODUCTION', 	2, NULL, 'TECH_CURRENCY'),
+	(1004, 'IMPROVEMENT_INDUSTRY_STRATEGIC', 	'YIELD_FOOD', 				2, NULL, 'TECH_CURRENCY'),
+	(1005, 'IMPROVEMENT_INDUSTRY_STRATEGIC', 	'YIELD_PRODUCTION', 	2, NULL, 'TECH_CURRENCY');
+
 -- =====================================================================================================================================
 -- 行业公司特效
 -- =====================================================================================================================================
 -- 删除旧特效
-delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_INDUSTRY';
-delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_CORPORATION';
+delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_INDUSTRY' and ModifierId != 'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_INDUSTRY';
+delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_CORPORATION' and ModifierId != 'HD_INDUSTRIAL_ZONE_WONDER_BOOST_IMPROVEMENT_CORPORATION';
 
 -- =========================
 -- 行业特效
@@ -129,8 +172,8 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD',				'MODIFIER_CITY_PLOT_YIELDS_ADJUST_PLOT_YIELD',													'HD_METALLURGY_INDUSTRY_BONUS_REQUIREMENTS',				'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_INDUSTRIAL_PRODUCTION_REQUIREMENTS'),
 	('HD_MINTING_INDUSTRY_TRADE_ROUTE_CAPACITY',				'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_CAPACITY',													'HD_MINTING_INDUSTRY_BONUS_REQUIREMENTS',						NULL),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'MODIFIER_CITY_DISTRICTS_ADJUST_YIELD_MODIFIER',												'HD_MINTING_INDUSTRY_BONUS_REQUIREMENTS',						'DISTRICT_IS_COMMERCIAL_HUB'),
-	('HD_TRANSIT_INDUSTRY_PASTURE_YIELD',								'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_PASTURE_WITH_6_TILES_REQUIRMENTS'),
-	('HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD',						'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_COMMERCIAL_FACILITIES_WITH_6_TILES_REQUIRMENTS'),
+	('HD_TRANSIT_INDUSTRY_PASTURE_YIELD',								'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_PASTURE_WITH_6_TILES_REQUIREMENTS'),
+	('HD_TRANSIT_INDUSTRY_IMPROVEMENT_YIELD',						'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',																		'HD_TRANSIT_INDUSTRY_BONUS_REQUIREMENTS',						'PLOT_HAS_IMPROVEMENT_CLASSIFICATION_COMMERCIAL_FACILITIES_WITH_6_TILES_REQUIREMENTS'),
 	('HD_SEASONING_INDUSTRY_GOLD',											'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_MODIFIER',											'HD_SEASONING_INDUSTRY_BONUS_REQUIREMENTS',					NULL),
 	('HD_SEAFOOD_INDUSTRY_HARBOR_FOOD',									'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_YIELD_BASED_ON_ADJACENCY_BONUS',	'HD_SEAFOOD_INDUSTRY_BONUS_REQUIREMENTS',						'DISTRICT_IS_HARBOR'),
 	('HD_MARINE_PRODUCTS_INDUSTRY_HARBOR_PRODUCTION',		'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_YIELD_BASED_ON_ADJACENCY_BONUS',	'HD_MARINE_PRODUCTS_INDUSTRY_BONUS_REQUIREMENTS',		'DISTRICT_IS_HARBOR'),
@@ -422,6 +465,7 @@ insert or ignore into HD_CorporationModifiers (Category, ModifierId) values
 	('CLOTH',						'HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_GOLD'),
 	('CONSTRUCTION',		'HD_CONSTRUCTION_CORPORATION_DISTRICT_SPEED'),
 	('CONSTRUCTION',		'HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED'),
+	('CONSTRUCTION',		'HD_CONSTRUCTION_CORPORATION_WONDER_SPEED'),
 	('CONSTRUCTION',		'HD_CONSTRUCTION_CORPORATION_GPP'),
 	('FUEL',						'HD_FUEL_CORPORATION_TIER1_PRODUCTION'),
 	('FUEL',						'HD_FUEL_CORPORATION_TIER2_PRODUCTION'),
@@ -487,6 +531,7 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_GOLD',					'MODIFIER_PLAYER_CITIES_ADJUST_PROPERTY',															'HD_CLOTH_CORPORATION_BONUS_REQUIREMENTS',					NULL),
 	('HD_CONSTRUCTION_CORPORATION_DISTRICT_SPEED',							'MODIFIER_PLAYER_CITIES_ADJUST_ALL_DISTRICTS_PRODUCTION',							'HD_CONSTRUCTION_CORPORATION_BONUS_REQUIREMENTS',		NULL),
 	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',							'MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_PRODUCTION_MODIFIER',					'HD_CONSTRUCTION_CORPORATION_BONUS_REQUIREMENTS',		NULL),
+	('HD_CONSTRUCTION_CORPORATION_WONDER_SPEED',								'MODIFIER_PLAYER_CITIES_ADJUST_WONDER_PRODUCTION',										'HD_CONSTRUCTION_CORPORATION_BONUS_REQUIREMENTS',		NULL),
 	('HD_CONSTRUCTION_CORPORATION_GPP',													'MODIFIER_PLAYER_ADJUST_GREAT_PERSON_POINTS_PERCENT',									'HD_CONSTRUCTION_CORPORATION_BONUS_REQUIREMENTS',		NULL),
 	('HD_FUEL_CORPORATION_TIER1_PRODUCTION',										'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_1_BUILDING_REQUIREMENTS'),
 	('HD_FUEL_CORPORATION_TIER2_PRODUCTION',										'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_2_BUILDING_REQUIREMENTS'),
@@ -566,6 +611,8 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_GOLD',  				'Amount',										6),
 	('HD_CONSTRUCTION_CORPORATION_DISTRICT_SPEED',  						'Amount',										10),
 	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',  						'Amount',										10),
+	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',  						'IsWonder',									0),
+	('HD_CONSTRUCTION_CORPORATION_WONDER_SPEED',  							'Amount',										10),
 	('HD_CONSTRUCTION_CORPORATION_GPP',  												'GreatPersonClassType',			'GREAT_PERSON_CLASS_ENGINEER'),
 	('HD_CONSTRUCTION_CORPORATION_GPP',  												'Amount',										50),
 	('HD_FUEL_CORPORATION_TIER1_PRODUCTION',										'YieldType',								'YIELD_PRODUCTION'),
@@ -746,7 +793,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from DistrictCorrespondingYieldType_HD where HasAdjacency = 1;
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_' || DistrictType || '_STANDARD_ADJACENCY_WITHIN_2_TILES', 'MODIFIER_PLAYER_DISTRICTS_ADJUST_BASE_YIELD_CHANGE', NULL, 'HD_DISTRICT_IS_' || DistrictType || '_WITHIN_2_TILES'
+	'HD_' || DistrictType || '_STANDARD_ADJACENCY_WITHIN_2_TILES', 'MODIFIER_PLAYER_DISTRICTS_ADJUST_BASE_YIELD_CHANGE', NULL, 'HD_DISTRICT_IS_' || DistrictType || '_WITHIN_2_TILES_REQUIREMENTS'
 from DistrictCorrespondingYieldType_HD where HasAdjacency = 1;
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
@@ -1069,8 +1116,8 @@ insert or replace into Modifiers (ModifierId, ModifierType, SubjectRequirementSe
 	('HD_WAREHOUSE_TRADE_BONUS',							'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',		null),
 	('HD_CONTAINER_PORT_TRADE_BONUS',					'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',		null),
 	('HD_WAREHOUSE_PRODUCT_TOURISM',					'MODIFIER_SINGLE_CITY_ADJUST_TOURISM',				null),
-	('HD_WAREHOUSE_PLOT_YIELD_BONUS',					'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',					'HD_PLOT_HAS_INDUSTRY_OR_CORPORATION_REQUIRMENTS'),
-	('HD_CONTAINER_PORT_PLOT_YIELD_BONUS',		'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',					'HD_PLOT_HAS_INDUSTRY_OR_CORPORATION_REQUIRMENTS');
+	('HD_WAREHOUSE_PLOT_YIELD_BONUS',					'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',					'HD_PLOT_HAS_INDUSTRY_OR_CORPORATION_REQUIREMENTS'),
+	('HD_CONTAINER_PORT_PLOT_YIELD_BONUS',		'MODIFIER_PLAYER_ADJUST_PLOT_YIELD',					'HD_PLOT_HAS_INDUSTRY_OR_CORPORATION_REQUIREMENTS');
 
 insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('HD_WAREHOUSE_TRADE_BONUS',						'YieldType',						'YIELD_PRODUCTION'),
@@ -1097,6 +1144,14 @@ update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_H
 update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_HD' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA'
 	and exists (select CivicType from Civics where CivicType = 'CIVIC_NEOCOLONIALISM_HD');
 
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType, MustRemoveFeature) select distinct
+	'IMPROVEMENT_LEU_TRANSNATIONAL', ResourceType, 0
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+
+insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType, MustRemoveFeature) select distinct
+	'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', ResourceType, 0
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+
 -- =====================================================================================================================================
 -- 尤里卡
 -- =====================================================================================================================================
@@ -1107,12 +1162,6 @@ where CivicType = 'CIVIC_CLASS_STRUGGLE';
 
 insert or replace into GlobalParameters (Name, Value) values
 	('HD_CLASS_STRUGGLE_BOOST_WAREHOUSE',  1);
-
--- 宏观调控
-update Boosts set BoostClass = 'BOOST_TRIGGER_HAVE_X_IMPROVEMENTS', BuildingType = null, TriggerDescription = 'LOC_BOOST_TRIGGER_CAPITALISM_HD', NumItems = 1,
-	TriggerLongDescription = 'LOC_BOOST_TRIGGER_LONGDESC_CAPITALISM_HD', ImprovementType = 'IMPROVEMENT_CORPORATION'
-where CivicType = 'CIVIC_CAPITALISM';
-
 -- =====================================================================================================================================
 -- 城堡庄园
 -- =====================================================================================================================================

@@ -9,6 +9,19 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",             "[COLOR:219,112,147,255]Entertainment Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
   ("LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",          "[COLOR:Civ6Red]Click this icon to select Entertainment Resource.[ENDCOLOR]"),
   ("LOC_CHATEAU_INDUSTRY_TEXT",                           "[NEWLINE]Industry Bonuses: [NEWLINE]{1_Effect}"),
+  -- 加成战略资源 行业/公司
+  ("LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                 "Industry"),
+  ("LOC_IMPROVEMENT_INDUSTRY_STRATEGIC_NAME",             "Industry"),
+  ("LOC_IMPROVEMENT_CORPORATION_BONUS_NAME",              "Corporation"),
+  ("LOC_IMPROVEMENT_CORPORATION_STRATEGIC_NAME",          "Corporation"),
+
+  ("LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]This city can only build at most {1_Num} {1_Num : plural 1?Industry; other?Industries;} or {1_Num : plural 1?Corporation; other?Corporations;} of Bonus Resource.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]This city can only build at most {1_Num} {1_Num : plural 1?Industry; other?Industries;} or {1_Num : plural 1?Corporation; other?Corporations;} of Strategic Resource.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]You have already built Industry or Corporation of {1_Resource}.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]Corporation of {1_Resource} has already been built in the world.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_CORPORATION_PLOT_DISABLED",          "[COLOR:Red]Must be built on {1_Resource} Industry.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_IC_BONUS_RESOURCE_DISABLED",         "[COLOR:Red]You need to control at least {1_Num} {1_Num : plural 1?copy; other?copies;} of {2_Icon} {3_Resource}.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_IC_STRATEGIC_RESOURCE_DISABLED",     "[COLOR:Red]Need to consume {1_Num} {2_Icon} {3_Resource}. {LOC_DEAL_RESOURCES_NOT_ENOUGH}.[ENDCOLOR]"),
   -- 行业
   ("LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",                "An Industry dedicated to a specific resource grants unique bonuses to its city based on the resource's usages. [NEWLINE][NEWLINE]Upon construction, you may choose one of two possible usages for the resource and activate the corresponding bonus. Once the city builds either a Tier 3 Commercial Hub building or a Tier 2 Harbor building, you will then activate the corresponding bonus of the other usage."),
   -- 公司
@@ -33,6 +46,19 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",            "[COLOR:219,112,147,255]娱乐资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
   ("zh_Hans_CN",  "LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",         "[COLOR:Civ6Red]点击图标选择娱乐资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_CHATEAU_INDUSTRY_TEXT",                          "[NEWLINE]行业效果：[NEWLINE]{1_Effect}"),
+  -- 加成战略资源 行业/公司
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                "行业"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_STRATEGIC_NAME",            "行业"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_BONUS_NAME",             "公司"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_STRATEGIC_NAME",         "公司"),
+
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]本城最多只能建立{1_Num}座改良加成资源的行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]本城最多只能建立{1_Num}座改良战略资源的行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]你已经建立了{1_Resource}行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]世界上已经建立了{1_Resource}公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_PLOT_DISABLED",          "[COLOR:Red]必须在{1_Resource}行业上进行建立。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_RESOURCE_DISABLED",         "[COLOR:Red]需要至少控制{1_Num}处 {2_Icon} {3_Resource}资源。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_RESOURCE_DISABLED",     "[COLOR:Red]需要消耗{1_Num} {2_Icon} {3_Resource}，{LOC_DEAL_RESOURCES_NOT_ENOUGH}。[ENDCOLOR]"),
   -- 行业
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_DESCRIPTION",               "致力于一种特定资源的行业，根据资源的用途为其所在城市带来独特加成效果。[NEWLINE][NEWLINE]建成时，可从资源的两种用途中择一，激活该用途所对应的加成效果。当所在城市建成商业中心三级建筑或港口二级建筑后，激活另一种用途所对应的加成效果。"),
   -- 公司

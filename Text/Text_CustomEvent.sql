@@ -174,8 +174,8 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_HD_BUILD_RESOURCE_MERCURY_CORPORATION_TEXT",                         "Refineries have adopted new airtight processes to safely meet the industrial demand for mercury in {1_CityName}."),
   ("LOC_HD_RESOURCE_MERCURY_ART_INDUSTRY_DESCRIPTION",                       "The fluid form of mercury has inspired kinetic sculptors in {1_CityName} to create incredible works."),
   ("LOC_HD_RESOURCE_MERCURY_ART_CORPORATION_DESCRIPTION",                    "{1_CityName} mercury switch devices were once symbols of avant-garde art and precision instruments in our civilization."),
-  ("LOC_HD_RESOURCE_MERCURY_CONSTRUCTION_INDUSTRY_DESCRIPTION",              "Craftsmen in {1_CityName} mix mercury with tin foil to coat statues and domes, forming a golden amalgam layer, resplendent and magnificent."),
-  ("LOC_HD_RESOURCE_MERCURY_CONSTRUCTION_CORPORATION_DESCRIPTION",           "Mercury from {1_CityName} is used in large-scale gold mining`s amalgamation process, an unsung hero behind our civilization`s gold production."),
+  ("LOC_HD_RESOURCE_MERCURY_METALLURGY_INDUSTRY_DESCRIPTION",                "In {1_CityName}, the artisans have found that mercury can be employed to recover gold and silver from the local ore."),
+  ("LOC_HD_RESOURCE_MERCURY_METALLURGY_CORPORATION_DESCRIPTION",             "Corporation in {1_CityName} uses mercury for amalgamation gold extraction in large-scale gold mines, which has been a key factor behind the surge in domestic gold production."),
 
   ("LOC_HD_BUILD_RESOURCE_PEARLS_INDUSTRY_TEXT",                             "Divers in {1_CityName} hold their breath and descend, bringing back pearl oysters from the seafloor that hold miracles."),
   ("LOC_HD_BUILD_RESOURCE_PEARLS_CORPORATION_TEXT",                          "Seawater pearl farms in {1_CityName} bays have popularized nucleus implantation, making pearls round and controllable."),
@@ -1053,8 +1053,8 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_MERCURY_CORPORATION_TEXT",                         "提炼厂采取了新的密闭工艺，在安全前提下满足{1_CityName}工业对水银的需求。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_ART_INDUSTRY_DESCRIPTION",                       "水银在流体的形态变化中启发了{1_CityName}的动态雕塑家，创作出匪夷所思的作品。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_ART_CORPORATION_DESCRIPTION",                    "{1_CityName}水银开关装置曾是我国前卫艺术与精密仪器的象征。"),
-  ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_CONSTRUCTION_INDUSTRY_DESCRIPTION",              "{1_CityName}工匠将水银与锡箔混合涂在雕像与穹顶，形成金色的汞齐镀层，金碧辉煌。"),
-  ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_CONSTRUCTION_CORPORATION_DESCRIPTION",           "{1_CityName}水银用于大型金矿的混汞提金，是我国黄金产量的幕后功臣。"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_METALLURGY_INDUSTRY_DESCRIPTION",                "{1_CityName}的工匠发行，水银可以用来提取当地矿石中的金银。"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_MERCURY_METALLURGY_CORPORATION_DESCRIPTION",             "{1_CityName}的公司将水银用于大型金矿的混汞提金，这是国内黄金产量跃升的幕后功臣。"),
 
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_PEARLS_INDUSTRY_TEXT",                             "{1_CityName}的潜水人憋一口气下潜，从海底采回孕育着奇迹的珍珠贝。"),
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_PEARLS_CORPORATION_TEXT",                          "海水珍珠养殖场在{1_CityName}海湾普及插核技术，让珍珠变得圆润可控。"),
