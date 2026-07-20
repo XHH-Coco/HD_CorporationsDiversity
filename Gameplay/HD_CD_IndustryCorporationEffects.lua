@@ -272,8 +272,9 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
   if buildingInfo then
     if GameInfo.HD_Building_Unlock_Second_Industry[buildingInfo.BuildingType] ~= nil then
       -- 解锁第二行业
-      local cityPlots = city:GetOwnedPlots();
-      for _, plot in pairs(cityPlots) do
+      local cityPlots = Utils.GetCityPlots(playerId, cityId);
+      for _, plotId in pairs(cityPlots) do
+        local plot = Map.GetPlotByIndex(plotId);
         if plot and (plot:GetImprovementType() == INDUSTRY_INDEX
           or plot:GetImprovementType() == INDUSTRY_BONUS_INDEX
           or plot:GetImprovementType() == INDUSTRY_STRATEGIC_INDEX
@@ -298,8 +299,9 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
       end
     elseif GameInfo.HD_Building_Unlock_Second_Corporation[buildingInfo.BuildingType] ~= nil then
       -- 解锁第二公司
-      local cityPlots = city:GetOwnedPlots();
-      for _, plot in pairs(cityPlots) do
+      local cityPlots = Utils.GetCityPlots(playerId, cityId);
+      for _, plotId in pairs(cityPlots) do
+        local plot = Map.GetPlotByIndex(plotId);
         if plot and (plot:GetImprovementType() == CORPORATION_INDEX
           or plot:GetImprovementType() == CORPORATION_BONUS_INDEX
           or plot:GetImprovementType() == CORPORATION_STRATEGIC_INDEX)
@@ -516,8 +518,9 @@ function ChateauWonderCompleted(x, y, buildingId, playerId, cityId, percentCompl
     end
     print(Locale.Lookup(city:GetName()) .. '建造了中世纪或以后的奇观：' .. buildingId);
 
-    local cityPlots = city:GetOwnedPlots();
-    for _, plot in pairs(cityPlots) do
+    local cityPlots = Utils.GetCityPlots(playerId, cityId);
+    for _, plotId in pairs(cityPlots) do
+      local plot = Map.GetPlotByIndex(plotId);
       if plot and plot:GetImprovementType() == CHATEAU_INDEX then
         -- 如果是AI 随机选择一个
         if not player:IsHuman() then

@@ -13,7 +13,8 @@ insert or replace into BuildingModifiers (BuildingType, ModifierId) values
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_3'),
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_4'),
 	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_5'),
-	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_6');
+	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_6'),
+	('WON_CL_EMPIRE_STATES',	'EMPIRE_STATES_TOURISM_7');
 
 insert or replace into Modifiers (ModifierId, ModifierType, SubjectRequirementSetId) values
 	('EMPIRE_STATES_GOLD',      'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER_PER_GOVERNOR_TITLE',  NULL),
@@ -22,7 +23,8 @@ insert or replace into Modifiers (ModifierId, ModifierType, SubjectRequirementSe
 	('EMPIRE_STATES_TOURISM_3', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_3_TITLE_GOVERNOR_REQUIREMENTS'),
 	('EMPIRE_STATES_TOURISM_4', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_4_TITLE_GOVERNOR_REQUIREMENTS'),
 	('EMPIRE_STATES_TOURISM_5', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_5_TITLE_GOVERNOR_REQUIREMENTS'),
-	('EMPIRE_STATES_TOURISM_6', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS');
+	('EMPIRE_STATES_TOURISM_6', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_6_TITLE_GOVERNOR_REQUIREMENTS'),
+	('EMPIRE_STATES_TOURISM_7', 'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',                                 'CITY_HAS_7_TITLE_GOVERNOR_REQUIREMENTS');
 
 insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('EMPIRE_STATES_GOLD',      'YieldType',            'YIELD_GOLD'),
@@ -38,4 +40,6 @@ insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('EMPIRE_STATES_TOURISM_5', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
 	('EMPIRE_STATES_TOURISM_5', 'ScalingFactor',        125),
 	('EMPIRE_STATES_TOURISM_6', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-	('EMPIRE_STATES_TOURISM_6', 'ScalingFactor',        125);
+	('EMPIRE_STATES_TOURISM_6', 'ScalingFactor',        125),
+	('EMPIRE_STATES_TOURISM_7', 'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
+	('EMPIRE_STATES_TOURISM_7', 'ScalingFactor',        125);
