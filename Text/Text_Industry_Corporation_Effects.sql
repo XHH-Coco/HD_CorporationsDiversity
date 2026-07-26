@@ -11,6 +11,9 @@ insert or replace into EnglishText (Tag, Text) values
   -- 水果
   ("LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "This city gains [ICON_GREATMERCHANT] Great Merchant points and 3 times of [ICON_GOLD] Gold equal to its positive [ICON_AMENITIES] Amenities."),
   ("LOC_CORPORATION_HD_FRUIT_BONUS_DESCRIPTION",                   "+3 [ICON_GOLD] Gold for each [ICON_ENVOY] Envoy sent to city-state. +1 [ICON_MOVEMENT] Movement for all naval units and embarked units."),
+  -- 蔬菜
+  ("LOC_INDUSTRY_HD_VEGETABLE_BONUS_DESCRIPTION",                  "+5 [ICON_GOLD] Gold from each [ICON_CITIZEN] Citizen in this city."),
+  ("LOC_CORPORATION_HD_VEGETABLE_BONUS_DESCRIPTION",               "+10% [ICON_FOOD] Food and [ICON_GOLD] Gold to cities with Tier 3 Neighborhood buildings."),
   -- 酿造
   ("LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "Districts and improvements in this city adjacent to Water Conservancy Facilities District receive +1 [ICON_Culture] Culture and +6 [ICON_GOLD] Gold."),
   ("LOC_CORPORATION_HD_BREWING_BONUS_DESCRIPTION",                 "City with a [ICON_GOVERNOR] Governor +10% Growth rate and [ICON_GOLD] Gold."),
@@ -104,6 +107,9 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 水果
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_FRUIT_BONUS_DESCRIPTION",                      "本城获得等同于正 [ICON_AMENITIES] 宜居度的 [ICON_GREATMERCHANT] 大商人点数和3倍的 [ICON_GOLD] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_FRUIT_BONUS_DESCRIPTION",                   "派遣的每位城邦 [ICON_ENVOY] 使者提供+3 [ICON_GOLD] 金币。所有海军和水运单位+1 [ICON_MOVEMENT] 移动力。"),
+  -- 蔬菜
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_VEGETABLE_BONUS_DESCRIPTION",                  "本城的每位 [ICON_CITIZEN] 公民+5 [ICON_GOLD] 金币。"),
+  ("zh_Hans_CN",  "LOC_CORPORATION_HD_VEGETABLE_BONUS_DESCRIPTION",               "有社区三级建筑的城市+10% [ICON_FOOD] 食物和 [ICON_GOLD] 金币。"),
   -- 酿造
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "本城相邻水利设施区域的区域和改良+1 [ICON_Culture] 文化值和+6 [ICON_GOLD] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_BREWING_BONUS_DESCRIPTION",                 "有 [ICON_GOVERNOR] 总督就职的城市+10%余粮和 [ICON_GOLD] 金币。"),
@@ -118,7 +124,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_LEATHER_BONUS_DESCRIPTION",                 "国内 [ICON_TRADEROUTE] 贸易路线+4 [ICON_PRODUCTION] 生产力和+6 [ICON_GOLD] 金币。"),
   -- 服装
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CLOTH_BONUS_DESCRIPTION",                      "本城的每级商业中心建筑为6个单元格内的城市和社区+1 [ICON_CULTURE] 文化值和+3 [ICON_GOLD] 金币。"),
-  ("zh_Hans_CN",  "LOC_CORPORATION_HD_CLOTH_BONUS_DESCRIPTION",                   "境内的商业中心和社区建筑额外辐射+3 [ICON_CULTURE] 文化值和+6 [ICON_GOLD] 金币。"),
+  ("zh_Hans_CN",  "LOC_CORPORATION_HD_CLOTH_BONUS_DESCRIPTION",                   "境内的商业中心和社区辐射建筑额外辐射+3 [ICON_CULTURE] 文化值和+6 [ICON_GOLD] 金币。"),
   -- 建造
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CONSTRUCTION_BONUS_DESCRIPTION",               "本城建造奇观加速+10%。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_CONSTRUCTION_BONUS_DESCRIPTION",            "所有城市建造区域、建筑和奇观时+10%建造速度。玩家的 [ICON_GREATENGINEER] 大工程师点数积累速度+50%。"),

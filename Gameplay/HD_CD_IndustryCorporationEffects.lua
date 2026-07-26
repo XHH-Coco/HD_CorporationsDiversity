@@ -45,16 +45,29 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
   then
     print("建造行业")
 
-    -- 巴西UA 获得旗手和采集次数
+    -- 巴西UA 城市首个行业获得旗手和采集次数
     if Utils.CivilizationHasTrait(playerId, 'TRAIT_CIVILIZATION_AMAZON')
       and player:GetProperty(Brazil_Industry_Bandeirante_Tag .. resourceId) ~= 1
     then
       player:SetProperty(Brazil_Industry_Bandeirante_Tag .. resourceId, 1);
-      print("巴西首次建立" .. Locale.Lookup(resourceInfo.Name) .. "行业 获得旗手和采集次数");
-      player:AttachModifierByID('HD_BANDEIRANTES_ADD_TIMES');
-      city:AttachModifierByID('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES');
-    end
 
+      -- 获得棋手
+      if city:GetProperty(Brazil_Industry_Bandeirante_Tag) ~= 1 then
+        city:SetProperty(Brazil_Industry_Bandeirante_Tag , 1);
+
+        print("巴西首次在" .. Locale.Lookup(city:GetName()) .."建立" .. Locale.Lookup(resourceInfo.Name) .. "行业 获得旗手");
+        city:AttachModifierByID('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES');
+      end
+      
+      -- 采集次数 每2座行业
+      local num = player:GetProperty(Brazil_Industry_Bandeirante_Tag) or 0;
+      player:SetProperty(Brazil_Industry_Bandeirante_Tag, num + 1);
+      print("巴西行业数量：" .. (num + 1));
+      if num % 2 == 1 then
+        print("巴西获得+1采集次数");
+        player:AttachModifierByID('HD_BANDEIRANTES_ADD_TIMES');
+      end
+    end
 
     -- 查询可用行业类别
     print("============================================")

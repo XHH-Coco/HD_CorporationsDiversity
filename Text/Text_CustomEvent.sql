@@ -844,8 +844,8 @@ insert or replace into EnglishText (Tag, Text) values
 
   ("LOC_HD_BUILD_RESOURCE_TOMATO_INDUSTRY_TEXT",                             "In the vegetable gardens of {1_CityName}, bright red tomatoes hang on the vines, initially grown only as ornamentals."),
   ("LOC_HD_BUILD_RESOURCE_TOMATO_CORPORATION_TEXT",                          "A food processing plant has risen in {1_CityName}, turning fresh tomatoes into easily stored sauces and drinks."),
-  ("LOC_HD_RESOURCE_TOMATO_BEVERAGE_INDUSTRY_DESCRIPTION",                   "People in {1_CityName} were the first to try juicing juicy tomatoes into a crimson drink, refreshing and appetizing when chilled."),
-  ("LOC_HD_RESOURCE_TOMATO_BEVERAGE_CORPORATION_DESCRIPTION",                "The “Red Diamond” tomato juice brand from {1_CityName} is a bestseller on supermarket shelves as a healthy breakfast drink in our civilization."),
+  ("LOC_HD_RESOURCE_TOMATO_VEGETABLE_INDUSTRY_DESCRIPTION",                  "People in {1_CityName} were the first to try cooking tomatoes as a vegetable, creating a variety of healthy and delicious dishes."),
+  ("LOC_HD_RESOURCE_TOMATO_VEGETABLE_CORPORATION_DESCRIPTION",               "The thick-skinned tomatoes developed by {1_CityName} have overcome the challenges of long-distance transportation, becoming a popular vegetable choice in the domestic market."),
   ("LOC_HD_RESOURCE_TOMATO_FRUIT_INDUSTRY_DESCRIPTION",                      "The markets of {1_CityName} have many varieties of tomatoes, some sweet and sour, eaten directly as fruit."),
   ("LOC_HD_RESOURCE_TOMATO_FRUIT_CORPORATION_DESCRIPTION",                   "The cherry tomato greenhouse base in {1_CityName} ensures a fresh garnish on our civilization`s tables year-round."),
 
@@ -1723,8 +1723,8 @@ insert or replace into LocalizedText (Language, Tag, Text) values
 
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_TOMATO_INDUSTRY_TEXT",                             "{1_CityName}的菜园里，红彤彤的番茄挂满枝头，最初只被当作观赏植物。"),
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_TOMATO_CORPORATION_TEXT",                          "食品加工厂在{1_CityName}拔地而起，将新鲜的番茄转化为易于储存的酱料和饮料。"),
-  ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_BEVERAGE_INDUSTRY_DESCRIPTION",                   "{1_CityName}人首先尝试将多汁的番茄榨成鲜红的饮品，加冰后清爽开胃。"),
-  ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_BEVERAGE_CORPORATION_DESCRIPTION",                "{1_CityName}番茄汁“红钻”品牌，作为健康早餐饮品，畅销我国的超市货架。"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_VEGETABLE_INDUSTRY_DESCRIPTION",                  "{1_CityName}人首先尝试将番茄作为一种蔬菜进行烹饪，做出的各式菜肴健康又美味。"),
+  ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_VEGETABLE_CORPORATION_DESCRIPTION",               "{1_CityName}培育的和厚皮番茄攻克了长途运输的难题，成为国内市场畅销的蔬菜选择。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_FRUIT_INDUSTRY_DESCRIPTION",                      "{1_CityName}集市上的番茄品种繁多，有的酸甜可口，直接当水果食用。"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_TOMATO_FRUIT_CORPORATION_DESCRIPTION",                   "{1_CityName}的圣女果温室基地，保障了我国一年四季餐桌上的新鲜点缀。"),
 
