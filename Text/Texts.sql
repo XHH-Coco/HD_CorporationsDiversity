@@ -21,6 +21,10 @@ insert or replace into EnglishText (Tag, Text) values
   -- 单位
   ("LOC_UNIT_LEU_TYCOON_DESCRIPTION",                               "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires Tier 2 building of Commercial Hub or Tier 1 building of Harbor to be purchased.[NEWLINE][NEWLINE]Tycoons can create Industries on Luxury Resource tiles, and after the discovery of Steam Power they can create Railroads and Stations to improve yields, commerce and [ICON_PRODUCTION] Production in your territory."),
   ("LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                             "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires Tier 3 building of Commercial Hub or Tier 2 building of Harbor to be purchased.[NEWLINE][NEWLINE]Investors can found Corporations that allow your civilization to create [ICON_GREATWORK_PRODUCT] Products for additional yields and [ICON_TOURISM] Tourism, or create Warehouses and Container Ports in other civilizations to further strengthen commerce and your Corporations."),
+  ("LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION", "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}: Allowed to build Industry on Strategic Resource. Need to consume 30 corresponding Strategic Resources and 3 [ICON_CHARGES] build charges."),
+  ("LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                  "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}: Allowed to build Industry on Bonus Resource. Need to consume 4 [ICON_CHARGES] build charges."),
+  ("LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",         "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Industry on Bonus or Strategic Resources. Need to consume 30 corresponding Resources to build Strategic Resource Industry."),
+  ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 60 corresponding Resources to build Strategic Resource Corporation."),
   -- 其他
   ("LOC_MOMENT_FIRST_INDUSTRY",            											    "First Luxury Industry Created"),
 	("LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",            					    "Your first Luxury Industry has been created. "),
@@ -66,6 +70,10 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_DESCRIPTION",                      "需要商业中心二级建筑或港口一级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创建行业，在研究“蒸汽动力”后，他们也可创建铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),
   ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_NAME",                           "投资人"),
   ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                    "需要商业中心三级建筑或港口二级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创建公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的产出和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中创建仓库和集装箱港口，进一步强化贸易和你的公司。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION",  "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}：允许单位在战略资源上建立行业。需要消耗30点对应战略资源和3次 [ICON_CHARGES] 建造次数。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                   "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}：允许单位在加成资源上建立行业。需要消耗4次 [ICON_CHARGES] 建造次数。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",      "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上建立行业。建立战略资源行业需要消耗30点对应战略资源。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上建立公司。建立战略资源公司需要消耗60点对应战略资源。"),
   -- 其他
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY",                                  "建立了首个奢侈行业"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",                      "您建立了自己的首个奢侈行业。"),
@@ -79,6 +87,6 @@ insert or replace into LocalizedText (Language, Tag, Text) values
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD",                      "世界首家奢侈公司"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD_DESCRIPTION",          "有钱能使鬼推磨——世界见证了首家奢侈公司的诞生！该搞定竞争对手了。"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD_INSTANCE_DESCRIPTION", "世界上首家奢侈公司出现在了您的文明中，堪称没有躯体的庞然大物。无数箱{ResourceType}正待贴上标签、进行包装，再运往全世界！"),
-  ("zh_Hans_CN",  "LOC_HD_CORPORATION",                                   "公司"),
-  ("zh_Hans_CN",  "LOC_POWER_REQUIREMENT_MISC",                           "其他消耗来源"),
-  ("zh_Hans_CN",  "LOC_TUTORIAL_CORPORATION_OPPORTUNITY_B",               "我们现在能够利用领土中的奢侈品资源来创建公司。控制或垄断一种奢侈品资源后，即可创建公司。创建公司后可以开发产品，销往其他文明。销往其他城市的产品将增加该公司的金币产出并进一步提升其旅游业绩。");
+  ("zh_Hans_CN",  "LOC_HD_CORPORATION",                                         "公司"),
+  ("zh_Hans_CN",  "LOC_POWER_REQUIREMENT_MISC",                                 "其他消耗来源"),
+  ("zh_Hans_CN",  "LOC_TUTORIAL_CORPORATION_OPPORTUNITY_B",                     "我们现在能够利用领土中的奢侈品资源来创建公司。控制或垄断一种奢侈品资源后，即可创建公司。创建公司后可以开发产品，销往其他文明。销往其他城市的产品将增加该公司的金币产出并进一步提升其旅游业绩。");

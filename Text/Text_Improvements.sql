@@ -17,9 +17,8 @@ insert or replace into EnglishText (Tag, Text) values
 
   ("LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]This city can only build at most {1_Num} {1_Num : plural 1?Industry; other?Industries;} or {1_Num : plural 1?Corporation; other?Corporations;} of Bonus Resource.[ENDCOLOR]"),
   ("LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]This city can only build at most {1_Num} {1_Num : plural 1?Industry; other?Industries;} or {1_Num : plural 1?Corporation; other?Corporations;} of Strategic Resource.[ENDCOLOR]"),
-  ("LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]You have already built Industry or Corporation of {1_Resource}.[ENDCOLOR]"),
-  ("LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]Corporation of {1_Resource} has already been built in the world.[ENDCOLOR]"),
-  ("LOC_IMPROVEMENT_CORPORATION_PLOT_DISABLED",          "[COLOR:Red]Must be built on {1_Resource} Industry.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]You have already built Industry or Corporation of {1_Icon} {2_Resource}.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]Corporation of {1_Icon} {2_Resource} has already been built in the world.[ENDCOLOR]"),
   ("LOC_IMPROVEMENT_IC_BONUS_RESOURCE_DISABLED",         "[COLOR:Red]You need to control at least {1_Num} {1_Num : plural 1?copy; other?copies;} of {2_Icon} {3_Resource}.[ENDCOLOR]"),
   ("LOC_IMPROVEMENT_IC_STRATEGIC_RESOURCE_DISABLED",     "[COLOR:Red]Need to consume {1_Num} {2_Icon} {3_Resource}. {LOC_DEAL_RESOURCES_NOT_ENOUGH}.[ENDCOLOR]"),
   -- 行业
@@ -54,9 +53,8 @@ insert or replace into LocalizedText (Language, Tag, Text) values
 
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]本城最多只能建立{1_Num}座改良加成资源的行业或公司。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]本城最多只能建立{1_Num}座改良战略资源的行业或公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]你已经建立了{1_Resource}行业或公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]世界上已经建立了{1_Resource}公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_PLOT_DISABLED",          "[COLOR:Red]必须在{1_Resource}行业上进行建立。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]你已经建立了 {1_Icon} {2_Resource}行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]世界上已经建立了 {1_Icon} {2_Resource}公司。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_RESOURCE_DISABLED",         "[COLOR:Red]需要至少控制{1_Num}处 {2_Icon} {3_Resource}资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_RESOURCE_DISABLED",     "[COLOR:Red]需要消耗{1_Num} {2_Icon} {3_Resource}，{LOC_DEAL_RESOURCES_NOT_ENOUGH}。[ENDCOLOR]"),
   -- 行业

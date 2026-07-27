@@ -1,6 +1,8 @@
 insert or replace into EnglishText (Tag, Text) values
   -- 威尼斯军械库
-  ("LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "Grants a Tycoon unit. {LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
+  ("LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "Grants a Tycoon. {LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
+  -- 鲁尔山谷
+  ("LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "Provides 6 [ICON_RESOURCE_COAL] Coal per turn. Tycoon can build Industry on Bonus or Strategic Resources. Investor can build Corporation on Bonus or Strategic Resources. Corporation of Bonus Resources provides +5% [ICON_PRODUCTION] Production to its city. Corporation of Strategic Resources provides +5% [ICON_Science] Science. Each Industry and Corporation in your empire provide +5% accumulation rate for [ICON_GREATENGINEER] Great Engineer Points. [NEWLINE][NEWLINE]Must be built adjacent to River."),
   -- 巴拿马运河
   ("LOC_BUILDING_PANAMA_CANAL_DESCRIPTION",                         "Grants 1 free [ICON_GreatMerchant] Great Merchant. Canal districts across your empire provide +10% [ICON_GREATMERCHANT] Great Merchant points you generate. [ICON_Greatwork_Product] Product in cities with Canal districts provide +50% [ICON_Tourism] Tourism. Each type of Specialized districts or Aqueduct adjacent to Canal district or Panama Canal in this city provide corresponding yield to International [ICON_TradeRoute] Trade Routes from this city.[NEWLINE][NEWLINE]Upon completion 1 or 2 adjacent Canal districts are automatically constructed. The Canal wonder tile can now be crossed by naval units. Must be built on a flat land tile where there are two adjacent tiles directly across the build tile from one another that meet the following criteria: one adjacent tile must be able to legally hold a Canal district connecting into the Panama Canal construction tile; the other must be either a city, a Lake/Coast tile, or be another tile that can hold a connecting Canal."),
   -- 帝国大厦
@@ -11,7 +13,9 @@ insert or replace into EnglishText (Tag, Text) values
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   -- 威尼斯军械库
-  ("zh_Hans_CN",  "LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "获得1个大亨单位。{LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
+  ("zh_Hans_CN",  "LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "获得1个大亨。{LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
+  -- 鲁尔山谷
+  ("zh_Hans_CN",  "LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "每回合提供6点 [ICON_RESOURCE_COAL] 煤。大亨可以在加成资源或战略资源上建立行业，投资人可以在加成资源或战略资源上建立公司。加成资源公司为所在城市+5% [ICON_PRODUCTION] 生产力，战略资源公司为所在城市+5% [ICON_Science] 科技值。境内每个行业或公司使玩家的 [ICON_GREATENGINEER] 大工程师点数积累速度+5%。[NEWLINE][NEWLINE]必须沿河而建。"),
   -- 巴拿马运河
   ("zh_Hans_CN",  "LOC_BUILDING_PANAMA_CANAL_DESCRIPTION",                         "建成时市中心出现一位 [ICON_GreatMerchant] 大商人。境内的每个运河使玩家的 [ICON_GREATMERCHANT] 大商人点数积累速度+10%。拥有运河的城市来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+50%。本城的每个运河（包括巴拿马运河）相邻的每种专业化区域或水渠为本城出发的国际 [ICON_TradeRoute] 贸易路线提供对应产出。[NEWLINE][NEWLINE]开始修建巴拿马运河时，将在满足条件的相邻单元格自动开始建造1或2个运河，完成巴拿马运河的同时运河也将完成。建成的巴拿马运河将同样被视为运河。[NEWLINE]将巴拿马运河视为水域单元格时，必须有两个相邻巴拿马运河的且关于其对称的单元格满足：两个单元格均可以修建运河；或是一个单元格可以修建运河，一个单元格是城市/水域。如想使用巴拿马运河连接两座城市，那么这两座城市必须有至少一座相邻水域单元格或已经被运河连接至水域单元格。[NEWLINE][NEWLINE]必须修建在平坦地形单元格之上。"),
   -- 帝国大厦

@@ -10,7 +10,6 @@ local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_B
 local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
 
 local BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT = GlobalParameters.HD_BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT or 0;
-local BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT = GlobalParameters.HD_BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT or 0;
 
 local MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM = GlobalParameters.HD_MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM or 0;
 local BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM = GlobalParameters.HD_BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM or 0;
@@ -46,15 +45,9 @@ function BuildStrategicIndustry(playerId, unitId)
   unit:ChangeMovesRemaining(-movesRemaining);
 
   if unitInfo.UnitType == 'UNIT_SAPPER' or unitInfo.UnitType == 'UNIT_MILITARY_ENGINEER' or unitInfo.UnitType == 'UNIT_ENGINEER_CORP' then
-    local unitAbility = unit:GetAbility();
-    for j=1, MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM, 1 do
-      for i=1, 10, 1 do
-        if unitAbility:GetAbilityCount('ABILITY_HD_MILITARY_ENGINEER_NEGA_CHARGE_' .. i) == 0 then
-          unitAbility:ChangeAbilityCount('ABILITY_HD_MILITARY_ENGINEER_NEGA_CHARGE_' .. i, 1);
-          break;
-        end
-      end
-    end
+    Utils.ConsumeUnitBuildCharges(playerId, unitId, MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM);
+  else
+    Utils.ConsumeUnitBuildCharges(playerId, unitId, 1);
   end
 end
 GameEvents.HD_BuildStrategicIndustry.Add(BuildStrategicIndustry);
@@ -83,15 +76,9 @@ function BuildBonusIndustry(playerId, unitId)
   unit:ChangeMovesRemaining(-movesRemaining);
 
   if unitInfo.UnitType == 'UNIT_BUILDER' then
-    local unitAbility = unit:GetAbility();
-    for j=1, BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM, 1 do
-      for i=1, 10, 1 do
-        if unitAbility:GetAbilityCount('ABILITY_HD_BUILDER_NEGA_CHARGE_' .. i) == 0 then
-          unitAbility:ChangeAbilityCount('ABILITY_HD_BUILDER_NEGA_CHARGE_' .. i, 1);
-          break;
-        end
-      end
-    end
+    Utils.ConsumeUnitBuildCharges(playerId, unitId, BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM);
+  else
+    Utils.ConsumeUnitBuildCharges(playerId, unitId, 1);
   end
 end
 GameEvents.HD_BuildBonusIndustry.Add(BuildBonusIndustry);
