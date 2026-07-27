@@ -42,7 +42,17 @@ insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost,
 	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_DESCRIPTION',
 	160,
 	'ADVISOR_GENERIC'
-from HD_Monopoly_Resource_Categories;
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+
+insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost, AdvisorType, MaxPlayerInstances) select distinct
+	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME',
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_SHORT_NAME',
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_DESCRIPTION',
+	160,
+	'ADVISOR_GENERIC',
+  6
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 update Projects set Cost = 160 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
 
@@ -50,7 +60,7 @@ delete from Projects_XP2 where ProjectType like 'PROJECT_CREATE_CORPORATION_PROD
 
 insert or ignore into Projects_MODE (ProjectType, ResourceType) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), ResourceType
-from HD_Monopoly_Resource_Categories;
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
 
 insert or ignore into ProjectCompletionModifiers (ProjectType, ModifierId) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 'PROJECT_COMPLETION_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10)
@@ -63,6 +73,25 @@ from HD_Monopoly_Resource_Categories;
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select distinct
 	'PROJECT_COMPLETION_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 'ResourceType', ResourceType
 from HD_Monopoly_Resource_Categories;
+
+-- =====================================================================================================================================
+-- 加成战略产品 虚拟建筑
+-- =====================================================================================================================================
+insert or ignore into Types (Type, Kind) select
+  'BUILDING_CREATE_PRODUCT_' || ResourceType, 'KIND_BUILDING'
+from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+
+insert or ignore into Buildings (BuildingType, Name, Cost, Maintenance, AdvisorType, MustPurchase, InternalOnly) select
+	'BUILDING_CREATE_PRODUCT_' || ResourceType, 'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME', 0, 0, 'ADVISOR_GENERIC', 1, 1
+from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+
+insert or ignore into Buildings_XP2 (BuildingType, Pillage) select
+  'BUILDING_CREATE_PRODUCT_' || ResourceType, 0
+from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+
+insert or ignore into Projects_XP2 (ProjectType, RequiredBuilding) select
+	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 'BUILDING_CREATE_PRODUCT_' || ResourceType
+from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
 
 -- =====================================================================================================================================
 -- 产品产出

@@ -2,6 +2,10 @@ ExposedMembers.DLHD = ExposedMembers.DLHD or {};
 ExposedMembers.DLHD.Utils = ExposedMembers.DLHD.Utils or {};
 Utils = ExposedMembers.DLHD.Utils;
 
+local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
+local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
+local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
+
 -- ============================================================================================================================================================
 -- 阶级斗争尤里卡
 -- ============================================================================================================================================================
@@ -88,6 +92,68 @@ function BuildBonusCorporation(playerId, unitId)
   Utils.ConsumeUnitBuildCharges(playerId, unitId, 1);
 end
 GameEvents.HD_BuildBonusCorporation.Add(BuildBonusCorporation);
+
+-- ============================================================================================================================================================
+-- 加成战略产品项目
+-- ============================================================================================================================================================
+function RefreshCityBonusStrategicProductProjects(playerId, cityId)
+  local player = Players[playerId];
+  if not player then return; end
+  local city = CityManager.GetCity(playerId, cityId);
+  if not city then return; end
+
+  local resourceMap = {};
+
+  local cityPlots = Utils.GetCityPlots(playerId, cityId);
+  for _, plotId in pairs(cityPlots) do
+    local plot = Map.GetPlotByIndex(plotId);
+    if plot and (plot:GetImprovementType() == CORPORATION_BONUS_INDEX
+      or plot:GetImprovementType() == CORPORATION_STRATEGIC_INDEX)
+      and not plot:IsImprovementPillaged()
+    then
+      local resourceId = plot:GetResourceType();
+      local resourceInfo = GameInfo.Resources[resourceId];
+      if resourceInfo and (resourceInfo.ResourceClassType == 'RESOURCECLASS_BONUS' or resourceInfo.ResourceClassType == 'RESOURCECLASS_STRATEGIC') then
+        resourceMap[resourceInfo.ResourceType] = true;
+      end
+    end
+  end
+
+  for row in GameInfo.Resources() do
+    if row.ResourceClassType == 'RESOURCECLASS_BONUS' or row.ResourceClassType == 'RESOURCECLASS_STRATEGIC' then
+      if resourceMap[row.ResourceType] == true then
+        local buildingInfo = GameInfo.Buildings['BUILDING_CREATE_PRODUCT_' .. row.ResourceType];
+        if buildingInfo and not city:GetBuildings():HasBuilding(buildingInfo.Index) then
+          city:GetBuildQueue():CreateBuilding(buildingInfo.Index);
+          -- print("建造" .. buildingInfo.BuildingType);
+        end
+      else
+        local buildingInfo = GameInfo.Buildings['BUILDING_CREATE_PRODUCT_' .. row.ResourceType];
+        if buildingInfo and city:GetBuildings():HasBuilding(buildingInfo.Index) then
+          city:GetBuildings():RemoveBuilding(buildingInfo.Index);
+          -- print("摧毁" .. buildingInfo.BuildingType);
+        end
+      end
+    end
+  end
+end
+
+function BonusStrategicProductProjectsCitySelectionChanged(playerId, cityId, i, j, k, selected, editable)
+  RefreshCityBonusStrategicProductProjects(playerId, cityId);
+end
+Events.CitySelectionChanged.Add(BonusStrategicProductProjectsCitySelectionChanged);
+
+function RefreshBonusStrategicProductProjectsOnGameTurnEnded()
+  for _, playerId in ipairs(PlayerManager.GetAliveMajorIDs()) do
+    local player = Players[playerId];
+    if player then
+      for _, city in player:GetCities():Members() do
+        RefreshCityBonusStrategicProductProjects(playerId, city:GetID());
+      end
+    end
+	end
+end
+GameEvents.OnGameTurnEnded.Add(RefreshBonusStrategicProductProjectsOnGameTurnEnded);
 
 -- ============================================================================================================================================================
 -- Initialize
