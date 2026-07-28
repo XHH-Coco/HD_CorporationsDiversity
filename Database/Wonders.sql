@@ -65,12 +65,21 @@ insert or replace into BuildingModifiers (BuildingType, ModifierId) select
 	'NAT_WON_CL_FINANCE',		'HD_NAT_FINANCE_PRODUCT_TOURISM'
 where exists (select BuildingType from Buildings where BuildingType = 'NAT_WON_CL_FINANCE');
 
+insert or replace into BuildingModifiers (BuildingType, ModifierId) select
+	'NAT_WON_CL_FINANCE',		'HD_NAT_FINANCE_CORPORATION_GOLD'
+where exists (select BuildingType from Buildings where BuildingType = 'NAT_WON_CL_FINANCE');
+
 insert or replace into Modifiers (ModifierId, ModifierType, SubjectRequirementSetId) values
-	('HD_NAT_FINANCE_PRODUCT_TOURISM',	'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',	'HD_CITY_HAS_BUILDING_EXHIBITION_NO_BUILDING_CANAL');
+	('HD_NAT_FINANCE_PRODUCT_TOURISM',	'MODIFIER_PLAYER_CITIES_ADJUST_TOURISM',						'CITY_HAS_BUILDING_EXHIBITION_REQUIREMENTS'),
+	('HD_NAT_FINANCE_CORPORATION_GOLD',	'MODIFIER_PLAYER_IMPROVEMENTS_ATTACH_MODIFIER',			'PLOT_HAS_IMPROVEMENT_CORPORATION_REQUIREMENTS'),
+	('HD_NAT_FINANCE_CITY_GOLD',				'MODIFIER_SINGLE_CITY_ADJUST_CITY_YIELD_MODIFIER',	NULL);
 
 insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('HD_NAT_FINANCE_PRODUCT_TOURISM',  'GreatWorkObjectType',	'GREATWORKOBJECT_PRODUCT'),
-	('HD_NAT_FINANCE_PRODUCT_TOURISM',  'ScalingFactor',				150);
+	('HD_NAT_FINANCE_PRODUCT_TOURISM',  'ScalingFactor',				200),
+	('HD_NAT_FINANCE_CORPORATION_GOLD',	'ModifierId',						'HD_NAT_FINANCE_CITY_GOLD'),
+  ('HD_NAT_FINANCE_CITY_GOLD',  			'YieldType',    				'YIELD_GOLD'),
+  ('HD_NAT_FINANCE_CITY_GOLD',  			'Amount',       				10);
 
 -- =====================================================================================================================================
 -- 威尼斯军械库
