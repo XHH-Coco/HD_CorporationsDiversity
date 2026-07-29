@@ -15,7 +15,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_VEGETABLE_BONUS_DESCRIPTION",                  "+5 [ICON_GOLD] Gold from each [ICON_CITIZEN] Citizen in this city."),
   ("LOC_CORPORATION_HD_VEGETABLE_BONUS_DESCRIPTION",               "+10% [ICON_FOOD] Food and [ICON_GOLD] Gold to cities with Tier 3 Neighborhood buildings."),
   -- 酿造
-  ("LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "Districts and improvements in this city adjacent to Water Conservancy Facilities District receive +1 [ICON_Culture] Culture and +6 [ICON_GOLD] Gold."),
+  ("LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "Districts and improvements in this city adjacent to Hydraulic District receive +1 [ICON_Culture] Culture and +6 [ICON_GOLD] Gold."),
   ("LOC_CORPORATION_HD_BREWING_BONUS_DESCRIPTION",                 "City with a [ICON_GOVERNOR] Governor +10% Growth rate and [ICON_GOLD] Gold."),
   -- 饮料
   ("LOC_INDUSTRY_HD_BEVERAGE_BONUS_DESCRIPTION",                   "+0.5 [ICON_SCIENCE] Science and [ICON_CULTURE] Culture from each [ICON_CITIZEN] Citizen in this city."),
@@ -58,7 +58,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",            "Harbor district in this city provides [ICON_Production] Production equal to its adjacency bonus."),
   ("LOC_CORPORATION_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",         "+5% [ICON_Science] Science to cities built adjacent to water area."),
   -- 海兽
-  ("LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "Maritime Improvements in this city provide +1 [ICON_SCIENCE] Science and +1 [ICON_CULTURE] Culture."),
+  ("LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "Water-based Improvements in this city provide +1 [ICON_SCIENCE] Science and +1 [ICON_CULTURE] Culture."),
   ("LOC_CORPORATION_HD_SEA_BEAST_BONUS_DESCRIPTION",               "Water Park and each Tier of buildings in it provides a standard adjacency bonus to districts within 2 tiles. Cities with Water Park district receive +100% [ICON_Tourism] Tourism from improvements, Wonders, and National Parks in its city."),
   -- 庆典
   ("LOC_INDUSTRY_HD_CELEBRATION_BONUS_DESCRIPTION",                "+1 [ICON_CULTURE] Culture and [ICON_FAITH] Faith to plots in this city which are adjacent to Holy Site district or Religious Improvements."),
@@ -111,7 +111,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_VEGETABLE_BONUS_DESCRIPTION",                  "本城的每位 [ICON_CITIZEN] 公民+5 [ICON_GOLD] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_VEGETABLE_BONUS_DESCRIPTION",               "有社区三级建筑的城市+10% [ICON_FOOD] 食物和 [ICON_GOLD] 金币。"),
   -- 酿造
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "本城相邻水利设施区域的区域和改良+1 [ICON_Culture] 文化值和+6 [ICON_GOLD] 金币。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BREWING_BONUS_DESCRIPTION",                    "本城相邻水利工程区域的区域和改良+1 [ICON_Culture] 文化值和+6 [ICON_GOLD] 金币。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_BREWING_BONUS_DESCRIPTION",                 "有 [ICON_GOVERNOR] 总督就职的城市+10%余粮和 [ICON_GOLD] 金币。"),
   -- 饮料
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_BEVERAGE_BONUS_DESCRIPTION",                   "本城的每位 [ICON_CITIZEN] 公民+0.5 [ICON_SCIENCE] 科技值和 [ICON_CULTURE] 文化值。"),
@@ -154,7 +154,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",            "本城的港口提供等同于其相邻加成的 [ICON_Production] 生产力。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_MARINE_PRODUCTS_BONUS_DESCRIPTION",         "相邻水域的城市+5% [ICON_Science] 科技值。"),
   -- 海兽
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "本城的水上设施改良+1 [ICON_SCIENCE] 科技值、+1 [ICON_CULTURE] 文化值。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_SEA_BEAST_BONUS_DESCRIPTION",                  "本城的水上改良+1 [ICON_SCIENCE] 科技值、+1 [ICON_CULTURE] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_SEA_BEAST_BONUS_DESCRIPTION",               "水上乐园和其中的每级建筑为2个单元格内的区域提供标准相邻加成。有水上乐园的城市+100%来自改良、奇观和国家公园的 [ICON_Tourism] 旅游业绩。"),
   -- 庆典
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_CELEBRATION_BONUS_DESCRIPTION",                "本城相邻圣地或宗教场所改良的单元格+1 [ICON_CULTURE] 文化值和 [ICON_FAITH] 信仰值。"),

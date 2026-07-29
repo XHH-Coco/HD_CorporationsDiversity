@@ -7,7 +7,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- ==============================================================================
   -- 马格努斯
   -- ==============================================================================
-  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_DESCRIPTION",                "本城训练的建造者可以消耗4次 [ICON_CHARGES] 建造次数在加成资源上建立行业。本城每有一级工业区建筑，可以额外建立一座加成资源的行业。"),
+  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_DESCRIPTION",                "所有建造者可以消耗4次 [ICON_CHARGES] 建造次数在加成资源上建立行业。本城每有一级工业区建筑，可以额外建立一座加成资源的行业。"),
   ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_3_DESCRIPTION",                "本城每建立一座行业或公司，通往本城的国内 [ICON_TRADEROUTE] 贸易路线+2 [ICON_FOOD] 食物和+1 [ICON_PRODUCTION] 生产力。"),
   -- ==============================================================================
   -- 瑞娜
