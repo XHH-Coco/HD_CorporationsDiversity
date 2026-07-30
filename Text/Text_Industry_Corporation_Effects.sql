@@ -67,7 +67,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_INDUSTRY_HD_MEDICINE_BONUS_DESCRIPTION",                   "Districts and Wonders in this city provide +1 [ICON_Science] Science and +1 [ICON_Faith] Faith."),
   ("LOC_CORPORATION_HD_MEDICINE_BONUS_DESCRIPTION",                "+2% [ICON_SCIENCE] Science from [ICON_TechBoosted] Eurekas. All units recover +10 additional HP per turn when healing."),
   -- 文具
-  ("LOC_INDUSTRY_HD_STATIONERY_BONUS_DESCRIPTION",                 "+2 [ICON_Science] Science and [ICON_CULTURE] Culture to Educational Improvements in this city."),
+  ("LOC_INDUSTRY_HD_STATIONERY_BONUS_DESCRIPTION",                 "+2 [ICON_Science] Science and [ICON_CULTURE] Culture to Campus, Theater Square and Educational Improvements in this city."),
   ("LOC_CORPORATION_HD_STATIONERY_BONUS_DESCRIPTION",              "Each slotted Cultural Policy provides a standard adjacency bonus to Campuses and Theater Squares."),
   -- 艺术
   ("LOC_INDUSTRY_HD_ART_BONUS_DESCRIPTION",                        "Each Wonder and tourism-landscape improvement in this city provides +2 [ICON_GREATWRITER] Great Writer points, [ICON_GREATARTIST] Great Artist points, and [ICON_GREATMUSICIAN] Great Musician points."),
@@ -163,7 +163,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_MEDICINE_BONUS_DESCRIPTION",                   "本城的区域和奇观+1 [ICON_Science] 科技值和 [ICON_Faith] 信仰值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_MEDICINE_BONUS_DESCRIPTION",                "[ICON_TechBoosted] 尤里卡提供的 [ICON_SCIENCE] 科技值+2%。所有单位回复生命值时+10每回合回复量。"),
   -- 文具
-  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_STATIONERY_BONUS_DESCRIPTION",                 "本城的研究教育改良+2 [ICON_Science] 科技值和 [ICON_CULTURE] 文化值。"),
+  ("zh_Hans_CN",  "LOC_INDUSTRY_HD_STATIONERY_BONUS_DESCRIPTION",                 "本城的学院、剧院和研究教育改良+2 [ICON_Science] 科技值和 [ICON_CULTURE] 文化值。"),
   ("zh_Hans_CN",  "LOC_CORPORATION_HD_STATIONERY_BONUS_DESCRIPTION",              "槽位中的每项文化政策为学院和剧院提供标准相邻加成。"),
   -- 艺术
   ("zh_Hans_CN",  "LOC_INDUSTRY_HD_ART_BONUS_DESCRIPTION",                        "本城的每座奇观提供+2 [ICON_GREATWRITER] 大作家点数、[ICON_GREATARTIST] 大艺术家点数和 [ICON_GREATMUSICIAN] 大音乐家点数。"),
