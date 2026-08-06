@@ -258,6 +258,31 @@
 	  </ZoomAnchor>
 	</Instance>
 
+	<!-- 跨国公司 -->
+	<Instance	Name="TransnationalBanner">
+	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
+      <Container ID="TransnationalBannerContainer" Anchor="C,C" Size="88,34">
+        <!-- Banner Background -->
+        <Image ID="Banner_Base" Anchor="C,C" Size="50,50" Texture="BannerMonopolies_Combo_Base_Combo"/>
+        <Image ID="Icon" Anchor="C,C" Size="34,34" Texture="AdvisorRec22" />
+        <Image ID="TransnationalRing" Anchor="C,C" Size="48,48" Texture="Monopolies_GoldBorder" Hidden="1"/>
+        <Button ID="TransnationalButton" Anchor="C,C" Size="34,34"/>
+      </Container>
+	  </ZoomAnchor>
+	</Instance>
+	<!-- 离岸油轮 -->
+	<Instance	Name="TransnationalSeaBanner">
+	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
+      <Container ID="TransnationalSeaBannerContainer" Anchor="C,C" Size="88,34">
+        <!-- Banner Background -->
+        <Image ID="Banner_Base" Anchor="C,C" Size="50,50" Texture="BannerMonopolies_Combo_Base_Combo"/>
+        <Image ID="Icon" Anchor="C,C" Size="34,34" Texture="AdvisorRec22" />
+        <Image ID="TransnationalSeaRing" Anchor="C,C" Size="48,48" Texture="Monopolies_GoldBorder" Hidden="1"/>
+        <Button ID="TransnationalSeaButton" Anchor="C,C" Size="34,34"/>
+      </Container>
+	  </ZoomAnchor>
+	</Instance>
+
 	<!-- Encampment Minibanner -->
 	<Instance	Name="EncampmentBanner">
 		<ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">

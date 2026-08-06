@@ -9,6 +9,8 @@ local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index
 local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
 local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
 local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
+local LEU_TRANSNATIONAL_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL'].Index;
+local LEU_TRANSNATIONAL_SEA_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL_SEA'].Index;
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
@@ -51,7 +53,7 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
     then
       player:SetProperty(Brazil_Industry_Bandeirante_Tag .. resourceId, 1);
 
-      -- 获得棋手
+      -- 获得旗手
       if city:GetProperty(Brazil_Industry_Bandeirante_Tag) ~= 1 then
         city:SetProperty(Brazil_Industry_Bandeirante_Tag , 1);
 
@@ -512,7 +514,7 @@ function ChateauOnChooseResource(playerId, param)
     ReportingEvents.SendLuaEvent('HD_RefreshChateauBanner', {PlayerId = playerId, X = param.X, Y = param.Y});
   end
 end
-GameEvents.HD_ResourceSelection_OnChooseResource.Add(ChateauOnChooseResource);
+GameEvents.HD_ChateauOnChooseResource.Add(ChateauOnChooseResource);
 
 -- 城市建造中世纪以及以后的奇观
 function ChateauWonderCompleted(x, y, buildingId, playerId, cityId, percentComplete, unknown)
@@ -579,10 +581,62 @@ function ChateauWonderCompleted(x, y, buildingId, playerId, cityId, percentCompl
 end
 Events.WonderCompleted.Add(ChateauWonderCompleted);
 
+-- ======================================================================================================================================================
+-- 跨国公司 离岸油轮
+-- ======================================================================================================================================================
+function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
+  local plot = Map.GetPlot(x, y);
+  if not plot then return; end
+
+  local resourceInfo = GameInfo.Resources[resourceId];
+  if not resourceInfo then return; end
+
+  local categoryList = {};
+
+  if improvementId == LEU_TRANSNATIONAL_INDEX
+    or improvementId == LEU_TRANSNATIONAL_SEA_INDEX
+  then
+    print("建造跨国公司/离岸油轮");
+
+    -- 查询可用公司类别
+    print("============================================")
+    print("可用公司类别：")
+    for row in GameInfo.HD_Monopoly_Resource_Categories() do
+      if row.ResourceType == resourceInfo.ResourceType then
+        local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
+        if categoryInfo and categoryInfo.CorporationEffect then
+          table.insert(categoryList, row.Category);
+          print(Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME'));
+        end
+      end
+    end
+    print("============================================")
+
+    -- 清空其他公司类别的property
+    for row in GameInfo.HD_Monopoly_Categories() do
+      if plot:GetProperty(CORPORATION_BONUS_TAG .. row.Category) == 1 then
+        plot:SetProperty(CORPORATION_BONUS_TAG .. row.Category, 0);
+      end
+    end
+
+    for _, category in ipairs(categoryList) do
+      plot:SetProperty(CORPORATION_BONUS_TAG .. category, 1);
+      print("跨国公司/离岸油轮类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+    end
+    
+    if improvementId == LEU_TRANSNATIONAL_INDEX then
+      ReportingEvents.SendLuaEvent('HD_RefreshTransnationalBanner', {PlayerId = playerId, X = x, Y = y});
+    elseif improvementId == LEU_TRANSNATIONAL_SEA_INDEX then
+      ReportingEvents.SendLuaEvent('HD_RefreshTransnationalSeaBanner', {PlayerId = playerId, X = x, Y = y});
+    end
+  end
+end
+
 --------------------------------------------------------------
 -- Initialize
 function Initialize()
 	Events.ImprovementAddedToMap.Add(BuildIndustryCorporation);
 	Events.ImprovementAddedToMap.Add(BuildChateau);
+	Events.ImprovementAddedToMap.Add(BuildTransnational);
 end
 Events.LoadGameViewStateDone.Add(Initialize);

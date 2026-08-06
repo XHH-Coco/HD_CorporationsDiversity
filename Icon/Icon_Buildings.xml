@@ -11,5 +11,6 @@
   <IconDefinitions>
     <Row Name="ICON_BUILDING_EXHIBITION" Atlas="ICON_ATLAS_EXHIBITION" Index="0"/>
     <Row Name="ICON_BUILDING_CANAL" Atlas="ICON_ATLAS_EXHIBITION" Index="0"/>
+    <Row Name="ICON_BUILDING_OVERSEAS_INVESTOR_PREREQ" Atlas="ICON_ATLAS_EXPANSION_1_GOVERNORS" Index="5"/>
   </IconDefinitions>
 </GameData>

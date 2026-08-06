@@ -11,6 +11,8 @@ Utils = ExposedMembers.DLHD.Utils;
 BANNERTYPE_INDUSTRY = UIManager:GetHash("BANNERTYPE_INDUSTRY");
 BANNERTYPE_CORPORATION = UIManager:GetHash("BANNERTYPE_CORPORATION");
 BANNERTYPE_CHATEAU = UIManager:GetHash("BANNERTYPE_CHATEAU");
+BANNERTYPE_TRANSNATIONAL = UIManager:GetHash("BANNERTYPE_TRANSNATIONAL");
+BANNERTYPE_TRANSNATIONAL_SEA = UIManager:GetHash("BANNERTYPE_TRANSNATIONAL_SEA");
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
 local INDUSTRY_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_BONUS'].Index;
@@ -19,6 +21,8 @@ local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index
 local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
 local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
 local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
+local LEU_TRANSNATIONAL_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL'].Index;
+local LEU_TRANSNATIONAL_SEA_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL_SEA'].Index;
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
@@ -31,6 +35,8 @@ local CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_CAN_CHOOSE_ENT
 local m_IndustryBannerIM = InstanceManager:new("IndustryBanner", "Anchor", Controls.CityBanners);
 local m_CorporationBannerIM = InstanceManager:new("CorporationBanner", "Anchor", Controls.CityBanners);
 local m_ChateauBannerIM = InstanceManager:new("ChateauBanner", "Anchor", Controls.CityBanners);
+local m_TransnationalBannerIM = InstanceManager:new("TransnationalBanner", "Anchor", Controls.CityBanners);
+local m_TransnationalSeaBannerIM = InstanceManager:new("TransnationalSeaBanner", "Anchor", Controls.CityBanners);
 local m_ResourceTypeMap = {};
 
 -- base function overrides
@@ -76,6 +82,16 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 		end
 	end
 
+	-- 判断是否是跨国公司/离岸油轮
+	local isTransnational = false
+	if eImprovementType == LEU_TRANSNATIONAL_INDEX then
+		isTransnational = true;
+	end
+	local isTransnationalSea = false
+	if eImprovementType == LEU_TRANSNATIONAL_SEA_INDEX then
+		isTransnationalSea = true;
+	end
+
 	-- 判断是否是法国城堡庄园
 	local isChateau = false
 	if eImprovementType == CHATEAU_INDEX then
@@ -86,6 +102,8 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 	if not bIsIndustry
 		and not bIsCorporation
 		and not isChateau
+		and not isTransnational
+		and not isTransnationalSea
 	then
 		BASE_OnImprovementAddedToMap(locX, locY, eImprovementType, eOwner);
 		return;
@@ -112,6 +130,16 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_CHATEAU);
+				elseif isTransnational then
+					-- 跨国公司
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_TRANSNATIONAL);
+				elseif isTransnationalSea then
+					-- 离岸油轮
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_TRANSNATIONAL_SEA);
 				end
 			end
 		end
@@ -762,6 +790,7 @@ function CallChateauSelectResourceEvent(param)
 		ResourceList = resourceList,
 		X = x,
 		Y = y,
+		OnStart = 'HD_ChateauOnChooseResource',
 		ScriptParam = {
 			Type = param.Type
 		}
@@ -854,6 +883,169 @@ function GetChateauEffect(x, y)
 end
 
 -- ======================================================================================================================================================
+-- 跨国公司 离岸油轮
+-- ======================================================================================================================================================
+function CityBanner:CreateTransnationalBanner()
+	self.m_InstanceManager = m_TransnationalBannerIM;
+	self.m_Instance = self.m_InstanceManager:GetInstance();
+
+	self.m_PlotX, self.m_PlotY = Map.GetPlotLocation(self.m_DistrictID);
+
+	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
+	if resName ~= nil then
+		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+	else
+		self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL");
+	end
+	
+	self.m_IsImprovementBanner = true;
+	
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	-- self.m_Instance.TransnationalButton:RegisterCallback(Mouse.eLClick, function() end);
+end
+
+function CityBanner:CreateTransnationalSeaBanner()
+	self.m_InstanceManager = m_TransnationalSeaBannerIM;
+	self.m_Instance = self.m_InstanceManager:GetInstance();
+
+	self.m_PlotX, self.m_PlotY = Map.GetPlotLocation(self.m_DistrictID);
+
+	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
+	if resName ~= nil then
+		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+	else
+		self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL_SEA");
+	end
+	
+	self.m_IsImprovementBanner = true;
+	
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	-- self.m_Instance.TransnationalSeaButton:RegisterCallback(Mouse.eLClick, function() end);
+end
+
+-- ===========================================================================
+function CityBanner:UpdateTransnationalBanner()
+	local pLocalPlayerVis:table = PlayersVisibility[Game.GetLocalPlayer()];
+	local bHidden:boolean = true;
+	if (pLocalPlayerVis ~= nil) then
+		if pLocalPlayerVis:IsVisible(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_VISIBLE;
+			bHidden = false;
+		elseif pLocalPlayerVis:IsRevealed(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_REVEALED;
+		else
+			self.m_FogState = PLOT_HIDDEN;
+		end
+	end
+
+	self:SetFogState( self.m_FogState );
+	self.m_Instance.Banner_Base:SetHide(bHidden);
+	self.m_Instance.Icon:SetHide(bHidden);
+end
+
+function CityBanner:UpdateTransnationalSeaBanner()
+	local pLocalPlayerVis:table = PlayersVisibility[Game.GetLocalPlayer()];
+	local bHidden:boolean = true;
+	if (pLocalPlayerVis ~= nil) then
+		if pLocalPlayerVis:IsVisible(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_VISIBLE;
+			bHidden = false;
+		elseif pLocalPlayerVis:IsRevealed(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_REVEALED;
+		else
+			self.m_FogState = PLOT_HIDDEN;
+		end
+	end
+
+	self:SetFogState( self.m_FogState );
+	self.m_Instance.Banner_Base:SetHide(bHidden);
+	self.m_Instance.Icon:SetHide(bHidden);
+end
+
+-- ===========================================================================
+function RefreshTransnationalBanner(param)
+	local playerId = param.PlayerId;
+	local plotId = Map.GetPlotIndex(param.X, param.Y);
+	if playerId == Game.GetLocalPlayer() and plotId > 0 then
+		local banner = GetMiniBanner(playerId, plotId);
+		if banner ~= nil then
+			banner:UpdateTransnationalText();
+		end
+	end
+end
+
+function CityBanner:UpdateTransnationalText()
+	if self.m_Type == BANNERTYPE_TRANSNATIONAL then
+		print('UpdateTransnationalText');
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	end
+end
+
+function RefreshTransnationalSeaBanner(param)
+	local playerId = param.PlayerId;
+	local plotId = Map.GetPlotIndex(param.X, param.Y);
+	if playerId == Game.GetLocalPlayer() and plotId > 0 then
+		local banner = GetMiniBanner(playerId, plotId);
+		if banner ~= nil then
+			banner:UpdateTransnationalSeaText();
+		end
+	end
+end
+
+function CityBanner:UpdateTransnationalSeaText()
+	if self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
+		print('UpdateTransnationalSeaText');
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	end
+end
+
+-- ===========================================================================
+function GetTransnationalEffect(x, y)
+	local plot = Map.GetPlot(x, y);
+	if plot then
+		local resourceId = plot:GetResourceType();
+		local resourceInfo = GameInfo.Resources[resourceId];
+		if not resourceInfo then return; end
+
+		local strList = {};
+
+		-- 公司特效
+		local effectList = {};
+		for row in GameInfo.HD_Monopoly_Categories() do
+      if plot:GetProperty(CORPORATION_BONUS_TAG .. row.Category) == 1 then
+        table.insert(effectList, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. row.CorporationEffect .. "_DESCRIPTION"))
+      end
+    end
+		if #effectList > 0 then
+			local effectStr = '';
+			for i, str in ipairs(effectList) do
+				if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
+				effectStr = effectStr .. str;
+			end
+			table.insert(strList, Locale.Lookup('LOC_TRANSNATIONAL_CORPORATION_TEXT', effectStr));
+		end
+		
+		local result = '';
+		if #strList > 0 then
+			for i, str in ipairs(strList) do
+				if i > 1 then result = result .. "[NEWLINE]"; end
+				result = result .. str;
+			end
+		end
+
+		return result;
+	end
+
+	return "";
+end
+
+-- ======================================================================================================================================================
 -- 通用函数
 -- ======================================================================================================================================================
 -- if this is one of our banners, create it now
@@ -868,6 +1060,14 @@ function CityBanner:InitializeOtherBannerTypes(bannerType : number)
 		-- 城堡庄园
 		self:CreateChateauBanner();
 		self:UpdateChateauBanner();
+	elseif bannerType == BANNERTYPE_TRANSNATIONAL then
+		-- 跨国公司
+		self:CreateTransnationalBanner();
+		self:UpdateTransnationalBanner();
+	elseif bannerType == BANNERTYPE_TRANSNATIONAL_SEA then
+		-- 离岸油轮
+		self:CreateTransnationalSeaBanner();
+		self:UpdateTransnationalSeaBanner();
 	else
 		BASE_CityBannerInitializeOtherBannerTypes(bannerType);
 	end
@@ -889,6 +1089,16 @@ function CityBanner:UpdateColorOtherBannerTypes(backColor : number)
 		if self.m_Instance.Banner_Base ~= nil then
 			self.m_Instance.Banner_Base:SetColor( backColor );
 		end
+	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL then
+		-- 跨国公司
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
+	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
+		-- 离岸油轮
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
 	else
 		BASE_UpdateColorOtherBannerTypes();
 	end
@@ -904,6 +1114,12 @@ function CityBanner:UpdateOtherImprovementBannerTypes()
 	elseif self.m_Type == BANNERTYPE_CHATEAU then
 		-- 城堡庄园
 		self:UpdateChateauBanner();
+	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL then
+		-- 跨国公司
+		self:UpdateTransnationalBanner();
+	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
+		-- 离岸油轮
+		self:UpdateTransnationalSeaBanner();
 	else
 		BASE_UpdateOtherImprovementBannerTypes();
 	end
@@ -933,4 +1149,7 @@ function Initialize()
 	
 	LuaEvents.HD_CallChateauSelectResourceEvent.Add(CallChateauSelectResourceEvent);
 	LuaEvents.HD_RefreshChateauBanner.Add(RefreshChateauBanner);
+
+	LuaEvents.HD_RefreshTransnationalBanner.Add(RefreshTransnationalBanner);
+	LuaEvents.HD_RefreshTransnationalSeaBanner.Add(RefreshTransnationalSeaBanner);
 end

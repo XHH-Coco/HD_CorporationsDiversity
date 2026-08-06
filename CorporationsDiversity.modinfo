@@ -128,6 +128,13 @@
       <File>Assets/Monopoly/HD_Resources_Monopoly_2_64.dds</File>
       <File>Assets/Monopoly/HD_Resources_Monopoly_2_256.dds</File>
       <File>Assets/Monopoly/HD_Resources_Monopoly_2_FOW_256.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_22.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_32.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_38.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_50.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_64.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_256.dds</File>
+      <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_FOW_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_22.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_32.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_38.dds</File>
@@ -187,6 +194,7 @@
     <AddUserInterfaces id="Monopolies_Custom_Interface" criteria="Monopolies_Mode_Expansion2">
       <Properties><Context>InGame</Context></Properties>
       <File>UI/ResourceSelection.xml</File>
+      <File>UI/CityStateSelection.xml</File>
     </AddUserInterfaces>
 
     <!-- Icon -->
@@ -195,6 +203,7 @@
       <File>Icon/Icon_Buildings.xml</File>
       <File>Icon/Icon_Policies.xml</File>
       <File>Icon/Icon_Products.xml</File>
+      <File>Icon/Icon_Units.xml</File>
     </UpdateIcons>
 
     <!-- Main -->
@@ -243,6 +252,8 @@
       <File>Gameplay/HD_CD_Governors.lua</File>
       <File>Gameplay/HD_CD_GreatPersons.lua</File>
       <File>Gameplay/HD_CD_IndustryCorporationEffects.lua</File>
+      <File>Gameplay/Leu_Transnational_Functions.lua</File>
+      <File>Gameplay/Leu_Warehouse_Functions.lua</File>
     </AddGameplayScripts>
 
     <!-- Text -->
@@ -316,6 +327,14 @@
       <Properties><LoadOrder>20004</LoadOrder></Properties>
       <File>Wonders/HD_NAT_Pack1_Adapt_Icons.xml</File>
     </UpdateIcons>
+
+    <!-- ArtDefs -->
+    <UpdateArt id="Arts">
+      <Properties>
+        <LoadOrder>100</LoadOrder>
+      </Properties>
+      <File>CorporationsDiversity.dep</File>
+    </UpdateArt>
   </InGameActions>
   <Files>
     <!-- Mod Support -->
@@ -337,6 +356,8 @@
     <File>UI/BRSPage_Resources.lua</File>
     <File>UI/ResourceSelection.xml</File>
     <File>UI/ResourceSelection.lua</File>
+    <File>UI/CityStateSelection.xml</File>
+    <File>UI/CityStateSelection.lua</File>
     <!-- Database -->
     <File>Database/CivLeaderTraits.sql</File>
     <File>Database/Improvements.sql</File>
@@ -370,6 +391,7 @@
     <File>Icon/Icon_Buildings.xml</File>
     <File>Icon/Icon_Policies.xml</File>
     <File>Icon/Icon_Products.xml</File>
+    <File>Icon/Icon_Units.xml</File>
     <File>Icon/Icon_Resourceful2.xml</File>
     <!-- Config -->
     <File>Configs/Settings.sql</File>
@@ -378,6 +400,8 @@
     <File>Gameplay/HD_CD_Governors.lua</File>
     <File>Gameplay/HD_CD_GreatPersons.lua</File>
     <File>Gameplay/HD_CD_IndustryCorporationEffects.lua</File>
+    <File>Gameplay/Leu_Transnational_Functions.lua</File>
+    <File>Gameplay/Leu_Warehouse_Functions.lua</File>
     <!-- Monopoly -->
     <File>Assets/Monopoly/exhibition_32.dds</File>
     <File>Assets/Monopoly/exhibition_38.dds</File>
@@ -392,6 +416,13 @@
     <File>Assets/Monopoly/HD_Resources_Monopoly_2_64.dds</File>
     <File>Assets/Monopoly/HD_Resources_Monopoly_2_256.dds</File>
     <File>Assets/Monopoly/HD_Resources_Monopoly_2_FOW_256.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_22.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_32.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_38.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_50.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_64.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_256.dds</File>
+    <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_FOW_256.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_22.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_32.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_38.dds</File>
@@ -424,5 +455,8 @@
     <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
+    <!-- ArtDefs -->
+    <File>CorporationsDiversity.dep</File>
+    <File>ArtDefs/Units.artdef</File>
   </Files>
 </Mod>

@@ -1,4 +1,9 @@
 insert or replace into EnglishText (Tag, Text) values
+  ("LOC_HD_CITYSTATE_SELECTION_MAIN_TITLE",                                  ""),
+  ("LOC_HD_CITYSTATE_SELECTION_LIST_SUBTITLE",                               "[ICON_BULLETGLOW]Optional City-states[ICON_BULLETGLOW]"),
+  ("LOC_HD_CITYSTATE_SELECTION_DETAIL_SUBTITLE",                             "[ICON_BULLETGLOW]City-state Details[ICON_BULLETGLOW]"),
+  ("LOC_HD_CITYSTATE_SELECTION_NO_AVAILABLE_CITYSTATE",                      "No Available City-states"),
+
   ("LOC_HD_RESOURCE_SELECTION_MAIN_TITLE",                                   ""),
   ("LOC_HD_RESOURCE_SELECTION_LIST_SUBTITLE",                                "[ICON_BULLETGLOW]Optional Resources[ICON_BULLETGLOW]"),
   ("LOC_HD_RESOURCE_SELECTION_DETAIL_SUBTITLE",                              "[ICON_BULLETGLOW]Resource Details[ICON_BULLETGLOW]"),
@@ -878,6 +883,11 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_HD_RESOURCE_STRAWBERRY_FRUIT_CORPORATION_DESCRIPTION",               "The {1_CityName} strawberry picking festival and strawberry dessert pop-up shops are romantic springtime landmarks in our civilization.");
 
 insert or replace into LocalizedText (Language, Tag, Text) values
+  ("zh_Hans_CN",  "LOC_HD_CITYSTATE_SELECTION_MAIN_TITLE",                                  ""),
+  ("zh_Hans_CN",  "LOC_HD_CITYSTATE_SELECTION_LIST_SUBTITLE",                               "[ICON_BULLETGLOW]可选城邦[ICON_BULLETGLOW]"),
+  ("zh_Hans_CN",  "LOC_HD_CITYSTATE_SELECTION_DETAIL_SUBTITLE",                             "[ICON_BULLETGLOW]城邦详情[ICON_BULLETGLOW]"),
+  ("zh_Hans_CN",  "LOC_HD_CITYSTATE_SELECTION_NO_AVAILABLE_CITYSTATE",                      "无 可 选 城 邦"),
+
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_MAIN_TITLE",                                   ""),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_LIST_SUBTITLE",                                "[ICON_BULLETGLOW]可选资源[ICON_BULLETGLOW]"),
   ("zh_Hans_CN",  "LOC_HD_RESOURCE_SELECTION_DETAIL_SUBTITLE",                              "[ICON_BULLETGLOW]资源详情[ICON_BULLETGLOW]"),
@@ -890,9 +900,9 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_NEED_ACTIVATE_SECOND_INDUSTRY_EFFECT_TEXT",                          "[COLOR:Civ6Red]需要建造商业中心三级建筑或港口二级建筑激活{1_Category}行业加成效果：[ENDCOLOR][NEWLINE]{2_Effect}"),
   ("zh_Hans_CN",  "LOC_NEED_ACTIVATE_SECOND_CORPORATION_EFFECT_TEXT",                       "[COLOR:Civ6Red]需要建造商业中心四级建筑或港口三级建筑激活{1_Category}公司加成效果：[ENDCOLOR][NEWLINE]{2_Effect}"),
   
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME",                       "[ICON_GreatWork_Product] {1_City}建立了 {2_Resource}行业"),
+  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_NAME",                       "[ICON_GreatWork_Product] {1_City}创立了 {2_Resource}行业"),
   ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_INDUSTRY_CATEGORY_DESCRIPTION",                "现在我们需要做出选择：先专注于该资源的哪一种用途，以激活对应的行业加成效果？"),
-  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME",                    "[ICON_GreatWork_Product] {1_City}建立了 {2_Resource}公司"),
+  ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_NAME",                    "[ICON_GreatWork_Product] {1_City}创立了 {2_Resource}公司"),
   ("zh_Hans_CN",  "LOC_HD_CUSTOMEVENT_SELECT_CORPORATION_CATEGORY_DESCRIPTION",             "现在我们需要做出选择：先专注于该资源的哪一种用途，以激活对应的公司加成效果？"),
 
   ("zh_Hans_CN",  "LOC_HD_BUILD_RESOURCE_BANANAS_INDUSTRY_TEXT",                            "{1_CityName}富有智慧的劳动人民从杂草中选育出了多种香蕉。现在是时候选取良种播种了。"),

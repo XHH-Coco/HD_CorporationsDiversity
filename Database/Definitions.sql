@@ -63,23 +63,28 @@ create table HD_Building_Unlock_Second_Corporation(
 insert or ignore into Types (Type, Kind) values
 	('BUILDING_EXHIBITION', 							'KIND_BUILDING'),
 	('BUILDING_CANAL',      							'KIND_BUILDING'),
+	('BUILDING_OVERSEAS_INVESTOR_PREREQ', 'KIND_BUILDING'),
 	('IMPROVEMENT_INDUSTRY_BONUS',      	'KIND_IMPROVEMENT'),
 	('IMPROVEMENT_INDUSTRY_STRATEGIC',    'KIND_IMPROVEMENT'),
 	('IMPROVEMENT_CORPORATION_BONUS',   	'KIND_IMPROVEMENT'),
-	('IMPROVEMENT_CORPORATION_STRATEGIC', 'KIND_IMPROVEMENT');
+	('IMPROVEMENT_CORPORATION_STRATEGIC', 'KIND_IMPROVEMENT'),
+	('UNIT_HD_OVERSEAS_INVESTOR', 				'KIND_UNIT');
 
 -- =====================================================================================================================================
 -- Building Definitions
 -- =====================================================================================================================================
-insert or ignore into Buildings (BuildingType, Name, Cost, Description, PrereqTech, PrereqDistrict, PurchaseYield, MustPurchase) values
-	('BUILDING_EXHIBITION', 'LOC_BUILDING_EXHIBITION_NAME', 150, 	'LOC_BUILDING_EXHIBITION_DESCRIPTION', 	'TECH_ECONOMICS', 'DISTRICT_CITY_CENTER', 'YIELD_GOLD', 0),
-	('BUILDING_CANAL', 			'LOC_BUILDING_CANAL_NAME', 			0, 		'LOC_BUILDING_CANAL_DESCRIPTION', 			NULL, 						'DISTRICT_CANAL', 			NULL, 				1);
+insert or ignore into Buildings (BuildingType, Name, Cost, Description, PrereqTech, PrereqDistrict, PurchaseYield, MustPurchase, InternalOnly) values
+	('BUILDING_EXHIBITION', 							'LOC_BUILDING_EXHIBITION_NAME', 							150, 	'LOC_BUILDING_EXHIBITION_DESCRIPTION', 	'TECH_ECONOMICS', 'DISTRICT_CITY_CENTER', 'YIELD_GOLD', 0, 0),
+	('BUILDING_CANAL', 										'LOC_BUILDING_CANAL_NAME', 										0, 		'LOC_BUILDING_CANAL_DESCRIPTION', 			NULL, 						'DISTRICT_CANAL', 			NULL, 				1, 0),
+	('BUILDING_OVERSEAS_INVESTOR_PREREQ', 'LOC_BUILDING_OVERSEAS_INVESTOR_PREREQ_NAME', 0, 		NULL, 																	NULL, 						NULL, 									NULL, 				1, 1);
 
 insert or ignore into Buildings_XP2 (BuildingType, Pillage) values
-	('BUILDING_CANAL', 0);
+	('BUILDING_CANAL', 										0),
+	('BUILDING_OVERSEAS_INVESTOR_PREREQ', 0);
 
 insert or ignore into HD_DUMMY_BUILDINGS (BuildingType) values
-	('BUILDING_CANAL');
+	('BUILDING_CANAL'),
+	('BUILDING_OVERSEAS_INVESTOR_PREREQ');
 
 -- =====================================================================================================================================
 -- Improvement Definitions
@@ -105,3 +110,23 @@ insert or ignore into ImprovementsNeedCount_HD (ImprovementType) values
 	('IMPROVEMENT_INDUSTRY_STRATEGIC'),
 	('IMPROVEMENT_CORPORATION_BONUS'),
 	('IMPROVEMENT_CORPORATION_STRATEGIC');
+
+-- =====================================================================================================================================
+-- Unit Definitions
+-- =====================================================================================================================================
+insert or ignore into Units
+	(UnitType, Name, Description, Cost, CostProgressionModel, CostProgressionParam1, PurchaseYield,
+	BaseSightRange, BaseMoves, Domain, FormationClass, BuildCharges, CanCapture, CanRetreatWhenCaptured, PseudoYieldType, CanTrain, AdvisorType)
+values
+	('UNIT_HD_OVERSEAS_INVESTOR', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION', 320, 'COST_PROGRESSION_PREVIOUS_COPIES', 20, 'YIELD_GOLD',
+	2, 4, 'DOMAIN_LAND', 'FORMATION_CLASS_CIVILIAN', 1, 1, 1, 'PSEUDOYIELD_UNIT_LEU_INVESTOR', 1, 'ADVISOR_GENERIC');
+
+insert or ignore into UnitAiInfos (UnitType, AiType) values
+	('UNIT_HD_OVERSEAS_INVESTOR', 'UNITAI_BUILD');
+
+insert or ignore into TypeTags (Type, Tag) values
+  ('UNIT_HD_OVERSEAS_INVESTOR', 'CLASS_LANDCIVILIAN'),
+  ('UNIT_HD_OVERSEAS_INVESTOR', 'CLASS_MONOPOLY_UNIT');
+
+insert or ignore into Unit_BuildingPrereqs (Unit, PrereqBuilding) values
+	('UNIT_HD_OVERSEAS_INVESTOR', 'BUILDING_OVERSEAS_INVESTOR_PREREQ');

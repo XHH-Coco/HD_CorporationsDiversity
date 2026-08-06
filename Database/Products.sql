@@ -19,6 +19,10 @@ from HD_Monopoly_Resource_Categories a, HDCounter b where b.Count < 7;
 update GreatWorks set Tourism = 18 where GreatWorkType in
   (select 'GREATWORK_PRODUCT_' || substr(a.ResourceType, 10) || '_' || b.Count from HD_Monopoly_Resource_Categories a, HDCounter b where b.Count < 7);
 
+update GreatWorks set Tourism = 9 where GreatWorkType in
+  (select 'GREATWORK_PRODUCT_' || substr(a.ResourceType, 10) || '_' || b.Count from HD_Resource_Classification a, HDCounter b
+  where a.ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE') and b.Count < 7);
+
 insert or ignore into HD_ProductTourism (ResourceType, Amount) values
 	('TOYS',			24),
 	('COSMETICS',	30),
@@ -35,6 +39,7 @@ insert or ignore into Types (Type, Kind) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10),	'KIND_PROJECT'
 from HD_Monopoly_Resource_Categories;
 
+-- 常规奢侈产品
 insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost, AdvisorType) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 
 	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME',
@@ -42,8 +47,12 @@ insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost,
 	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_DESCRIPTION',
 	160,
 	'ADVISOR_GENERIC'
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY')
+  and ResourceType not in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
+update Projects set Cost = 160 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
+
+-- 加成战略产品
 insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost, AdvisorType, MaxPlayerInstances) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 
 	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME',
@@ -54,13 +63,23 @@ insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost,
   6
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
-update Projects set Cost = 160 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
+-- 文明城邦资源产品
+insert or ignore into Projects (ProjectType, Name, ShortName, Description, Cost, AdvisorType, MaxPlayerInstances) select distinct
+	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME',
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_SHORT_NAME',
+	'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_DESCRIPTION',
+	80,
+	'ADVISOR_GENERIC',
+  6
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 delete from Projects_XP2 where ProjectType like 'PROJECT_CREATE_CORPORATION_PRODUCT_%';
 
 insert or ignore into Projects_MODE (ProjectType, ResourceType) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), ResourceType
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY')
+  and ResourceType not in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into ProjectCompletionModifiers (ProjectType, ModifierId) select distinct
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 'PROJECT_COMPLETION_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10)
@@ -75,23 +94,32 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select distinc
 from HD_Monopoly_Resource_Categories;
 
 -- =====================================================================================================================================
--- 加成战略产品 虚拟建筑
+-- 加成战略产品 文明城邦资源产品 虚拟建筑
 -- =====================================================================================================================================
 insert or ignore into Types (Type, Kind) select
   'BUILDING_CREATE_PRODUCT_' || ResourceType, 'KIND_BUILDING'
-from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'))
+  or ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into Buildings (BuildingType, Name, Cost, Maintenance, AdvisorType, MustPurchase, InternalOnly) select
 	'BUILDING_CREATE_PRODUCT_' || ResourceType, 'LOC_PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10) || '_NAME', 0, 0, 'ADVISOR_GENERIC', 1, 1
-from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'))
+  or ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into Buildings_XP2 (BuildingType, Pillage) select
   'BUILDING_CREATE_PRODUCT_' || ResourceType, 0
-from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'))
+  or ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into HD_DUMMY_BUILDINGS (BuildingType) select
+  'BUILDING_CREATE_PRODUCT_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'))
+  or ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into Projects_XP2 (ProjectType, RequiredBuilding) select
 	'PROJECT_CREATE_CORPORATION_PRODUCT_' || substr(ResourceType, 10), 'BUILDING_CREATE_PRODUCT_' || ResourceType
-from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC') and ResourceType in (select ResourceType from HD_Monopoly_Resource_Categories);
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'))
+  or ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 -- =====================================================================================================================================
 -- 产品产出

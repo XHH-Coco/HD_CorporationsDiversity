@@ -12,6 +12,7 @@ local resourceSelectionIM: table = InstanceManager:new("ResourceSelectionInstanc
 local selectedResourceIndex = -1;
 local x = -1;
 local y = -1;
+local onStart = nil;
 local scriptParam = nil;
 
 -- ===========================================================================
@@ -26,6 +27,8 @@ function OnResourceSelectionPanelPopup(param)
 	-- 记录单元格坐标
 	x = param.X;
 	y = param.Y;
+  -- 记录脚本名
+  onStart = param.OnStart;
 	-- 记录脚本参数
 	scriptParam = param.ScriptParam;
 
@@ -124,7 +127,7 @@ function OnResourceSelectionPanelPopup(param)
 	ContextPtr:SetHide(false);
 end
 
-function OnSelect(resourceType, detailParam)
+function OnSelect(resourceType, param)
 	local resourceInfo = GameInfo.Resources[resourceType];
 	if not resourceInfo then return; end
 	print('选中：' .. resourceType);
@@ -140,75 +143,75 @@ function OnSelect(resourceType, detailParam)
 	Controls.Confirm:SetDisabled(false);
 
 	-- 设置被选中资源详情
-	if detailParam ~= nil then
-		local detailStrList = {};
+	local detailParam = param or {};
+	local detailStrList = {};
 
-		-- 基本信息
-		if resourceInfo.ResourceClassType == "RESOURCECLASS_BONUS" then
-			table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:0,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_BONUS_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-		elseif resourceInfo.ResourceClassType == "RESOURCECLASS_LUXURY" then
-			table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:153,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_LUXURY_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-		elseif resourceInfo.ResourceClassType == "RESOURCECLASS_STRATEGIC" then
-			table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResScienceLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_STRATEGIC_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-		elseif resourceInfo.ResourceClassType == "RESOURCECLASS_ARTIFACT" then
-			table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResCultureLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_ARTIFACT_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-		end
+	-- 基本信息
+	if resourceInfo.ResourceClassType == "RESOURCECLASS_BONUS" then
+		table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:0,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_BONUS_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
+	elseif resourceInfo.ResourceClassType == "RESOURCECLASS_LUXURY" then
+		table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:153,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_LUXURY_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
+	elseif resourceInfo.ResourceClassType == "RESOURCECLASS_STRATEGIC" then
+		table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResScienceLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_STRATEGIC_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
+	elseif resourceInfo.ResourceClassType == "RESOURCECLASS_ARTIFACT" then
+		table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResCultureLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_ARTIFACT_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
+	end
 
-		-- 行业公司效果
-		if detailParam.IndustryEffect == true or detailParam.CorporationEffect == true then
-			local industryStr = {};
-			local corporationStr = {};
+	-- 行业公司效果
+	if detailParam.IndustryEffect == true or detailParam.CorporationEffect == true then
+		local industryStr = {};
+		local corporationStr = {};
 
-			for row in GameInfo.HD_Monopoly_Resource_Categories() do
-				if row.ResourceType == resourceType then
-					local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
-					if categoryInfo then
-						if detailParam.IndustryEffect == true and categoryInfo.IndustryEffect then
-							table.insert(industryStr, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. categoryInfo.IndustryEffect .. "_DESCRIPTION"));
-						end
-						if detailParam.CorporationEffect == true and categoryInfo.CorporationEffect then
-							table.insert(corporationStr, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. categoryInfo.CorporationEffect .. "_DESCRIPTION"));
-						end
+		for row in GameInfo.HD_Monopoly_Resource_Categories() do
+			if row.ResourceType == resourceType then
+				local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
+				if categoryInfo then
+					if detailParam.IndustryEffect == true and categoryInfo.IndustryEffect then
+						table.insert(industryStr, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. categoryInfo.IndustryEffect .. "_DESCRIPTION"));
+					end
+					if detailParam.CorporationEffect == true and categoryInfo.CorporationEffect then
+						table.insert(corporationStr, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. categoryInfo.CorporationEffect .. "_DESCRIPTION"));
 					end
 				end
 			end
-
-			if #industryStr > 0 then
-				local effectStr = '';
-				for i, str in ipairs(industryStr) do
-					if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
-					effectStr = effectStr .. str;
-				end
-				table.insert(detailStrList, Locale.Lookup('LOC_HD_INDUSTRY_EFFECT_TEXT', effectStr));
-			end
-	
-			if #corporationStr > 0 then
-				local effectStr = '';
-				for i, str in ipairs(corporationStr) do
-					if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
-					effectStr = effectStr .. str;
-				end
-				table.insert(detailStrList, Locale.Lookup('LOC_HD_CORPORATION_EFFECT_TEXT', effectStr));
-			end
 		end
 
-		-- 拼接详情文本
-		local detailStr = "";
-		if #detailStrList > 0 then
-			for i, str in ipairs(detailStrList) do
-				if i > 1 then detailStr = detailStr .. "[NEWLINE]"; end
-				detailStr = detailStr .. str;
+		if #industryStr > 0 then
+			local effectStr = '';
+			for i, str in ipairs(industryStr) do
+				if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
+				effectStr = effectStr .. str;
 			end
+			table.insert(detailStrList, Locale.Lookup('LOC_HD_INDUSTRY_EFFECT_TEXT', effectStr));
 		end
-		Controls.SelectedResourceDetailLabel:SetText(detailStr);
+
+		if #corporationStr > 0 then
+			local effectStr = '';
+			for i, str in ipairs(corporationStr) do
+				if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
+				effectStr = effectStr .. str;
+			end
+			table.insert(detailStrList, Locale.Lookup('LOC_HD_CORPORATION_EFFECT_TEXT', effectStr));
+		end
 	end
+
+	-- 拼接详情文本
+	local detailStr = "";
+	if #detailStrList > 0 then
+		for i, str in ipairs(detailStrList) do
+			if i > 1 then detailStr = detailStr .. "[NEWLINE]"; end
+			detailStr = detailStr .. str;
+		end
+	end
+	Controls.SelectedResourceDetailLabel:SetText(detailStr);
+
 end
 
 function OnConfirm()
 	if selectedResourceIndex == -1 then return; end
 
 	local param = {};
-  param['OnStart'] = 'HD_ResourceSelection_OnChooseResource';
+  param['OnStart'] = onStart or 'HD_ResourceSelection_OnChooseResource';
   param['ResourceId'] = selectedResourceIndex;
   param['X'] = x;
   param['Y'] = y;
@@ -221,6 +224,8 @@ end
 
 function ClosePopup()
 	selectedResourceIndex = -1;
+  onStart = nil;
+	scriptParam = nil;
 	Controls.Confirm:SetDisabled(true);
 	ContextPtr:SetHide(true);
 end

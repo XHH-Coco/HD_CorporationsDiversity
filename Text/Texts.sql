@@ -10,6 +10,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_BUILDING_EXHIBITION_DESCRIPTION",                           "+3 [ICON_Gold] Gold on improved tiles in this City."),
   ("LOC_BUILDING_CANAL_NAME",                                       "Canal"),
   ("LOC_BUILDING_CANAL_DESCRIPTION",                                "Cities with Canals automatically receive this building."),
+  ("LOC_BUILDING_OVERSEAS_INVESTOR_PREREQ_NAME",                    "Governor Promotion {LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_3_NAME}"),
   -- 区域
   ("LOC_DISTRICT_CANAL_HD_DESCRIPTION",                             "A district for connecting waterways and promoting water transportation in the city.[NEWLINE]+1 [ICON_GreatWork_Product] Product Slot. +6 [ICON_Gold] Gold for adjacent Improvements. Multiplier of [ICON_Gold] Gold yield from districts at their destination [ICON_TradeRoute] Trade Routes passing through Canal is set to +100% (max. +100%). [NEWLINE]Must be built on flat land. Canals may either go straight through the hex or bend by 60 degrees, connecting two bodies of water or a body of water to a City Center.. However three-way Canal junctures are not allowed and Canals must have a full land tile on each side of the waterway they create. [NEWLINE]Military Engineers can spend a charge to complete 30% of a Canal's production."),
   -- 政策
@@ -25,6 +26,9 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                  "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}: Allowed to build Industry on Bonus Resource. Need to consume 4 [ICON_CHARGES] build charges."),
   ("LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",         "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Industry on Bonus or Strategic Resources. Need to consume 30 corresponding Resources to build Strategic Resource Industry."),
   ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 60 corresponding Resources to build Strategic Resource Corporation."),
+  -- 海外投资人
+  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                            "Overseas Investor"),
+  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Transnational Company or Offshore Tanker of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
   -- 其他
   ("LOC_MOMENT_FIRST_INDUSTRY",            											    "First Luxury Industry Created"),
 	("LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",            					    "Your first Luxury Industry has been created. "),
@@ -42,8 +46,8 @@ insert or replace into EnglishText (Tag, Text) values
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   -- 文明领袖
-  ("zh_Hans_CN",  "LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES", "建立 [ICON_CAPITAL] 首都后获得一位旗手。除市中心外的区域不移除雨林。雨林单元格为专业化区域提供标准相邻加成，并为相邻的单元格提供+1魅力。城市首次建立行业时，获得一名旗手；玩家每建立两座行业，所有旗手+1收集次数。建造在雨林上的行业或公司直接激活所有用途所对应的加成效果。"),
-  ("zh_Hans_CN",  "LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",      "巴西特色侦察单位，无法升级成高级单位，无法在城市中建造或购买该单位。[ICON_STRENGTH] 战斗力随你所处的时代提升。移动时自动创建道路。可以收集2次无主雨林单元格上的资源，每收集两个同种资源，境内改良的雨林资源获得该资源的产出。"),
+  ("zh_Hans_CN",  "LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES", "建立 [ICON_CAPITAL] 首都后获得一位旗手。除市中心外的区域不移除雨林。雨林单元格为专业化区域提供标准相邻加成，并为相邻的单元格提供+1魅力。城市首次创立行业时，获得一名旗手；玩家每创立两座行业，所有旗手+1收集次数。创立在雨林上的行业或公司直接激活所有用途所对应的加成效果。"),
+  ("zh_Hans_CN",  "LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",      "巴西特色侦察单位，无法升级成高级单位，无法在城市中建造或购买该单位。[ICON_STRENGTH] 战斗力随你所处的时代提升。移动时自动建造道路。可以收集2次无主雨林单元格上的资源，每收集两个同种资源，境内改良的雨林资源获得该资源的产出。"),
   -- 科技 市政
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或埠头。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",    "工厂和仓库鳞次栉比，工业飞速发展。然而工人们开始寻求更多的权益。是时候让全世界的工人团结起来了。"),
@@ -52,6 +56,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_BUILDING_EXHIBITION_DESCRIPTION",                  "本城已改良的单元格+3 [ICON_Gold] 金币。"),
   ("zh_Hans_CN",  "LOC_BUILDING_CANAL_NAME",                              "运河"),
   ("zh_Hans_CN",  "LOC_BUILDING_CANAL_DESCRIPTION",                       "有运河的城市自动获得该建筑。"),
+  ("zh_Hans_CN",  "LOC_BUILDING_OVERSEAS_INVESTOR_PREREQ_NAME",           "总督升级“{LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_3_NAME}”"),
   -- 区域
   ("zh_Hans_CN",  "LOC_DISTRICT_CANAL_HD_DESCRIPTION",                    "城市中专注于沟通水域与促进水运的区域。[NEWLINE]+1 [ICON_GreatWork_Product] 产品槽位。为相邻的单改良设施+6 [ICON_Gold] 金币。如 [ICON_TradeRoute] 贸易路线途径此处，其将从目的地的区域处获得成倍 [ICON_Gold] 金币。[NEWLINE]只能建造在平原上。运河可笔直穿过单元格，也可在其中进行60度转向，连接两块水域单元格或将一块水域单元格与市中心连接。无法建造三向连接运河，且运河在其所建水路的两侧皆必须含有一个完整的陆地单元格。[NEWLINE]军事工程师可消耗1次使用次数来完成运河30%的修建进度。"),
   -- 相邻加成
@@ -67,26 +72,29 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_POLICY_AUTO_STEREO_WAREHOUSE_DESCRIPTION",         "相邻仓库或埠头的工业区、商业中心和港口+100%相邻加成。"),
   -- 单位
   ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_NAME",                             "大亨"),
-  ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_DESCRIPTION",                      "需要商业中心二级建筑或港口一级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创建行业，在研究“蒸汽动力”后，他们也可创建铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),
+  ("zh_Hans_CN",  "LOC_UNIT_LEU_TYCOON_DESCRIPTION",                      "需要商业中心二级建筑或港口一级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]可以在奢侈资源上创立行业，在研究“蒸汽动力”后，他们也可建造铁路和火车站来改善你的领土上的区域产出、贸易和 [ICON_PRODUCTION] 生产力。"),
   ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_NAME",                           "投资人"),
-  ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                    "需要商业中心三级建筑或港口二级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创建公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的产出和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中创建仓库和集装箱港口，进一步强化贸易和你的公司。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION",  "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}：允许单位在战略资源上建立行业。需要消耗30点对应战略资源和3次 [ICON_CHARGES] 建造次数。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                   "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}：允许单位在加成资源上建立行业。需要消耗4次 [ICON_CHARGES] 建造次数。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",      "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上建立行业。建立战略资源行业需要消耗30点对应战略资源。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上建立公司。建立战略资源公司需要消耗60点对应战略资源。"),
+  ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                    "需要商业中心三级建筑或港口二级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创立公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的产出和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中建造仓库和集装箱港口，进一步强化贸易和你的公司。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION",  "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}：允许单位在战略资源上创立行业。需要消耗30点对应战略资源和3次 [ICON_CHARGES] 建造次数。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                   "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}：允许单位在加成资源上创立行业。需要消耗4次 [ICON_CHARGES] 建造次数。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",      "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立行业。创立战略资源行业需要消耗30点对应战略资源。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立公司。创立战略资源公司需要消耗60点对应战略资源。"),
+  -- 海外投资人
+  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                         "海外投资人"),
+  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的跨国公司或离岸油轮，并获得该资源的公司效果。"),
   -- 其他
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY",                                  "建立了首个奢侈行业"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",                      "您建立了自己的首个奢侈行业。"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_INSTANCE_DESCRIPTION",             "开始流水线作业！您改良、系统化、简化了生产，成功建立了一个奢侈行业！"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY",                                  "创立了首个奢侈行业"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",                      "您创立了自己的首个奢侈行业。"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_INSTANCE_DESCRIPTION",             "开始流水线作业！您改良、系统化、简化了生产，成功创立了一个奢侈行业！"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_IN_WORLD",                         "世界首个奢侈行业"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_IN_WORLD_DESCRIPTION",             "已创建世界首个奢侈行业。"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_IN_WORLD_INSTANCE_DESCRIPTION",    "合理化生产使你建立了世界首个奢侈行业，能更快速高效地制造商品。"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION",                               "已创建首家奢侈公司"),
-	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_DESCRIPTION",                   "已创建一家奢侈公司。"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_IN_WORLD_DESCRIPTION",             "已创立世界首个奢侈行业。"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_IN_WORLD_INSTANCE_DESCRIPTION",    "合理化生产使你创立了世界首个奢侈行业，能更快速高效地制造商品。"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION",                               "已创立首家奢侈公司"),
+	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_DESCRIPTION",                   "已创立一家奢侈公司。"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_INSTANCE_DESCRIPTION",          "产品需要管理、监督、营销、品牌打造……奢侈公司便应运而生。该搞定竞争对手了！"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD",                      "世界首家奢侈公司"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD_DESCRIPTION",          "有钱能使鬼推磨——世界见证了首家奢侈公司的诞生！该搞定竞争对手了。"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_CORPORATION_IN_WORLD_INSTANCE_DESCRIPTION", "世界上首家奢侈公司出现在了您的文明中，堪称没有躯体的庞然大物。无数箱{ResourceType}正待贴上标签、进行包装，再运往全世界！"),
   ("zh_Hans_CN",  "LOC_HD_CORPORATION",                                         "公司"),
   ("zh_Hans_CN",  "LOC_POWER_REQUIREMENT_MISC",                                 "其他消耗来源"),
-  ("zh_Hans_CN",  "LOC_TUTORIAL_CORPORATION_OPPORTUNITY_B",                     "我们现在能够利用领土中的奢侈品资源来创建公司。控制或垄断一种奢侈品资源后，即可创建公司。创建公司后可以开发产品，销往其他文明。销往其他城市的产品将增加该公司的金币产出并进一步提升其旅游业绩。");
+  ("zh_Hans_CN",  "LOC_TUTORIAL_CORPORATION_OPPORTUNITY_B",                     "我们现在能够利用领土中的奢侈品资源来创立公司。控制或垄断一种奢侈品资源后，即可创立公司。创立公司后可以开发产品，销往其他文明。销往其他城市的产品将增加该公司的金币产出并进一步提升其旅游业绩。");

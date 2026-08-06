@@ -8,12 +8,18 @@ local INDUSTRY_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_STR
 local CORPORATION_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION'].Index;
 local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
 local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
+local LEU_TRANSNATIONAL_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL'].Index;
+local LEU_TRANSNATIONAL_SEA_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL_SEA'].Index;
+
+local BUILDING_OVERSEAS_INVESTOR_PREREQ_INDEX = GameInfo.Buildings['BUILDING_OVERSEAS_INVESTOR_PREREQ'].Index;
 
 local BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT = GlobalParameters.HD_BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT or 0;
 
 local MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM = GlobalParameters.HD_MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM or 0;
 local BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM = GlobalParameters.HD_BUILDER_BUILD_BONUS_INDUSTRY_CONSUME_CHARGE_NUM or 0;
 
+local CITY_ENABLE_UNIT_HD_OVERSEAS_INVESTOR_TAG = 'HD_CITY_ENABLE_UNIT_HD_OVERSEAS_INVESTOR';
+local CITY_STATE_RESOURCE_TAG = 'HD_CITY_STATE_RESOURCE';
 -- ============================================================================================================================================================
 -- 维克多
 -- ============================================================================================================================================================
@@ -83,45 +89,91 @@ function BuildBonusIndustry(playerId, unitId)
 end
 GameEvents.HD_BuildBonusIndustry.Add(BuildBonusIndustry);
 
--- 横向一体化
-function ManagerRefreshICProperty(playerId, cityId)
-  if Utils.CityHasAssignedGovernorPromotion(playerId, cityId, 'GOVERNOR_PROMOTION_HD_MANAGER_LEFT_3') then
-    local num = 0;
-    local cityPlots = Utils.GetCityPlots(playerId, cityId);
-    for _, plotId in pairs(cityPlots) do
-      local plot = Map.GetPlotByIndex(plotId);
-      if plot then
-        local improvementId = plot:GetImprovementType();
-        if improvementId == INDUSTRY_INDEX
-          or improvementId == INDUSTRY_BONUS_INDEX
-          or improvementId == INDUSTRY_STRATEGIC_INDEX
-          or improvementId == CORPORATION_INDEX
-          or improvementId == CORPORATION_BONUS_INDEX
-          or improvementId == CORPORATION_STRATEGIC_INDEX
-        then
-          num = num + 1;
-        end
-      end
+-- ============================================================================================================================================================
+-- 瑞娜
+-- ============================================================================================================================================================
+-- 股份投资 建造海外投资人
+function ReynaRefreshOverseasInvestorBuilding(playerId, cityId)
+  local player = Players[playerId];
+  if not player then return; end
+  local city = CityManager.GetCity(playerId, cityId);
+  if not city then return; end
+
+  local allowed = city:GetProperty(CITY_ENABLE_UNIT_HD_OVERSEAS_INVESTOR_TAG) or 0;
+  if allowed > 0 then
+    if not city:GetBuildings():HasBuilding(BUILDING_OVERSEAS_INVESTOR_PREREQ_INDEX) then
+      city:GetBuildQueue():CreateBuilding(BUILDING_OVERSEAS_INVESTOR_PREREQ_INDEX);
     end
-
-    print("马格努斯 横向一体化 城市拥有行业公司数量：" .. num);
-
-    local city = CityManager.GetCity(playerId, cityId);
-    if not city then return; end
-    local plot = Map.GetPlot(city:GetX(), city:GetY());
-    if plot then
-      Utils.BinaryCompress(num, plot, 'HD_PLOT_BINARY_COMPRESS_GOVERNOR_MANAGER_LEFT_3');
+  else
+    if city:GetBuildings():HasBuilding(BUILDING_OVERSEAS_INVESTOR_PREREQ_INDEX) then
+      city:GetBuildings():RemoveBuilding(BUILDING_OVERSEAS_INVESTOR_PREREQ_INDEX);
     end
   end
 end
+
+-- 海外投资人 选择城邦
+function OverseasInvestorChooseCityState(playerId, unitId)
+  print('海外投资人 选择城邦');
+
+  local player = Players[playerId];
+  if not player then return; end
+
+  local unit = UnitManager.GetUnit(playerId, unitId);
+	if not unit then return; end
+
+  ReportingEvents.SendLuaEvent('HD_CallOverseasInvestorChooseCityStateEvent', {PlayerId = playerId, X = unit:GetX(), Y = unit:GetY(), UnitId = unitId});
+end
+GameEvents.HD_OverseasInvestorChooseCityState.Add(OverseasInvestorChooseCityState);
+
+-- 海外投资人 建造跨国公司
+function OverseasInvestorBuildTransnational(playerId, param)
+  print('海外投资人 建造跨国公司');
+  local scriptParam = param.ScriptParam or {};
+
+  local player = Players[playerId];
+  if not player then return; end
+  
+  if scriptParam.UnitId == nil then return; end
+  local unit = UnitManager.GetUnit(playerId, scriptParam.UnitId);
+	if not unit then return; end
+
+  local plot = Map.GetPlot(param.X, param.Y);
+  if not plot then return; end
+
+  local cityStatePlayer = Players[param.CityStateId];
+  if not cityStatePlayer then return; end
+  local resourceType = cityStatePlayer:GetProperty(CITY_STATE_RESOURCE_TAG);
+  if not resourceType then return; end
+  local resourceInfo = GameInfo.Resources[resourceType];
+  if not resourceInfo then return; end
+
+  -- 设置虚拟资源
+  if plot:GetResourceType() ~= -1 then
+    ResourceBuilder.SetResourceType(plot, -1);
+  end
+  ResourceBuilder.SetResourceType(plot, resourceInfo.Index, 1);
+
+  -- 建造跨国公司或离岸油轮
+	if not plot:IsWater() then
+    ImprovementBuilder.SetImprovementType(plot, LEU_TRANSNATIONAL_INDEX, playerId);
+	else
+    ImprovementBuilder.SetImprovementType(plot, LEU_TRANSNATIONAL_SEA_INDEX, playerId);
+	end
+
+  -- 扣除劳动次数/删除单位
+  local movesRemaining = Utils.GetUnitMovesRemaining(playerId, scriptParam.UnitId);
+  unit:ChangeMovesRemaining(-movesRemaining);
+  Utils.ConsumeUnitBuildCharges(playerId, scriptParam.UnitId, 1);
+end
+GameEvents.HD_OverseasInvestorBuildTransnational.Add(OverseasInvestorBuildTransnational);
 
 -- ============================================================================================================================================================
 -- 总督刷新检测
 -- ============================================================================================================================================================
 -- 切换城市
 function GovernorRefreshCitySelectionChanged(playerId, cityId)
-  -- 马左三
-  ManagerRefreshICProperty(playerId, cityId);
+  -- 瑞左二
+  ReynaRefreshOverseasInvestorBuilding(playerId, cityId);
 end
 Events.CitySelectionChanged.Add(GovernorRefreshCitySelectionChanged);
 
@@ -131,8 +183,8 @@ function GovernorRefreshOnGameTurnEnded()
     local player = Players[playerId];
     if player then
       for _, city in player:GetCities():Members() do
-        -- 马左三
-        ManagerRefreshICProperty(playerId, city:GetID());
+        -- 瑞左二
+        ReynaRefreshOverseasInvestorBuilding(playerId, city:GetID());
       end
     end
 	end

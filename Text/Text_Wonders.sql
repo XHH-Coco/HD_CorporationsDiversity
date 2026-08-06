@@ -15,7 +15,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 威尼斯军械库
   ("zh_Hans_CN",  "LOC_BUILDING_VENETIAN_ARSENAL_CORP_DESCRIPTION",                "获得1个大亨。{LOC_BUILDING_VENETIAN_ARSENAL_DESCRIPTION}"),
   -- 鲁尔山谷
-  ("zh_Hans_CN",  "LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "每回合提供6点 [ICON_RESOURCE_COAL] 煤。大亨可以在加成资源或战略资源上建立行业，投资人可以在加成资源或战略资源上建立公司。加成资源公司为所在城市+5% [ICON_PRODUCTION] 生产力，战略资源公司为所在城市+5% [ICON_Science] 科技值。境内每个行业或公司使玩家的 [ICON_GREATENGINEER] 大工程师点数积累速度+5%。[NEWLINE][NEWLINE]必须沿河而建。"),
+  ("zh_Hans_CN",  "LOC_BUILDING_RUHR_VALLEY_CORP_DESCRIPTION",                     "每回合提供6点 [ICON_RESOURCE_COAL] 煤。大亨可以在加成资源或战略资源上创立行业，投资人可以在加成资源或战略资源上创立公司。加成资源公司为所在城市+5% [ICON_PRODUCTION] 生产力，战略资源公司为所在城市+5% [ICON_Science] 科技值。境内每个行业或公司使玩家的 [ICON_GREATENGINEER] 大工程师点数积累速度+5%。[NEWLINE][NEWLINE]必须沿河而建。"),
   -- 巴拿马运河
   ("zh_Hans_CN",  "LOC_BUILDING_PANAMA_CANAL_DESCRIPTION",                         "建成时市中心出现一位 [ICON_GreatMerchant] 大商人。境内的每个运河使玩家的 [ICON_GREATMERCHANT] 大商人点数积累速度+10%。拥有运河的城市来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+50%。本城的每个运河（包括巴拿马运河）相邻的每种专业化区域或水渠为本城出发的国际 [ICON_TradeRoute] 贸易路线提供对应产出。[NEWLINE][NEWLINE]开始修建巴拿马运河时，将在满足条件的相邻单元格自动开始建造1或2个运河，完成巴拿马运河的同时运河也将完成。建成的巴拿马运河将同样被视为运河。[NEWLINE]将巴拿马运河视为水域单元格时，必须有两个相邻巴拿马运河的且关于其对称的单元格满足：两个单元格均可以修建运河；或是一个单元格可以修建运河，一个单元格是城市/水域。如想使用巴拿马运河连接两座城市，那么这两座城市必须有至少一座相邻水域单元格或已经被运河连接至水域单元格。[NEWLINE][NEWLINE]必须修建在平坦地形单元格之上。"),
   -- 帝国大厦

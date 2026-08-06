@@ -564,7 +564,7 @@ insert or replace into EnglishText (Tag, Text) values
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_UNIT_PRODUCT_NAME",                                        "[ICON_Greatwork_Product] 公司与产品"),
-  ("zh_Hans_CN",  "LOC_UNIT_PRODUCT_DESCRIPTION",                                 "围绕特定资源建立公司后，即可通过完成项目开发拥有品牌的 [ICON_GreatWork_Product] 产品。"),
+  ("zh_Hans_CN",  "LOC_UNIT_PRODUCT_DESCRIPTION",                                 "围绕特定资源创立公司后，即可通过完成项目开发拥有品牌的 [ICON_GreatWork_Product] 产品。"),
   
   -- 奢侈资源 产品补齐
   ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CITRUS_6_NAME",                          "女皇柑橘布丁"),
@@ -1139,3 +1139,579 @@ update LocalizedText set Text = replace(Text, "[NEWLINE][NEWLINE]Moving the [ICO
   where Tag LIKE "LOC_PROJECT_CREATE_CORPORATION_PRODUCT_%_DESCRIPTION" and Language = 'en_US';
 update LocalizedText set Text = replace(Text, "[NEWLINE][NEWLINE]移动 [ICON_GREATWORK_PRODUCT] 产品到另一个城市或文明会给该公司所在单元格+1 [ICON_GOLD] 金币。在生产时消耗2点 [ICON_POWER] 电力。[NEWLINE]","")
   where Tag LIKE "LOC_PROJECT_CREATE_CORPORATION_PRODUCT_%_DESCRIPTION" and Language = 'zh_Hans_CN';
+
+-- 文明 城邦 资源
+CREATE TEMPORARY TABLE "HD_Civ_CS_Product_Text"(
+  "ResourceType"  TEXT
+);
+insert or replace into HD_Civ_CS_Product_Text (ResourceType) values
+  ("RESOURCE_HD_CS_MANUSCRIPT"),
+  ("RESOURCE_HD_CS_MEDICINAL_HERBS"),
+  ("RESOURCE_HD_CS_DIDACTIC_MATERIALS"),
+  ("RESOURCE_HD_CS_ASTROLABE"),
+  ("RESOURCE_HD_CS_DANCE_COSTUME"),
+  ("RESOURCE_HD_CS_MUSICAL_INSTRUMENTS"),
+  ("RESOURCE_HD_CS_FLOWER_ARRANGEMENT"),
+  ("RESOURCE_HD_CS_TEA_SET"),
+  ("RESOURCE_HD_CS_CARAVAN"),
+  ("RESOURCE_HD_CS_STRUCK_COINAGE"),
+  ("RESOURCE_HD_CS_EXOTIC_BEAST"),
+  ("RESOURCE_HD_CS_RARE_BIRD"),
+  ("RESOURCE_HD_CS_CANOPIED_CART"),
+  ("RESOURCE_HD_CS_MASTERWORK_SWORD"),
+  ("RESOURCE_HD_CS_DESTRIER"),
+  ("RESOURCE_HD_CS_ARMOR"),
+  ("RESOURCE_HD_CS_DEITY_STATUE"),
+  ("RESOURCE_HD_CS_ROSARY"),
+  ("RESOURCE_HD_CS_SCRIPTURE"),
+  ("RESOURCE_HD_CS_ORACLE_IMPLEMENTS"),
+  ("RESOURCE_HD_CS_ALMANAC"),
+  ("RESOURCE_HD_CS_YEAST"),
+  ("RESOURCE_HD_CS_RESIN"),
+  ("RESOURCE_HD_CS_CASK"),
+  ("RESOURCE_HD_CS_SEA_CHART"),
+  ("RESOURCE_HD_CS_FIGUREHEAD"),
+  ("RESOURCE_HD_CS_CANVAS"),
+  ("RESOURCE_HD_CS_YACHT"),
+  ("RESOURCE_HD_CS_TERRACOTTA"),
+  ("RESOURCE_HD_CS_MEASURING_INSTRUMENT"),
+  ("RESOURCE_HD_CS_RED_BRICK"),
+  ("RESOURCE_HD_CS_STEEL"),
+  ("RESOURCE_HD_CS_TIMEPIECE"),
+  ("RESOURCE_HD_CS_SEWING_MACHINE"),
+  ("RESOURCE_HD_CS_CANDLE"),
+  ("RESOURCE_HD_CS_WHITE_PAPER");
+
+--------------------------------------------------------------------------------
+-- Language: en_US
+insert or replace into EnglishText (Tag, Text) select
+	"LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_NAME", "[ICON_" || ResourceType || "] {LOC_" || ResourceType || "_NAME} Corporation: Create New Product"
+from HD_Civ_CS_Product_Text;
+
+insert or replace into EnglishText (Tag, Text) select
+	"LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_SHORT_NAME", "[ICON_" || ResourceType || "] Create New {LOC_" || ResourceType || "_NAME} Product"
+from HD_Civ_CS_Product_Text;
+
+insert or replace into EnglishText (Tag, Text) select
+	"LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_DESCRIPTION", "Create a new product for the world based on the [ICON_" || ResourceType || "] {LOC_" || ResourceType || "_NAME} resource."
+from HD_Civ_CS_Product_Text;
+
+--------------------------------------------------------------------------------
+-- Language: zh_Hans_CN
+insert or replace into LocalizedText (Language, Tag, Text) select
+	"zh_Hans_CN", "LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_NAME", "[ICON_" || ResourceType || "] {LOC_" || ResourceType || "_NAME}公司：开发新产品"
+from HD_Civ_CS_Product_Text;
+
+insert or replace into LocalizedText (Language, Tag, Text) select
+	"zh_Hans_CN", "LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_SHORT_NAME", "[ICON_" || ResourceType || "] 开发新的{LOC_" || ResourceType || "_NAME}产品"
+from HD_Civ_CS_Product_Text;
+
+insert or replace into LocalizedText (Language, Tag, Text) select
+	"zh_Hans_CN", "LOC_PROJECT_CREATE_CORPORATION_PRODUCT_" || substr(ResourceType,10) || "_DESCRIPTION",	"利用 [ICON_" || ResourceType || "] {LOC_" || ResourceType || "_NAME}资源为世界开发新产品。"
+from HD_Civ_CS_Product_Text;
+
+insert or replace into EnglishText (Tag, Text) values
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YEAST_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RESIN_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CASK_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_YACHT_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_STEEL_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_6_NAME",                         ""),
+  
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_1_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_2_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_3_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_4_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_5_NAME",                         ""),
+  ("LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_6_NAME",                         "");
+
+insert or replace into LocalizedText (Language, Tag, Text) values
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MANUSCRIPT_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEDICINAL_HERBS_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DIDACTIC_MATERIALS_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ASTROLABE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DANCE_COSTUME_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MUSICAL_INSTRUMENTS_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FLOWER_ARRANGEMENT_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TEA_SET_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CARAVAN_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STRUCK_COINAGE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_EXOTIC_BEAST_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RARE_BIRD_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANOPIED_CART_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MASTERWORK_SWORD_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DESTRIER_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ARMOR_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_DEITY_STATUE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ROSARY_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SCRIPTURE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ORACLE_IMPLEMENTS_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_ALMANAC_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YEAST_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RESIN_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CASK_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEA_CHART_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_FIGUREHEAD_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANVAS_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_YACHT_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TERRACOTTA_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_MEASURING_INSTRUMENT_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_RED_BRICK_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_STEEL_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_TIMEPIECE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_SEWING_MACHINE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_CANDLE_6_NAME",                         ""),
+  
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_1_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_2_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_3_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_4_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_5_NAME",                         ""),
+  ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_HD_CS_WHITE_PAPER_6_NAME",                         "");

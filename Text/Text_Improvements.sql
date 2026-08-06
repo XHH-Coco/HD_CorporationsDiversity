@@ -32,7 +32,21 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_IMPROVEMENT_LEU_CONTAINER_PORT_NAME",             "Pier"),
   ("LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",      "+3 [ICON_GOLD] Gold to all Industries and Corporations. +3 [ICON_GOLD] Gold to all [ICON_TRADEROUTE] Trade Routes. [ICON_GREATWORK_PRODUCT] Products provide +50% [ICON_TOURISM] Tourism in this city. [NEWLINE][NEWLINE]Must be built on a Shallow Sea and Lake tile adjacent to land and adjacent to a Bonus or Luxury resource. Only one may be built in each city, and may not be built adjacent to another Pier."),
   -- 火车站
-  ("LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",             "Improvement built by Tycoon or Military Engineers. Cannot be built Marsh, Swamp or Geothermal Fissure tiles. Only one may be built in each city, and may not be built adjacent to another Station. Railroads are instantly built on current and adjacent passable land tiles. [NEWLINE][NEWLINE]Improvements of this City provided +50% [ICON_TOURISM] Tourism. +50% [ICON_TOURISM] Tourism to [ICON_GREATWORK_PRODUCT] Products in this City if adjacent to Commercial Hub or Harbor districts. [NEWLINE][NEWLINE]Each type of adjacent Specialized districts or adjacent Aqueduct provide corresponding yield to International [ICON_TradeRoute] Trade Routes from this city. This bonus is doubled if this city is fully [ICON_POWER] Powered.");
+  ("LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",             "Built by Tycoon or Military Engineers. Cannot be built Marsh, Swamp or Geothermal Fissure tiles. Only one may be built in each city, and may not be built adjacent to another Station. Railroads are instantly built on current and adjacent passable land tiles. [NEWLINE][NEWLINE]Improvements of this City provided +50% [ICON_TOURISM] Tourism. +50% [ICON_TOURISM] Tourism to [ICON_GREATWORK_PRODUCT] Products in this City if adjacent to Commercial Hub or Harbor districts. [NEWLINE][NEWLINE]Each type of adjacent Specialized districts or adjacent Aqueduct provide corresponding yield to International [ICON_TradeRoute] Trade Routes from this city. This bonus is doubled if this city is fully [ICON_POWER] Powered."),
+  -- 跨国公司
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",       "Built by Overseas Investor. Provides unique nationwide bonuses based on the resource's usages. Each city can only establish one Transnational Company or Offshore Tanker in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
+  -- 离岸油轮
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",   "Built by Overseas Investor. Provides unique nationwide bonuses based on the resource's usages. Each city can only establish one Transnational Company or Offshore Tanker in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
+
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_TEXT",                        "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Transnational Company of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_TEXT",                    "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create an Offshore Tanker of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_DISABLED",                        "[COLOR:Red]There are no city-states available for selection.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_CITY_DISABLED",                   "[COLOR:Red]This city can only build at most {1_Num} Transnational {1_Num : plural 1?Company; other?Companies;} or Offshore {1_Num : plural 1?Tanker; other?Tankers;}.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_DISABLED_REASON",       "[COLOR:Red]Transnational Company or Offshore Tanker of that city-state's Exclusive Resource has already been built in the world.[ENDCOLOR]"),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_TOOLTIP",               "[NEWLINE]Exclusive Resource: {1_Icon} {2_Name}"),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_TITLE",                 "Build {1_Name}"),
+  ("LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_SUBLABEL",              "As trade between our country and the city‑states continues to expand, the unique products of these small foreign kingdoms have become increasingly well‑known among our people. Today, as the market for these specialities grows steadily in our country, it is time for our envoys to negotiate monopoly rights agreements with the leaders of the various vassal city‑states. After our envoys' skilled diplomatic efforts, the specialities for which the vassal city‑states will grant our merchants exclusive trading rights are:"),
+  ("LOC_TRANSNATIONAL_CORPORATION_TEXT",                            "Corporation Bonuses: [NEWLINE]{1_Effect}");
 
 insert or replace into LocalizedText (Language, Tag, Text) values
   -- 城堡庄园
@@ -51,10 +65,10 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_BONUS_NAME",             "公司"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_STRATEGIC_NAME",         "公司"),
 
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]本城最多只能建立{1_Num}座改良加成资源的行业或公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]本城最多只能建立{1_Num}座改良战略资源的行业或公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]你已经建立了 {1_Icon} {2_Resource}行业或公司。[ENDCOLOR]"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]世界上已经建立了 {1_Icon} {2_Resource}公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_CITY_DISABLED",             "[COLOR:Red]本城最多只能创立{1_Num}座改良加成资源的行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_CITY_DISABLED",         "[COLOR:Red]本城最多只能创立{1_Num}座改良战略资源的行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_PLAYER_DISABLED",           "[COLOR:Red]你已经创立了 {1_Icon} {2_Resource}行业或公司。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_CORPORATION_GAME_DISABLED",          "[COLOR:Red]世界上已经创立了 {1_Icon} {2_Resource}公司。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_BONUS_RESOURCE_DISABLED",         "[COLOR:Red]需要至少控制{1_Num}处 {2_Icon} {3_Resource}资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_IC_STRATEGIC_RESOURCE_DISABLED",     "[COLOR:Red]需要消耗{1_Num} {2_Icon} {3_Resource}，{LOC_DEAL_RESOURCES_NOT_ENOUGH}。[ENDCOLOR]"),
   -- 行业
@@ -68,10 +82,20 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_CONTAINER_PORT_NAME",            "埠头"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_CONTAINER_PORT_DESCRIPTION",     "所有行业和公司+3 [ICON_GOLD] 金币。所有 [ICON_TRADEROUTE] 贸易路线+3 [ICON_GOLD] 金币。本城来自 [ICON_GREATWORK_PRODUCT] 产品的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]必须建在与加成或奢侈资源相邻，且与陆地相邻的浅海或湖泊单元格上。无法建在另一座埠头旁。每个城市仅限建造一座。"),
   -- 火车站
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",            "由大亨或军事工程师建造，不能建在沼泽或地热裂缝上，一座城市只能拥有一个火车站，火车站不能与另一个火车站相邻。在所在单元格和所有相邻的可通行陆地单元格上自动创建铁路。[NEWLINE][NEWLINE]本城改良提供的 [ICON_TOURISM] 旅游业绩+50%。若相邻商业中心或港口，则分别为本城的 [ICON_GREATWORK_PRODUCT] 产品提供的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]相邻的每种专业化区域或水渠为本城出发的国际 [ICON_TradeRoute] 贸易路线提供对应产出；此城 [ICON_POWER] 供电充足时效果翻倍。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",            "由大亨或军事工程师建造，不能建在沼泽或地热裂缝上，一座城市只能拥有一个火车站，火车站不能与另一个火车站相邻。在所在单元格和所有相邻的可通行陆地单元格上自动建造铁路。[NEWLINE][NEWLINE]本城改良提供的 [ICON_TOURISM] 旅游业绩+50%。若相邻商业中心或港口，则分别为本城的 [ICON_GREATWORK_PRODUCT] 产品提供的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]相邻的每种专业化区域或水渠为本城出发的国际 [ICON_TradeRoute] 贸易路线提供对应产出；此城 [ICON_POWER] 供电充足时效果翻倍。"),
   -- 跨国公司
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME",             "跨国公司"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",      "只能建造在有奢侈品资源或战略资源的无主单元格上。建成后，将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",      "由海外投资人创立，根据资源的用途带来全国性的独特加成效果。每座城市总共仅能创立一座跨国公司或离岸油轮。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
   -- 离岸油轮
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME",         "离岸油轮"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",  "只能建造在有奢侈品资源或战略资源的无主水域单元格上。将占领该单元格，获得该资源，并直接将其产量提供给[ICON_CAPITAL]首都。如果其所在的单元格被掠夺，您将失去该单元格并移除该改良设施。");
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",  "由海外投资人创立，根据资源的用途带来全国性的独特加成效果。每座城市总共仅能创立一座跨国公司或离岸油轮。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
+
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_TEXT",                     "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的跨国公司，并获得该资源的公司效果。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_TEXT",                 "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的离岸油轮，并获得该资源的公司效果。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_DISABLED",                     "[COLOR:Red]没有符合条件的城邦可供选择。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_CITY_DISABLED",                "[COLOR:Red]本城最多只能创立{1_Num}座跨国公司或离岸油轮。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_DISABLED_REASON",    "[COLOR:Red]世界上已经创立了该城邦专属资源的跨国公司或离岸油轮。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_TOOLTIP",            "[NEWLINE]专属资源：{1_Icon} {2_Name}"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_TITLE",              "创立{1_Name}"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_TRANSNATIONAL_SELECTION_SUBLABEL",           "随着我国和城邦的贸易往来不断扩大，这些异域小国特有的物产越来越为我们的人民所熟知。[NEWLINE]如今，这些特产在我国的市场不断扩大，是时候让我们的使者与各个藩属城邦领袖协商商品专卖权协定了。[NEWLINE]在我国使者一番纵横捭阖之后，藩属城邦将要授予我国商人专卖权的特产是："),
+  ("zh_Hans_CN",  "LOC_TRANSNATIONAL_CORPORATION_TEXT",                         "公司效果：[NEWLINE]{1_Effect}");

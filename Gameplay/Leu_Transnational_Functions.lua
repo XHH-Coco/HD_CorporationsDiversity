@@ -1,0 +1,1 @@
+print("HD Override Monopoly+ Transnational Company scripts");

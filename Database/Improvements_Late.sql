@@ -77,6 +77,44 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 -- =====================================================================================================================================
+-- 跨国公司
+-- =====================================================================================================================================
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_LEU_TRANSNATIONAL', 'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) select
+  'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType, 'MODIFIER_ADJUST_GAME_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType, 'Key', 'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType, 'Amount', 1
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+-- 公司特效
+create table HD_Transnational_Categories(
+	Category TEXT NOT NULL,
+	PRIMARY KEY (Category)
+);
+
+insert or ignore into HD_Transnational_Categories (Category) select Category
+  from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_LEU_TRANSNATIONAL', ModifierId
+  from HD_CorporationModifiers where Category in (select Category from HD_Transnational_Categories);
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', ModifierId
+  from HD_CorporationModifiers where Category in (select Category from HD_Transnational_Categories);
+
+-- =====================================================================================================================================
 -- 城堡庄园
 -- =====================================================================================================================================
 delete from ImprovementModifiers where ImprovementType = 'IMPROVEMENT_CHATEAU' and ModifierId like 'HD_CHATEAU_GRANT_RESOURCE_%_ATTACH';

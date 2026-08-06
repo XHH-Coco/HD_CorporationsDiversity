@@ -12,11 +12,13 @@ insert or replace into GlobalParameters (Name, Value) values
 -- 奢侈资源
 insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
 	'IMPROVEMENT_INDUSTRY', ResourceType
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY')
+	and ResourceType not in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType) select distinct
 	'IMPROVEMENT_CORPORATION', ResourceType
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY')
+	and ResourceType not in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_INDUSTRY';
 update Improvement_ValidResources set MustRemoveFeature = 0 where ImprovementType = 'IMPROVEMENT_CORPORATION';
@@ -1150,23 +1152,62 @@ insert or replace into ModifierArguments (ModifierId, Name, Value) values
 -- =====================================================================================================================================
 -- 跨国公司
 -- =====================================================================================================================================
-update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_CAPITALISM' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL';
-update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_CAPITALISM' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA';
-delete from Improvement_BonusYieldChanges where Id = 553;
-delete from Improvement_BonusYieldChanges where Id = 554;
+update Improvements set PrereqTech = null, PrereqCivic = null, Workable = 1, Appeal = 0, CanBuildOutsideTerritory = 0, Removable = 0, PlunderAmount = 50, OnePerCity = 1
+	where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
+delete from Improvement_YieldsOutsideTerritories where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
+delete from Improvement_ValidBuildUnits where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
 
-update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_HD' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL'
-	and exists (select CivicType from Civics where CivicType = 'CIVIC_NEOCOLONIALISM_HD');
-update Improvements set PrereqTech = null, PrereqCivic = 'CIVIC_NEOCOLONIALISM_HD' where ImprovementType = 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA'
-	and exists (select CivicType from Civics where CivicType = 'CIVIC_NEOCOLONIALISM_HD');
+insert or ignore into ImprovementsNeedCount_HD (ImprovementType) values
+	('IMPROVEMENT_LEU_TRANSNATIONAL'),
+	('IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
 
+-- 本体产出
+delete from Improvement_YieldChanges where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
+insert or ignore into Improvement_YieldChanges (ImprovementType, YieldType, YieldChange) values
+	('IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_FOOD', 			2),
+	('IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_PRODUCTION', 2),
+	('IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_SCIENCE', 		1),
+	('IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD', 			6),
+	('IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_FOOD', 			2),
+	('IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_PRODUCTION', 2),
+	('IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_SCIENCE', 		1),
+	('IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD', 			6);
+
+-- 加产节点
+delete from Improvement_BonusYieldChanges where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
+
+insert or ignore into Improvement_BonusYieldChanges (Id, ImprovementType, YieldType, BonusYieldChange, PrereqCivic, PrereqTech) values
+	(2000, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD',				3,	NULL,															'TECH_CURRENCY'),
+	(2001, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_PRODUCTION',	1,	'CIVIC_GUILDS',										NULL),
+	(2002, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD',				3,	NULL,															'TECH_BANKING'),
+	(2003, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_SCIENCE',		1,	'CIVIC_COMMERCIAL_CAPITALISM_HD',	NULL),
+	(2004, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD',				3,	NULL,															'TECH_ECONOMICS'),
+	(2005, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_SCIENCE',		1,	'CIVIC_COLONIALISM',							NULL),
+	(2006, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_PRODUCTION',	1,	'CIVIC_CAPITALISM',								NULL),
+	(2007, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD',				3,	'CIVIC_FINANCE_HD',								NULL),
+	(2008, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_SCIENCE',		1,	'CIVIC_NEOCOLONIALISM_HD',				NULL),
+	(2009, 'IMPROVEMENT_LEU_TRANSNATIONAL', 		'YIELD_GOLD',				3,	'CIVIC_GLOBALIZATION',						NULL),
+	
+	(2010, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD',				3,	NULL,															'TECH_SHIPBUILDING'),
+	(2011, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_PRODUCTION',	1,	NULL,															'TECH_COMPASS_HD'),
+	(2012, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD',				3,	NULL,															'TECH_CARTOGRAPHY'),
+	(2013, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_SCIENCE',		1,	'CIVIC_EXPLORATION',							NULL),
+	(2014, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD',				3,	NULL,															'TECH_ECONOMICS'),
+	(2015, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_SCIENCE',		1,	'CIVIC_COLONIALISM',							NULL),
+	(2016, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_PRODUCTION',	1,	'CIVIC_CAPITALISM',								NULL),
+	(2017, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD',				3,	'CIVIC_FINANCE_HD',								NULL),
+	(2018, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_SCIENCE',		1,	'CIVIC_NEOCOLONIALISM_HD',				NULL),
+	(2019, 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', 'YIELD_GOLD',				3,	'CIVIC_GLOBALIZATION',						NULL);
+
+-- 改良资源
+delete from Improvement_ValidResources where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');
 insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType, MustRemoveFeature) select distinct
 	'IMPROVEMENT_LEU_TRANSNATIONAL', ResourceType, 0
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 insert or ignore into Improvement_ValidResources (ImprovementType, ResourceType, MustRemoveFeature) select distinct
 	'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', ResourceType, 0
-from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType = 'RESOURCECLASS_LUXURY');
+from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
 -- =====================================================================================================================================
 -- 尤里卡
