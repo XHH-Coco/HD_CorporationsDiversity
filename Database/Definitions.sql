@@ -101,10 +101,6 @@ insert or ignore into CivilopediaPageExcludes (SectionId, PageId) values
 	('IMPROVEMENTS', 'IMPROVEMENT_CORPORATION_BONUS'),
 	('IMPROVEMENTS', 'IMPROVEMENT_CORPORATION_STRATEGIC');
 
-insert or ignore into Improvement_Tourism (ImprovementType, TourismSource, PrereqTech, ScalingFactor) values
-	('IMPROVEMENT_CORPORATION_BONUS',			'TOURISMSOURCE_GOLD', 'TECH_ECONOMICS', 100),
-	('IMPROVEMENT_CORPORATION_STRATEGIC',	'TOURISMSOURCE_GOLD', 'TECH_ECONOMICS', 100);
-
 insert or ignore into ImprovementsNeedCount_HD (ImprovementType) values
 	('IMPROVEMENT_INDUSTRY_BONUS'),
 	('IMPROVEMENT_INDUSTRY_STRATEGIC'),
