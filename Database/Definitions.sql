@@ -130,3 +130,6 @@ insert or ignore into TypeTags (Type, Tag) values
 
 insert or ignore into Unit_BuildingPrereqs (Unit, PrereqBuilding) values
 	('UNIT_HD_OVERSEAS_INVESTOR', 'BUILDING_OVERSEAS_INVESTOR_PREREQ');
+
+insert or ignore into TypeProperties (Type, Name, Value, PropertyType) values
+	('UNIT_HD_OVERSEAS_INVESTOR', 'CAN_TELEPORT_TO_CITY', 1, 'PROPERTYTYPE_IDENTITY');
