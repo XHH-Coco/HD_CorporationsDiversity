@@ -893,15 +893,16 @@ function CityBanner:CreateTransnationalBanner()
 
 	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+
 	if resName ~= nil then
 		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+		toolTipStr = Locale.Lookup('LOC_' .. resName .. '_NAME') .. " " .. toolTipStr;
 	else
 		self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL");
 	end
 	
 	self.m_IsImprovementBanner = true;
-	
-	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 	self.m_Instance.Icon:SetToolTipString(toolTipStr);
 	-- self.m_Instance.TransnationalButton:RegisterCallback(Mouse.eLClick, function() end);
 end
@@ -914,15 +915,16 @@ function CityBanner:CreateTransnationalSeaBanner()
 
 	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+
 	if resName ~= nil then
 		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+		toolTipStr = Locale.Lookup('LOC_' .. resName .. '_NAME') .. " " .. toolTipStr;
 	else
 		self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL_SEA");
 	end
 	
 	self.m_IsImprovementBanner = true;
-	
-	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 	self.m_Instance.Icon:SetToolTipString(toolTipStr);
 	-- self.m_Instance.TransnationalSeaButton:RegisterCallback(Mouse.eLClick, function() end);
 end
@@ -981,7 +983,18 @@ end
 function CityBanner:UpdateTransnationalText()
 	if self.m_Type == BANNERTYPE_TRANSNATIONAL then
 		print('UpdateTransnationalText');
+
+		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+		local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
 		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+
+		if resName ~= nil then
+			self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+			toolTipStr = Locale.Lookup('LOC_' .. resName .. '_NAME') .. " " .. toolTipStr;
+		else
+			self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL");
+		end
+
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
 	end
 end
@@ -1000,7 +1013,18 @@ end
 function CityBanner:UpdateTransnationalSeaText()
 	if self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
 		print('UpdateTransnationalSeaText');
+		
+		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+		local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
 		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+
+		if resName ~= nil then
+			self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
+			toolTipStr = Locale.Lookup('LOC_' .. resName .. '_NAME') .. " " .. toolTipStr;
+		else
+			self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_LEU_TRANSNATIONAL_SEA");
+		end
+
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
 	end
 end
