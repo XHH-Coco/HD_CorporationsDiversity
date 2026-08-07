@@ -77,7 +77,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 -- =====================================================================================================================================
--- 跨国公司
+-- 特产商行
 -- =====================================================================================================================================
 insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
   'IMPROVEMENT_LEU_TRANSNATIONAL', 'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType

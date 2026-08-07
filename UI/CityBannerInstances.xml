@@ -258,7 +258,7 @@
 	  </ZoomAnchor>
 	</Instance>
 
-	<!-- 跨国公司 -->
+	<!-- 特产商行 -->
 	<Instance	Name="TransnationalBanner">
 	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
       <Container ID="TransnationalBannerContainer" Anchor="C,C" Size="88,34">
@@ -270,7 +270,7 @@
       </Container>
 	  </ZoomAnchor>
 	</Instance>
-	<!-- 离岸油轮 -->
+	<!-- 进口商埠 -->
 	<Instance	Name="TransnationalSeaBanner">
 	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
       <Container ID="TransnationalSeaBannerContainer" Anchor="C,C" Size="88,34">

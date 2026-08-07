@@ -82,7 +82,7 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 		end
 	end
 
-	-- 判断是否是跨国公司/离岸油轮
+	-- 判断是否是特产商行/进口商埠
 	local isTransnational = false
 	if eImprovementType == LEU_TRANSNATIONAL_INDEX then
 		isTransnational = true;
@@ -131,12 +131,12 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 					local cityID = ownerCity:GetID();
 					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_CHATEAU);
 				elseif isTransnational then
-					-- 跨国公司
+					-- 特产商行
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_TRANSNATIONAL);
 				elseif isTransnationalSea then
-					-- 离岸油轮
+					-- 进口商埠
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_TRANSNATIONAL_SEA);
@@ -883,7 +883,7 @@ function GetChateauEffect(x, y)
 end
 
 -- ======================================================================================================================================================
--- 跨国公司 离岸油轮
+-- 特产商行 进口商埠
 -- ======================================================================================================================================================
 function CityBanner:CreateTransnationalBanner()
 	self.m_InstanceManager = m_TransnationalBannerIM;
@@ -1061,11 +1061,11 @@ function CityBanner:InitializeOtherBannerTypes(bannerType : number)
 		self:CreateChateauBanner();
 		self:UpdateChateauBanner();
 	elseif bannerType == BANNERTYPE_TRANSNATIONAL then
-		-- 跨国公司
+		-- 特产商行
 		self:CreateTransnationalBanner();
 		self:UpdateTransnationalBanner();
 	elseif bannerType == BANNERTYPE_TRANSNATIONAL_SEA then
-		-- 离岸油轮
+		-- 进口商埠
 		self:CreateTransnationalSeaBanner();
 		self:UpdateTransnationalSeaBanner();
 	else
@@ -1090,12 +1090,12 @@ function CityBanner:UpdateColorOtherBannerTypes(backColor : number)
 			self.m_Instance.Banner_Base:SetColor( backColor );
 		end
 	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL then
-		-- 跨国公司
+		-- 特产商行
 		if self.m_Instance.Banner_Base ~= nil then
 			self.m_Instance.Banner_Base:SetColor( backColor );
 		end
 	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
-		-- 离岸油轮
+		-- 进口商埠
 		if self.m_Instance.Banner_Base ~= nil then
 			self.m_Instance.Banner_Base:SetColor( backColor );
 		end
@@ -1115,10 +1115,10 @@ function CityBanner:UpdateOtherImprovementBannerTypes()
 		-- 城堡庄园
 		self:UpdateChateauBanner();
 	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL then
-		-- 跨国公司
+		-- 特产商行
 		self:UpdateTransnationalBanner();
 	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
-		-- 离岸油轮
+		-- 进口商埠
 		self:UpdateTransnationalSeaBanner();
 	else
 		BASE_UpdateOtherImprovementBannerTypes();

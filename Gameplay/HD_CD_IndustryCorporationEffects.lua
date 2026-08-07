@@ -582,7 +582,7 @@ end
 Events.WonderCompleted.Add(ChateauWonderCompleted);
 
 -- ======================================================================================================================================================
--- 跨国公司 离岸油轮
+-- 特产商行 进口商埠
 -- ======================================================================================================================================================
 function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
   local plot = Map.GetPlot(x, y);
@@ -596,7 +596,7 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
   if improvementId == LEU_TRANSNATIONAL_INDEX
     or improvementId == LEU_TRANSNATIONAL_SEA_INDEX
   then
-    print("建造跨国公司/离岸油轮");
+    print("建造特产商行/进口商埠");
 
     -- 查询可用公司类别
     print("============================================")
@@ -621,7 +621,7 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
 
     for _, category in ipairs(categoryList) do
       plot:SetProperty(CORPORATION_BONUS_TAG .. category, 1);
-      print("跨国公司/离岸油轮类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+      print("特产商行/进口商埠类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
     end
     
     if improvementId == LEU_TRANSNATIONAL_INDEX then

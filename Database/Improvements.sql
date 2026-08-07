@@ -1150,7 +1150,7 @@ insert or replace into ModifierArguments (ModifierId, Name, Value) values
 	('HD_CONTAINER_PORT_PLOT_YIELD_BONUS',	'Amount',								3);
 
 -- =====================================================================================================================================
--- 跨国公司
+-- 特产商行
 -- =====================================================================================================================================
 update Improvements set PrereqTech = null, PrereqCivic = null, Workable = 1, Appeal = 0, CanBuildOutsideTerritory = 0, Removable = 0, PlunderAmount = 50, OnePerCity = 1
 	where ImprovementType in ('IMPROVEMENT_LEU_TRANSNATIONAL', 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA');

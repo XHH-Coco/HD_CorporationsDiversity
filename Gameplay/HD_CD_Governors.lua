@@ -125,9 +125,9 @@ function OverseasInvestorChooseCityState(playerId, unitId)
 end
 GameEvents.HD_OverseasInvestorChooseCityState.Add(OverseasInvestorChooseCityState);
 
--- 海外投资人 建造跨国公司
+-- 海外投资人 建造特产商行
 function OverseasInvestorBuildTransnational(playerId, param)
-  print('海外投资人 建造跨国公司');
+  print('海外投资人 建造特产商行');
   local scriptParam = param.ScriptParam or {};
 
   local player = Players[playerId];
@@ -153,7 +153,7 @@ function OverseasInvestorBuildTransnational(playerId, param)
   end
   ResourceBuilder.SetResourceType(plot, resourceInfo.Index, 1);
 
-  -- 建造跨国公司或离岸油轮
+  -- 建造特产商行或进口商埠
 	if not plot:IsWater() then
     ImprovementBuilder.SetImprovementType(plot, LEU_TRANSNATIONAL_INDEX, playerId);
 	else
