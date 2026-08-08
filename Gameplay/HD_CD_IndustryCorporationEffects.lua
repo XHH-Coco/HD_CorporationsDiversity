@@ -16,6 +16,8 @@ local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 local CITY_UNLOCK_SECOND_INDUSTRY_TAG = 'HD_CITY_UNLOCK_SECOND_INDUSTRY';
 local CITY_UNLOCK_SECOND_CORPORATION_TAG = 'HD_CITY_UNLOCK_SECOND_CORPORATION';
+local CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG = 'HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION';
+local CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG = 'HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION';
 
 -- 巴西UA
 local JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG = 'HD_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY';
@@ -339,7 +341,7 @@ function BuildingUnlockSecondEffect(playerId, cityId, buildingId, plotId, bOrigi
     end
   end
 end
-GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect)
+GameEvents.BuildingConstructed.Add(BuildingUnlockSecondEffect);
 
 -- ======================================================================================================================================================
 -- 城堡庄园
@@ -588,6 +590,9 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
   local plot = Map.GetPlot(x, y);
   if not plot then return; end
 
+  local city = Cities.GetPlotPurchaseCity(plot);
+  if not city then return; end
+
   local resourceInfo = GameInfo.Resources[resourceId];
   if not resourceInfo then return; end
 
@@ -598,13 +603,16 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
   then
     print("建造特产商行/进口商埠");
 
-    -- 查询可用公司类别
+    local unlockSpecialtyShopCorporation = city:GetProperty(CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG) or 0;
+    local unlockEntranceHarborCorporation = city:GetProperty(CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG) or 0;
+
+    -- 查询可用行业公司类别
     print("============================================")
-    print("可用公司类别：")
+    print("可用行业公司类别：")
     for row in GameInfo.HD_Monopoly_Resource_Categories() do
       if row.ResourceType == resourceInfo.ResourceType then
         local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
-        if categoryInfo and categoryInfo.CorporationEffect then
+        if categoryInfo and categoryInfo.IndustryEffect and categoryInfo.CorporationEffect then
           table.insert(categoryList, row.Category);
           print(Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME'));
         end
@@ -612,16 +620,28 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
     end
     print("============================================")
 
-    -- 清空其他公司类别的property
+    -- 清空其他行业公司类别的property
     for row in GameInfo.HD_Monopoly_Categories() do
+      if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) == 1 then
+        plot:SetProperty(INDUSTRY_BONUS_TAG .. row.Category, 0);
+      end
       if plot:GetProperty(CORPORATION_BONUS_TAG .. row.Category) == 1 then
         plot:SetProperty(CORPORATION_BONUS_TAG .. row.Category, 0);
       end
     end
 
     for _, category in ipairs(categoryList) do
-      plot:SetProperty(CORPORATION_BONUS_TAG .. category, 1);
-      print("特产商行/进口商埠类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+      -- 行业特效
+      plot:SetProperty(INDUSTRY_BONUS_TAG .. category, 1);
+      print("特产商行/进口商埠行业类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+
+      -- 公司特效
+      if (improvementId == LEU_TRANSNATIONAL_INDEX and unlockSpecialtyShopCorporation > 0)
+        or (improvementId == LEU_TRANSNATIONAL_SEA_INDEX and unlockEntranceHarborCorporation > 0)
+      then
+        plot:SetProperty(CORPORATION_BONUS_TAG .. category, 1);
+        print("特产商行/进口商埠公司类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+      end
     end
     
     if improvementId == LEU_TRANSNATIONAL_INDEX then
@@ -631,6 +651,62 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
     end
   end
 end
+
+-- 解锁特产商行/进口商埠公司模式
+function BuildingUnlockTransnationalCorporationEffect(playerId, cityId, buildingId, plotId, bOriginalConstruction)
+  local player = Players[playerId];
+  if not player then return; end
+
+  local city = CityManager.GetCity(playerId, cityId);
+  if not city then return; end
+
+  local buildingInfo = GameInfo.Buildings[buildingId];
+  if buildingInfo then
+    local unlockSpecialtyShopCorporation = GameInfo.HD_Building_Unlock_SpecialtyShop_Corporation[buildingInfo.BuildingType] ~= nil;
+    local unlockEntranceHarborCorporation = GameInfo.HD_Building_Unlock_EntranceHarbor_Corporation[buildingInfo.BuildingType] ~= nil;
+
+    local cityPlots = Utils.GetCityPlots(playerId, cityId);
+    for _, plotId in pairs(cityPlots) do
+      local plot = Map.GetPlotByIndex(plotId);
+      if plot then
+        local improvementId = plot:GetImprovementType();        
+        if (improvementId == LEU_TRANSNATIONAL_INDEX and unlockSpecialtyShopCorporation)
+          or (improvementId == LEU_TRANSNATIONAL_SEA_INDEX and unlockEntranceHarborCorporation)
+        then
+          local resourceId = plot:GetResourceType();
+          local resourceInfo = GameInfo.Resources[resourceId];
+          if resourceInfo then
+            local categoryList = {};
+            print("============================================")
+            print("可用公司类别：")
+            for row in GameInfo.HD_Monopoly_Resource_Categories() do
+              if row.ResourceType == resourceInfo.ResourceType then
+                local categoryInfo = GameInfo.HD_Monopoly_Categories[row.Category];
+                if categoryInfo and categoryInfo.CorporationEffect then
+                  table.insert(categoryList, row.Category);
+                  print(Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME'));
+                end
+              end
+            end
+            print("============================================")
+
+            for _, category in ipairs(categoryList) do
+              plot:SetProperty(CORPORATION_BONUS_TAG .. category, 1);
+              print("特产商行/进口商埠公司类别：" .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME'));
+            end
+
+            if improvementId == LEU_TRANSNATIONAL_INDEX then
+              ReportingEvents.SendLuaEvent('HD_RefreshTransnationalBanner', {PlayerId = playerId, X = plot:GetX(), Y = plot:GetY()});
+            elseif improvementId == LEU_TRANSNATIONAL_SEA_INDEX then
+              ReportingEvents.SendLuaEvent('HD_RefreshTransnationalSeaBanner', {PlayerId = playerId, X = plot:GetX(), Y = plot:GetY()});
+            end
+          end
+        end
+      end
+    end
+  end
+end
+GameEvents.BuildingConstructed.Add(BuildingUnlockTransnationalCorporationEffect);
 
 --------------------------------------------------------------
 -- Initialize

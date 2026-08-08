@@ -68,12 +68,33 @@ insert or replace into BuildingModifiers (BuildingType, ModifierId) select
 	BuildingType, 'HD_CITY_UNLOCK_SECOND_CORPORATION'
 from HD_Building_Unlock_Second_Corporation;
 
+-- 特产商行/进口商埠解锁公司特效的建筑
+insert or ignore into HD_Building_Unlock_SpecialtyShop_Corporation (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_COMMERCIAL_HUB' and Tier = 4;
+
+insert or replace into BuildingModifiers (BuildingType, ModifierId) select
+	BuildingType, 'HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION'
+from HD_Building_Unlock_SpecialtyShop_Corporation;
+
+insert or ignore into HD_Building_Unlock_EntranceHarbor_Corporation (BuildingType) select BuildingType
+	from HD_BuildingTiers where PrereqDistrict = 'DISTRICT_HARBOR' and Tier = 3;
+
+insert or replace into BuildingModifiers (BuildingType, ModifierId) select
+	BuildingType, 'HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION'
+from HD_Building_Unlock_EntranceHarbor_Corporation;
+
 insert or replace into Modifiers (ModifierId, ModifierType) values
-	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY'),
-	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY');
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  						'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY'),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 					'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY'),
+	('HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION', 	'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY'),
+	('HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION', 	'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY');
 
 insert or replace into ModifierArguments (ModifierId, Name, Value) values
-	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'Key',		'HD_CITY_UNLOCK_SECOND_INDUSTRY'),
-	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  	'Amount',	1),
-	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'Key',		'HD_CITY_UNLOCK_SECOND_CORPORATION'),
-	('HD_CITY_UNLOCK_SECOND_CORPORATION', 'Amount',	1);
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  						'Key',		'HD_CITY_UNLOCK_SECOND_INDUSTRY'),
+	('HD_CITY_UNLOCK_SECOND_INDUSTRY',  						'Amount',	1),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 					'Key',		'HD_CITY_UNLOCK_SECOND_CORPORATION'),
+	('HD_CITY_UNLOCK_SECOND_CORPORATION', 					'Amount',	1),
+	('HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION', 	'Key',		'HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION'),
+	('HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION', 	'Amount',	1),
+	('HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION', 	'Key',		'HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION'),
+	('HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION', 	'Amount',	1);

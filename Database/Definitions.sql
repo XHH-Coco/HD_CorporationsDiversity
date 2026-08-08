@@ -57,6 +57,16 @@ create table HD_Building_Unlock_Second_Corporation(
 	PRIMARY KEY (BuildingType)
 );
 
+create table HD_Building_Unlock_SpecialtyShop_Corporation(
+  BuildingType TEXT NOT NULL,
+	PRIMARY KEY (BuildingType)
+);
+
+create table HD_Building_Unlock_EntranceHarbor_Corporation(
+  BuildingType TEXT NOT NULL,
+	PRIMARY KEY (BuildingType)
+);
+
 -- =====================================================================================================================================
 -- Types
 -- =====================================================================================================================================
@@ -114,7 +124,7 @@ insert or ignore into Units
 	(UnitType, Name, Description, Cost, CostProgressionModel, CostProgressionParam1, PurchaseYield,
 	BaseSightRange, BaseMoves, Domain, FormationClass, BuildCharges, CanCapture, CanRetreatWhenCaptured, PseudoYieldType, CanTrain, AdvisorType)
 values
-	('UNIT_HD_OVERSEAS_INVESTOR', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION', 360, 'COST_PROGRESSION_PREVIOUS_COPIES', 20, 'YIELD_GOLD',
+	('UNIT_HD_OVERSEAS_INVESTOR', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME', 'LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION', 200, 'COST_PROGRESSION_PREVIOUS_COPIES', 10, 'YIELD_GOLD',
 	2, 4, 'DOMAIN_LAND', 'FORMATION_CLASS_CIVILIAN', 1, 1, 1, 'PSEUDOYIELD_UNIT_LEU_INVESTOR', 1, 'ADVISOR_GENERIC');
 
 insert or ignore into UnitAiInfos (UnitType, AiType) values

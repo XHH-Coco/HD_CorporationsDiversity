@@ -28,7 +28,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 60 corresponding Resources to build Strategic Resource Corporation."),
   -- 海外投资人
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                            "Overseas Investor"),
-  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
+  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource which can provide the industry or corporation bonuses of that resource."),
   -- 其他
   ("LOC_MOMENT_FIRST_INDUSTRY",            											    "First Luxury Industry Created"),
 	("LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",            					    "Your first Luxury Industry has been created. "),
@@ -81,7 +81,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立公司。创立战略资源公司需要消耗60点对应战略资源。"),
   -- 海外投资人
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                         "海外投资人"),
-  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的特产商行或进口商埠，并获得该资源的公司效果。"),
+  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的特产商行或进口商埠，并获得该资源的行业和公司效果。"),
   -- 其他
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY",                                  "创立了首个奢侈行业"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",                      "您创立了自己的首个奢侈行业。"),

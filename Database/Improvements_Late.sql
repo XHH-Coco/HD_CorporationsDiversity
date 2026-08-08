@@ -99,7 +99,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
   'HD_GAME_HAS_TRANSNATIONAL_' || ResourceType, 'Amount', 1
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
--- 公司特效
+-- 行业公司类别
 create table HD_Transnational_Categories(
 	Category TEXT NOT NULL,
 	PRIMARY KEY (Category)
@@ -108,6 +108,14 @@ create table HD_Transnational_Categories(
 insert or ignore into HD_Transnational_Categories (Category) select Category
   from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from HD_Resource_Classification where ResourceClassificationType in ('RESOURCE_CLASSIFICATION_CIVILIZATION', 'RESOURCE_CLASSIFICATION_CITYSTATE'));
 
+-- 行业特效
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_LEU_TRANSNATIONAL', ModifierId
+  from HD_IndustryModifiers where Category in (select Category from HD_Transnational_Categories);
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_LEU_TRANSNATIONAL_SEA', ModifierId
+  from HD_IndustryModifiers where Category in (select Category from HD_Transnational_Categories);
+
+-- 公司特效
 insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select 'IMPROVEMENT_LEU_TRANSNATIONAL', ModifierId
   from HD_CorporationModifiers where Category in (select Category from HD_Transnational_Categories);
 

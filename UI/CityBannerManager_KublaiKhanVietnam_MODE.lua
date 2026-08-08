@@ -893,7 +893,7 @@ function CityBanner:CreateTransnationalBanner()
 
 	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 
 	if resName ~= nil then
 		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
@@ -915,7 +915,7 @@ function CityBanner:CreateTransnationalSeaBanner()
 
 	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 	local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 
 	if resName ~= nil then
 		self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
@@ -986,7 +986,7 @@ function CityBanner:UpdateTransnationalText()
 
 		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 		local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME") .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 
 		if resName ~= nil then
 			self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
@@ -1016,7 +1016,7 @@ function CityBanner:UpdateTransnationalSeaText()
 		
 		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 		local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. '[NEWLINE][NEWLINE]' .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME") .. GetTransnationalEffect(self.m_PlotX, self.m_PlotY);
 
 		if resName ~= nil then
 			self.m_Instance.Icon:SetIcon("ICON_MONOPOLIES_AND_CORPS_" .. resName);
@@ -1037,33 +1037,92 @@ function GetTransnationalEffect(x, y)
 		local resourceInfo = GameInfo.Resources[resourceId];
 		if not resourceInfo then return; end
 
-		local strList = {};
+		local industryEffectList = {};
+		local corporationEffectList = {};
+		local corporationDisabledList = {};
 
-		-- 公司特效
-		local effectList = {};
-		for row in GameInfo.HD_Monopoly_Categories() do
-      if plot:GetProperty(CORPORATION_BONUS_TAG .. row.Category) == 1 then
-        table.insert(effectList, '[ICON_BULLET]' .. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. row.Category .. '_NAME') .. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT') .. Locale.Lookup("LOC_" .. row.CorporationEffect .. "_DESCRIPTION"))
-      end
-    end
-		if #effectList > 0 then
-			local effectStr = '';
-			for i, str in ipairs(effectList) do
-				if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
-				effectStr = effectStr .. str;
-			end
-			table.insert(strList, Locale.Lookup('LOC_TRANSNATIONAL_CORPORATION_TEXT', effectStr));
-		end
-		
-		local result = '';
-		if #strList > 0 then
-			for i, str in ipairs(strList) do
-				if i > 1 then result = result .. "[NEWLINE]"; end
-				result = result .. str;
+		-- 获取资源对应行业公司类别
+		for row in GameInfo.HD_Monopoly_Resource_Categories() do
+			if row.ResourceType == resourceInfo.ResourceType then
+				local categoryData = GameInfo.HD_Monopoly_Categories[row.Category];
+				if categoryData then
+					if categoryData.IndustryEffect then
+						if plot:GetProperty(INDUSTRY_BONUS_TAG .. row.Category) == 1 then
+							table.insert(industryEffectList, {
+								Category = row.Category,
+								IndustryEffect = categoryData.IndustryEffect
+							})
+						end
+					end
+					
+					if categoryData.CorporationEffect then
+						if plot:GetProperty(CORPORATION_BONUS_TAG .. row.Category) == 1 then
+							table.insert(corporationEffectList, {
+								Category = row.Category,
+								CorporationEffect = categoryData.CorporationEffect
+							})
+						else
+							table.insert(corporationDisabledList, {
+								Category = row.Category,
+								CorporationEffect = categoryData.CorporationEffect
+							})
+						end
+					end
+				end
 			end
 		end
 
-		return result;
+		local effectStr = '';
+		local industryEffectStr = '';
+		local corporationEffectStr = '';
+
+		-- 行业文本
+		for i, data in ipairs(industryEffectList) do
+			if i > 1 then industryEffectStr = industryEffectStr .. '[NEWLINE]'; end
+			industryEffectStr = industryEffectStr .. '[ICON_Bullet]'
+				.. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. data.Category .. '_NAME')
+				.. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT')
+				.. Locale.Lookup('LOC_' .. data.IndustryEffect .. '_DESCRIPTION');
+		end
+
+		if #industryEffectList > 0 then
+			effectStr = effectStr .. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_HD_INDUSTRY_EFFECT_TEXT', industryEffectStr)
+		end
+
+		-- 公司文本
+		if #corporationEffectList + #corporationDisabledList > 0 then
+			for i, data in ipairs(corporationEffectList) do
+				if i > 1 then corporationEffectStr = corporationEffectStr .. '[NEWLINE]'; end
+				corporationEffectStr = corporationEffectStr .. '[ICON_Bullet]'
+					.. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. data.Category .. '_NAME')
+					.. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT')
+					.. Locale.Lookup('LOC_' .. data.CorporationEffect .. '_DESCRIPTION');
+			end
+
+			local improvementId = plot:GetImprovementType();
+			local needActivateTag = 'LOC_NEED_ACTIVATE_SECOND_CORPORATION_EFFECT_TEXT';
+			if improvementId == LEU_TRANSNATIONAL_INDEX then
+				needActivateTag = 'LOC_NEED_ACTIVATE_SPECIALTY_SHOP_CORPORATION_EFFECT_TEXT';
+			elseif improvementId == LEU_TRANSNATIONAL_SEA_INDEX then
+				needActivateTag = 'LOC_NEED_ACTIVATE_ENTRANCE_HARBOR_CORPORATION_EFFECT_TEXT';
+			end
+
+			if #corporationEffectList > 0 and #corporationDisabledList > 0 then
+				corporationEffectStr = corporationEffectStr .. '[NEWLINE]';
+			end
+
+			for _, data in ipairs(corporationDisabledList) do
+				corporationEffectStr = corporationEffectStr .. '[ICON_Bullet]' .. Locale.Lookup(
+					needActivateTag,
+					'LOC_RESOURCE_CLASSIFICATION_HD_' .. data.Category .. '_NAME',
+					'LOC_' .. data.CorporationEffect .. '_DESCRIPTION'
+				)
+			end
+
+			effectStr = effectStr .. '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_HD_CORPORATION_EFFECT_TEXT', corporationEffectStr)
+		end
+
+		return effectStr;
 	end
 
 	return "";
