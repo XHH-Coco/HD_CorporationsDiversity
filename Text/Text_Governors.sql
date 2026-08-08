@@ -11,6 +11,6 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- ==============================================================================
   -- 瑞娜
   -- ==============================================================================
-  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_1_DESCRIPTION",               "本城购买单位-15%花费，购买商人、大亨、投资人额外-15%花费。"),
+  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_1_DESCRIPTION",               "本城购买单位-15%花费，购买商人、大亨、投资人和海外投资人额外-15%花费。"),
   ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_2_DESCRIPTION",               "本城可以训练{LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME}，{LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION}"),
   ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_3_DESCRIPTION",               "境内每座特产商行或进口商埠为本城+5% [ICON_Science] 科技值和 [ICON_Gold] 金币。");

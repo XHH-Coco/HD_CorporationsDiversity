@@ -221,6 +221,7 @@
     </UpdateDatabase>
     <UpdateDatabase id="CorporationsDiversity_Database" criteria="Monopolies_Mode_Expansion2">
       <Properties><LoadOrder>20000</LoadOrder></Properties>
+      <File>Database/Beliefs.sql</File>
       <File>Database/CivLeaderTraits.sql</File>
       <File>Database/Improvements.sql</File>
       <File>Database/Units.sql</File>
@@ -359,6 +360,7 @@
     <File>UI/CityStateSelection.xml</File>
     <File>UI/CityStateSelection.lua</File>
     <!-- Database -->
+    <File>Database/Beliefs.sql</File>
     <File>Database/CivLeaderTraits.sql</File>
     <File>Database/Improvements.sql</File>
     <File>Database/Improvements_Late.sql</File>
