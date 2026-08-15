@@ -12,6 +12,8 @@ local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 local LEU_TRANSNATIONAL_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL'].Index;
 local LEU_TRANSNATIONAL_SEA_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL_SEA'].Index;
 
+local COLONIALISM_INDEX = GameInfo.Civics['CIVIC_COLONIALISM'].Index;
+
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 local CITY_UNLOCK_SECOND_INDUSTRY_TAG = 'HD_CITY_UNLOCK_SECOND_INDUSTRY';
@@ -653,26 +655,19 @@ function BuildTransnational(x, y, improvementId, playerId, resourceId, isPillage
 end
 
 -- 解锁特产商行/进口商埠公司模式
-function BuildingUnlockTransnationalCorporationEffect(playerId, cityId, buildingId, plotId, bOriginalConstruction)
+function UnlockTransnationalCorporationEffect(playerId, civicId)
   local player = Players[playerId];
   if not player then return; end
 
-  local city = CityManager.GetCity(playerId, cityId);
-  if not city then return; end
+  if civicId ~= COLONIALISM_INDEX then return; end
 
-  local buildingInfo = GameInfo.Buildings[buildingId];
-  if buildingInfo then
-    local unlockSpecialtyShopCorporation = GameInfo.HD_Building_Unlock_SpecialtyShop_Corporation[buildingInfo.BuildingType] ~= nil;
-    local unlockEntranceHarborCorporation = GameInfo.HD_Building_Unlock_EntranceHarbor_Corporation[buildingInfo.BuildingType] ~= nil;
-
-    local cityPlots = Utils.GetCityPlots(playerId, cityId);
+  for _, city in player:GetCities():Members() do
+    local cityPlots = Utils.GetCityPlots(playerId, city:GetID());
     for _, plotId in pairs(cityPlots) do
       local plot = Map.GetPlotByIndex(plotId);
       if plot then
         local improvementId = plot:GetImprovementType();        
-        if (improvementId == LEU_TRANSNATIONAL_INDEX and unlockSpecialtyShopCorporation)
-          or (improvementId == LEU_TRANSNATIONAL_SEA_INDEX and unlockEntranceHarborCorporation)
-        then
+        if improvementId == LEU_TRANSNATIONAL_INDEX or improvementId == LEU_TRANSNATIONAL_SEA_INDEX then
           local resourceId = plot:GetResourceType();
           local resourceInfo = GameInfo.Resources[resourceId];
           if resourceInfo then
@@ -706,7 +701,7 @@ function BuildingUnlockTransnationalCorporationEffect(playerId, cityId, building
     end
   end
 end
-GameEvents.BuildingConstructed.Add(BuildingUnlockTransnationalCorporationEffect);
+Events.CivicCompleted.Add(UnlockTransnationalCorporationEffect);
 
 --------------------------------------------------------------
 -- Initialize

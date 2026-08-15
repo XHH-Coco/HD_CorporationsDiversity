@@ -35,10 +35,10 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",             "Built by Tycoon or Military Engineers. Cannot be built Marsh, Swamp or Geothermal Fissure tiles. Only one may be built in each city, and may not be built adjacent to another Station. Railroads are instantly built on current and adjacent passable land tiles. [NEWLINE][NEWLINE]Improvements of this City provided +50% [ICON_TOURISM] Tourism. +50% [ICON_TOURISM] Tourism to [ICON_GREATWORK_PRODUCT] Products in this City if adjacent to Commercial Hub or Harbor districts. [NEWLINE][NEWLINE]Each type of adjacent Specialized districts or adjacent Aqueduct provide corresponding yield to International [ICON_TradeRoute] Trade Routes from this city. This bonus is doubled if this city is fully [ICON_POWER] Powered."),
   -- 特产商行
   ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME",              "Specialty Shop"),
-  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",       "Built by Overseas Investor. Provides unique bonuses to its city based on the resource's usages; once the city builds a Tier 4 Commercial Hub building, additionally provides unique nationwide bonuses. Each city can only establish one Specialty Shop or Entrance Harbor in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",       "Built by Overseas Investor. Provides unique bonuses to its city based on the resource's usages; after completing Colonialism Civic, additionally provides unique nationwide bonuses. Each city can only establish one Specialty Shop or Entrance Harbor in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
   -- 进口商埠
   ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME",          "Entrance Harbor"),
-  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",   "Built by Overseas Investor. Provides unique bonuses to its city based on the resource's usages; once the city builds a Tier 3 Harbor building, additionally provides unique nationwide bonuses. Each city can only establish one Specialty Shop or Entrance Harbor in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
+  ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",   "Built by Overseas Investor. Provides unique bonuses to its city based on the resource's usages; after completing Colonialism Civic, additionally provides unique nationwide bonuses. Each city can only establish one Specialty Shop or Entrance Harbor in total.[NEWLINE][NEWLINE]Cannot be completely destroyed by natural disasters."),
 
   ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_TEXT",                        "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
   ("LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_TEXT",                    "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create an Entrance Harbor of that city-state's Exclusive Resource which can provide the corporation bonuses of that resource."),
@@ -86,10 +86,10 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_STATION_DESCRIPTION",            "由大亨或军事工程师建造，不能建在沼泽或地热裂缝上，一座城市只能拥有一个火车站，火车站不能与另一个火车站相邻。在所在单元格和所有相邻的可通行陆地单元格上自动建造铁路。[NEWLINE][NEWLINE]本城改良提供的 [ICON_TOURISM] 旅游业绩+50%。若相邻商业中心或港口，则分别为本城的 [ICON_GREATWORK_PRODUCT] 产品提供的 [ICON_TOURISM] 旅游业绩+50%。[NEWLINE][NEWLINE]相邻的每种专业化区域或水渠为本城出发的国际 [ICON_TradeRoute] 贸易路线提供对应产出；此城 [ICON_POWER] 供电充足时效果翻倍。"),
   -- 特产商行
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_NAME",             "特产商行"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",      "由海外投资人创立，根据资源的用途为其所在城市带来独特加成效果；当所在城市建成商业中心四级建筑后，带来全国性的独特加成效果。每座城市总共仅能创立一座特产商行或进口商埠。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_DESCRIPTION",      "由海外投资人创立，根据资源的用途为其所在城市带来独特加成效果；解锁“殖民主义”后，带来全国性的独特加成效果。每座城市总共仅能创立一座特产商行或进口商埠。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
   -- 进口商埠
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_NAME",         "进口商埠"),
-  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",  "由海外投资人创立，根据资源的用途为其所在城市带来独特加成效果；当所在城市建成港口三级建筑后，带来全国性的独特加成效果。每座城市总共仅能创立一座特产商行或进口商埠。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_DESCRIPTION",  "由海外投资人创立，根据资源的用途为其所在城市带来独特加成效果；解锁“殖民主义”后，带来全国性的独特加成效果。每座城市总共仅能创立一座特产商行或进口商埠。[NEWLINE][NEWLINE]无法被自然灾害完全摧毁。"),
 
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_TEXT",                     "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的特产商行，并获得该资源的公司效果。"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_LEU_TRANSNATIONAL_SEA_TEXT",                 "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的进口商埠，并获得该资源的公司效果。"),

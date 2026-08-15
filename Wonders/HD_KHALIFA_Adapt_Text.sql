@@ -36,8 +36,8 @@ values
 insert or replace into LocalizedText
     (Language,      Tag,                                                             Text)
 values
-    ("zh_Hans_CN",  "LOC_BUILDING_BURJ_KHALIFA_DESCRIPTION_CORP",                    "当所有槽位填满时，+200%主题化加成。该城市+15% [ICON_Culture] 文化值和 [ICON_Gold] 金币。建成后，6个单元格内的无资源、未改良也未建有区域或奇观的沙漠单元格生成 [ICON_RESOURCE_OIL] 石油资源。建成后允许此城开发特色 [ICON_RESOURCE_KHALIFA] 产品。每次开发新的 [ICON_Greatwork_Product] 产品，提供等同于下一个 [ICON_GreatMerchant] 大商人点数消耗15%的 [ICON_GreatMerchant] 大商人点数。[NEWLINE][NEWLINE]必须建造在平坦的沙漠单元格上。"),
-    ("zh_Hans_CN",  "LOC_BUILDING_BURJ_KHALIFA_DESCRIPTION_CORP_JNR",                "当所有槽位填满时，+200%主题化加成。该城市+15% [ICON_Culture] 文化值和 [ICON_Gold] 金币。建成后，6个单元格内的无资源、未改良也未建有区域或奇观的沙漠单元格生成 [ICON_RESOURCE_OIL] 石油资源。建成后允许此城开发特色 [ICON_RESOURCE_KHALIFA] 产品。拥有大酒店的城市来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+200%。每次开发新的 [ICON_Greatwork_Product] 产品，提供等同于下一个 [ICON_GreatMerchant] 大商人点数消耗15%的 [ICON_GreatMerchant] 大商人点数。[NEWLINE][NEWLINE]必须建造在平坦的沙漠单元格上。"),
+    ("zh_Hans_CN",  "LOC_BUILDING_BURJ_KHALIFA_DESCRIPTION_CORP",                    "当所有槽位填满时，+200%主题化加成。该城市+15% [ICON_Culture] 文化值和 [ICON_Gold] 金币。建成后，6环内的无资源、未改良也未建有区域或奇观的沙漠单元格生成 [ICON_RESOURCE_OIL] 石油资源。建成后允许此城开发特色 [ICON_RESOURCE_KHALIFA] 产品。每次开发新的 [ICON_Greatwork_Product] 产品，提供等同于下一个 [ICON_GreatMerchant] 大商人点数消耗15%的 [ICON_GreatMerchant] 大商人点数。[NEWLINE][NEWLINE]必须建造在平坦的沙漠单元格上。"),
+    ("zh_Hans_CN",  "LOC_BUILDING_BURJ_KHALIFA_DESCRIPTION_CORP_JNR",                "当所有槽位填满时，+200%主题化加成。该城市+15% [ICON_Culture] 文化值和 [ICON_Gold] 金币。建成后，6环内的无资源、未改良也未建有区域或奇观的沙漠单元格生成 [ICON_RESOURCE_OIL] 石油资源。建成后允许此城开发特色 [ICON_RESOURCE_KHALIFA] 产品。拥有大酒店的城市来自 [ICON_GreatWork_Product] 产品的 [ICON_Tourism] 旅游业绩+200%。每次开发新的 [ICON_Greatwork_Product] 产品，提供等同于下一个 [ICON_GreatMerchant] 大商人点数消耗15%的 [ICON_GreatMerchant] 大商人点数。[NEWLINE][NEWLINE]必须建造在平坦的沙漠单元格上。"),
     
     ("zh_Hans_CN",  "LOC_RESOURCE_KHALIFA_NAME",                                     "[ICON_DISTRICT_WONDER] 哈利法塔®特色 [ICON_RESOURCE_KHALIFA] 产品"),
     ("zh_Hans_CN",  "LOC_PROJECT_CREATE_PRODUCT_KHALIFA_NAME",                       "[ICON_DISTRICT_WONDER] 哈利法塔®：开发特色 [ICON_RESOURCE_KHALIFA] 产品"),

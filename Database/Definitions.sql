@@ -57,16 +57,6 @@ create table HD_Building_Unlock_Second_Corporation(
 	PRIMARY KEY (BuildingType)
 );
 
-create table HD_Building_Unlock_SpecialtyShop_Corporation(
-  BuildingType TEXT NOT NULL,
-	PRIMARY KEY (BuildingType)
-);
-
-create table HD_Building_Unlock_EntranceHarbor_Corporation(
-  BuildingType TEXT NOT NULL,
-	PRIMARY KEY (BuildingType)
-);
-
 -- =====================================================================================================================================
 -- Types
 -- =====================================================================================================================================
