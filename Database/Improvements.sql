@@ -215,9 +215,9 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_CROPS_INDUSTRY_IMPROVEMENT_YIELD',							'YieldType',						'YIELD_FOOD,YIELD_PRODUCTION'),
-	('HD_CROPS_INDUSTRY_IMPROVEMENT_YIELD',  						'Amount',								'2,2'),
+	('HD_CROPS_INDUSTRY_IMPROVEMENT_YIELD',  						'Amount',								'2,1'),
 	('HD_AGRICULTURE_INDUSTRY_POP_FOOD',								'YieldType',						'YIELD_FOOD'),
-	('HD_AGRICULTURE_INDUSTRY_POP_FOOD',  							'Amount',								1),
+	('HD_AGRICULTURE_INDUSTRY_POP_FOOD',  							'Amount',								1.5),
 	('HD_CUISINE_INDUSTRY_AMENITY',  										'Amount',								2),
 	('HD_CUISINE_INDUSTRY_CITY_PROPERTY',								'Key',									'HD_CITY_NEED_COUNT_POSITIVE_AMENITY'),
 	('HD_CUISINE_INDUSTRY_CITY_PROPERTY',  							'Amount',								1),
@@ -227,17 +227,17 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_VEGETABLE_INDUSTRY_POP_GOLD',									'YieldType',						'YIELD_GOLD'),
 	('HD_VEGETABLE_INDUSTRY_POP_GOLD',  								'Amount',								5),
 	('HD_BREWING_INDUSTRY_IMPROVEMENT_YIELD',						'YieldType',						'YIELD_CULTURE,YIELD_GOLD'),
-	('HD_BREWING_INDUSTRY_IMPROVEMENT_YIELD',						'Amount',								'1,6'),
+	('HD_BREWING_INDUSTRY_IMPROVEMENT_YIELD',						'Amount',								'1,3'),
 	('HD_BREWING_INDUSTRY_DISTRICT_CULTURE',						'YieldType',						'YIELD_CULTURE'),
 	('HD_BREWING_INDUSTRY_DISTRICT_CULTURE',  					'Amount',								1),
 	('HD_BREWING_INDUSTRY_DISTRICT_GOLD',								'YieldType',						'YIELD_GOLD'),
-	('HD_BREWING_INDUSTRY_DISTRICT_GOLD',  							'Amount',								6),
+	('HD_BREWING_INDUSTRY_DISTRICT_GOLD',  							'Amount',								3),
 	('HD_BEVERAGE_INDUSTRY_POP_SCIENCE',								'YieldType',						'YIELD_SCIENCE'),
-	('HD_BEVERAGE_INDUSTRY_POP_SCIENCE',  							'Amount',								0.5),
+	('HD_BEVERAGE_INDUSTRY_POP_SCIENCE',  							'Amount',								0.8),
 	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',								'YieldType',						'YIELD_CULTURE'),
-	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',  							'Amount',								0.5),
+	('HD_BEVERAGE_INDUSTRY_POP_CULTURE',  							'Amount',								0.8),
 	('HD_OIL_INDUSTRY_POP_PRODUCTION',									'YieldType',						'YIELD_PRODUCTION'),
-	('HD_OIL_INDUSTRY_POP_PRODUCTION',  								'Amount',								1),
+	('HD_OIL_INDUSTRY_POP_PRODUCTION',  								'Amount',								1.5),
 	('HD_LEATHER_INDUSTRY_AMENITY',  										'Amount',								2),
 	('HD_LEATHER_INDUSTRY_CITY_PROPERTY',								'Key',									'HD_CITY_NEED_COUNT_POSITIVE_AMENITY'),
 	('HD_LEATHER_INDUSTRY_CITY_PROPERTY', 							'Amount',								1),
@@ -265,7 +265,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_CHEMISTRY_INDUSTRY_INDUSTRIAL_ZONE',						'YieldType',						'YIELD_PRODUCTION'),
 	('HD_CHEMISTRY_INDUSTRY_INDUSTRIAL_ZONE',						'Amount',								100),
 	('HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD',				'YieldType',						'YIELD_PRODUCTION'),
-	('HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD',				'Amount',								4),
+	('HD_METALLURGY_INDUSTRY_IMPROVEMENT_YIELD',				'Amount',								3),
 	('HD_MINTING_INDUSTRY_TRADE_ROUTE_CAPACITY',				'Amount',								1),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'YieldType',						'YIELD_GOLD'),
 	('HD_MINTING_INDUSTRY_COMMERCIAL_HUB',							'Amount',								100),
@@ -282,9 +282,9 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_SEA_BEAST_INDUSTRY_IMPROVEMENT_YIELD',					'YieldType',						'YIELD_SCIENCE,YIELD_CULTURE'),
 	('HD_SEA_BEAST_INDUSTRY_IMPROVEMENT_YIELD',					'Amount',								'1,1'),
 	('HD_CELEBRATION_INDUSTRY_DISTRICT',								'YieldType',						'YIELD_CULTURE,YIELD_FAITH'),
-	('HD_CELEBRATION_INDUSTRY_DISTRICT',								'Amount',								'1,1'),
+	('HD_CELEBRATION_INDUSTRY_DISTRICT',								'Amount',								'1,2'),
 	('HD_CELEBRATION_INDUSTRY_IMPROVEMENT',							'YieldType',						'YIELD_CULTURE,YIELD_FAITH'),
-	('HD_CELEBRATION_INDUSTRY_IMPROVEMENT',							'Amount',								'1,1'),
+	('HD_CELEBRATION_INDUSTRY_IMPROVEMENT',							'Amount',								'1,2'),
 	('HD_MEDICINE_INDUSTRY_DISTRICT_SCIENCE',						'YieldType',						'YIELD_SCIENCE'),
 	('HD_MEDICINE_INDUSTRY_DISTRICT_SCIENCE',						'Amount',								1),
 	('HD_MEDICINE_INDUSTRY_DISTRICT_FAITH',							'YieldType',						'YIELD_FAITH'),
@@ -504,9 +504,6 @@ insert or ignore into HD_CorporationModifiers (Category, ModifierId) values
 	('FUEL',						'HD_FUEL_CORPORATION_TIER1_PRODUCTION'),
 	('FUEL',						'HD_FUEL_CORPORATION_TIER2_PRODUCTION'),
 	('FUEL',						'HD_FUEL_CORPORATION_TIER3_PRODUCTION'),
-	('FUEL',						'HD_FUEL_CORPORATION_TIER1_GOLD'),
-	('FUEL',						'HD_FUEL_CORPORATION_TIER2_GOLD'),
-	('FUEL',						'HD_FUEL_CORPORATION_TIER3_GOLD'),
 	('METALLURGY',			'HD_METALLURGY_CORPORATION_SCIENCE'),
 	('METALLURGY',			'HD_METALLURGY_CORPORATION_UNIT_STRENGTH'),
 	('MINTING',					'HD_MINTING_CORPORATION_TRADE_GOLD'),
@@ -571,9 +568,6 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 	('HD_FUEL_CORPORATION_TIER1_PRODUCTION',										'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_1_BUILDING_REQUIREMENTS'),
 	('HD_FUEL_CORPORATION_TIER2_PRODUCTION',										'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_2_BUILDING_REQUIREMENTS'),
 	('HD_FUEL_CORPORATION_TIER3_PRODUCTION',										'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_3_BUILDING_REQUIREMENTS'),
-	('HD_FUEL_CORPORATION_TIER1_GOLD',													'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_1_BUILDING_REQUIREMENTS'),
-	('HD_FUEL_CORPORATION_TIER2_GOLD',													'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_2_BUILDING_REQUIREMENTS'),
-	('HD_FUEL_CORPORATION_TIER3_GOLD',													'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_PER_POPULATION',						'HD_FUEL_CORPORATION_BONUS_REQUIREMENTS',						'CITY_HAS_DISTRICT_NEIGHBORHOOD_TIER_3_BUILDING_REQUIREMENTS'),
 	('HD_METALLURGY_CORPORATION_SCIENCE',												'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER',									'HD_METALLURGY_CORPORATION_BONUS_REQUIREMENTS',			'HD_CITY_DISTRICT_INDUSTRIAL_ZONE_HAS_6_ADJACENCY_REQUIREMENTS'),
 	('HD_METALLURGY_CORPORATION_UNIT_STRENGTH',									'MODIFIER_PLAYER_UNITS_ADJUST_COMBAT_STRENGTH',												'HD_METALLURGY_CORPORATION_BONUS_REQUIREMENTS',			NULL),
 	('HD_MINTING_CORPORATION_TRADE_GOLD',												'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD',														'HD_MINTING_CORPORATION_BONUS_REQUIREMENTS',				NULL),
@@ -613,23 +607,23 @@ insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_CROPS_CORPORATION_CITY_YIELD_BONUS',										'YieldType',								'YIELD_FOOD'),
-	('HD_CROPS_CORPORATION_CITY_YIELD_BONUS',  									'Amount',										10),
+	('HD_CROPS_CORPORATION_CITY_YIELD_BONUS',  									'Amount',										5),
 	('HD_AGRICULTURE_CORPORATION_IMPROVEMENT_YIELD',						'YieldType',								'YIELD_FOOD,YIELD_GOLD'),
-	('HD_AGRICULTURE_CORPORATION_IMPROVEMENT_YIELD',  					'Amount',										'2,6'),
+	('HD_AGRICULTURE_CORPORATION_IMPROVEMENT_YIELD',  					'Amount',										'1,3'),
 	('HD_CUISINE_CORPORATION_DISTRICT_FOOD',										'YieldType',								'YIELD_FOOD'),
-	('HD_CUISINE_CORPORATION_DISTRICT_FOOD',  									'Amount',										2),
+	('HD_CUISINE_CORPORATION_DISTRICT_FOOD',  									'Amount',										1),
 	('HD_CUISINE_CORPORATION_DISTRICT_CULTURE',									'YieldType',								'YIELD_CULTURE'),
 	('HD_CUISINE_CORPORATION_DISTRICT_CULTURE',  								'Amount',										2),
 	('HD_FRUIT_CORPORATION_ENVOY_GOLD',													'YieldType',								'YIELD_GOLD'),
-	('HD_FRUIT_CORPORATION_ENVOY_GOLD',  												'Amount',										3),
+	('HD_FRUIT_CORPORATION_ENVOY_GOLD',  												'Amount',										2),
 	('HD_FRUIT_CORPORATION_SEA_MOVEMENT',  											'Amount',										1),
 	('HD_FRUIT_CORPORATION_EMBARKED_MOVEMENT',  								'Amount',										1),
 	('HD_VEGETABLE_CORPORATION_CITY_YIELD_BONUS',								'YieldType',								'YIELD_FOOD,YIELD_GOLD'),
-	('HD_VEGETABLE_CORPORATION_CITY_YIELD_BONUS',								'Amount',										'10,10'),
-	('HD_BREWING_CORPORATION_CITY_GROWTH',  										'Amount',										10),
+	('HD_VEGETABLE_CORPORATION_CITY_YIELD_BONUS',								'Amount',										'5,5'),
+	('HD_BREWING_CORPORATION_CITY_GROWTH',  										'Amount',										5),
 	('HD_BREWING_CORPORATION_CITY_GOLD',												'YieldType',								'YIELD_GOLD'),
-	('HD_BREWING_CORPORATION_CITY_GOLD',  											'Amount',										10),
-	('HD_BEVERAGE_CORPORATION_GPP',  														'Amount',										25),
+	('HD_BREWING_CORPORATION_CITY_GOLD',  											'Amount',										5),
+	('HD_BEVERAGE_CORPORATION_GPP',  														'Amount',										15),
 	('HD_OIL_CORPORATION_TRADE_FOOD',														'YieldType',								'YIELD_FOOD'),
 	('HD_OIL_CORPORATION_TRADE_FOOD',  													'Amount',										4),
 	('HD_OIL_CORPORATION_TRADE_GOLD',														'YieldType',								'YIELD_GOLD'),
@@ -639,40 +633,34 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_LEATHER_CORPORATION_TRADE_GOLD',												'YieldType',								'YIELD_GOLD'),
 	('HD_LEATHER_CORPORATION_TRADE_GOLD',  											'Amount',										6),
 	('HD_CLOTH_CORPORATION_COMMERCIAL_HUB_REGIONAL_CULTURE',		'Key',											'HD_SINGLE_DISTRICT_PROVIDE_REGIONAL_YIELD_BONUS_DISTRICT_COMMERCIAL_HUB_YIELD_CULTURE'),
-	('HD_CLOTH_CORPORATION_COMMERCIAL_HUB_REGIONAL_CULTURE',  	'Amount',										3),
+	('HD_CLOTH_CORPORATION_COMMERCIAL_HUB_REGIONAL_CULTURE',  	'Amount',										1),
 	('HD_CLOTH_CORPORATION_COMMERCIAL_HUB_REGIONAL_GOLD',				'Key',											'HD_SINGLE_DISTRICT_PROVIDE_REGIONAL_YIELD_BONUS_DISTRICT_COMMERCIAL_HUB_YIELD_GOLD'),
 	('HD_CLOTH_CORPORATION_COMMERCIAL_HUB_REGIONAL_GOLD',  			'Amount',										6),
 	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_CULTURE',			'Key',											'HD_SINGLE_DISTRICT_PROVIDE_REGIONAL_YIELD_BONUS_DISTRICT_NEIGHBORHOOD_YIELD_CULTURE'),
-	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_CULTURE',  		'Amount',										3),
+	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_CULTURE',  		'Amount',										1),
 	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_GOLD',					'Key',											'HD_SINGLE_DISTRICT_PROVIDE_REGIONAL_YIELD_BONUS_DISTRICT_NEIGHBORHOOD_YIELD_GOLD'),
 	('HD_CLOTH_CORPORATION_NEIGHBORHOOD_REGIONAL_GOLD',  				'Amount',										6),
-	('HD_CONSTRUCTION_CORPORATION_DISTRICT_SPEED',  						'Amount',										10),
-	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',  						'Amount',										10),
+	('HD_CONSTRUCTION_CORPORATION_DISTRICT_SPEED',  						'Amount',										5),
+	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',  						'Amount',										5),
 	('HD_CONSTRUCTION_CORPORATION_BUILDING_SPEED',  						'IsWonder',									0),
-	('HD_CONSTRUCTION_CORPORATION_WONDER_SPEED',  							'Amount',										10),
+	('HD_CONSTRUCTION_CORPORATION_WONDER_SPEED',  							'Amount',										5),
 	('HD_CONSTRUCTION_CORPORATION_GPP',  												'GreatPersonClassType',			'GREAT_PERSON_CLASS_ENGINEER'),
-	('HD_CONSTRUCTION_CORPORATION_GPP',  												'Amount',										50),
+	('HD_CONSTRUCTION_CORPORATION_GPP',  												'Amount',										30),
 	('HD_FUEL_CORPORATION_TIER1_PRODUCTION',										'YieldType',								'YIELD_PRODUCTION'),
 	('HD_FUEL_CORPORATION_TIER1_PRODUCTION',  									'Amount',										1),
 	('HD_FUEL_CORPORATION_TIER2_PRODUCTION',										'YieldType',								'YIELD_PRODUCTION'),
 	('HD_FUEL_CORPORATION_TIER2_PRODUCTION',  									'Amount',										1),
 	('HD_FUEL_CORPORATION_TIER3_PRODUCTION',										'YieldType',								'YIELD_PRODUCTION'),
 	('HD_FUEL_CORPORATION_TIER3_PRODUCTION',  									'Amount',										1),
-	('HD_FUEL_CORPORATION_TIER1_GOLD',													'YieldType',								'YIELD_GOLD'),
-	('HD_FUEL_CORPORATION_TIER1_GOLD',  												'Amount',										3),
-	('HD_FUEL_CORPORATION_TIER2_GOLD',													'YieldType',								'YIELD_GOLD'),
-	('HD_FUEL_CORPORATION_TIER2_GOLD',  												'Amount',										3),
-	('HD_FUEL_CORPORATION_TIER3_GOLD',													'YieldType',								'YIELD_GOLD'),
-	('HD_FUEL_CORPORATION_TIER3_GOLD',  												'Amount',										3),
 	('HD_METALLURGY_CORPORATION_SCIENCE',												'YieldType',								'YIELD_SCIENCE'),
 	('HD_METALLURGY_CORPORATION_SCIENCE', 											'Amount',										5),
 	('HD_METALLURGY_CORPORATION_UNIT_STRENGTH', 								'Amount',										3),
 	('HD_MINTING_CORPORATION_TRADE_GOLD',												'YieldType',								'YIELD_GOLD'),
-	('HD_MINTING_CORPORATION_TRADE_GOLD', 											'Amount',										12),
+	('HD_MINTING_CORPORATION_TRADE_GOLD', 											'Amount',										6),
 	('HD_MINTING_CORPORATION_GPP',  														'GreatPersonClassType',			'GREAT_PERSON_CLASS_MERCHANT'),
-	('HD_MINTING_CORPORATION_GPP',  														'Amount',										50),
+	('HD_MINTING_CORPORATION_GPP',  														'Amount',										30),
 	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'YieldType',								'YIELD_PRODUCTION, YIELD_FOOD, YIELD_SCIENCE, YIELD_CULTURE, YIELD_GOLD, YIELD_FAITH'),
-	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'Amount',										'20, 20, 20, 20, 20, 20'),
+	('HD_SEASONING_CORPORATION_TRADE_YIELD',										'Amount',										'10, 10, 10, 10, 10, 10'),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_FOOD',										'YieldType',								'YIELD_FOOD'),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_FOOD',										'Amount',										1),
 	('HD_SEAFOOD_CORPORATION_DISTRICT_GOLD',										'YieldType',								'YIELD_GOLD'),
@@ -684,12 +672,12 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_SEA_BEAST_CORPORATION_WONDER_TOURISM',									'ScalingFactor',						200),
 	('HD_SEA_BEAST_CORPORATION_NATIONAL_PARK_TOURISM',					'Amount',										100),
 	('HD_CELEBRATION_CORPORATION_HOLY_SITE',										'YieldType',								'YIELD_FAITH'),
-	('HD_CELEBRATION_CORPORATION_HOLY_SITE',										'Amount',										100),
+	('HD_CELEBRATION_CORPORATION_HOLY_SITE',										'Amount',										50),
 	('HD_CELEBRATION_CORPORATION_TRADE_FAITH',									'YieldType',								'YIELD_FAITH'),
-	('HD_CELEBRATION_CORPORATION_TRADE_FAITH',									'Amount',										3),
-	('HD_MEDICINE_CORPORATION_TECH_BOOST',											'Amount',										2),
+	('HD_CELEBRATION_CORPORATION_TRADE_FAITH',									'Amount',										2),
+	('HD_MEDICINE_CORPORATION_TECH_BOOST',											'Amount',										1),
 	('HD_MEDICINE_CORPORATION_PLAYER_PROPERTY',									'Key',											'HD_Player_Extra_Tech_Boost'),
-	('HD_MEDICINE_CORPORATION_PLAYER_PROPERTY',									'Amount',										2),
+	('HD_MEDICINE_CORPORATION_PLAYER_PROPERTY',									'Amount',										1),
 	('HD_MEDICINE_CORPORATION_UNIT_HEAL',												'Type',											'ALL'),
 	('HD_MEDICINE_CORPORATION_UNIT_HEAL',												'Amount',										10),
 	('HD_STATIONERY_CORPORATION_PLAYER_PROPERTY',								'Key',											'HD_PLAYER_NEED_COUNT_CULTURAL_POLICY'),
@@ -703,9 +691,9 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
 	('HD_BEAST_CORPORATION_WONDER_TOURISM',											'ScalingFactor',						200),
 	('HD_BEAST_CORPORATION_NATIONAL_PARK_TOURISM',							'Amount',										100),
 	('HD_HOUSEHOLD_CORPORATION_CHARMING_GOLD',									'YieldType',								'YIELD_GOLD'),
-	('HD_HOUSEHOLD_CORPORATION_CHARMING_GOLD',									'Amount',										6),
+	('HD_HOUSEHOLD_CORPORATION_CHARMING_GOLD',									'Amount',										3),
 	('HD_HOUSEHOLD_CORPORATION_BREATHTAKING_GOLD',							'YieldType',								'YIELD_GOLD'),
-	('HD_HOUSEHOLD_CORPORATION_BREATHTAKING_GOLD',							'Amount',										6),
+	('HD_HOUSEHOLD_CORPORATION_BREATHTAKING_GOLD',							'Amount',										3),
 	('HD_TOYS_CORPORATION_POP_SCIENCE',													'YieldType',								'YIELD_SCIENCE'),
 	('HD_TOYS_CORPORATION_POP_SCIENCE',													'Amount',										1.5),
 	('HD_TOYS_CORPORATION_POP_CULTURE',													'YieldType',								'YIELD_CULTURE'),
@@ -740,7 +728,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from Yields, Districts where DistrictType in ('DISTRICT_CAMPUS', 'DISTRICT_INDUSTRIAL_ZONE');
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_CHEMISTRY_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 50
+	'HD_CHEMISTRY_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 30
 from Yields, Districts where DistrictType in ('DISTRICT_CAMPUS', 'DISTRICT_INDUSTRIAL_ZONE');
 
 -- 运载公司
@@ -866,30 +854,6 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 	'HD_STATIONERY_CORPORATION_CAMPUS_' || Exp, 'Amount', Amount
 from HD_Binary_Compress where Exp < 5;
 
-insert or ignore into HD_CorporationModifiers (Category, ModifierId) select
-	'STATIONERY', 'HD_STATIONERY_CORPORATION_THEATER_' || Exp || '_ATTACH'
-from HD_Binary_Compress where Exp < 5;
-
-insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_STATIONERY_CORPORATION_THEATER_' || Exp || '_ATTACH', 'MODIFIER_PLAYER_CAPITAL_CITY_ATTACH_MODIFIER', 'HD_STATIONERY_CORPORATION_BONUS_REQUIREMENTS', 'HD_PLOT_BINARY_COMPRESS_PLAYER_CULTURAL_POLICY_' || Exp || '_REQUIREMENTS'
-from HD_Binary_Compress where Exp < 5;
-
-insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_STATIONERY_CORPORATION_THEATER_' || Exp || '_ATTACH', 'ModifierId', 'HD_STATIONERY_CORPORATION_THEATER_' || Exp
-from HD_Binary_Compress where Exp < 5;
-
-insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId, SubjectRequirementSetId) select
-	'HD_STATIONERY_CORPORATION_THEATER_' || Exp, 'MODIFIER_PLAYER_DISTRICTS_ADJUST_BASE_YIELD_CHANGE', NULL, 'DISTRICT_IS_THEATER'
-from HD_Binary_Compress where Exp < 5;
-
-insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_STATIONERY_CORPORATION_THEATER_' || Exp, 'YieldType', 'YIELD_CULTURE'
-from HD_Binary_Compress where Exp < 5;
-
-insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_STATIONERY_CORPORATION_THEATER_' || Exp, 'Amount', Amount
-from HD_Binary_Compress where Exp < 5;
-
 -- 艺术公司
 insert or ignore into HD_CorporationModifiers (Category, ModifierId) select
 	'ART', 'HD_ART_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType
@@ -904,7 +868,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from Yields, Districts where DistrictType in ('DISTRICT_HOLY_SITE', 'DISTRICT_THEATER');
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_ART_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 50
+	'HD_ART_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 30
 from Yields, Districts where DistrictType in ('DISTRICT_HOLY_SITE', 'DISTRICT_THEATER');
 
 insert or ignore into HD_CorporationModifiers (Category, ModifierId) select
@@ -937,7 +901,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from Yields, Districts where DistrictType in ('DISTRICT_COMMERCIAL_HUB', 'DISTRICT_NEIGHBORHOOD');
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_DECORATION_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 50
+	'HD_DECORATION_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 30
 from Yields, Districts where DistrictType in ('DISTRICT_COMMERCIAL_HUB', 'DISTRICT_NEIGHBORHOOD');
 
 -- 花木公司
@@ -971,7 +935,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from Yields, Districts where DistrictType in ('DISTRICT_ENTERTAINMENT_COMPLEX', 'DISTRICT_WONDER');
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select
-	'HD_BEAST_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 50
+	'HD_BEAST_CORPORATION_' || DistrictType || '_REGIONAL_' || YieldType, 'Amount', 30
 from Yields, Districts where DistrictType in ('DISTRICT_ENTERTAINMENT_COMPLEX', 'DISTRICT_WONDER');
 
 -- 文本

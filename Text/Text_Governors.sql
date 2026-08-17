@@ -2,7 +2,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- ==============================================================================
   -- 维克多
   -- ==============================================================================
-  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_DESCRIPTION",              "本城训练的军事工程单位+2 [ICON_CHARGES] 建造次数，并为相邻的军事单位+3 [ICON_STRENGTH] 战斗力，且可以消耗30点对应战略资源和3次 [ICON_CHARGES] 建造次数在战略资源上创立行业。"),
+  ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_DESCRIPTION",              "本城生产的支援单位+2 [ICON_MOVEMENT] 移动力。本城训练的军事工程单位+2 [ICON_CHARGES] 建造次数，并为相邻的军事单位+3 [ICON_STRENGTH] 战斗力，且可以消耗15点对应战略资源和3次 [ICON_CHARGES] 建造次数在战略资源上创立行业。"),
   ("zh_Hans_CN", "LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_3_DESCRIPTION",              "境内每座战略行业或公司为本城+10% [ICON_PRODUCTION] 生产力和 [ICON_Science] 科技值。"),
   -- ==============================================================================
   -- 马格努斯

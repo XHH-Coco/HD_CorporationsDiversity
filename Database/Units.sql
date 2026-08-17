@@ -1,6 +1,6 @@
 -- 造价
 update Units set Cost = 150, CostProgressionParam1 = 10, MustPurchase = 0, PrereqTech = 'TECH_CURRENCY' where UnitType = 'UNIT_LEU_TYCOON';
-update Units set Cost = 400, CostProgressionParam1 = 20, MustPurchase = 0 where UnitType = 'UNIT_LEU_INVESTOR';
+update Units set Cost = 250, CostProgressionParam1 = 15, MustPurchase = 0 where UnitType = 'UNIT_LEU_INVESTOR';
 
 -- 前置建筑
 delete from Unit_BuildingPrereqs where Unit = 'UNIT_LEU_TYCOON';

@@ -167,15 +167,7 @@ function OnSelect(cityStatePlayerId, param)
     Controls.SelectedCityStateIcon:SetColor(nil);
 
     -- 基本信息
-    if resourceInfo.ResourceClassType == "RESOURCECLASS_BONUS" then
-      table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:0,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_BONUS_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-    elseif resourceInfo.ResourceClassType == "RESOURCECLASS_LUXURY" then
-      table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:153,102,0,255]" .. Locale.Lookup("LOC_TOOLTIP_LUXURY_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-    elseif resourceInfo.ResourceClassType == "RESOURCECLASS_STRATEGIC" then
-      table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResScienceLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_STRATEGIC_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-    elseif resourceInfo.ResourceClassType == "RESOURCECLASS_ARTIFACT" then
-      table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:ResCultureLabelCS]" .. Locale.Lookup("LOC_TOOLTIP_ARTIFACT_RESOURCE") .. "[ENDCOLOR][NEWLINE]");
-    end
+    table.insert(detailStrList, Locale.Lookup(resourceInfo.Name) .. "  [COLOR:199,21,133,255]" .. Locale.Lookup("LOC_HD_OVERSEAS_CORPORATION_RESOURCE_TEXT") .. "[ENDCOLOR][NEWLINE]");
 
     -- 行业公司效果
     if detailParam.IndustryEffect == true or detailParam.CorporationEffect == true then
@@ -211,7 +203,7 @@ function OnSelect(cityStatePlayerId, param)
           if i > 1 then effectStr = effectStr .. "[NEWLINE]"; end
           effectStr = effectStr .. str;
         end
-        table.insert(detailStrList, Locale.Lookup('LOC_HD_CORPORATION_EFFECT_TEXT', effectStr));
+        table.insert(detailStrList, Locale.Lookup('LOC_HD_OVERSEAS_CORPORATION_EFFECT_TEXT', effectStr));
       end
     end
   else

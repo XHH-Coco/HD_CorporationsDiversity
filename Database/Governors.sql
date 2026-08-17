@@ -7,8 +7,8 @@
 -- 全局参数
 -- ============================================================================================================================================================
 insert or replace into GlobalParameters (Name, Value) values
-  ('HD_BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT',                   30),
-  ('HD_BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT',                60),
+  ('HD_BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT',                   15),
+  ('HD_BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT',                15),
   ('HD_MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM',   3),
   ('HD_BUILD_BONUS_INDUSTRY_NEED_RESOURCE_NUM',                             2),
   ('HD_BUILD_BONUS_CORPORATION_NEED_RESOURCE_NUM',                          3),
@@ -23,9 +23,9 @@ delete from GovernorPromotionModifiers where GovernorPromotionType in (
   'GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_2',
   'GOVERNOR_PROMOTION_HD_MERCHANT_LEFT_3'
 );
-delete from GovernorPromotionModifiers where GovernorPromotionType = 'GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2' and ModifierId in (
-  'HD_GOVERNOR_DEFENDER_RIGHT_2_SUPPORT_MOVEMENT'
-);
+-- delete from GovernorPromotionModifiers where GovernorPromotionType = 'GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2' and ModifierId in (
+--   'HD_GOVERNOR_DEFENDER_RIGHT_2_SUPPORT_MOVEMENT'
+-- );
 
 insert or ignore into GovernorPromotionModifiers (GovernorPromotionType, ModifierId) values
   -- 维克多 军备研究部

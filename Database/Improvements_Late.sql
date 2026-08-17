@@ -53,7 +53,7 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) select
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 insert or ignore into Modifiers (ModifierId, ModifierType, OwnerRequirementSetId) select
-  'HD_PLAYER_HAS_CORPORATION_' || ResourceType, 'MODIFIER_ADJUST_GAME_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
+  'HD_PLAYER_HAS_CORPORATION_' || ResourceType, 'MODIFIER_PLAYER_ADJUST_PROPERTY', 'HD_PLOT_HAS_' || ResourceType
 from HD_Monopoly_Resource_Categories where ResourceType in (select ResourceType from Resources where ResourceClassType in ('RESOURCECLASS_BONUS', 'RESOURCECLASS_STRATEGIC'));
 
 insert or ignore into ModifierArguments (ModifierId, Name, Value) select

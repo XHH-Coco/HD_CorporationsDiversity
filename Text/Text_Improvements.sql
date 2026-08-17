@@ -5,9 +5,9 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_CHATEAU_SELECT_PRODUCTION_RESOURCE_TEXT",         "Manorial economy is a self-sustaining agricultural system: serfs cultivate crops and fruits in the fields, artisans process these harvests into bread, jam, or beverages, while the lord, as the highest ruler of the estate, enjoys a comfortable life... [NEWLINE]Today, a local landowner in {1_CityName} has just established a Château on his hereditary estate and is preparing to send people to collect usable seeds from nearby homes for the first year's cultivation."),
   ("LOC_CHATEAU_SELECT_ENTERTAINMENT_RESOURCE_TEXT",      "In a luxurious Château, elegant nobles dressed in opulent attire and adorned with exquisite jewelry either admired renowned paintings and sculptures collected from around the world in magnificent exhibition halls, or savored tea and coffee in the courtyard filled with rare and exotic flowers. [NEWLINE]Over generations of lordship, this Château in {1_CityName} has accumulated abundant resources and immense wealth. The lord even enslaved serfs to build him a grand medieval church. Now he begins to wonder: what luxuries should he acquire to truly display his wealth and status?"),
   ("LOC_CHATEAU_PRODUCTION_RESOURCE_TEXT",                "[COLOR:Green]Production Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
-  ("LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",             "[COLOR:Civ6Red]Click this icon to select Production Resource.[ENDCOLOR]"),
+  ("LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",             "[COLOR:Red]Click this icon to select Production Resource.[ENDCOLOR]"),
   ("LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",             "[COLOR:219,112,147,255]Entertainment Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
-  ("LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",          "[COLOR:Civ6Red]Click this icon to select Entertainment Resource.[ENDCOLOR]"),
+  ("LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",          "[COLOR:Red]Click this icon to select Entertainment Resource.[ENDCOLOR]"),
   ("LOC_CHATEAU_INDUSTRY_TEXT",                           "[NEWLINE]Industry Bonuses: [NEWLINE]{1_Effect}"),
   -- 加成战略资源 行业/公司
   ("LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                 "Industry"),
@@ -56,9 +56,9 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_CHATEAU_SELECT_PRODUCTION_RESOURCE_TEXT",        "庄园经济是一种以农业为主的自给自足的经济模式：农奴们在田野间种植庄稼和水果，工匠们负责将这些农作物加工成面包、果酱或饮品，而领主作为庄园的最高统治者则过着优渥的生活……[NEWLINE]现今，{1_CityName}当地的地主在他的世袭领地中刚刚建立起一座城堡庄园，他正准备派人从周围的民居征收一些可用的种子，作为庄园里第一年的耕种作物。"),
   ("zh_Hans_CN",  "LOC_CHATEAU_SELECT_ENTERTAINMENT_RESOURCE_TEXT",     "在豪华的城堡庄园里，优雅的贵族们穿着奢华的礼服，戴着精致的珠宝，或是在金碧辉煌的展厅里品鉴着从各地收集来的名画和雕塑，或是在种满奇花异草的庭院中品味茶和咖啡。[NEWLINE]经过几代领主的经营，{1_CityName}的城堡庄园已经积累了丰饶的物资和无数的财富。领主甚至役使农奴们为他建造起了一座宏伟的中世纪教堂。他开始思考，应该用哪些奢侈品来彰显他的财富与地位呢？"),
   ("zh_Hans_CN",  "LOC_CHATEAU_PRODUCTION_RESOURCE_TEXT",               "[COLOR:Green]生产资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
-  ("zh_Hans_CN",  "LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",            "[COLOR:Civ6Red]点击图标选择生产资源。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_NO_PRODUCTION_RESOURCE_TEXT",            "[COLOR:Red]点击图标选择生产资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",            "[COLOR:219,112,147,255]娱乐资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
-  ("zh_Hans_CN",  "LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",         "[COLOR:Civ6Red]点击图标选择娱乐资源。[ENDCOLOR]"),
+  ("zh_Hans_CN",  "LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",         "[COLOR:Red]点击图标选择娱乐资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_CHATEAU_INDUSTRY_TEXT",                          "[NEWLINE]行业效果：[NEWLINE]{1_Effect}"),
   -- 加成战略资源 行业/公司
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                "行业"),
