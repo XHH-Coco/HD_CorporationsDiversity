@@ -8,7 +8,7 @@
 -- ============================================================================================================================================================
 insert or replace into GlobalParameters (Name, Value) values
   ('HD_BUILD_STRATEGIC_INDUSTRY_CONSUME_RESOURCE_AMOUNT',                   15),
-  ('HD_BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT',                15),
+  ('HD_BUILD_STRATEGIC_CORPORATION_CONSUME_RESOURCE_AMOUNT',                30),
   ('HD_MILITARY_ENGINEERING_BUILD_STRATEGIC_INDUSTRY_CONSUME_CHARGE_NUM',   3),
   ('HD_BUILD_BONUS_INDUSTRY_NEED_RESOURCE_NUM',                             2),
   ('HD_BUILD_BONUS_CORPORATION_NEED_RESOURCE_NUM',                          3),
