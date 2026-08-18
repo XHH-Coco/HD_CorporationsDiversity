@@ -57,6 +57,14 @@ create table HD_Building_Unlock_Second_Corporation(
 	PRIMARY KEY (BuildingType)
 );
 
+create table HD_Product_Projects(
+	ProjectType 		TEXT 		NOT NULL,
+	Cost 						INT 		NOT NULL Default 0,
+	NeedCorporation Boolean NOT NULL,
+	PRIMARY KEY (ProjectType),
+	FOREIGN KEY (ProjectType) REFERENCES Projects(ProjectType) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 -- =====================================================================================================================================
 -- Types
 -- =====================================================================================================================================

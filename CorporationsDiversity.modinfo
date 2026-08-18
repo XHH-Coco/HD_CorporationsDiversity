@@ -143,6 +143,13 @@
       <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
     </ImportFiles>
     <ImportFiles id="Khalifa_Adapt_Icons_Import" criteria="KHALIFA_Adapt_Expansion2">
       <Properties><LoadOrder>1</LoadOrder></Properties>
@@ -244,6 +251,7 @@
       <Properties><LoadOrder>30001</LoadOrder></Properties>
       <File>Database/Improvements_Late.sql</File>
       <File>Database/CustomEvent.sql</File>
+      <File>Database/Last.sql</File>
     </UpdateDatabase>
     
     <!-- Gameplay -->
@@ -377,6 +385,7 @@
     <File>Database/Definitions.sql</File>
     <File>Database/CustomEvent.sql</File>
     <File>Database/Governors.sql</File>
+    <File>Database/Last.sql</File>
     <!-- Text -->
     <File>Text/Text_GreatPerson.sql</File>
     <File>Text/Texts.sql</File>
@@ -457,6 +466,13 @@
     <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
     <!-- ArtDefs -->
     <File>CorporationsDiversity.dep</File>
     <File>ArtDefs/Units.artdef</File>

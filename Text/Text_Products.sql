@@ -1,7 +1,15 @@
 insert or replace into EnglishText (Tag, Text) values
   ("LOC_UNIT_PRODUCT_NAME",                                       "[ICON_Greatwork_Product] Corporation and Product"),
   ("LOC_UNIT_PRODUCT_DESCRIPTION",                                "Once you’ve established a Corporation around a specific resource, you can make a unique [ICON_GreatWork_Product] Product – a brand."),
-  
+
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_SMALL_NAME",                    "[ICON_Greatwork_Product] Warehousing and Logistics Optimization"),
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_SMALL_DESCRIPTION",             "Optimize the warehousing and logistics system to prepare for creating several [ICON_Greatwork_Product] Products. [NEWLINE][NEWLINE]Storage [ICON_PRODUCTION] Production to create [ICON_Greatwork_Product] Products. When city creates [ICON_Greatwork_Product] Products, the project can be completed immediately by consuming 110% of original [ICON_PRODUCTION] Production."),
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_MID_NAME",                      "[ICON_Greatwork_Product] Investment in Production Lines"),
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_MID_DESCRIPTION",               "Invest in a new production line to expand the production scale and prepare for the mass production of [ICON_Greatwork_Product] Products. [NEWLINE][NEWLINE]Storage [ICON_PRODUCTION] Production to create [ICON_Greatwork_Product] Products. When city creates [ICON_Greatwork_Product] Products, the project can be completed immediately by consuming 110% of original [ICON_PRODUCTION] Production."),
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_BIG_NAME",                      "[ICON_Greatwork_Product] Industrial Structural Reform"),
+  ("LOC_PROJECT_HD_BATCH_PRODUCTS_BIG_DESCRIPTION",               "Carry out industrial structural reforms, reduce costs and increase efficiency, and prepare for the large-scale development of [ICON_Greatwork_Product] Products. [NEWLINE][NEWLINE]Storage [ICON_PRODUCTION] Production to create [ICON_Greatwork_Product] Products. When city creates [ICON_Greatwork_Product] Products, the project can be completed immediately by consuming 110% of original [ICON_PRODUCTION] Production."),
+  ("LOC_HD_BATCH_PRODUCTS_PROJECT_TEXT",                          "[ICON_Greatwork_Product] Storage: {1_Num} [ICON_PRODUCTION] Production[NEWLINE][ICON_BULLET]When city creates [ICON_Greatwork_Product] Products, the project can be completed immediately by consuming 110% of original [ICON_PRODUCTION] Production."),
+
   -- 奢侈资源 产品补齐
   ("LOC_GREATWORK_PRODUCT_CITRUS_6_NAME",                         "Empress Citrus Pudding"),
   ("LOC_GREATWORK_PRODUCT_COCOA_6_NAME",                          "Rich Iced Cocoa"),
@@ -566,6 +574,14 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_UNIT_PRODUCT_NAME",                                        "[ICON_Greatwork_Product] 公司与产品"),
   ("zh_Hans_CN",  "LOC_UNIT_PRODUCT_DESCRIPTION",                                 "围绕特定资源创立公司后，即可通过完成项目开发拥有品牌的 [ICON_GreatWork_Product] 产品。"),
   
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_SMALL_NAME",                     "[ICON_Greatwork_Product] 仓储与物流优化"),
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_SMALL_DESCRIPTION",              "对仓储和物流系统进行优化，为开发数个 [ICON_Greatwork_Product] 产品做好准备。[NEWLINE][NEWLINE]储存 [ICON_PRODUCTION] 生产力用于开发 [ICON_Greatwork_Product] 产品。城市进行开发 [ICON_Greatwork_Product] 产品的项目时，可消耗110%的 [ICON_PRODUCTION] 生产力立刻完成。"),
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_MID_NAME",                       "[ICON_Greatwork_Product] 生产线投资"),
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_MID_DESCRIPTION",                "投资新的生产线，扩大生产规模，为批量开发 [ICON_Greatwork_Product] 产品做好准备。[NEWLINE][NEWLINE]储存 [ICON_PRODUCTION] 生产力用于开发 [ICON_Greatwork_Product] 产品。城市进行开发 [ICON_Greatwork_Product] 产品的项目时，可消耗110%的 [ICON_PRODUCTION] 生产力立刻完成。"),
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_BIG_NAME",                       "[ICON_Greatwork_Product] 产业结构性改革"),
+  ("zh_Hans_CN",  "LOC_PROJECT_HD_BATCH_PRODUCTS_BIG_DESCRIPTION",                "进行产业结构性改革，降本增效，为大规模开发 [ICON_Greatwork_Product] 产品做好准备。[NEWLINE][NEWLINE]储存 [ICON_PRODUCTION] 生产力用于开发 [ICON_Greatwork_Product] 产品。城市进行开发 [ICON_Greatwork_Product] 产品的项目时，可消耗110%的 [ICON_PRODUCTION] 生产力立刻完成。"),
+  ("zh_Hans_CN",  "LOC_HD_BATCH_PRODUCTS_PROJECT_TEXT",                           "[ICON_Greatwork_Product] 已储存：{1_Num} [ICON_PRODUCTION] 生产力[NEWLINE][ICON_BULLET]进行开发 [ICON_Greatwork_Product] 产品的项目时，消耗110%的 [ICON_PRODUCTION] 生产力立刻完成。"),
+
   -- 奢侈资源 产品补齐
   ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_CITRUS_6_NAME",                          "女皇柑橘布丁"),
   ("zh_Hans_CN",  "LOC_GREATWORK_PRODUCT_COCOA_6_NAME",                           "浓香冰可可"),

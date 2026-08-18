@@ -156,6 +156,52 @@ end
 GameEvents.OnGameTurnEnded.Add(RefreshBonusStrategicProductProjectsOnGameTurnEnded);
 
 -- ============================================================================================================================================================
+-- 大产品项目
+-- ============================================================================================================================================================
+local BATCH_PRODUCTS_PROJECT_PRODUCTION_TAG = 'HD_BATCH_PRODUCTS_PROJECT_PRODUCTION';
+local BATCH_PRODUCTS_PROJECT_PERCENTAGE = GlobalParameters.HD_BATCH_PRODUCTS_PROJECT_PERCENTAGE or 0;
+local PROJECT_HD_BATCH_PRODUCTS_SMALL_INDEX = GameInfo.Projects['PROJECT_HD_BATCH_PRODUCTS_SMALL'].Index;
+local PROJECT_HD_BATCH_PRODUCTS_MID_INDEX = GameInfo.Projects['PROJECT_HD_BATCH_PRODUCTS_MID'].Index;
+local PROJECT_HD_BATCH_PRODUCTS_BIG_INDEX = GameInfo.Projects['PROJECT_HD_BATCH_PRODUCTS_BIG'].Index;
+
+function BatchProductsProjectCompleted(playerId, cityId, projectId)
+  if projectId == PROJECT_HD_BATCH_PRODUCTS_SMALL_INDEX
+    or projectId == PROJECT_HD_BATCH_PRODUCTS_MID_INDEX
+    or projectId == PROJECT_HD_BATCH_PRODUCTS_BIG_INDEX
+  then
+    local projectInfo = GameInfo.Projects[projectId];
+    if not projectInfo then return; end
+
+    local city = CityManager.GetCity(playerId, cityId);
+    if not city then return; end
+
+    local production = city:GetProperty(BATCH_PRODUCTS_PROJECT_PRODUCTION_TAG) or 0;
+    city:SetProperty(BATCH_PRODUCTS_PROJECT_PRODUCTION_TAG, production + projectInfo.Cost);
+  end
+end
+Events.CityProjectCompleted.Add(BatchProductsProjectCompleted);
+
+function BatchProductsProjectChanged(playerId, cityId, productionId, objectId)
+  local city = CityManager.GetCity(playerId, cityId);
+  if not city then return; end
+
+  local current = city:GetBuildQueue():CurrentlyBuilding();
+  local productProjectInfo = GameInfo.HD_Product_Projects[current];
+  if not productProjectInfo then return; end
+
+  -- 判断是否有足够的存储生产力
+  local production = city:GetProperty(BATCH_PRODUCTS_PROJECT_PRODUCTION_TAG) or 0;
+  local cost = math.ceil(productProjectInfo.Cost * BATCH_PRODUCTS_PROJECT_PERCENTAGE / 100);
+  
+  if production >= cost then
+    city:SetProperty(BATCH_PRODUCTS_PROJECT_PRODUCTION_TAG, production - cost);
+    city:GetBuildQueue():FinishProgress();
+    Game.AddWorldViewText(playerId, '-' .. cost .. ' [ICON_PRODUCTION]', city:GetX(), city:GetY());
+  end
+end
+Events.CityProductionChanged.Add(BatchProductsProjectChanged)
+
+-- ============================================================================================================================================================
 -- Initialize
 -- ============================================================================================================================================================
 function initialize()
