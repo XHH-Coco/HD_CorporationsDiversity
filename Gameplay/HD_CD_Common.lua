@@ -202,6 +202,31 @@ end
 Events.CityProductionChanged.Add(BatchProductsProjectChanged)
 
 -- ============================================================================================================================================================
+-- 改良命名
+-- ============================================================================================================================================================
+local plotImprovementNameTag = 'HD_PLOT_IMPROVEMENT_NAME';
+local CORPORATION_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_BONUS'].Index;
+local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATION_STRATEGIC'].Index;
+function NameImprovement(playerId, param)
+  local x = param.X;
+  local y = param.Y;
+  local name = param.ImprovementName;
+
+  print(x, y, name)
+
+  local plot = Map.GetPlot(x, y);
+  if plot then
+    plot:SetProperty(plotImprovementNameTag, name);
+
+    local improvementId = plot:GetImprovementType();
+    if improvementId == CORPORATION_BONUS_INDEX or improvementId == CORPORATION_STRATEGIC_INDEX then
+      ReportingEvents.SendLuaEvent('HD_RefreshIndustryCorporationBanner', {PlayerId = playerId, X = x, Y = y});
+    end
+  end
+end
+GameEvents.HD_NameImprovement.Add(NameImprovement);
+
+-- ============================================================================================================================================================
 -- Initialize
 -- ============================================================================================================================================================
 function initialize()

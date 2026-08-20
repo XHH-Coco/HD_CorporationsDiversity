@@ -137,6 +137,7 @@ function OnSelect(resourceType, param)
 
 	-- 设置被选中资源图标
 	Controls.SelectedResourceIcon:SetHide(false);
+	-- print('ICON_MONOPOLIES_AND_CORPS_' .. resourceType);
 	Controls.SelectedResourceIcon:SetIcon('ICON_MONOPOLIES_AND_CORPS_' .. resourceType);
 
 	-- 启用确认按钮

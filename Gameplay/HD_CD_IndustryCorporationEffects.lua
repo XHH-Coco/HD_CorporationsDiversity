@@ -20,6 +20,7 @@ local CITY_UNLOCK_SECOND_INDUSTRY_TAG = 'HD_CITY_UNLOCK_SECOND_INDUSTRY';
 local CITY_UNLOCK_SECOND_CORPORATION_TAG = 'HD_CITY_UNLOCK_SECOND_CORPORATION';
 local CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG = 'HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION';
 local CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG = 'HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION';
+local plotImprovementNameTag = 'HD_PLOT_IMPROVEMENT_NAME';
 
 -- 巴西UA
 local JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG = 'HD_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY';
@@ -232,6 +233,50 @@ function BuildIndustryCorporation(x, y, improvementId, playerId, resourceId, isP
           ReportingEvents.SendLuaEvent('HD_CallCorporationSelectEvent', param);
         end
       end
+    end
+  end
+end
+
+-- 加成战略公司命名
+function NameBonusStrategicCorporation(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
+  if improvementId == CORPORATION_BONUS_INDEX or improvementId == CORPORATION_STRATEGIC_INDEX then
+    local player = Players[playerId];
+    if not player then return; end
+
+    local plot = Map.GetPlot(x, y);
+    if not plot then return; end
+
+    local resourceInfo = GameInfo.Resources[resourceId];
+    if not resourceInfo then return; end
+
+    if not player:IsHuman() then
+      local prefixes = {};
+      local suffixes = {};
+
+      for row in GameInfo.CorporationNames() do
+        if row.NameType == "PREFIX_ALL" then
+          table.insert(prefixes, row.TextKey);
+        else
+          table.insert(suffixes, row.TextKey);
+        end
+      end
+
+      resNameTag = resourceInfo.Name;
+      local prefixIndex = Game.GetRandNum(#prefixes, "Random name prefix for Player " .. playerId) + 1;
+      local ourPrefix = prefixes[prefixIndex];
+      local suffixIndex = Game.GetRandNum(#suffixes, "Random name suffix for Player " .. playerId) + 1;
+      local ourSuffix = suffixes[suffixIndex];
+      if ourPrefix ~= nil and ourSuffix ~= nil and resNameTag ~= nil then
+        local name = Locale.Lookup(ourPrefix) .. " " .. Locale.Lookup(resNameTag) .. " " .. Locale.Lookup(ourSuffix)
+        plot:SetProperty(plotImprovementNameTag, name);
+      end
+    else
+      if plot:GetProperty(plotImprovementNameTag) ~= nil then
+        plot:SetProperty(plotImprovementNameTag, nil);
+      end
+      -- 加成战略公司命名
+      local param = {PlayerId = playerId, X = x, Y = y};
+      ReportingEvents.SendLuaEvent('HD_BuildImprovementNeedName', param);
     end
   end
 end
@@ -707,6 +752,7 @@ Events.CivicCompleted.Add(UnlockTransnationalCorporationEffect);
 -- Initialize
 function Initialize()
 	Events.ImprovementAddedToMap.Add(BuildIndustryCorporation);
+	Events.ImprovementAddedToMap.Add(NameBonusStrategicCorporation);
 	Events.ImprovementAddedToMap.Add(BuildChateau);
 	Events.ImprovementAddedToMap.Add(BuildTransnational);
 end

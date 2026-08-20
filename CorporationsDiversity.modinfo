@@ -135,6 +135,15 @@
       <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_64.dds</File>
       <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_256.dds</File>
       <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_FOW_256.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
+      <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
+      <File>Assets/Monopoly/HD_Industry_Selections_256.dds</File>
+      <File>Assets/Monopoly/HD_Corporation_Selections_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_22.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_32.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_38.dds</File>
@@ -143,13 +152,6 @@
       <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
       <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
-      <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
     </ImportFiles>
     <ImportFiles id="Khalifa_Adapt_Icons_Import" criteria="KHALIFA_Adapt_Expansion2">
       <Properties><LoadOrder>1</LoadOrder></Properties>
@@ -202,6 +204,7 @@
       <Properties><Context>InGame</Context></Properties>
       <File>UI/ResourceSelection.xml</File>
       <File>UI/CityStateSelection.xml</File>
+      <File>UI/NameImprovementPopup.xml</File>
     </AddUserInterfaces>
 
     <!-- Icon -->
@@ -211,6 +214,7 @@
       <File>Icon/Icon_Policies.xml</File>
       <File>Icon/Icon_Products.xml</File>
       <File>Icon/Icon_Units.xml</File>
+      <File>Icon/Icon_CustomEvents.xml</File>
     </UpdateIcons>
 
     <!-- Main -->
@@ -277,6 +281,7 @@
       <File>Text/Text_Wonders.sql</File>
       <File>Text/Text_CustomEvent.sql</File>
       <File>Text/Text_Governors.sql</File>
+      <File>Text/Text_CorporationNames.xml</File>
     </UpdateText>
 
     <!-- 丰富资源2 -->
@@ -367,6 +372,8 @@
     <File>UI/ResourceSelection.lua</File>
     <File>UI/CityStateSelection.xml</File>
     <File>UI/CityStateSelection.lua</File>
+    <File>UI/NameImprovementPopup.xml</File>
+    <File>UI/NameImprovementPopup.lua</File>
     <!-- Database -->
     <File>Database/Beliefs.sql</File>
     <File>Database/CivLeaderTraits.sql</File>
@@ -398,12 +405,14 @@
     <File>Text/Text_Frontend.sql</File>
     <File>Text/Text_Resourceful2.sql</File>
     <File>Text/Text_Governors.sql</File>
+    <File>Text/Text_CorporationNames.xml</File>
     <!-- Icon -->
     <File>Icon/Icon_Buildings.xml</File>
     <File>Icon/Icon_Policies.xml</File>
     <File>Icon/Icon_Products.xml</File>
     <File>Icon/Icon_Units.xml</File>
     <File>Icon/Icon_Resourceful2.xml</File>
+    <File>Icon/Icon_CustomEvents.xml</File>
     <!-- Config -->
     <File>Configs/Settings.sql</File>
     <!-- Gameplay -->
@@ -434,6 +443,15 @@
     <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_64.dds</File>
     <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_256.dds</File>
     <File>Assets/Monopoly/HD_CityState_Resources_Monopoly_FOW_256.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
+    <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
+    <File>Assets/Monopoly/HD_Industry_Selections_256.dds</File>
+    <File>Assets/Monopoly/HD_Corporation_Selections_256.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_22.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_32.dds</File>
     <File>Assets/Khalifa/HD_Khalifa_Product_38.dds</File>
@@ -466,15 +484,12 @@
     <File>Assets/Merchant/HD_Merchant_Product_128.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_256.dds</File>
     <File>Assets/Merchant/HD_Merchant_Product_FOW_256.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_30.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_32.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_38.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_50.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_70.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_80.dds</File>
-    <File>Assets/Monopoly/HD_Batch_Products_Project_256.dds</File>
     <!-- ArtDefs -->
     <File>CorporationsDiversity.dep</File>
     <File>ArtDefs/Units.artdef</File>
+    <File>ArtDefs/Improvements.artdef</File>
+    <File>ArtDefs/Landmarks.artdef</File>
+    <File>Platforms/MacOS/BLPs/TileBase.blp</File>
+    <File>Platforms/Windows/BLPs/TileBase.blp</File>
   </Files>
 </Mod>

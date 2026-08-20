@@ -29,6 +29,9 @@ local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
 local CHATEAU_PRODUCTION_RESOURCE_TAG = 'HD_CHATEAU_PRODUCTION_RESOURCE';
 local CHATEAU_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_ENTERTAINMENT_RESOURCE';
 local CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE_TAG = 'HD_CHATEAU_CAN_CHOOSE_ENTERTAINMENT_RESOURCE';
+local CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG = 'HD_CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION';
+local CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG = 'HD_CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION';
+local plotImprovementNameTag = 'HD_PLOT_IMPROVEMENT_NAME';
 -- ======================================================================================================================================================
 --	MEMBERS
 -- ======================================================================================================================================================
@@ -205,7 +208,7 @@ function CityBanner:CreateCorporationBanner()
 
 		self.m_IsImprovementBanner = true;
 
-		local corpName:string = Game.GetEconomicManager():GetCorporationName(Game.GetLocalPlayer(), plot:GetResourceType());
+		local corpName:string = GetCorporationName(Game.GetLocalPlayer(), plot);
 
 		local toolTipStr:string;
 
@@ -245,6 +248,19 @@ function CityBanner:UpdateCorporationBanner()
 end
 
 -- ===========================================================================
+function GetCorporationName(playerId, plot)
+	local improvementId = plot:GetImprovementType();
+	local resourceId = plot:GetResourceType();
+
+	if improvementId == CORPORATION_INDEX then
+		return Game.GetEconomicManager():GetCorporationName(playerId, resourceId);
+	elseif improvementId == CORPORATION_BONUS_INDEX or improvementId == CORPORATION_STRATEGIC_INDEX then
+		return plot:GetProperty(plotImprovementNameTag);
+	end
+
+	return;
+end
+
 function OnCorporationNameChanged(ePlayer:number, eResource:number, plotX:number, plotY:number )
 	local plotID = Map.GetPlotIndex(plotX, plotY);
 
@@ -254,7 +270,7 @@ function OnCorporationNameChanged(ePlayer:number, eResource:number, plotX:number
 		if (bannerInstance ~= nil) then
 			local plot:table = Map.GetPlot(plotX, plotY);
 			local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-			local corpName:string = Game.GetEconomicManager():GetCorporationName(Game.GetLocalPlayer(), plot:GetResourceType());
+			local corpName:string = GetCorporationName(Game.GetLocalPlayer(), plot);
 			
 			if resName ~= nil then
 				local toolTipStr:string;
@@ -460,7 +476,7 @@ function CityBanner:UpdateIndustryCorporationText()
 		-- 公司
 		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
 		local resName:string = m_ResourceTypeMap[plot:GetResourceType()];
-		local corpName:string = Game.GetEconomicManager():GetCorporationName(Game.GetLocalPlayer(), plot:GetResourceType());
+		local corpName:string = GetCorporationName(Game.GetLocalPlayer(), plot);
 		print("更新公司图标", self.m_PlotX, self.m_PlotY, resName)
 		if resName ~= nil then
 			local toolTipStr:string;
@@ -701,6 +717,7 @@ function CityBanner:UpdateChateauBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
+	self.m_Instance.ChateauRing:SetHide(bHidden);
 end
 
 -- ===========================================================================
@@ -825,6 +842,10 @@ function CityBanner:UpdateChateauText()
 		print('UpdateChateauText');
 		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_CHATEAU_NAME") .. '[NEWLINE][NEWLINE]' .. GetChateauEffect(self.m_PlotX, self.m_PlotY);
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+		
+		local plot = Map.GetPlot(self.m_PlotX, self.m_PlotY);
+		local entertainmentResourceIndex = plot:GetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG) or -1;
+		self.m_Instance.ChateauRing:SetHide(entertainmentResourceIndex == -1);
 	end
 end
 
@@ -947,6 +968,7 @@ function CityBanner:UpdateTransnationalBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
+	self.m_Instance.TransnationalRing:SetHide(bHidden);
 end
 
 function CityBanner:UpdateTransnationalSeaBanner()
@@ -966,6 +988,7 @@ function CityBanner:UpdateTransnationalSeaBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
+	self.m_Instance.TransnationalSeaRing:SetHide(bHidden);
 end
 
 -- ===========================================================================
@@ -996,6 +1019,11 @@ function CityBanner:UpdateTransnationalText()
 		end
 
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+
+		local city = Cities.GetPlotPurchaseCity(plot);
+  	if not city then return; end
+		local unlockSpecialtyShopCorporation = Utils.GetCityProperty(city:GetOwner(), city:GetID(), CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG) or 0;
+		self.m_Instance.TransnationalRing:SetHide(unlockSpecialtyShopCorporation == 0);
 	end
 end
 
@@ -1026,6 +1054,11 @@ function CityBanner:UpdateTransnationalSeaText()
 		end
 
 		self.m_Instance.Icon:SetToolTipString(toolTipStr);
+
+		local city = Cities.GetPlotPurchaseCity(plot);
+  	if not city then return; end
+		local unlockEntranceHarborCorporation = Utils.GetCityProperty(city:GetOwner(), city:GetID(), CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG) or 0;
+		self.m_Instance.TransnationalSeaRing:SetHide(unlockEntranceHarborCorporation == 0);
 	end
 end
 

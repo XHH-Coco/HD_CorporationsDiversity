@@ -6,6 +6,14 @@
 	</ID>
 	<RequiredGameArtIDs>
 		<Element>
+			<name text="Civ6"/>
+			<id text="cb2f71b7-843e-4af3-9ca7-992acda9c195"/>
+		</Element>
+		<Element>
+			<name text="Expansion1"/>
+			<id text="7446c8fe-29eb-44f8-801f-098f681cc5c5"/>
+		</Element>
+		<Element>
 			<name text="Expansion2"/>
 			<id text="b1b63999-6b16-4dd2-a5b6-eb19794aa8ca"/>
 		</Element>
@@ -33,7 +41,10 @@
 		</Element>
 		<Element>
 			<ConsumerName text="Landmarks"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies>
 				<Element text="CityBuildings"/>
 				<Element text="TileBase"/>
@@ -248,25 +259,37 @@
 		</Element>
 		<Element>
 			<ConsumerName text="Improvements"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
 		<Element>
 			<ConsumerName text="WorldView_Translate"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
 		<Element>
 			<ConsumerName text="StrategicView_Translate"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
 		<Element>
 			<ConsumerName text="Audio"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
@@ -305,7 +328,10 @@
 		</Element>
 		<Element>
 			<ConsumerName text="IndirectGrid"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
@@ -359,7 +385,10 @@
 		</Element>
 		<Element>
 			<ConsumerName text="UnitSimulation"/>
-			<ArtDefDependencyPaths/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
 			<LibraryDependencies/>
 			<LoadsLibraries>false</LoadsLibraries>
 		</Element>
@@ -374,6 +403,21 @@
 		</Element>
 	</SystemDependencies>
 	<ArtDefDependencies>
+		<Element>
+			<ArtDefPath text="Improvements.artdef"/>
+			<ArtDefDependencyPaths>
+				<Element text="Improvements.artdef"/>
+				<Element text="Landmarks.artdef"/>
+			</ArtDefDependencyPaths>
+		</Element>
+		<Element>
+			<ArtDefPath text="Clutter.artdef"/>
+			<ArtDefDependencyPaths/>
+		</Element>
+		<Element>
+			<ArtDefPath text="Landmarks.artdef"/>
+			<ArtDefDependencyPaths/>
+		</Element>
 		<Element>
 			<ArtDefPath text="Units.artdef"/>
 			<ArtDefDependencyPaths>
@@ -480,7 +524,9 @@
 		</Element>
 		<Element>
 			<LibraryName text="TileBase"/>
-			<PackageDependencies/>
+			<PackageDependencies>
+				<Element text="TileBase.blp"/>
+			</PackageDependencies>
 		</Element>
 		<Element>
 			<LibraryName text="UILensAsset"/>

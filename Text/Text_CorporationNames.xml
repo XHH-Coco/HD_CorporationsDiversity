@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+  <LocalizedText>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ACME" Language="zh_Hans_CN">
+      <Text>帝普罗杰克</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_NO_1" Language="zh_Hans_CN">
+      <Text>小灰灰</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_BEST_LUCKY" Language="zh_Hans_CN">
+      <Text>顾问</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_UNCLE_DENNIS" Language="zh_Hans_CN">
+      <Text>六亿神州尽舜尧</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_PARAGON_NEXT" Language="zh_Hans_CN">
+      <Text>酸狐狸</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_HUNAHPU_AND_XBALANQUE" Language="zh_Hans_CN">
+      <Text>时代的先驱</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_CONSOLIDATED_TRUST" Language="zh_Hans_CN">
+      <Text>亚瑟</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_UNITY_NEXT" Language="zh_Hans_CN">
+      <Text>黑毛毛小魔仙</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_MAMAS_FAVORITE" Language="zh_Hans_CN">
+      <Text>蔚蓝天空</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ATLAS" Language="zh_Hans_CN">
+      <Text>利牙菠萝</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_GOLDEN_MILL" Language="zh_Hans_CN">
+      <Text>笑笑</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_WORLDWIDE" Language="zh_Hans_CN">
+      <Text>眉峰聚</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_PRINCE_FELDGES" Language="zh_Hans_CN">
+      <Text>云入岚</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_STRENGERS_OWN" Language="zh_Hans_CN">
+      <Text>摩天藤</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_SIDS_CHOICE" Language="zh_Hans_CN">
+      <Text>美短即正义</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_NEW_WORLD" Language="zh_Hans_CN">
+      <Text>大庄园</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_CLASSIC" Language="zh_Hans_CN">
+      <Text>竹叶青</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_GRAYHEAD" Language="zh_Hans_CN">
+      <Text>马良</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_EDS_DISCOUNT" Language="zh_Hans_CN">
+      <Text>休谟</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_MADAME_LUXORS_SELECT" Language="zh_Hans_CN">
+      <Text>颜文字</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_KING" Language="zh_Hans_CN">
+      <Text>摸飞</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ELEPHANT" Language="zh_Hans_CN">
+      <Text>企鹅</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ROYAL_SELECT" Language="zh_Hans_CN">
+      <Text>血月</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_KAPITAL" Language="zh_Hans_CN">
+      <Text>十爻十二音</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_MCM" Language="zh_Hans_CN">
+      <Text>满射函数</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_IMPERIAL" Language="zh_Hans_CN">
+      <Text>天萧</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_MONOCORP" Language="zh_Hans_CN">
+      <Text>蜥蜴皮</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_DYNASIM" Language="zh_Hans_CN">
+      <Text>瑶石</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_SYNTHETIC" Language="zh_Hans_CN">
+      <Text>薄夏</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_COLLOIDAL" Language="zh_Hans_CN">
+      <Text>史潇儒</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_CONGRUENT" Language="zh_Hans_CN">
+      <Text>基尔瓦</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_RETICULATED" Language="zh_Hans_CN">
+      <Text>神秘岛民</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_CROWN_PRODUCTS" Language="zh_Hans_CN">
+      <Text>眉油米线</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_NEW_LAND" Language="zh_Hans_CN">
+      <Text>熊克思</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_DIVINE" Language="zh_Hans_CN">
+      <Text>哑剑聆风</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_CIVTECH" Language="zh_Hans_CN">
+      <Text>话心</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_AZIMUTH" Language="zh_Hans_CN">
+      <Text>五年</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ICHIBAN" Language="zh_Hans_CN">
+      <Text>潮汐</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_KAEONA" Language="zh_Hans_CN">
+      <Text>陵夏唐</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_NEW_DAWN" Language="zh_Hans_CN">
+      <Text>硝酸</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_RED_SUN" Language="zh_Hans_CN">
+      <Text>咸鱼喵</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_TOMORROW_TECH" Language="zh_Hans_CN">
+      <Text>夏雪冬花</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_MINERVA" Language="zh_Hans_CN">
+      <Text>颜文字</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_HERMES" Language="zh_Hans_CN">
+      <Text>嘉星糖</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_SANGUINE" Language="zh_Hans_CN">
+      <Text>镜底流云</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_VOIDTECH" Language="zh_Hans_CN">
+      <Text>不如念诗</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_RORSARCH" Language="zh_Hans_CN">
+      <Text>豆豆</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_KARATANI" Language="zh_Hans_CN">
+      <Text>大辉</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_PURE_LAND" Language="zh_Hans_CN">
+      <Text>松坂椎音</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ARCADIA" Language="zh_Hans_CN">
+      <Text>章鱼哥</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_SAVANNAPHUMI" Language="zh_Hans_CN">
+      <Text>穀音</Text>
+    </Replace>
+    <Replace Tag="LOC_CORPORATIONNAME_PREFIX_TRUTRUST" Language="zh_Hans_CN">
+      <Text>和而不同</Text>
+    </Replace>
+  </LocalizedText>
+</GameData>
