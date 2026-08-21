@@ -33,6 +33,9 @@
     <Row Name="ICON_ATLAS_HD_BATCH_PRODUCTS_PROJECT" IconSize="70" IconsPerRow="2" IconsPerColumn="2" Filename="HD_Batch_Products_Project_70.dds"/>
     <Row Name="ICON_ATLAS_HD_BATCH_PRODUCTS_PROJECT" IconSize="80" IconsPerRow="2" IconsPerColumn="2" Filename="HD_Batch_Products_Project_80.dds"/>
     <Row Name="ICON_ATLAS_HD_BATCH_PRODUCTS_PROJECT" IconSize="256" IconsPerRow="2" IconsPerColumn="2" Filename="HD_Batch_Products_Project_256.dds"/>
+    
+    <Row Name="ATLAS_ICON_PRODUCT_C_RESOURCE" IconSize="80" IconsPerRow="4" IconsPerColumn="4" Filename="ICON_PRODUCT_C_RESOURCE_80.dds"/>
+    <Row Name="ATLAS_ICON_HDR2_PRODUCT" IconSize="80" IconsPerRow="6" IconsPerColumn="7" Filename="ICON_HDR2_PRODUCT_80.dds"/>
   </IconTextureAtlases>
 
   <IconDefinitions>
