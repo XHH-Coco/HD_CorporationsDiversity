@@ -113,7 +113,7 @@
       <Text>五年</Text>
     </Replace>
     <Replace Tag="LOC_CORPORATIONNAME_PREFIX_ICHIBAN" Language="zh_Hans_CN">
-      <Text>潮汐</Text>
+      <Text>圣剑</Text>
     </Replace>
     <Replace Tag="LOC_CORPORATIONNAME_PREFIX_KAEONA" Language="zh_Hans_CN">
       <Text>陵夏唐</Text>
