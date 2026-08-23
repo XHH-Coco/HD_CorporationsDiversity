@@ -30,7 +30,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                            "Overseas Investor"),
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource which can provide the industry or corporation bonuses of that resource."),
   -- 信条
-  ("LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",                 "All Holy Site buildings provide +1 [ICON_SCIENCE] Science for international [ICON_TradeRoute] Trade Routes, and +1 [ICON_SCIENCE] Science for both sides of international [ICON_TradeRoute] Trade Routes to this city. May purchase Trader, Tycoon, Investor or Overseas Investor units with [ICON_Faith] Faith. These units are 15% cheaper to purchase. "),
+  ("LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",                 "All Holy Site buildings provide +1 [ICON_SCIENCE] Science for international [ICON_TradeRoute] Trade Routes, and +1 [ICON_SCIENCE] Science for both sides of international [ICON_TradeRoute] Trade Routes to this city. Trader, Tycoon, Investor or Overseas Investor units are 15% cheaper, and may purchase with [ICON_Faith] Faith."),
   -- 其他
   ("LOC_MOMENT_FIRST_INDUSTRY",            											    "First Luxury Industry Created"),
 	("LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",            					    "Your first Luxury Industry has been created. "),
@@ -85,7 +85,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                         "海外投资人"),
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的特产商行或进口商埠，并获得该资源的行业和公司效果。"),
   -- 信条
-  ("zh_Hans_CN",  "LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",              "所有圣地建筑为此城出发的国际 [ICON_TradeRoute] 贸易路线+1 [ICON_Science] 科技值，使每条通往此城的国际 [ICON_TradeRoute] 贸易路线为双方+1 [ICON_Science] 科技值。可用 [ICON_Faith] 信仰值购买商人、大亨、投资人和海外投资人，购买这些单位-15%花费。"),
+  ("zh_Hans_CN",  "LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",              "所有圣地建筑为此城出发的国际 [ICON_TradeRoute] 贸易路线+1 [ICON_Science] 科技值，使每条通往此城的国际 [ICON_TradeRoute] 贸易路线为双方+1 [ICON_Science] 科技值。购买商人、大亨、投资人和海外投资人-15%花费，且可用 [ICON_Faith] 信仰值购买。"),
   -- 其他
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY",                                  "创立了首个奢侈行业"),
 	("zh_Hans_CN",  "LOC_MOMENT_FIRST_INDUSTRY_DESCRIPTION",                      "您创立了自己的首个奢侈行业。"),
