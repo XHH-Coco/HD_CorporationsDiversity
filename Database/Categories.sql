@@ -26,10 +26,10 @@ from HD_Resource_Classification where ResourceClassificationType in
 -- 其他Mod的资源默认为 庆典+家居
 insert or replace into HD_Monopoly_Resource_Categories (ResourceType, Category)
 select ResourceType, 'CELEBRATION'
-	from Resources where (Frequency != 0 or SeaFrequency != 0) and ResourceType not in (select ResourceType from HD_Monopoly_Resource_Categories)
+	from Resources where (Frequency != 0 or SeaFrequency != 0) and ResourceType not in (select ResourceType from HD_Monopoly_Resource_Categories) and ResourceClassType != 'RESOURCECLASS_LEY_LINE'
 union all
 select ResourceType, 'HOUSEHOLD'
-	from Resources where (Frequency != 0 or SeaFrequency != 0) and ResourceType not in (select ResourceType from HD_Monopoly_Resource_Categories);
+	from Resources where (Frequency != 0 or SeaFrequency != 0) and ResourceType not in (select ResourceType from HD_Monopoly_Resource_Categories) and ResourceClassType != 'RESOURCECLASS_LEY_LINE';
 
 -- 特殊资源
 insert or ignore into HD_Monopoly_Resource_Categories (ResourceType, Category) values
