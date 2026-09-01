@@ -28,7 +28,7 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 60 corresponding Resources to build Strategic Resource Corporation."),
   -- 海外投资人
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                            "Overseas Investor"),
-  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource which can provide the industry or corporation bonuses of that resource."),
+  ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource within your territory which can provide the industry or corporation bonuses of that resource."),
   -- 信条
   ("LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",                 "All Holy Site buildings provide +1 [ICON_SCIENCE] Science for international [ICON_TradeRoute] Trade Routes, and +1 [ICON_SCIENCE] Science for both sides of international [ICON_TradeRoute] Trade Routes to this city. Trader, Tycoon, Investor or Overseas Investor units are 15% cheaper, and may purchase with [ICON_Faith] Faith."),
   -- 其他
@@ -83,7 +83,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立公司。创立战略资源公司需要消耗60点对应战略资源。"),
   -- 海外投资人
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                         "海外投资人"),
-  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，创立该城邦专属资源的特产商行或进口商埠，并获得该资源的行业和公司效果。"),
+  ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，在你的境内创立该城邦专属资源的特产商行或进口商埠，并获得该资源的行业和公司效果。"),
   -- 信条
   ("zh_Hans_CN",  "LOC_BELIEF_RELIGIOUS_COMMUNITY_DL_DESCRIPTION",              "所有圣地建筑为此城出发的国际 [ICON_TradeRoute] 贸易路线+1 [ICON_Science] 科技值，使每条通往此城的国际 [ICON_TradeRoute] 贸易路线为双方+1 [ICON_Science] 科技值。购买商人、大亨、投资人和海外投资人-15%花费，且可用 [ICON_Faith] 信仰值购买。"),
   -- 其他
