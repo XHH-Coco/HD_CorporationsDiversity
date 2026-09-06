@@ -148,7 +148,7 @@ insert or ignore into HD_ProductYields (Category, YieldType, YieldChange) values
   ('CUISINE',         'YIELD_GOLD',				3),
   ('FRUIT',           'YIELD_FOOD',				3),
   ('FRUIT',           'YIELD_GOLD',				6),
-  ('VEGETABLE',       'YIELD_FOOD',				2),
+  ('VEGETABLE',       'YIELD_SCIENCE',		2),
   ('VEGETABLE',       'YIELD_GOLD',				9),
   ('BREWING',         'YIELD_FOOD',				1),
   ('BREWING',         'YIELD_CULTURE',		4),
