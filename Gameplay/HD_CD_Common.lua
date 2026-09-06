@@ -227,6 +227,30 @@ end
 GameEvents.HD_NameImprovement.Add(NameImprovement);
 
 -- ============================================================================================================================================================
+-- 打印产品产出
+-- ============================================================================================================================================================
+-- function PrintProductYields()
+--   local list = {};
+
+--   for row in GameInfo.HD_ProductYields() do
+--     local yields = list[row.Category] or 0;
+--     if row.YieldType == 'YIELD_GOLD' then
+--       yields = yields + row.YieldChange / 3;
+--     elseif row.YieldType == 'YIELD_FAITH' then
+--       yields = yields + row.YieldChange / 1.5;
+--     else
+--       yields = yields + row.YieldChange
+--     end
+--     list[row.Category] = yields;
+--   end
+
+--   for category, yields in pairs(list) do
+--     print(category .. ": " .. yields);
+--   end
+-- end
+-- PrintProductYields();
+
+-- ============================================================================================================================================================
 -- Initialize
 -- ============================================================================================================================================================
 function initialize()
