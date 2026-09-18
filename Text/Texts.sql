@@ -2,6 +2,7 @@ insert or replace into EnglishText (Tag, Text) values
   -- 文明领袖
   ("LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES",          "Grant a Bandeirante after establishing [ICON_CAPITAL] Capital city. All districts (except city centers) will not remove Rainforest. Rainforest tiles provide a standard adjacency bonus for specialty districts, and grant +1 Appeal to adjacent tiles. When city builds its first Industry, grant a Bandeirante. For every two Industries built, all Bandeirantes receive +1 collection times. When you build Industry or Corporation on Rainforest tiles, immediately activate the corresponding bonus of all its usages."),
   ("LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",               "Brazilian unique Recon unit, but cannot be trained, purchased or upgraded to a more advanced unit. Its [ICON_STRENGTH] Combat Strength increases according to your era. Automatically creates Roads as it moves. It can collect resources on unowned rainforest tiles twice. For every two of the same resource collected, the improved Resources on rainforest tiles in your cities gain the yields of that resource."),
+  ("LOC_UNIT_ZIMBABWE_PATHFINDER_DESCRIPTION_MONOPOLIES",           "津巴布韦特色平民单位。需要配备运载资源才能够移动。可以建立城市。建立城市后配备的运载资源会在城市周围适合的单元格上生成。若在奢侈资源上建立城市，建立后+1 [ICON_CHARGES] 建造次数，可以建造津巴布韦石城和其他大亨能够建造的改良。"),
   -- 科技 市政
   ("LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",                      "Build 2 Warehouses or Piers."),
   ("LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",             "Factories and warehouses stand in close rows, and industry is developing at a rapid pace. However, workers are beginning to seek more rights. It's time for workers all over the world to unite."),
@@ -24,8 +25,8 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                             "Pricey Civilian unit that may only be purchased with [ICON_GOLD] Gold. Requires Tier 3 building of Commercial Hub or Tier 2 building of Harbor to be purchased.[NEWLINE][NEWLINE]Investors can found Corporations that allow your civilization to create [ICON_GREATWORK_PRODUCT] Products for additional yields and [ICON_TOURISM] Tourism, or create Warehouses and Container Ports in other civilizations to further strengthen commerce and your Corporations."),
   ("LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION", "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}: Allowed to build Industry on Strategic Resource. Need to consume 30 corresponding Strategic Resources and 3 [ICON_CHARGES] build charges."),
   ("LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                  "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}: Allowed to build Industry on Bonus Resource. Need to consume 4 [ICON_CHARGES] build charges."),
-  ("LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",         "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Industry on Bonus or Strategic Resources. Need to consume 30 corresponding Resources to build Strategic Resource Industry."),
-  ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 60 corresponding Resources to build Strategic Resource Corporation."),
+  ("LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",         "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Industry on Bonus or Strategic Resources. Need to consume 15 corresponding Resources to build Strategic Resource Industry."),
+  ("LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",       "{LOC_BUILDING_RUHR_VALLEY_NAME}: Allowed to build Corporation on Bonus or Strategic Resources. Need to consume 30 corresponding Resources to build Strategic Resource Corporation."),
   -- 海外投资人
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                            "Overseas Investor"),
   ("LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                     "Choose a city-state with which you have established [ICON_TradeRoute] Trade Route, and then it can create a Specialty Shop or Entrance Harbor of that city-state's Exclusive Resource within your territory which can provide the industry or corporation bonuses of that resource."),
@@ -50,6 +51,7 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   -- 文明领袖
   ("zh_Hans_CN",  "LOC_TRAIT_CIVILIZATION_AMAZON_DESCRIPTION_MONOPOLIES", "建立 [ICON_CAPITAL] 首都后获得一位旗手。除市中心外的区域不移除雨林。雨林单元格为专业化区域提供标准相邻加成，并为相邻的单元格提供+1魅力。城市首次创立行业时，获得一名旗手；玩家每创立两座行业，所有旗手+1收集次数。创立在雨林上的行业或公司直接激活所有用途所对应的加成效果。"),
   ("zh_Hans_CN",  "LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES",      "巴西特色侦察单位，无法升级成高级单位，无法在城市中建造或购买该单位。[ICON_STRENGTH] 战斗力随你所处的时代提升。移动时自动建造道路。可以收集2次无主雨林单元格上的资源，每收集两个同种资源，境内改良的雨林资源获得该资源的产出。"),
+  ("zh_Hans_CN",  "LOC_UNIT_ZIMBABWE_PATHFINDER_DESCRIPTION_MONOPOLIES",  "津巴布韦特色平民单位。需要配备运载资源才能够移动。可以建立城市。建立城市后配备的运载资源会在城市周围适合的单元格上生成。若在奢侈资源上建立城市，建立后+1 [ICON_CHARGES] 建造次数，可以建造津巴布韦石城和其他大亨能够建造的改良。"),
   -- 科技 市政
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_CLASS_STRUGGLE_HD_MONO",             "建造2座仓库或埠头。"),
   ("zh_Hans_CN",  "LOC_BOOST_TRIGGER_LONGDESC_CLASS_STRUGGLE_HD_MONO",    "工厂和仓库鳞次栉比，工业飞速发展。然而工人们开始寻求更多的权益。是时候让全世界的工人团结起来了。"),
@@ -79,8 +81,8 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_UNIT_LEU_INVESTOR_DESCRIPTION",                    "需要商业中心三级建筑或港口二级建筑方可建造或购买的高价平民单位。[NEWLINE][NEWLINE]投资人可以创立公司，让你的文明创造 [ICON_GREATWORK_PRODUCT] 产品以获得额外的产出和 [ICON_TOURISM] 旅游业绩。此外，他们可以用来在其他文明中建造仓库和集装箱港口，进一步强化贸易和你的公司。"),
   ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_DESCRIPTION",  "{LOC_GOVERNOR_PROMOTION_HD_DEFENDER_RIGHT_2_NAME}：允许单位在战略资源上创立行业。需要消耗30点对应战略资源和3次 [ICON_CHARGES] 建造次数。"),
   ("zh_Hans_CN",  "LOC_ABILITY_HD_GOVERNOR_MANAGER_LEFT_2_BUILDER_ABILITY_DESCRIPTION",                   "{LOC_GOVERNOR_PROMOTION_HD_MANAGER_LEFT_2_NAME}：允许单位在加成资源上创立行业。需要消耗4次 [ICON_CHARGES] 建造次数。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",      "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立行业。创立战略资源行业需要消耗30点对应战略资源。"),
-  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立公司。创立战略资源公司需要消耗60点对应战略资源。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY_DESCRIPTION",      "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立行业。创立战略资源行业需要消耗15点对应战略资源。"),
+  ("zh_Hans_CN",  "LOC_ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY_DESCRIPTION",    "{LOC_BUILDING_RUHR_VALLEY_NAME}：允许单位在加成资源或战略资源上创立公司。创立战略资源公司需要消耗30点对应战略资源。"),
   -- 海外投资人
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_NAME",                         "海外投资人"),
   ("zh_Hans_CN",  "LOC_UNIT_HD_OVERSEAS_INVESTOR_DESCRIPTION",                  "在你建立 [ICON_TradeRoute] 贸易路线通往的城邦中选择一个，在你的境内创立该城邦专属资源的特产商行或进口商埠，并获得该资源的行业和公司效果。"),

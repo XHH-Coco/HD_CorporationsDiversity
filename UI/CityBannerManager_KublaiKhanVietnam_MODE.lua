@@ -13,6 +13,7 @@ BANNERTYPE_CORPORATION = UIManager:GetHash("BANNERTYPE_CORPORATION");
 BANNERTYPE_CHATEAU = UIManager:GetHash("BANNERTYPE_CHATEAU");
 BANNERTYPE_TRANSNATIONAL = UIManager:GetHash("BANNERTYPE_TRANSNATIONAL");
 BANNERTYPE_TRANSNATIONAL_SEA = UIManager:GetHash("BANNERTYPE_TRANSNATIONAL_SEA");
+BANNERTYPE_GEDEMO_DZIMBABWE = UIManager:GetHash("BANNERTYPE_GEDEMO_DZIMBABWE");
 
 local INDUSTRY_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY'].Index;
 local INDUSTRY_BONUS_INDEX = GameInfo.Improvements['IMPROVEMENT_INDUSTRY_BONUS'].Index;
@@ -23,6 +24,7 @@ local CORPORATION_STRATEGIC_INDEX = GameInfo.Improvements['IMPROVEMENT_CORPORATI
 local CHATEAU_INDEX = GameInfo.Improvements['IMPROVEMENT_CHATEAU'].Index;
 local LEU_TRANSNATIONAL_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL'].Index;
 local LEU_TRANSNATIONAL_SEA_INDEX = GameInfo.Improvements['IMPROVEMENT_LEU_TRANSNATIONAL_SEA'].Index;
+local GEDEMO_DZIMBABWE_INFO = GameInfo.Improvements['IMPROVEMENT_GEDEMO_DZIMBABWE'];
 
 local INDUSTRY_BONUS_TAG = 'HD_INDUSTRY_BONUS_';
 local CORPORATION_BONUS_TAG = 'HD_CORPORATION_BONUS_';
@@ -40,6 +42,7 @@ local m_CorporationBannerIM = InstanceManager:new("CorporationBanner", "Anchor",
 local m_ChateauBannerIM = InstanceManager:new("ChateauBanner", "Anchor", Controls.CityBanners);
 local m_TransnationalBannerIM = InstanceManager:new("TransnationalBanner", "Anchor", Controls.CityBanners);
 local m_TransnationalSeaBannerIM = InstanceManager:new("TransnationalSeaBanner", "Anchor", Controls.CityBanners);
+local m_DzimbabweBannerIM = InstanceManager:new("DzimbabweBanner", "Anchor", Controls.CityBanners);
 local m_ResourceTypeMap = {};
 
 -- base function overrides
@@ -101,12 +104,19 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 		isChateau = true;
 	end
 
+	-- 判断是否是津巴布韦石城
+	local isDzimbabwe = false
+	if GEDEMO_DZIMBABWE_INFO and eImprovementType == GEDEMO_DZIMBABWE_INFO.Index then
+		isDzimbabwe = true;
+	end
+
 	-- we're only here for industries and corporations
 	if not bIsIndustry
 		and not bIsCorporation
 		and not isChateau
 		and not isTransnational
 		and not isTransnationalSea
+		and not isDzimbabwe
 	then
 		BASE_OnImprovementAddedToMap(locX, locY, eImprovementType, eOwner);
 		return;
@@ -143,6 +153,11 @@ function OnImprovementAddedToMap(locX:number, locY:number, eImprovementType:numb
 					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
 					local cityID = ownerCity:GetID();
 					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_TRANSNATIONAL_SEA);
+				elseif isDzimbabwe then
+					-- 津巴布韦石城
+					local ownerCity = Cities.GetPlotPurchaseCity(locX, locY);
+					local cityID = ownerCity:GetID();
+					AddMiniBannerToMap(eOwner, cityID, plotID, BANNERTYPE_GEDEMO_DZIMBABWE);
 				end
 			end
 		end
@@ -696,6 +711,8 @@ function CityBanner:CreateChateauBanner()
 	
 	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_CHATEAU_NAME") .. '[NEWLINE][NEWLINE]' .. GetChateauEffect(self.m_PlotX, self.m_PlotY);
 	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	local entertainmentResourceIndex = plot:GetProperty(CHATEAU_ENTERTAINMENT_RESOURCE_TAG) or -1;
+	self.m_Instance.ChateauRing:SetHide(entertainmentResourceIndex == -1);
 	self.m_Instance.ChateauButton:RegisterCallback(Mouse.eLClick, function() OnClickChateauInstanceIcon(self.m_PlotX, self.m_PlotY); end);
 end
 
@@ -717,7 +734,9 @@ function CityBanner:UpdateChateauBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
-	self.m_Instance.ChateauRing:SetHide(bHidden);
+	if bHidden then
+		self.m_Instance.ChateauRing:SetHide(bHidden);
+	end
 end
 
 -- ===========================================================================
@@ -925,6 +944,10 @@ function CityBanner:CreateTransnationalBanner()
 	
 	self.m_IsImprovementBanner = true;
 	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	local city = Cities.GetPlotPurchaseCity(plot);
+	if not city then return; end
+	local unlockSpecialtyShopCorporation = Utils.GetCityProperty(city:GetOwner(), city:GetID(), CITY_UNLOCK_SPECIALTY_SHOP_CORPORATION_TAG) or 0;
+	self.m_Instance.TransnationalRing:SetHide(unlockSpecialtyShopCorporation == 0);
 	-- self.m_Instance.TransnationalButton:RegisterCallback(Mouse.eLClick, function() end);
 end
 
@@ -947,6 +970,10 @@ function CityBanner:CreateTransnationalSeaBanner()
 	
 	self.m_IsImprovementBanner = true;
 	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	local city = Cities.GetPlotPurchaseCity(plot);
+	if not city then return; end
+	local unlockEntranceHarborCorporation = Utils.GetCityProperty(city:GetOwner(), city:GetID(), CITY_UNLOCK_ENTRANCE_HARBOR_CORPORATION_TAG) or 0;
+	self.m_Instance.TransnationalSeaRing:SetHide(unlockEntranceHarborCorporation == 0);
 	-- self.m_Instance.TransnationalSeaButton:RegisterCallback(Mouse.eLClick, function() end);
 end
 
@@ -968,7 +995,9 @@ function CityBanner:UpdateTransnationalBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
-	self.m_Instance.TransnationalRing:SetHide(bHidden);
+	if bHidden then
+		self.m_Instance.TransnationalRing:SetHide(bHidden);
+	end
 end
 
 function CityBanner:UpdateTransnationalSeaBanner()
@@ -988,7 +1017,9 @@ function CityBanner:UpdateTransnationalSeaBanner()
 	self:SetFogState( self.m_FogState );
 	self.m_Instance.Banner_Base:SetHide(bHidden);
 	self.m_Instance.Icon:SetHide(bHidden);
-	self.m_Instance.TransnationalSeaRing:SetHide(bHidden);
+	if bHidden then
+		self.m_Instance.TransnationalSeaRing:SetHide(bHidden);
+	end
 end
 
 -- ===========================================================================
@@ -1162,6 +1193,114 @@ function GetTransnationalEffect(x, y)
 end
 
 -- ======================================================================================================================================================
+-- 津巴布韦石城
+-- ======================================================================================================================================================
+local DzimbabweCategoryList = {
+	'TRANSIT',
+	'CONSTRUCTION',
+	'ART',
+	'CELEBRATION'
+};
+
+function CityBanner:CreateDzimbabweBanner()
+	self.m_InstanceManager = m_DzimbabweBannerIM;
+	self.m_Instance = self.m_InstanceManager:GetInstance();
+
+	self.m_PlotX, self.m_PlotY = Map.GetPlotLocation(self.m_DistrictID);
+
+	local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+	
+	local num, effectStr = GetDzimbabweEffect(self.m_PlotX, self.m_PlotY);
+	local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_NAME") .. effectStr;
+
+	self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_GEDEMO_DZIMBABWE");	
+	self.m_IsImprovementBanner = true;
+	self.m_Instance.Icon:SetToolTipString(toolTipStr);
+	self.m_Instance.DzimbabweRing:SetHide(num ~= #DzimbabweCategoryList);
+	-- self.m_Instance.DzimbabweButton:RegisterCallback(Mouse.eLClick, function() end);
+end
+
+-- ===========================================================================
+function CityBanner:UpdateDzimbabweBanner()
+	local pLocalPlayerVis:table = PlayersVisibility[Game.GetLocalPlayer()];
+	local bHidden:boolean = true;
+	if (pLocalPlayerVis ~= nil) then
+		if pLocalPlayerVis:IsVisible(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_VISIBLE;
+			bHidden = false;
+		elseif pLocalPlayerVis:IsRevealed(self.m_PlotX, self.m_PlotY) then
+			self.m_FogState = PLOT_REVEALED;
+		else
+			self.m_FogState = PLOT_HIDDEN;
+		end
+	end
+
+	self:SetFogState( self.m_FogState );
+	self.m_Instance.Banner_Base:SetHide(bHidden);
+	self.m_Instance.Icon:SetHide(bHidden);
+	if bHidden then
+		self.m_Instance.DzimbabweRing:SetHide(bHidden);
+	end
+end
+
+-- ===========================================================================
+function RefreshDzimbabweBanner(param)
+	local playerId = param.PlayerId;
+	local plotId = Map.GetPlotIndex(param.X, param.Y);
+	if playerId == Game.GetLocalPlayer() and plotId > 0 then
+		local banner = GetMiniBanner(playerId, plotId);
+		if banner ~= nil then
+			banner:UpdateDzimbabweText();
+		end
+	end
+end
+
+function CityBanner:UpdateDzimbabweText()
+	if self.m_Type == BANNERTYPE_GEDEMO_DZIMBABWE then
+		print('UpdateDzimbabweText');
+
+		local plot:table = Map.GetPlot( self.m_PlotX, self.m_PlotY );
+
+		local num, effectStr = GetDzimbabweEffect(self.m_PlotX, self.m_PlotY);
+		local toolTipStr = Locale.Lookup("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_NAME") .. effectStr;
+
+		self.m_Instance.Icon:SetIcon("ICON_IMPROVEMENT_GEDEMO_DZIMBABWE");
+		self.m_Instance.Icon:SetToolTipString(toolTipStr);	
+		self.m_Instance.DzimbabweRing:SetHide(num ~= #DzimbabweCategoryList);
+	end
+end
+
+-- ===========================================================================
+function GetDzimbabweEffect(x, y)
+	local plot = Map.GetPlot(x, y);
+	if not plot then return 0, ""; end
+
+	local effectStrList = {};
+	for _, category in ipairs(DzimbabweCategoryList) do
+		if plot:GetProperty(INDUSTRY_BONUS_TAG .. category) == 1 then
+			local str = '[NEWLINE][NEWLINE]'
+				.. Locale.Lookup('LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_' .. category .. '_TEXT')
+				.. '[NEWLINE][ICON_Bullet]'
+				.. Locale.Lookup('LOC_RESOURCE_CLASSIFICATION_HD_' .. category .. '_NAME')
+				.. Locale.Lookup('LOC_TOOLTIP_HD_COLON_TEXT')
+				.. Locale.Lookup('LOC_INDUSTRY_HD_' .. category .. '_BONUS_DESCRIPTION');
+			table.insert(effectStrList, str);
+		end
+	end
+
+	if #effectStrList == 0 then
+		return 0, '[NEWLINE][NEWLINE]' .. Locale.Lookup('LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_NONE_TEXT');
+	else
+		local effectStr = '';
+		for _, str in ipairs(effectStrList) do
+			effectStr = effectStr .. str;
+		end
+
+		return #effectStrList, effectStr;
+	end
+end
+
+-- ======================================================================================================================================================
 -- 通用函数
 -- ======================================================================================================================================================
 -- if this is one of our banners, create it now
@@ -1184,6 +1323,10 @@ function CityBanner:InitializeOtherBannerTypes(bannerType : number)
 		-- 进口商埠
 		self:CreateTransnationalSeaBanner();
 		self:UpdateTransnationalSeaBanner();
+	elseif bannerType == BANNERTYPE_GEDEMO_DZIMBABWE then
+		-- 津巴布韦石城
+		self:CreateDzimbabweBanner();
+		self:UpdateDzimbabweBanner();
 	else
 		BASE_CityBannerInitializeOtherBannerTypes(bannerType);
 	end
@@ -1215,6 +1358,11 @@ function CityBanner:UpdateColorOtherBannerTypes(backColor : number)
 		if self.m_Instance.Banner_Base ~= nil then
 			self.m_Instance.Banner_Base:SetColor( backColor );
 		end
+	elseif self.m_Type == BANNERTYPE_GEDEMO_DZIMBABWE then
+		-- 津巴布韦石城
+		if self.m_Instance.Banner_Base ~= nil then
+			self.m_Instance.Banner_Base:SetColor( backColor );
+		end
 	else
 		BASE_UpdateColorOtherBannerTypes();
 	end
@@ -1236,6 +1384,9 @@ function CityBanner:UpdateOtherImprovementBannerTypes()
 	elseif self.m_Type == BANNERTYPE_TRANSNATIONAL_SEA then
 		-- 进口商埠
 		self:UpdateTransnationalSeaBanner();
+	elseif self.m_Type == BANNERTYPE_GEDEMO_DZIMBABWE then
+		-- 进口商埠
+		self:UpdateDzimbabweBanner();
 	else
 		BASE_UpdateOtherImprovementBannerTypes();
 	end
@@ -1268,4 +1419,6 @@ function Initialize()
 
 	LuaEvents.HD_RefreshTransnationalBanner.Add(RefreshTransnationalBanner);
 	LuaEvents.HD_RefreshTransnationalSeaBanner.Add(RefreshTransnationalSeaBanner);
+
+	LuaEvents.HD_RefreshDzimbabweBanner.Add(RefreshDzimbabweBanner);
 end

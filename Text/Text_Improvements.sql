@@ -9,6 +9,13 @@ insert or replace into EnglishText (Tag, Text) values
   ("LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",             "[COLOR:219,112,147,255]Entertainment Resource[ENDCOLOR]: {1_Icon} {2_Resource}"),
   ("LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",          "[COLOR:Red]Click this icon to select Entertainment Resource.[ENDCOLOR]"),
   ("LOC_CHATEAU_INDUSTRY_TEXT",                           "[NEWLINE]Industry Bonuses: [NEWLINE]{1_Effect}"),
+  -- 津巴布韦石城
+  ("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_DESCRIPTION_MONOPOLIES",  "{LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_DESCRIPTION}After city build Commercial Hub, Industrial Zone, Theater Square, or Holy Site, gains industrial bonuses of Transit, Construction, Art, or Celebration resources."),
+  ("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_TRANSIT_TEXT", 					 "[COLOR:0,153,0,255]The Zimbabwean people are masters of the herd. The entire nation's transport and trade are built on the backs of cattle.[ENDCOLOR]"),
+	("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_CONSTRUCTION_TEXT", 			 "[COLOR:134,98,0,255]The magnificent stone structures built by the people of Zimbabwe are unique monuments in southeastern Africa.[ENDCOLOR]"),
+	("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_ART_TEXT", 							 "[COLOR:238,36,197,255]Stone sculpture is Zimbabwe's most representative art, and the Zimbabwe Bird is the most common artistic image.[ENDCOLOR]"),
+	("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_CELEBRATION_TEXT", 			 "[COLOR:102,0,204,255]Rejoice, Zimbabwe! The barren land has become a rich homeland because of you.[ENDCOLOR]"),
+	("LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_NONE_TEXT", 							 "[COLOR:Red]After building Commercial Hub, Industrial Zone, Theater Square, or Holy Site, gains industrial bonuses of Transit, Construction, Art, or Celebration resources.[ENDCOLOR]"),
   -- 加成战略资源 行业/公司
   ("LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                 "Industry"),
   ("LOC_IMPROVEMENT_INDUSTRY_STRATEGIC_NAME",             "Industry"),
@@ -60,6 +67,13 @@ insert or replace into LocalizedText (Language, Tag, Text) values
   ("zh_Hans_CN",  "LOC_CHATEAU_ENTERTAINMENT_RESOURCE_TEXT",            "[COLOR:219,112,147,255]娱乐资源[ENDCOLOR]：{1_Icon} {2_Resource}"),
   ("zh_Hans_CN",  "LOC_CHATEAU_NO_ENTERTAINMENT_RESOURCE_TEXT",         "[COLOR:Red]点击图标选择娱乐资源。[ENDCOLOR]"),
   ("zh_Hans_CN",  "LOC_CHATEAU_INDUSTRY_TEXT",                          "[NEWLINE]行业效果：[NEWLINE]{1_Effect}"),
+  -- 津巴布韦石城
+  ("zh_Hans_CN",  "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_DESCRIPTION_MONOPOLIES",  "+1 [ICON_PRODUCTION] 生产力、[ICON_Culture] 文化值和 [ICON_Housing] 住房。你每拥有一种运载资源，+3 [ICON_GOLD] 金币；每拥有一种建造资源，+1 [ICON_PRODUCTION] 生产力；每拥有一种艺术资源，+1 [ICON_Culture] 文化值；每拥有一种庆典资源，+1 [ICON_FAITH] 信仰值。若相邻淡水，则额外+3 [ICON_Housing] 住房。城市建成商业中心、工业区、剧院广场或圣地后，分别获得运载、建造、艺术或庆典资源的行业效果。[NEWLINE]每个城市仅限建造一座。"),
+  ("zh_Hans_CN", "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_TRANSIT_TEXT", 						"[COLOR:0,153,0,255]津巴布韦人是牧群之主。整个国家的交通和贸易建立在牛群背上。[ENDCOLOR]"),
+	("zh_Hans_CN", "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_CONSTRUCTION_TEXT", 				"[COLOR:134,98,0,255]津巴布韦人民建造的宏伟石制建筑是东南非洲大地上独树一帜的丰碑。[ENDCOLOR]"),
+	("zh_Hans_CN", "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_ART_TEXT", 								"[COLOR:238,36,197,255]石雕是津巴布韦最具代表性的艺术，津巴布韦鸟是最常见的艺术形象。[ENDCOLOR]"),
+	("zh_Hans_CN", "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_CELEBRATION_TEXT", 				"[COLOR:102,0,204,255]欢庆吧，津巴布韦！荒芜的土地因你而变为了富饶的家园。[ENDCOLOR]"),
+	("zh_Hans_CN", "LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_NONE_TEXT", 								"[COLOR:Red]建成商业中心、工业区、剧院广场或圣地后，分别获得运载、建造、艺术或庆典资源的行业效果。[ENDCOLOR]"),
   -- 加成战略资源 行业/公司
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_BONUS_NAME",                "行业"),
   ("zh_Hans_CN",  "LOC_IMPROVEMENT_INDUSTRY_STRATEGIC_NAME",            "行业"),

@@ -188,3 +188,27 @@ insert or ignore into RequirementSets (RequirementSetId, RequirementSetType) sel
 	'HD_MONOPOLY_CHATEAU_GRANT_' || ResourceType || '_REQUIREMENTS', 'REQUIREMENTSET_TEST_ANY' from HD_Chateau_Resources where ResourceClassType = 'RESOURCECLASS_LUXURY';
 insert or ignore into RequirementSetRequirements (RequirementSetId, RequirementId) select
 	'HD_MONOPOLY_CHATEAU_GRANT_' || ResourceType || '_REQUIREMENTS', 'REQUIRES_HD_MONOPOLY_CHATEAU_GRANT_' || ResourceType from HD_Chateau_Resources where ResourceClassType = 'RESOURCECLASS_LUXURY';
+
+-- =====================================================================================================================================
+-- 津巴布韦石城
+-- =====================================================================================================================================
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_GEDEMO_DZIMBABWE', ModifierId
+from HD_IndustryModifiers where Category in ('TRANSIT', 'CONSTRUCTION', 'ART', 'CELEBRATION')
+  and exists (select ImprovementType from Improvements where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE');
+
+insert or ignore into ImprovementModifiers (ImprovementType, ModifierId) select
+  'IMPROVEMENT_GEDEMO_DZIMBABWE', 'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE'
+where exists (select ImprovementType from Improvements where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE');
+
+insert or ignore into Modifiers (ModifierId, ModifierType, Permanent) select
+  'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE', 'MODIFIER_SINGLE_CITY_ADJUST_PROPERTY', 1
+where exists (select ImprovementType from Improvements where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE');
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE', 'Key', 'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE'
+where exists (select ImprovementType from Improvements where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE');
+
+insert or ignore into ModifierArguments (ModifierId, Name, Value) select
+  'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE', 'Amount', 1
+where exists (select ImprovementType from Improvements where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE');

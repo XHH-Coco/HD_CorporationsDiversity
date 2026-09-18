@@ -25,6 +25,16 @@ local plotImprovementNameTag = 'HD_PLOT_IMPROVEMENT_NAME';
 -- 巴西UA
 local JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY_TAG = 'HD_JUNGLE_INDUSTRY_CORPORATION_ALL_CATEGORY';
 
+-- 津巴布韦石城
+local GEDEMO_DZIMBABWE_INFO = GameInfo.Improvements['IMPROVEMENT_GEDEMO_DZIMBABWE'];
+local CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE_TAG = 'HD_CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE';
+local DzimbabweCategoryList = {
+	DISTRICT_COMMERCIAL_HUB = 'TRANSIT',
+	DISTRICT_INDUSTRIAL_ZONE = 'CONSTRUCTION',
+	DISTRICT_THEATER = 'ART',
+	DISTRICT_HOLY_SITE = 'CELEBRATION'
+};
+
 local FEATURE_JUNGLE_INDEX = GameInfo.Features['FEATURE_JUNGLE'].Index;
 -- ======================================================================================================================================================
 -- 行业/公司
@@ -748,6 +758,64 @@ function UnlockTransnationalCorporationEffect(playerId, civicId)
 end
 Events.CivicCompleted.Add(UnlockTransnationalCorporationEffect);
 
+-- ======================================================================================================================================================
+-- 津巴布韦石城
+-- ======================================================================================================================================================
+function BuildDzimbabwe(x, y, improvementId, playerId, resourceId, isPillaged, isWorked)
+  local plot = Map.GetPlot(x, y);
+  if not plot then return; end
+
+  local city = Cities.GetPlotPurchaseCity(plot);
+  if not city then return; end
+
+  if GEDEMO_DZIMBABWE_INFO and improvementId == GEDEMO_DZIMBABWE_INFO.Index then
+    for districtType, category in pairs(DzimbabweCategoryList) do
+      if Utils.CityHasDistrict(city, districtType) then
+        print("津巴布韦石城 获得行业效果：" .. category);
+        if plot:GetProperty(INDUSTRY_BONUS_TAG .. category) ~= 1 then
+          plot:SetProperty(INDUSTRY_BONUS_TAG .. category, 1);
+        end
+      else
+        if plot:GetProperty(INDUSTRY_BONUS_TAG .. category) == 1 then
+          plot:SetProperty(INDUSTRY_BONUS_TAG .. category, 0);
+        end
+      end
+    end
+
+    ReportingEvents.SendLuaEvent('HD_RefreshDzimbabweBanner', {PlayerId = playerId, X = x, Y = y});
+  end
+end
+
+function DzimbabweDistrictConstructed(playerId, districtId, x, y)
+  local districtPlot = Map.GetPlot(x, y);
+  if not districtPlot then return; end
+
+  local city = Cities.GetPlotPurchaseCity(districtPlot);
+  if not city then return; end
+
+  local has = city:GetProperty(CITY_HAS_IMPROVEMENT_GEDEMO_DZIMBABWE_TAG) or 0;
+  if has > 0 then
+    local districtInfo = GameInfo.Districts[districtId];
+    if not districtInfo then return; end
+
+    local category = DzimbabweCategoryList[districtInfo.DistrictType];
+    if category then
+      local cityPlots = Utils.GetCityPlots(playerId, city:GetID());
+      for _, plotId in pairs(cityPlots) do
+        local plot = Map.GetPlotByIndex(plotId);
+        if plot and GEDEMO_DZIMBABWE_INFO and plot:GetImprovementType() == GEDEMO_DZIMBABWE_INFO.Index then
+          if plot:GetProperty(INDUSTRY_BONUS_TAG .. category) ~= 1 then
+            print("津巴布韦石城 获得行业效果：" .. category);
+            plot:SetProperty(INDUSTRY_BONUS_TAG .. category, 1);
+            ReportingEvents.SendLuaEvent('HD_RefreshDzimbabweBanner', {PlayerId = playerId, X = plot:GetX(), Y = plot:GetY()});
+          end
+        end
+      end
+    end
+  end
+end
+GameEvents.OnDistrictConstructed.Add(DzimbabweDistrictConstructed);
+
 --------------------------------------------------------------
 -- Initialize
 function Initialize()
@@ -755,5 +823,6 @@ function Initialize()
 	Events.ImprovementAddedToMap.Add(NameBonusStrategicCorporation);
 	Events.ImprovementAddedToMap.Add(BuildChateau);
 	Events.ImprovementAddedToMap.Add(BuildTransnational);
+	Events.ImprovementAddedToMap.Add(BuildDzimbabwe);
 end
 Events.LoadGameViewStateDone.Add(Initialize);

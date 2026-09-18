@@ -1163,6 +1163,7 @@ where CivicType = 'CIVIC_CLASS_STRUGGLE';
 
 insert or replace into GlobalParameters (Name, Value) values
 	('HD_CLASS_STRUGGLE_BOOST_WAREHOUSE',  1);
+
 -- =====================================================================================================================================
 -- 城堡庄园
 -- =====================================================================================================================================
@@ -1184,3 +1185,21 @@ insert or replace into Improvement_Adjacencies (ImprovementType, YieldChangeId) 
 insert or replace into Adjacency_YieldChanges (ID, Description, YieldType, YieldChange, OtherDistrictAdjacent, AdjacentWonder) values
 	('HD_Chateau_Monopoly_District_Food',				'Placeholder', 'YIELD_FOOD',				1, 1, 0),
 	('HD_Chateau_Monopoly_District_Production',	'Placeholder', 'YIELD_PRODUCTION',	1, 1, 0);
+
+-- =====================================================================================================================================
+-- 津巴布韦石城
+-- =====================================================================================================================================
+update Improvements set
+	Description = 'LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_DESCRIPTION_MONOPOLIES'
+where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE';
+
+insert or ignore into UnitAiInfos (UnitType, AiType) select
+	'UNIT_ZIMBABWE_PATHFINDER', AiType
+from UnitAiInfos where UnitType = 'UNIT_LEU_TYCOON'
+	and exists (select UnitType from Units where UnitType = 'UNIT_ZIMBABWE_PATHFINDER');
+
+update Improvement_ValidBuildUnits set UnitType = 'UNIT_LEU_TYCOON' where ImprovementType = 'IMPROVEMENT_GEDEMO_DZIMBABWE' and UnitType = 'UNIT_BUILDER';
+insert or ignore into Improvement_ValidBuildUnits (UnitType, ImprovementType) select
+	'UNIT_ZIMBABWE_PATHFINDER', ImprovementType
+from Improvement_ValidBuildUnits where UnitType = 'UNIT_LEU_TYCOON'
+	and exists (select UnitType from Units where UnitType = 'UNIT_ZIMBABWE_PATHFINDER');

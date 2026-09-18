@@ -11,3 +11,6 @@ insert or ignore into ModifierArguments (ModifierId, Name, Value) values
   ('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES', 'UnitType', 					  'UNIT_HD_BANDEIRANTES'),
 	('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES', 'AllowUniqueOverride',  0),
 	('HD_AMAZON_INDUSTRY_GRANT_BANDEIRANTES', 'Amount', 						  1);
+
+-- 津巴布韦
+update Units set Description = 'LOC_UNIT_ZIMBABWE_PATHFINDER_DESCRIPTION_MONOPOLIES' where UnitType = 'UNIT_ZIMBABWE_PATHFINDER';

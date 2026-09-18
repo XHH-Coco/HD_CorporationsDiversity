@@ -25,5 +25,13 @@ insert or ignore into GameModePlayerItemOverrides (GameModeType, Domain, Civiliz
   'GAMEMODE_MONOPOLIES', Domain, CivilizationType, LeaderType, 'UNIT_HD_BANDEIRANTES', 'LOC_UNIT_HD_BANDEIRANTES_DESCRIPTION_MONOPOLIES'
 from PlayerItems where Type = 'UNIT_HD_BANDEIRANTES';
 
+insert or ignore into GameModePlayerItemOverrides (GameModeType, Domain, CivilizationType, LeaderType, Type, Description) select
+  'GAMEMODE_MONOPOLIES', Domain, CivilizationType, LeaderType, 'IMPROVEMENT_GEDEMO_DZIMBABWE', 'LOC_IMPROVEMENT_GEDEMO_DZIMBABWE_DESCRIPTION_MONOPOLIES'
+from PlayerItems where Type = 'IMPROVEMENT_GEDEMO_DZIMBABWE';
+
+insert or ignore into GameModePlayerItemOverrides (GameModeType, Domain, CivilizationType, LeaderType, Type, Description) select
+  'GAMEMODE_MONOPOLIES', Domain, CivilizationType, LeaderType, 'UNIT_ZIMBABWE_PATHFINDER', 'LOC_UNIT_ZIMBABWE_PATHFINDER_DESCRIPTION_MONOPOLIES'
+from PlayerItems where Type = 'UNIT_ZIMBABWE_PATHFINDER';
+
 insert or ignore into PlayerItemOverrideQueries (QueryId) values
   ('HDMonopoliesModePlayerItemOverrides');

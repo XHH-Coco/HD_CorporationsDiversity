@@ -121,7 +121,7 @@ function OverseasInvestorChooseCityState(playerId, unitId)
   local unit = UnitManager.GetUnit(playerId, unitId);
 	if not unit then return; end
 
-  ReportingEvents.SendLuaEvent('HD_CallOverseasInvestorChooseCityStateEvent', {PlayerId = playerId, X = unit:GetX(), Y = unit:GetY(), UnitId = unitId});
+  ReportingEvents.SendLuaEvent('HD_CallOverseasInvestorSelectCityStateEvent', {PlayerId = playerId, X = unit:GetX(), Y = unit:GetY(), UnitId = unitId});
 end
 GameEvents.HD_OverseasInvestorChooseCityState.Add(OverseasInvestorChooseCityState);
 

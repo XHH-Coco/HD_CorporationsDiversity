@@ -204,8 +204,6 @@
     <!-- 自定义界面 -->
     <AddUserInterfaces id="Monopolies_Custom_Interface" criteria="Monopolies_Mode_Expansion2">
       <Properties><Context>InGame</Context></Properties>
-      <File>UI/ResourceSelection.xml</File>
-      <File>UI/CityStateSelection.xml</File>
       <File>UI/NameImprovementPopup.xml</File>
     </AddUserInterfaces>
 
@@ -370,10 +368,6 @@
     <File>UI/GreatWorksOverview_KublaiKhanVietnam_Monopolies.lua</File>
     <File>UI/CityBannerManager_KublaiKhanVietnam_MODE.lua</File>
     <File>UI/BRSPage_Resources.lua</File>
-    <File>UI/ResourceSelection.xml</File>
-    <File>UI/ResourceSelection.lua</File>
-    <File>UI/CityStateSelection.xml</File>
-    <File>UI/CityStateSelection.lua</File>
     <File>UI/NameImprovementPopup.xml</File>
     <File>UI/NameImprovementPopup.lua</File>
     <!-- Database -->

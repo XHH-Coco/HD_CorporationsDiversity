@@ -43,6 +43,10 @@ insert or ignore into TypeTags (Type, Tag) values
   ('ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY',			                              'CLASS_TYCOON'),
   ('ABILITY_HD_RUHR_VALLEY_INVESTOR_ABILITY',			                            'CLASS_INVESTOR');
 
+insert or ignore into TypeTags (Type, Tag) select
+	'ABILITY_HD_RUHR_VALLEY_TYCOON_ABILITY', 'CLASS_HD_ZIMBABWE_PATHFINDER'
+where exists (select UnitType from Units where UnitType = 'UNIT_ZIMBABWE_PATHFINDER');
+
 insert or ignore into UnitAbilities (UnitAbilityType, Name, Description, Inactive) values
 	('ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2',
 	'LOC_ABILITY_HD_GOVERNOR_DEFENDER_RIGHT_2_MILITARY_ENGINEERING_ABILITY_2_NAME',

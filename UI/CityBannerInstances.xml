@@ -282,6 +282,18 @@
       </Container>
 	  </ZoomAnchor>
 	</Instance>
+	<!-- 津巴布韦石城 -->
+	<Instance	Name="DzimbabweBanner">
+	  <ZoomAnchor ID="Anchor" ZoomOffsetNear="0,0,0" ZoomOffsetFar="0,0,-20">
+      <Container ID="DzimbabweBannerContainer" Anchor="C,C" Size="88,34">
+        <!-- Banner Background -->
+        <Image ID="Banner_Base" Anchor="C,C" Size="50,50" Texture="BannerMonopolies_Combo_Base_Combo"/>
+        <Image ID="Icon" Anchor="C,C" Size="34,34" Texture="AdvisorRec22" />
+        <Image ID="DzimbabweRing" Anchor="C,C" Size="48,48" Texture="Monopolies_GoldBorder" Hidden="1"/>
+        <Button ID="DzimbabweButton" Anchor="C,C" Size="34,34"/>
+      </Container>
+	  </ZoomAnchor>
+	</Instance>
 
 	<!-- Encampment Minibanner -->
 	<Instance	Name="EncampmentBanner">
